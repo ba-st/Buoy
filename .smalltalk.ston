@@ -1,0 +1,20 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'BASTPharoKernel',
+      #directory : 'source',
+      #load : [ 'Development' ],
+      #platforms : [  #pharo ]
+    }
+  ],
+  #testing : {
+    #coverage : {
+      #categories : [ 'Pharo-Kernel-Extensions*' ]
+    },
+    #include : { 
+      #categories : [ 'Pharo-Kernel-Extensions-Tests*' ]
+    }
+   
+  }
+} 
+
