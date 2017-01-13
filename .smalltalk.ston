@@ -9,12 +9,12 @@ SmalltalkCISpec {
   ],
   #testing : {
     #coverage : {
-      #categories : [ 'Pharo-Kernel-Extensions*' ]
+       #categories : [ 'Pharo-Kernel-Extensions*' ]
     },
     #include : { 
-      #categories : [ 'Pharo-Kernel-Extensions-Tests*' ]
+       #classes : [ #ObjectTest ],
+       #categories : [ 'Pharo-Kernel-Extensions-Tests*' ]
     }
-   
   }
 } 
 
