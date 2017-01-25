@@ -1,0 +1,4 @@
+configuring
+failFast
+
+	failurePolicyFactory := RaiseOnFirstAssertionFailurePolicy

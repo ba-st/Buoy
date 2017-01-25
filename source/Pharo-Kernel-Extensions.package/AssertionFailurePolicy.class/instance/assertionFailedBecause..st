@@ -1,0 +1,4 @@
+notifying
+assertionFailedBecause: aFailureExplanation 
+
+	self subclassResponsibility

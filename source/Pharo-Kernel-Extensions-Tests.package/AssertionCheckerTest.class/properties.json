@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "GabrielOmarCotelli 1/23/2017 17:01",
+	"super" : "TestCase",
+	"category" : "Pharo-Kernel-Extensions-Tests-Assertions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"checker"
+	],
+	"name" : "AssertionCheckerTest",
+	"type" : "normal"
+}

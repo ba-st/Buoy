@@ -1,4 +1,4 @@
-*Pharo-Kernel-Extensions-Tests
+test
 testIsA
 
 	self

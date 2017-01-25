@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "GabrielOmarCotelli 1/24/2017 21:40",
+	"super" : "Object",
+	"category" : "Pharo-Kernel-Extensions-Assertions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "AssertionFailurePolicy",
+	"type" : "normal"
+}

@@ -1,0 +1,1 @@
+I represent an assertion failure policy that applies to some asserter. My purpose is to define how to handle an assertion failure.

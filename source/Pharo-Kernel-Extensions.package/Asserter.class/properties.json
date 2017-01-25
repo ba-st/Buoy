@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "GabrielOmarCotelli 1/23/2017 17:34",
+	"super" : "Object",
+	"category" : "Pharo-Kernel-Extensions-Assertions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"conditions"
+	],
+	"name" : "Asserter",
+	"type" : "normal"
+}

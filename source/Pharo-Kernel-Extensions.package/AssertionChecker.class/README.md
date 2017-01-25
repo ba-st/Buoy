@@ -1,0 +1,1 @@
+I'm representing an Assertion Checker. My main objetive is to check a set of preconfigured facts and signal an error if some of them are not satisfied.

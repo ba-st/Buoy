@@ -1,0 +1,4 @@
+private
+explanation
+
+	^ explanationBlockOrString value
