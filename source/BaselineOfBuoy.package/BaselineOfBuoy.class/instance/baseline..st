@@ -9,5 +9,5 @@ baseline: spec
 				package: 'Buoy-Tests' with: [ spec requires: 'Buoy' ].
 			spec
 				group: 'Deployment' with: #('Buoy');
-				group: 'Development' with: #('Deployment' 'Buoy');
+				group: 'Development' with: #('Deployment' 'Buoy-Tests');
 				group: 'default' with: #('Deployment') ]
