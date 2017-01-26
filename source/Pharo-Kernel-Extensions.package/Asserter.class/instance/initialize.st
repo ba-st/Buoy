@@ -2,4 +2,4 @@ initialization
 initialize
 
 	super initialize.
-	conditions := OrderedCollection new
+	checks := OrderedCollection new

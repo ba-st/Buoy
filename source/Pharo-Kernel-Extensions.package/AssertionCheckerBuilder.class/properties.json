@@ -1,13 +1,14 @@
 {
-	"commentStamp" : "GabrielOmarCotelli 1/23/2017 17:34",
+	"commentStamp" : "GabrielOmarCotelli 1/25/2017 21:53",
 	"super" : "Object",
 	"category" : "Pharo-Kernel-Extensions-Assertions",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"checks"
+		"asserter",
+		"failurePolicyFactory"
 	],
-	"name" : "Asserter",
+	"name" : "AssertionCheckerBuilder",
 	"type" : "normal"
 }

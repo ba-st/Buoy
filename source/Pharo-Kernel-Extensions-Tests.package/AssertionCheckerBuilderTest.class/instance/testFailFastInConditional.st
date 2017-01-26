@@ -4,7 +4,7 @@ testFailFastInConditional
 	| mathFailureExplanation |
 
 	mathFailureExplanation := 'An obvious math error'.
-	checker
+	checkerBuilder
 		failFast;
 		checking: [ :asserter | 
 			asserter
@@ -13,9 +13,9 @@ testFailFastInConditional
 				affirm: [ self fail ] because: [ self fail ] ].
 
 	self
-		should: [ checker check ]
+		should: [ checkerBuilder buildAndCheck ]
 		raise: AssertionFailed
 		withExceptionDo: [ :exception | 
 			self
 				assert: exception messageText equals: mathFailureExplanation;
-				assert: exception failures size equals: 1 ]
+				assertCollection: exception failures hasSameElements: {mathFailureExplanation} ]

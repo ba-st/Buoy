@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "GabrielOmarCotelli 1/24/2017 21:47",
+	"commentStamp" : "GabrielOmarCotelli 1/25/2017 21:53",
 	"super" : "Object",
 	"category" : "Pharo-Kernel-Extensions-Assertions",
 	"classinstvars" : [ ],
@@ -7,7 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"asserter",
-		"failurePolicyFactory"
+		"failurePolicy"
 	],
 	"name" : "AssertionChecker",
 	"type" : "normal"

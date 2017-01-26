@@ -1,4 +1,4 @@
 Checking
 checkApplying: aPolicy
 
-	conditions do: [ :conditional | conditional checkApplying: aPolicy ]
+	checks do: [ :check | check checkApplying: aPolicy ]

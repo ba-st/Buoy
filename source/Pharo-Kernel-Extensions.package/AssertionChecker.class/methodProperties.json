@@ -1,11 +1,10 @@
 {
 	"instance" : {
-		"initialize" : "GabrielOmarCotelli 1/24/2017 21:29",
-		"failFast" : "GabrielOmarCotelli 1/24/2017 21:29",
-		"check" : "GabrielOmarCotelli 1/24/2017 21:22",
-		"checking:" : "GabrielOmarCotelli 1/23/2017 17:14"
+		"initializeApplying:to:" : "GabrielOmarCotelli 1/25/2017 21:50",
+		"check" : "GabrielOmarCotelli 1/25/2017 21:50"
 	},
 	"class" : {
-		"new" : "GabrielOmarCotelli 1/24/2017 21:38"
+		"applying:to:" : "GabrielOmarCotelli 1/25/2017 21:51",
+		"justCheck:because:" : "GabrielOmarCotelli 1/25/2017 21:59"
 	}
 }

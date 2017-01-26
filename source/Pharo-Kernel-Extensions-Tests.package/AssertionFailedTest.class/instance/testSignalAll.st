@@ -14,6 +14,7 @@ testSignalAll
 		withExceptionDo: [ :exception | 
 			self
 				assert: exception messageText equals: ('<1s>. <2s>' expandMacrosWith: firstExplanation with: secondExplanation);
-				assert: exception failures size equals: 2;
-				assert: exception failures first equals: firstExplanation;
-				assert: exception failures last equals: secondExplanation ]
+				assertCollection: exception failures
+					hasSameElements:
+					{firstExplanation.
+					secondExplanation} ]
