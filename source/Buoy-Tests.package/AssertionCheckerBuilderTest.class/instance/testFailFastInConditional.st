@@ -8,9 +8,9 @@ testFailFastInConditional
 		failFast;
 		checking: [ :asserter | 
 			asserter
-				affirm: [ true ] because: [ self fail ] onSuccess: [ :successAsserter | successAsserter affirm: [ false ] because: mathFailureExplanation ];
-				affirm: [ self fail ] because: [ self fail ];
-				affirm: [ self fail ] because: [ self fail ] ].
+				enforce: [ true ] because: [ self fail ] onSuccess: [ :successAsserter | successAsserter enforce: [ false ] because: mathFailureExplanation ];
+				enforce: [ self fail ] because: [ self fail ];
+				enforce: [ self fail ] because: [ self fail ] ].
 
 	self
 		should: [ checkerBuilder buildAndCheck ]

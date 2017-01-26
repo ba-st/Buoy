@@ -5,5 +5,5 @@ justCheck: aFact because: aStringOrBlockExplanation
 		applying: RaiseOnFirstAssertionFailurePolicy new
 		to:
 			(Asserter new
-				affirm: aFact because: aStringOrBlockExplanation;
+				enforce: aFact because: aStringOrBlockExplanation;
 				yourself)) check

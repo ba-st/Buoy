@@ -7,9 +7,9 @@ testSeveralConditionsButOnlyOneFailed
 	checkerBuilder
 		checking: [ :asserter | 
 			asserter
-				affirm: [ 4 > 3 ] because: [ self fail ];
-				affirm: [ 1 > 2 ] because: mathFailureExplanation;
-				affirm: [ #() isEmpty ] because: [ self fail ] ].
+				enforce: [ 4 > 3 ] because: [ self fail ];
+				enforce: [ 1 > 2 ] because: mathFailureExplanation;
+				enforce: [ #() isEmpty ] because: [ self fail ] ].
 	self
 		should: [ checkerBuilder buildAndCheck ]
 		raise: AssertionFailed

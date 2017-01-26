@@ -8,9 +8,9 @@ testFailFastPassingSomeConditions
 		failFast;
 		checking: [ :asserter | 
 			asserter
-				affirm: [ true ] because: [ self fail ];
-				affirm: [ false ] because: failureExplanation;
-				affirm: [ self fail ] because: [ self fail ] ].
+				enforce: [ true ] because: [ self fail ];
+				enforce: [ false ] because: failureExplanation;
+				enforce: [ self fail ] because: [ self fail ] ].
 
 	self
 		should: [ checkerBuilder buildAndCheck ]

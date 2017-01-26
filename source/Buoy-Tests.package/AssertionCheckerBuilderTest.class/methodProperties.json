@@ -1,15 +1,15 @@
 {
 	"instance" : {
-		"testWithoutFailures" : "GabrielOmarCotelli 1/25/2017 21:28",
-		"testConditionalChecking" : "GabrielOmarCotelli 1/25/2017 21:33",
-		"testConditionalCheckingWhenFirstConditionFails" : "GabrielOmarCotelli 1/25/2017 21:34",
-		"testSeveralConditionsButOnlyOneFailed" : "GabrielOmarCotelli 1/25/2017 21:36",
-		"testSingleConditionFailure" : "GabrielOmarCotelli 1/25/2017 21:39",
-		"testFailFastPassingSomeConditions" : "GabrielOmarCotelli 1/25/2017 21:35",
-		"testFailFastInConditional" : "GabrielOmarCotelli 1/25/2017 21:34",
-		"testFailFast" : "GabrielOmarCotelli 1/25/2017 21:34",
+		"testWithoutFailures" : "GabrielOmarCotelli 1/26/2017 19:50",
+		"testConditionalChecking" : "GabrielOmarCotelli 1/26/2017 19:50",
+		"testConditionalCheckingWhenFirstConditionFails" : "GabrielOmarCotelli 1/26/2017 19:50",
+		"testSeveralConditionsButOnlyOneFailed" : "GabrielOmarCotelli 1/26/2017 19:50",
+		"testSingleConditionFailure" : "GabrielOmarCotelli 1/26/2017 19:50",
+		"testFailFastPassingSomeConditions" : "GabrielOmarCotelli 1/26/2017 19:50",
+		"testFailFastInConditional" : "GabrielOmarCotelli 1/26/2017 19:50",
+		"testFailFast" : "GabrielOmarCotelli 1/26/2017 19:50",
 		"testWithoutChecks" : "GabrielOmarCotelli 1/25/2017 21:28",
-		"testSeveralConditionsFailed" : "GabrielOmarCotelli 1/25/2017 21:36",
+		"testSeveralConditionsFailed" : "GabrielOmarCotelli 1/26/2017 19:50",
 		"setUp" : "GabrielOmarCotelli 1/25/2017 21:27"
 	},
 	"class" : { }

@@ -8,8 +8,8 @@ testSeveralConditionsFailed
 	checkerBuilder
 		checking: [ :asserter | 
 			asserter
-				affirm: [ 1 > 2 ] because: mathFailureExplanation;
-				affirm: [ #() notEmpty ] because: collectionSizeFailureExplanation ].
+				enforce: [ 1 > 2 ] because: mathFailureExplanation;
+				enforce: [ #() notEmpty ] because: collectionSizeFailureExplanation ].
 	self
 		should: [ checkerBuilder buildAndCheck ]
 		raise: AssertionFailed

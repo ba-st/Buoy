@@ -8,9 +8,9 @@ testFailFast
 		failFast;
 		checking: [ :asserter | 
 			asserter
-				affirm: [ 2 > 3 ] because: mathFailureExplanation;
-				affirm: [ self fail ] because: [ self fail ];
-				affirm: [ self fail ] because: [ self fail ] ].
+				enforce: [ 2 > 3 ] because: mathFailureExplanation;
+				enforce: [ self fail ] because: [ self fail ];
+				enforce: [ self fail ] because: [ self fail ] ].
 
 	self
 		should: [ checkerBuilder buildAndCheck ]

@@ -4,7 +4,7 @@ testSingleConditionFailure
 	| explanation |
 
 	explanation := 'An obvious math error'.
-	checkerBuilder checking: [ :asserter | asserter affirm: [ 1 > 2 ] because: explanation ].
+	checkerBuilder checking: [ :asserter | asserter enforce: [ 1 > 2 ] because: explanation ].
 	self
 		should: [ checkerBuilder buildAndCheck ]
 		raise: AssertionFailed
