@@ -1,0 +1,10 @@
+{
+	"instance" : {
+		"enforce:because:" : "GabrielOmarCotelli 1/26/2017 19:50",
+		"enforce:because:onSuccess:" : "GabrielOmarCotelli 1/26/2017 19:50",
+		"initialize" : "GabrielOmarCotelli 1/25/2017 21:42",
+		"checkApplying:" : "GabrielOmarCotelli 1/25/2017 21:43",
+		"value:applying:" : "GabrielOmarCotelli 1/24/2017 21:46"
+	},
+	"class" : { }
+}

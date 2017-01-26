@@ -1,7 +1,7 @@
 SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
-      #baseline : 'BASTPharoKernel',
+      #baseline : 'Buoy',
       #directory : 'source',
       #load : [ 'Development' ],
       #platforms : [  #pharo ]
@@ -9,11 +9,10 @@ SmalltalkCISpec {
   ],
   #testing : {
     #coverage : {
-       #categories : [ 'Pharo-Kernel-Extensions*' ]
+       #packages : [ 'Buoy*' ]
     },
-    #include : { 
-       #classes : [ #ObjectTest ],
-       #categories : [ 'Pharo-Kernel-Extensions-Tests*' ]
+    #include : {  
+       #packages : [ 'Buoy-Tests*' ]
     }
   }
 } 

@@ -1,0 +1,1 @@
+I'm a helper for Assertion Checker. Not intended to be used directly.

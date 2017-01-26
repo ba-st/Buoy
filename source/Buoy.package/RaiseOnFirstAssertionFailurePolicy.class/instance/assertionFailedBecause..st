@@ -1,0 +1,4 @@
+notifying
+assertionFailedBecause: aFailureExplanation
+
+	AssertionFailed signal: aFailureExplanation
