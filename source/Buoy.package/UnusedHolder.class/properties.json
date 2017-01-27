@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "MaximilianoTabacman 12/7/2016 08:53",
+	"super" : "HolderBehavior",
+	"category" : "Buoy-Holders",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"explanations"
+	],
+	"name" : "UnusedHolder",
+	"type" : "normal"
+}
