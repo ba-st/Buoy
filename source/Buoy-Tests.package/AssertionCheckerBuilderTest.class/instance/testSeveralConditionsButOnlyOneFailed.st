@@ -9,7 +9,7 @@ testSeveralConditionsButOnlyOneFailed
 			asserter
 				enforce: [ 4 > 3 ] because: [ self fail ];
 				enforce: [ 1 > 2 ] because: mathFailureExplanation;
-				enforce: [ #() isEmpty ] because: [ self fail ] ].
+				refuse: [ #() notEmpty ] because: [ self fail ] ].
 	self
 		should: [ checkerBuilder buildAndCheck ]
 		raise: AssertionFailed

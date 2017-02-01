@@ -1,4 +1,4 @@
 Accessing
-defaultError
+defaultErrorToSignal
 
 	^ AssertionFailed

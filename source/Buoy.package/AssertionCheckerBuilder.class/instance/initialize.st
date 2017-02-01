@@ -3,5 +3,5 @@ initialize
 
 	super initialize.
 	asserter := Asserter new.
-	errorClass := AssertionFailurePolicy defaultError.
+	self raising: AssertionFailurePolicy defaultErrorToSignal.
 	failurePolicyFactory := CollectingAssertionFailuresPolicy

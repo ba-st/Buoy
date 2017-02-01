@@ -8,7 +8,7 @@
 	"instvars" : [
 		"asserter",
 		"failurePolicyFactory",
-		"errorClass"
+		"errorToSignal"
 	],
 	"name" : "AssertionCheckerBuilder",
 	"type" : "normal"

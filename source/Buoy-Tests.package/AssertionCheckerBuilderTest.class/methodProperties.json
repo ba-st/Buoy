@@ -1,11 +1,11 @@
 {
 	"instance" : {
 		"testWithoutFailures" : "GabrielOmarCotelli 1/26/2017 19:50",
-		"testConditionalChecking" : "GabrielOmarCotelli 1/26/2017 19:50",
+		"testConditionalChecking" : "GabrielOmarCotelli 2/1/2017 15:10",
 		"testSeveralConditionsButOnlyOneFailedConfiguringErrorToRaise" : "GabrielOmarCotelli 1/31/2017 21:06",
 		"testFailFastConfiguringErrorToRaise" : "GabrielOmarCotelli 1/31/2017 21:06",
 		"testConditionalCheckingWhenFirstConditionFails" : "GabrielOmarCotelli 1/26/2017 19:50",
-		"testSeveralConditionsButOnlyOneFailed" : "GabrielOmarCotelli 1/26/2017 19:50",
+		"testSeveralConditionsButOnlyOneFailed" : "GabrielOmarCotelli 2/1/2017 15:10",
 		"testSingleConditionFailure" : "GabrielOmarCotelli 1/26/2017 19:50",
 		"testFailFastPassingSomeConditions" : "GabrielOmarCotelli 1/26/2017 19:50",
 		"testFailFastInConditional" : "GabrielOmarCotelli 1/26/2017 19:50",

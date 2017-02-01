@@ -1,4 +1,4 @@
 checking
 build
 
-	^ AssertionChecker applying: (failurePolicyFactory raising: errorClass) to: asserter
+	^ AssertionChecker applying: (failurePolicyFactory raising: errorToSignal) to: asserter

@@ -1,4 +1,4 @@
 configuring
-raising: anErrorClass
+raising: anErrorToSignal
 
-	errorClass := anErrorClass
+	errorToSignal := anErrorToSignal

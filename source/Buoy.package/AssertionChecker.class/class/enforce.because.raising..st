@@ -1,9 +1,9 @@
 checking
-enforce: aFact because: aStringOrBlockExplanation raising: errorClass
+enforce: aFact because: aStringOrBlockExplanation raising: errorToSignal
 
-	^ (self
-		applying: (RaiseOnFirstAssertionFailurePolicy raising: errorClass)
-		to:
-			(Asserter new
-				enforce: aFact because: aStringOrBlockExplanation;
-				yourself)) check
+	| asserter |
+
+	asserter := Asserter new.
+	asserter enforce: aFact because: aStringOrBlockExplanation.
+	
+	^ self checkApplyingFailFastPolicyTo: asserter raising: errorToSignal

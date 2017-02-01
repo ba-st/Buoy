@@ -4,8 +4,11 @@
 		"check" : "GabrielOmarCotelli 1/25/2017 21:50"
 	},
 	"class" : {
+		"enforce:because:" : "GabrielOmarCotelli 2/1/2017 14:09",
+		"checkApplyingFailFastPolicyTo:raising:" : "GabrielOmarCotelli 2/1/2017 14:48",
+		"enforce:because:raising:" : "GabrielOmarCotelli 2/1/2017 14:48",
+		"refuse:because:raising:" : "GabrielOmarCotelli 2/1/2017 14:47",
 		"applying:to:" : "GabrielOmarCotelli 1/25/2017 21:51",
-		"enforce:because:" : "GabrielOmarCotelli 1/31/2017 20:55",
-		"enforce:because:raising:" : "GabrielOmarCotelli 1/31/2017 20:55"
+		"refuse:because:" : "GabrielOmarCotelli 2/1/2017 14:45"
 	}
 }

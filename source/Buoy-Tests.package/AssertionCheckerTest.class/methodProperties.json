@@ -1,9 +1,11 @@
 {
 	"instance" : {
-		"testEnforceOneFactFailingRaisingNonDefaultException" : "GabrielOmarCotelli 1/31/2017 20:19",
-		"testEnforceOneFactFailing" : "GabrielOmarCotelli 1/31/2017 20:16",
 		"testEnforceOneFactNotFailing" : "GabrielOmarCotelli 1/31/2017 20:57",
-		"testEnforceOneFactFailingRaisingError" : "GabrielOmarCotelli 1/31/2017 21:08"
+		"testRefuseOneFactFailing" : "GabrielOmarCotelli 2/1/2017 14:49",
+		"testEnforceOneFactFailing" : "GabrielOmarCotelli 1/31/2017 20:16",
+		"testRefuseOneFactNotFailing" : "GabrielOmarCotelli 2/1/2017 15:08",
+		"testEnforceOneFactFailingRaisingError" : "GabrielOmarCotelli 2/1/2017 14:22",
+		"testEnforceOneFactFailingRaisingNonDefaultException" : "GabrielOmarCotelli 1/31/2017 20:19"
 	},
 	"class" : { }
 }
