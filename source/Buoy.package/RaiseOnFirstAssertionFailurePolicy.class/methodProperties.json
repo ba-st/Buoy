@@ -1,6 +1,9 @@
 {
 	"instance" : {
-		"assertionFailedBecause:" : "GabrielOmarCotelli 1/24/2017 21:28"
+		"initializeRaising:" : "GabrielOmarCotelli 1/31/2017 20:22",
+		"assertionFailedBecause:" : "GabrielOmarCotelli 1/31/2017 20:22"
 	},
-	"class" : { }
+	"class" : {
+		"raising:" : "GabrielOmarCotelli 1/31/2017 21:10"
+	}
 }

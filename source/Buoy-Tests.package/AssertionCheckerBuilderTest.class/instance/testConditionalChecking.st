@@ -7,7 +7,7 @@ testConditionalChecking
 	rowCount := -15.
 
 	checkerBuilder
-		checking: [ :asserter | asserter enforce: [ rowCount notNil ] because: [ self fail ] onSuccess: [ :successAsserter | successAsserter enforce: [ rowCount positive ] because: [ explanation ] ] ].
+		checking: [ :asserter | asserter refuse: [ rowCount isNil ] because: [ self fail ] onSuccess: [ :successAsserter | successAsserter enforce: [ rowCount positive ] because: [ explanation ] ] ].
 
 	self
 		should: [ checkerBuilder buildAndCheck ]

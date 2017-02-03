@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"failures"
+		"failures",
+		"errorClass"
 	],
 	"name" : "CollectingAssertionFailuresPolicy",
 	"type" : "normal"

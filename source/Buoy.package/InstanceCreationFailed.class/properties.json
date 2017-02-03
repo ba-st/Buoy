@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "GabrielOmarCotelli 1/31/2017 20:18",
+	"super" : "AssertionFailed",
+	"category" : "Buoy-Assertions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "InstanceCreationFailed",
+	"type" : "normal"
+}
