@@ -71,19 +71,19 @@ Sometimes you want to check a condition but only after other conditions are met.
 ```smalltalk
 | code officiallyAssignedCodes |
 
-code := 'AR'.
+code := 'AA'.
 officiallyAssignedCodes := #('AR' 'BR' 'US').
 
 AssertionCheckerBuilder new
   checking: [ :asserter |
     asserter
       enforce: [ code size = 2 and: [ code allSatisfy: #isLetter ]]
-      because: 'ISO 3166-1 Alpha-2 codes must have exactly two letters';
+      because: 'ISO 3166-1 Alpha-2 codes must have exactly two letters'
       onSuccess: [ :sucessAsserter |
         sucessAsserter
           enforce: [ officiallyAssignedCodes includes: code ]
           because: [ '<1s> is not an officially assigned code' expandMacrosWith: code ]
-        ];
+        ]
     ];
     buildAndCheck
 ```
@@ -106,12 +106,12 @@ AssertionCheckerBuilder new
   checking: [ :asserter |
     asserter
       enforce: [ code size = 2 and: [ code allSatisfy: #isLetter ]]
-      because: 'ISO 3166-1 Alpha-2 codes must have exactly two letters';
+      because: 'ISO 3166-1 Alpha-2 codes must have exactly two letters'
       onSuccess: [ :sucessAsserter |
         sucessAsserter
           refuse: [ unassignedCodes includes: code ]
           because: [ '<1s> is an unassigned code' expandMacrosWith: code ]
-        ];
+        ]
     ];
     buildAndCheck
 ```
