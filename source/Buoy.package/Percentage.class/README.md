@@ -1,0 +1,1 @@
+A percentage is a number or ratio expressed as a fraction of 100. It is often denoted using the percent sign, "%".  A percentage is a dimensionless number 

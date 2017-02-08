@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "GabrielOmarCotelli 2/7/2017 19:26",
+	"super" : "Number",
+	"category" : "Buoy-Math",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"ratio"
+	],
+	"name" : "Percentage",
+	"type" : "normal"
+}

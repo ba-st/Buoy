@@ -1,0 +1,4 @@
+testing
+< aNumber 
+	
+	^ratio < aNumber 
