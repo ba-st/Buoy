@@ -1,0 +1,4 @@
+converting
+asFloat
+
+	^ ratio asFloat
