@@ -12,11 +12,7 @@ The project source code is [MIT](LICENSE) licensed. Any contribution submitted t
 
 The documentation is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
 
-## Assertions
-
-This library is aimed at providing a simpler way to enforce and check assertions. The main focus point is to use it in the business model.
-
-### Get started!
+## Get started!
 
 - Download a [Pharo Image and VM](http://get.pharo.org)
 - Open a Playground and evaluate:
@@ -27,7 +23,16 @@ Metacello new
   repository: 'github://ba-st/Buoy:master/source';
   load
 ```
-- Read the [online tutorial](docs/Assertions.md)
+
+## Feature List
+
+### Assertions
+
+This library is aimed at providing a simpler way to enforce and check assertions. The main focus point is to use it in the business model. Read the [online tutorial](docs/Assertions.md).
+
+### Math
+
+This library provides basic arithmetic abstractions like Percentages. See the [related documentation.](docs/Math.md)
 
 ## Contributing
 
