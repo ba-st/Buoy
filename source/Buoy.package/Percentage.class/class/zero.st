@@ -1,4 +1,4 @@
 Instance Creation
 zero
 	
-	^self ratio: 0
+	^zeroPercent 
