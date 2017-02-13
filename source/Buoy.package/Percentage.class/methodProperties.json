@@ -1,29 +1,13 @@
 {
 	"instance" : {
-		"initializeRatio:" : "GabrielOmarCotelli 2/7/2017 19:29",
-		"adaptToInteger:andSend:" : "GabrielOmarCotelli 2/7/2017 22:48",
-		"asFloat" : "GabrielOmarCotelli 2/8/2017 17:32",
-		"/" : "GabrielOmarCotelli 2/8/2017 17:38",
-		"storeOn:" : "GabrielOmarCotelli 2/8/2017 18:26",
-		"=" : "GabrielOmarCotelli 2/7/2017 21:30",
-		"value" : "GabrielOmarCotelli 2/7/2017 19:31",
-		"printOn:base:" : "GabrielOmarCotelli 2/7/2017 19:31",
-		"reciprocal" : "GabrielOmarCotelli 2/8/2017 18:19",
-		"adaptToFraction:andSend:" : "GabrielOmarCotelli 2/7/2017 22:48",
-		"+" : "GabrielOmarCotelli 2/8/2017 18:01",
 		"isPercentage" : "GabrielOmarCotelli 2/8/2017 18:01",
-		"asNumber" : "GabrielOmarCotelli 2/7/2017 21:30",
-		"<" : "GabrielOmarCotelli 2/7/2017 22:45",
-		"hash" : "GabrielOmarCotelli 2/7/2017 22:28",
-		"negated" : "GabrielOmarCotelli 2/8/2017 17:47",
-		"-" : "GabrielOmarCotelli 2/8/2017 18:05",
-		"*" : "GabrielOmarCotelli 2/8/2017 17:23"
+		"storeOn:" : "GabrielOmarCotelli 2/8/2017 18:26",
+		"printOn:base:" : "GabrielOmarCotelli 2/7/2017 19:31"
 	},
 	"class" : {
+		"fraction" : "GabrielOmarCotelli 2/13/2017 17:11",
 		"initialize" : "GabrielOmarCotelli 2/9/2017 18:40",
 		"zero" : "GabrielOmarCotelli 2/9/2017 18:41",
-		"of:" : "GabrielOmarCotelli 2/7/2017 19:32",
-		"oneHundred" : "GabrielOmarCotelli 2/9/2017 18:41",
-		"ratio:" : "GabrielOmarCotelli 2/7/2017 19:28"
+		"oneHundred" : "GabrielOmarCotelli 2/9/2017 18:41"
 	}
 }

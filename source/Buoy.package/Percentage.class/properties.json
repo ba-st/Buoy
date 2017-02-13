@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "GabrielOmarCotelli 2/7/2017 19:26",
-	"super" : "Number",
+	"super" : "PartsPerFraction",
 	"category" : "Buoy-Math",
 	"classinstvars" : [
 		"zeroPercent",
@@ -8,9 +8,7 @@
 	],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"ratio"
-	],
+	"instvars" : [ ],
 	"name" : "Percentage",
 	"type" : "normal"
 }

@@ -30,5 +30,15 @@ Percent changes applied sequentially do not add up in the usual way. For example
 ```smalltalk
 (200 increasedBy: 10 percent) decreasedBy: 10 percent "198"
 ```
+
+## Per Mille
+
+It's similar to a percentage but expressed as a fraction of 1000. The easier way create one is to send the message `perMille` to a number.
+
+```smalltalk
+6 perMille. "6‰"
+12 perMille "12‰"
+```
+
 ---
 Some definitions and examples are based on the ones in  [Wikipedia](https://en.wikipedia.org/wiki/Percentage)

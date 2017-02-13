@@ -1,0 +1,4 @@
+private
+fraction
+
+	^ self subclassResponsibility
