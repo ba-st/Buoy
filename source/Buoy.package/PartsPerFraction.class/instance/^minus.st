@@ -1,6 +1,6 @@
 arithmetic
 - aNumber
 
-	^ aNumber isPercentage
+	^ (aNumber isA: self class)
 		ifTrue: [ self class ratio: ratio - aNumber ]
 		ifFalse: [ ratio - aNumber ]
