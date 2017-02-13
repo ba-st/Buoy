@@ -2,7 +2,10 @@
 	"commentStamp" : "GabrielOmarCotelli 2/7/2017 19:26",
 	"super" : "Number",
 	"category" : "Buoy-Math",
-	"classinstvars" : [ ],
+	"classinstvars" : [
+		"zeroPercent",
+		"oneHundredPercent"
+	],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [

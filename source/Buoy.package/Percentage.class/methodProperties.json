@@ -20,9 +20,10 @@
 		"*" : "GabrielOmarCotelli 2/8/2017 17:23"
 	},
 	"class" : {
+		"initialize" : "GabrielOmarCotelli 2/9/2017 18:40",
+		"zero" : "GabrielOmarCotelli 2/9/2017 18:41",
 		"of:" : "GabrielOmarCotelli 2/7/2017 19:32",
-		"zero" : "GabrielOmarCotelli 2/7/2017 19:28",
-		"oneHundred" : "GabrielOmarCotelli 2/7/2017 19:30",
+		"oneHundred" : "GabrielOmarCotelli 2/9/2017 18:41",
 		"ratio:" : "GabrielOmarCotelli 2/7/2017 19:28"
 	}
 }
