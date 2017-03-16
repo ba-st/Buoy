@@ -1,0 +1,1 @@
+I represent  an unbound object and will raise an error when asked about my contents
