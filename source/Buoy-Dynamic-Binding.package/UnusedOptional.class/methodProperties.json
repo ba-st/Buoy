@@ -1,0 +1,14 @@
+{
+	"instance" : {
+		"with:whenBothUsedReturn:" : "MaximilianoTabacman 3/19/2017 17:10",
+		"printOn:" : "GabrielOmarCotelli 3/16/2017 18:59",
+		"with:whenAnyUsedReturn:" : "MaximilianoTabacman 3/19/2017 17:00",
+		"whenAllUsedIn:return:" : "MaximilianoTabacman 3/19/2017 17:06",
+		"withUsedOnlyIn:return:" : "MaximilianoTabacman 3/19/2017 17:00",
+		"initializeExplainedByAll:" : "GabrielOmarCotelli 3/16/2017 11:36",
+		"withContentDo:ifUnused:" : "GabrielOmarCotelli 3/16/2017 12:18"
+	},
+	"class" : {
+		"explainedByAll:" : "GabrielOmarCotelli 3/16/2017 11:35"
+	}
+}

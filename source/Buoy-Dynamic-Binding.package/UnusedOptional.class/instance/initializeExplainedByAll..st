@@ -1,0 +1,4 @@
+initialization
+initializeExplainedByAll: anExplanationCollection
+
+	explanations := anExplanationCollection

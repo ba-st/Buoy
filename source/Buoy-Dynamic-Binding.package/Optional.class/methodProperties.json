@@ -1,0 +1,22 @@
+{
+	"instance" : {
+		"withContentDo:ifUnused:" : "MaximilianoTabacman 3/18/2017 16:07",
+		"with:whenBothUsedReturn:" : "MaximilianoTabacman 3/19/2017 17:06",
+		"withUsedOnlyIn:injectInto:" : "MaximilianoTabacman 3/19/2017 17:00",
+		"with:whenAnyUsedReturn:" : "MaximilianoTabacman 3/19/2017 17:00",
+		"whenAllUsedIn:return:" : "MaximilianoTabacman 3/19/2017 17:04",
+		"withContentDo:" : "GabrielOmarCotelli 3/16/2017 12:18",
+		"withUsedOnlyIn:return:" : "MaximilianoTabacman 3/19/2017 16:56",
+		"whenAllUsedIn:injectInto:" : "MaximilianoTabacman 3/19/2017 17:06"
+	},
+	"class" : {
+		"containing:" : "GabrielOmarCotelli 3/16/2017 12:17",
+		"withUsedOnlyIn:injectInto:" : "MaximilianoTabacman 3/19/2017 17:31",
+		"unused" : "GabrielOmarCotelli 3/16/2017 12:21",
+		"unusedBecauseAll:" : "GabrielOmarCotelli 3/16/2017 12:21",
+		"unusedBecause:" : "GabrielOmarCotelli 3/16/2017 12:21",
+		"whenAllUsedIn:return:" : "MaximilianoTabacman 3/19/2017 17:04",
+		"withUsedOnlyIn:return:" : "MaximilianoTabacman 3/19/2017 16:56",
+		"whenAllUsedIn:injectInto:" : "MaximilianoTabacman 3/19/2017 17:06"
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "GabrielOmarCotelli 3/15/2017 15:32",
+	"super" : "Binding",
+	"category" : "Buoy-Dynamic-Binding",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"content"
+	],
+	"name" : "DefinedBinding",
+	"type" : "normal"
+}
