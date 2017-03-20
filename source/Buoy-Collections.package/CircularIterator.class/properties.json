@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "GabrielOmarCotelli 3/20/2017 16:56",
+	"super" : "Object",
+	"category" : "Buoy-Collections",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"options",
+		"currentIndex"
+	],
+	"name" : "CircularIterator",
+	"type" : "normal"
+}
