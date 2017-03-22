@@ -2,4 +2,4 @@ initialization
 initializeCyclingOver: anArray
 
 	options := anArray.
-	currentIndex := 0
+	self reset
