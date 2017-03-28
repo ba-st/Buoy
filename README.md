@@ -38,7 +38,7 @@ This library provides basic arithmetic abstractions like Percentages. See the [r
 
 This library provides support to express optional values and required values, that can be unknown at the beginning of an execution. See the [related documentation.](docs/BindingsAndOptionals.md)
 
-## Collections
+### Collections
 
 This library provides additional abstractions for Collections. See the [related documentation.](docs/Collections.md)
 
