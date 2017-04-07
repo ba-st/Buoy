@@ -1,4 +1,4 @@
 Instance Creation
 ratio: aRatio
 		
-	^self new initializeRatio: aRatio 
+	^self basicNew initializeRatio: aRatio 
