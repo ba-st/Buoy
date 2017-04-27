@@ -1,0 +1,4 @@
+private
+receiver
+
+	^ self subclassResponsibility

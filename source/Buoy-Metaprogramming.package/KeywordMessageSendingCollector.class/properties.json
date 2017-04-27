@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "MessageSendingCollector",
+	"category" : "Buoy-Metaprogramming",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"receiver",
+		"filterBlock",
+		"arguments"
+	],
+	"name" : "KeywordMessageSendingCollector",
+	"type" : "normal"
+}

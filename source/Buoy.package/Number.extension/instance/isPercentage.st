@@ -1,4 +1,0 @@
-*Buoy
-isPercentage
-
-	^false

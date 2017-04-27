@@ -1,0 +1,4 @@
+private
+filterBlock
+
+	^ self subclassResponsibility
