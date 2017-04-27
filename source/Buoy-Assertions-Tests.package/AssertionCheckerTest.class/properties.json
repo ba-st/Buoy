@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "GabrielOmarCotelli 1/25/2017 21:55",
+	"super" : "TestCase",
+	"category" : "Buoy-Assertions-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "AssertionCheckerTest",
+	"type" : "normal"
+}
