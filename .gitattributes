@@ -15,3 +15,6 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+# Better line ending handling for st files
+*.st filter=st_EOL
