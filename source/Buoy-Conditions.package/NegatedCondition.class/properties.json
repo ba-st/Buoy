@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "JulianMaestri 6/20/2017 17:00",
+	"super" : "Condition",
+	"category" : "Buoy-Conditions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"condition"
+	],
+	"name" : "NegatedCondition",
+	"type" : "normal"
+}

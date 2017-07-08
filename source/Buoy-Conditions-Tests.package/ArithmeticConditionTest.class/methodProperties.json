@@ -1,0 +1,11 @@
+{
+	"instance" : {
+		"testSatisfyingDifferent" : "JulianMaestri 6/20/2017 14:40",
+		"testSatisfyingLessOrEqualThan" : "JulianMaestri 6/20/2017 14:35",
+		"testSatisfyingGreaterOrEqualThan" : "JulianMaestri 6/20/2017 14:39",
+		"testSatisfyingGreaterThan" : "JulianMaestri 6/20/2017 14:39",
+		"testSatisfyingEquality" : "JulianMaestri 6/20/2017 14:24",
+		"testSatisfyingLessThan" : "JulianMaestri 6/20/2017 14:34"
+	},
+	"class" : { }
+}

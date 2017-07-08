@@ -1,0 +1,15 @@
+{
+	"instance" : {
+		"initializeComparingAgainst:using:" : "JulianMaestri 6/20/2017 14:27",
+		"isSatisfiedBy:" : "JulianMaestri 6/20/2017 14:37"
+	},
+	"class" : {
+		"toBeGreaterThan:" : "JulianMaestri 6/20/2017 14:38",
+		"toBeLessOrEqualThan:" : "JulianMaestri 6/20/2017 14:35",
+		"toBeLessThan:" : "JulianMaestri 6/20/2017 14:37",
+		"toBeDifferentTo:" : "JulianMaestri 6/20/2017 14:39",
+		"toBeEqualTo:" : "JulianMaestri 6/20/2017 14:26",
+		"toBeGreaterOrEqualThan:" : "JulianMaestri 6/20/2017 14:38",
+		"comparingAgainst:using:" : "JulianMaestri 6/20/2017 14:26"
+	}
+}

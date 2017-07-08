@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "JulianMaestri 6/20/2017 16:10",
+	"super" : "Condition",
+	"category" : "Buoy-Conditions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"value",
+		"arithmeticOperator"
+	],
+	"name" : "ArithmeticCondition",
+	"type" : "normal"
+}

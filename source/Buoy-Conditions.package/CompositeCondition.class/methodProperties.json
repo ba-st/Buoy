@@ -1,0 +1,13 @@
+{
+	"instance" : {
+		"isSatisfiedBy:" : "JulianMaestri 6/20/2017 15:57",
+		"initializeToSastifyAll:using:" : "JulianMaestri 6/20/2017 14:09"
+	},
+	"class" : {
+		"toSatisfyAll:using:" : "JulianMaestri 6/20/2017 14:13",
+		"satisfyingAll:" : "JulianMaestri 6/20/2017 15:56",
+		"satisfying:or:" : "JulianMaestri 6/20/2017 15:58",
+		"satisfying:and:" : "JulianMaestri 6/20/2017 15:57",
+		"satisfyingAnyOf:" : "JulianMaestri 6/20/2017 15:56"
+	}
+}
