@@ -1,11 +1,11 @@
 {
 	"instance" : {
 		"explanation" : "GabrielOmarCotelli 1/24/2017 21:35",
-		"initializeChecking:onSucess:onFailure:" : "GabrielOmarCotelli 1/24/2017 21:34",
+		"initializeChecking:onSuccess:onFailure:" : "MaximilianoTabacman 8/24/2017 20:29",
 		"checkApplying:" : "GabrielOmarCotelli 1/24/2017 21:35"
 	},
 	"class" : {
-		"checking:onSuccess:onFailure:" : "GabrielOmarCotelli 1/24/2017 21:37",
+		"checking:onSuccess:onFailure:" : "MaximilianoTabacman 8/24/2017 20:29",
 		"checking:onFailure:" : "GabrielOmarCotelli 1/24/2017 21:37"
 	}
 }

@@ -1,5 +1,5 @@
 initialize
-initializeChecking: aFact onSucess: aSuccessAction onFailure: aFailureBlockOrString
+initializeChecking: aFact onSuccess: aSuccessAction onFailure: aFailureBlockOrString
 
 	factToCheck := aFact.
 	successAction := aSuccessAction.
