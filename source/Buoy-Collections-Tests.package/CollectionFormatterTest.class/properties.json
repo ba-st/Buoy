@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "fortizpenaloza 1/5/2018 14:55",
+	"super" : "TestCase",
+	"category" : "Buoy-Collections-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "CollectionFormatterTest",
+	"type" : "normal"
+}
