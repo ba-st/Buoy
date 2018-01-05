@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "fortizpenaloza 12/6/2017 14:50",
+	"super" : "Condition",
+	"category" : "Buoy-Conditions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"pattern"
+	],
+	"name" : "RegexCondition",
+	"type" : "normal"
+}
