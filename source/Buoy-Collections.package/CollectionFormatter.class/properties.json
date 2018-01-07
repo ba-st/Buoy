@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "fortizpenaloza 1/5/2018 14:55",
+	"super" : "Object",
+	"category" : "Buoy-Collections",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"separator",
+		"elementFormatter",
+		"lastSeparator"
+	],
+	"name" : "CollectionFormatter",
+	"type" : "normal"
+}
