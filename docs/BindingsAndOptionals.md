@@ -44,6 +44,13 @@ fileOptional
 
 ### Combinations
 
+We can transform an optional:
+
+```smalltalk
+fileOptional return: [:file | file asUrl ]
+```
+This will produce a new optional that will have an URL based on the file, or an unused one in case the file is missing.
+
 We can easily combine two optionals:
 
 ```smalltalk
