@@ -1,0 +1,4 @@
+Combining
+return: aMonadycBlock
+
+	^ self
