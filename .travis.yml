@@ -14,12 +14,12 @@ matrix:
   - smalltalk: Pharo-7.0
   fast_finish: true
 before_deploy:
-  - zip -q "${TRAVIS_BRANCH}-${smalltalk}.zip" "${SMALLTALK_CI_IMAGE}" "${SMALLTALK_CI_CHANGES}"
+  - zip -q "${TRAVIS_BRANCH}-${config_smalltalk}.zip" "${SMALLTALK_CI_IMAGE}" "${SMALLTALK_CI_CHANGES}"
 deploy:
   provider: releases
   api_key:
     secure: Eu7fhFGXq3Eavd7TGuv1hfCWGbEzAU+uSQBSyZXbYyO52aZfZcrfOszAiBVtOJVhm0fKlFYIrRGYIuYEvu2gyQF1yJ6V27urlXOiJcieYVauCX5/P8av2UG4/0HwAnrUYcXp7wq4rxhh/U8DEI+iFzzv9uSZucwpslOJr2I/fPRDryef2qfmbiOC2S51rKNbNplOt7X53TiVqE/yvjV4o+goeJ+qS0KmlxJnC7Gyd9VQaaHTojWAVPewavPeOtL6OSeRCZtHTYYF5Skfim6yE6zdkkrJWq7Z4Ykw3Y75BHMIrj4Sexrkns/zb3xWgo4T0wKuRgcFBE4mOOvo/mpM+grua2HXVZxz2uSTW4KG1iqmKdy3ESmMa8iVP4FVsg1EJxGWj0BJolEOShZ2O7Gb6fFGgvCvmKdM/k/3779plcPVTUuvrhKsXIY75Q6qEaEIIoAgHr2HBkanOrOkLA35ZUzm2e2p0daJjQfVybzOE7XZojBmXD6rebcqmjl7pt0r8yztxwxwXpxPtPPycB/Ex+ZzraLKHwNwt3kVcCLI65LWUWnUgV0FoiaVX6Ku5M7OC3ud/HnbFyOkRm7dKvArndARmiTpRlgSRH74F9NcvF5a4mqaxDnmJheBPZa9RUlDD/fc56oXd3U5lz5vgpG7KH1qu55NUaPrDaufKbjedQk=
-  file: "${TRAVIS_BRANCH}-${smalltalk}.zip"
+  file: "${TRAVIS_BRANCH}-${config_smalltalk}.zip"
   skip_cleanup: true
   on:
     repo: ba-st/Buoy
