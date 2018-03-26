@@ -14,7 +14,9 @@ matrix:
   - smalltalk: Pharo-7.0
   fast_finish: true
 before_deploy:
-  - zip -q "${TRAVIS_BRANCH}-${TRAVIS_SMALLTALK_VERSION}.zip" "${SMALLTALK_CI_IMAGE}" "${SMALLTALK_CI_CHANGES}"
+  - cp "${SMALLTALK_CI_IMAGE}" "Buoy.image"
+  - cp "${SMALLTALK_CI_CHANGES}" "Buoy.changes"
+  - zip -q "${TRAVIS_BRANCH}-${TRAVIS_SMALLTALK_VERSION}.zip" "Buoy.image" "Buoy.changes"
 deploy:
   provider: releases
   api_key:
