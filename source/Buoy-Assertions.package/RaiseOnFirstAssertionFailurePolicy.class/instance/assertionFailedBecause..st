@@ -1,4 +1,0 @@
-notifying
-assertionFailedBecause: aFailureExplanation
-
-	errorClass signal: aFailureExplanation

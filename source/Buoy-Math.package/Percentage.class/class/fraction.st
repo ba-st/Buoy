@@ -1,4 +1,0 @@
-private
-fraction
-
-	^ 100

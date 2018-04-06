@@ -1,1 +1,0 @@
-I represent a check for a specific fact, including the success and failure actions to apply

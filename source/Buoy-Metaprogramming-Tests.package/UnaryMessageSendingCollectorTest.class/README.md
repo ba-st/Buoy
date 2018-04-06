@@ -1,1 +1,0 @@
-An UnaryMessageSendingCollectorTest is a test class for testing the behavior of UnaryMessageSendingCollector

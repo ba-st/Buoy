@@ -1,1 +1,0 @@
-I represent  a binding to some object, so I can return a content. 

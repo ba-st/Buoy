@@ -1,1 +1,0 @@
-A per mille is a number or ratio expressed as a fraction of 1000. It is often denoted using the per mille sign, "‰".  A per mille is a dimensionless number 
