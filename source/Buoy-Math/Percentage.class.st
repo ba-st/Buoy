@@ -19,7 +19,7 @@ Percentage class >> fraction [
 
 { #category : #initialization }
 Percentage class >> initialize [
-
+	<ignoreForCoverage>
 	oneHundredPercent := self ratio: 1.
 	zeroPercent := self ratio: 0
 ]

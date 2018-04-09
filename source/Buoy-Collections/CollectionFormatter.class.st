@@ -29,7 +29,7 @@ CollectionFormatter class >> separatingWith: aSeparator andLastWith: aLastSepara
 
 	^ self
 		separatingWith: aSeparator
-		andOptionallyLastWith: (Optional containing: aLastSeparator)
+		andLastWith: aLastSeparator
 		applyingToEach: [ :element | element asString ]
 ]
 
@@ -42,7 +42,7 @@ CollectionFormatter class >> separatingWith: aSeparator andLastWith: aLastSepara
 		applyingToEach: anElementFormatter
 ]
 
-{ #category : #'instance creation' }
+{ #category : #private }
 CollectionFormatter class >> separatingWith: aSeparator andOptionallyLastWith: anOptionalSeparator applyingToEach: anElementFormatter [
 
 	^ self new
