@@ -1,1 +1,0 @@
-I'm an assertion policy that collect the failure explanations, and try to keep evaluating the following conditions.

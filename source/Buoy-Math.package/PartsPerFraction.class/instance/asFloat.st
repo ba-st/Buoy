@@ -1,4 +1,0 @@
-converting
-asFloat
-
-	^ ratio asFloat

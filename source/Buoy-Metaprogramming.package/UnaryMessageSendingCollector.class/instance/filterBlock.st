@@ -1,4 +1,0 @@
-private
-filterBlock
-
-	^ filterBlock

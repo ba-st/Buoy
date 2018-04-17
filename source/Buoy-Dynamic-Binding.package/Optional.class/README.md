@@ -1,1 +1,0 @@
-I'm an abstract  class representing the fact that some object can be optional.  I provide protocol to be combined with other optionals.

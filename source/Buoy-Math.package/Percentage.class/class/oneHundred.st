@@ -1,4 +1,0 @@
-Instance Creation
-oneHundred
-
-	^ oneHundredPercent

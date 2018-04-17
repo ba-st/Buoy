@@ -1,4 +1,0 @@
-hash
-hash
-
-	^ ratio hash

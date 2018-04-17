@@ -1,1 +1,0 @@
-I'm an abstract class representing several kinds of parts-per-fraction objects: like percentages, permille, basis point, etc.

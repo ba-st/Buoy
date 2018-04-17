@@ -1,4 +1,0 @@
-arithmetic
-/ aNumber 
-
-	^ratio / aNumber

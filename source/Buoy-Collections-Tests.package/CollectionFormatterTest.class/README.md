@@ -1,1 +1,0 @@
-I'm a CollectionFormatterTest,  a test class for testing the behavior of CollectionFormatter

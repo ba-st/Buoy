@@ -1,1 +1,0 @@
-I'm an assertion policy that raises and exception on the first assertion failure (failing fast)
