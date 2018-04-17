@@ -1,8 +1,5 @@
 language: smalltalk
 sudo: false
-smalltalk_edge:
-  source: gcotelli/smalltalkCI
-  branch: master
 os:
 - linux
 smalltalk:
