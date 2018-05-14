@@ -10,6 +10,24 @@ Class {
 	#category : #'Buoy-Metaprogramming'
 }
 
+{ #category : #accessing }
+Namespace >> >> aName [
+
+	^ self at: aName
+]
+
+{ #category : #accessing }
+Namespace >> at: aName [
+
+	^ bindings at: aName
+]
+
+{ #category : #accessing }
+Namespace >> at: aName ifAbsent: aBlock [
+
+	^ bindings at: aName ifAbsent: aBlock
+]
+
 { #category : #binding }
 Namespace >> bind: aSymbol to: anObject [
 
@@ -27,4 +45,10 @@ Namespace >> initialize [
 Namespace >> names [
 
 	^ bindings keys
+]
+
+{ #category : #binding }
+Namespace >> removeBindingFor: aName [
+
+	^ bindings removeKey: aName
 ]
