@@ -7,7 +7,7 @@ Class {
 	#category : #'Buoy-Metaprogramming-Tests'
 }
 
-{ #category : #tests }
+{ #category : #'tests-accessing' }
 NamespaceTest >> testAccessing [
 
 	| namespace |
@@ -22,7 +22,7 @@ NamespaceTest >> testAccessing [
 		assert: namespace >> #One equals: 1
 ]
 
-{ #category : #tests }
+{ #category : #'tests-accessing' }
 NamespaceTest >> testAccessingUnboundName [
 
 	| namespace |
@@ -35,7 +35,23 @@ NamespaceTest >> testAccessingUnboundName [
 	self should: [ namespace >> #MinusOne ] raise: NotFound
 ]
 
-{ #category : #tests }
+{ #category : #'tests-accessing' }
+NamespaceTest >> testAtIfAbsent [
+
+	| namespace notFound |
+
+	namespace := Namespace new.
+	notFound := false.
+	namespace at: #Zero ifAbsent: [ notFound := true ].
+
+	self assert: notFound.
+
+	namespace bind: #Zero to: 0.
+
+	self assert: (namespace at: #Zero ifAbsent: [ self fail ]) equals: 0
+]
+
+{ #category : #'tests-binding' }
 NamespaceTest >> testBindTo [
 
 	| namespace |
@@ -53,7 +69,7 @@ NamespaceTest >> testBindTo [
 	self assert: namespace >> #Zero equals: 0
 ]
 
-{ #category : #tests }
+{ #category : #'tests-binding' }
 NamespaceTest >> testCantBindToAlreadyUsedName [
 
 	| namespace |
@@ -62,10 +78,10 @@ NamespaceTest >> testCantBindToAlreadyUsedName [
 
 	namespace bind: #Zero to: 0.
 
-	self should: [ namespace bind: #Zero to: 0.0 ] raise: BindingAlreadyInUse
+	self should: [ namespace bind: #Zero to: 0.0 ] raise: AssertionFailed 
 ]
 
-{ #category : #tests }
+{ #category : #'tests-accessing' }
 NamespaceTest >> testEmptyNamespace [
 
 	| emptyNamespace |
@@ -75,7 +91,24 @@ NamespaceTest >> testEmptyNamespace [
 	self assert: emptyNamespace names isEmpty
 ]
 
-{ #category : #tests }
+{ #category : #'tests-binding' }
+NamespaceTest >> testRebindTo [
+
+	| namespace |
+
+	namespace := Namespace new.
+
+	namespace bind: #Zero to: 0.
+	self assert: namespace >> #Zero equals: 0.
+
+	namespace rebind: #Zero to: 'Zero'.
+	self assert: namespace >> #Zero equals: 'Zero'.
+
+	namespace rebind: #One to: 1.
+	self assert: namespace >> #One equals: 1
+]
+
+{ #category : #'tests-binding' }
 NamespaceTest >> testRemoveBinding [
 
 	| namespace removed |
@@ -89,7 +122,7 @@ NamespaceTest >> testRemoveBinding [
 		assert: removed equals: 0
 ]
 
-{ #category : #tests }
+{ #category : #'tests-binding' }
 NamespaceTest >> testRemoveBindingForUnknownName [
 
 	| namespace |

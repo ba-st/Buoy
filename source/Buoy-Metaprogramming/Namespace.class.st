@@ -31,7 +31,7 @@ Namespace >> at: aName ifAbsent: aBlock [
 { #category : #binding }
 Namespace >> bind: aSymbol to: anObject [
 
-	bindings at: aSymbol ifPresent: [ BindingAlreadyInUse signal: ('There''s already an object bound to <1s>' expandMacrosWith: aSymbol) ] ifAbsentPut: anObject
+	bindings at: aSymbol ifPresent: [ AssertionFailed signal: ('There''s already an object bound to <1s>' expandMacrosWith: aSymbol) ] ifAbsentPut: anObject
 ]
 
 { #category : #initialization }
@@ -48,7 +48,13 @@ Namespace >> names [
 ]
 
 { #category : #binding }
-Namespace >> removeBindingFor: aName [
+Namespace >> rebind: aSymbol to: anObject [
 
-	^ bindings removeKey: aName
+	bindings at: aSymbol put: anObject
+]
+
+{ #category : #binding }
+Namespace >> removeBindingFor: aSymbol [
+
+	^ bindings removeKey: aSymbol
 ]
