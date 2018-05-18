@@ -16,7 +16,7 @@ BaselineOfBuoy >> baseline: spec [
 		do: [ spec
 				package: 'Buoy-Assertions';
 				package: 'Buoy-Conditions';
-				package: 'Buoy-Metaprogramming';
+				package: 'Buoy-Metaprogramming' with: [ spec requires: 'Buoy-Assertions'];
 				package: 'Buoy-Math' with: [ spec requires: 'Buoy-Assertions'];
 				package: 'Buoy-Collections' with: [ spec requires: #('Buoy-Assertions' 'Buoy-Dynamic-Binding' )];
 				package: 'Buoy-Dynamic-Binding' with: [ spec requires: #('Buoy-Assertions' 'Buoy-Metaprogramming' )];

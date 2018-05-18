@@ -32,7 +32,11 @@ NamespaceTest >> testAccessingUnboundName [
 		bind: #Zero to: 0;
 		bind: #One to: 1.
 
-	self should: [ namespace >> #MinusOne ] raise: NotFound
+	self
+		should: [ namespace >> #MinusOne ]
+		raise: ObjectNotFound
+		whoseDescriptionIncludes: 'There''s no object bound to MinusOne' 
+		description: 'An object was found when no one was expected.'
 ]
 
 { #category : #'tests-accessing' }
@@ -76,7 +80,11 @@ NamespaceTest >> testCantBindToAlreadyUsedName [
 
 	namespace bind: #Zero to: 0.
 
-	self should: [ namespace bind: #Zero to: 0.0 ] raise: AssertionFailed 
+	self
+		should: [ namespace bind: #Zero to: 0.0 ]
+		raise: ConflictingObjectFound
+		whoseDescriptionIncludes: 'Zero is already bound to some object'
+		description: 'A name was reused instead of conflicting with the existing one.'
 ]
 
 { #category : #'tests-accessing' }
@@ -119,7 +127,7 @@ NamespaceTest >> testRemoveBinding [
 		assert: namespace names isEmpty;
 		assert: removed equals: 0.
 
-	self should: [ namespace >> #Zero ] raise: NotFound
+	self should: [ namespace >> #Zero ] raise: ObjectNotFound 
 ]
 
 { #category : #'tests-binding' }
@@ -129,5 +137,5 @@ NamespaceTest >> testRemoveBindingForUnknownName [
 
 	namespace := Namespace new.
 
-	self should: [ namespace removeBindingFor: #Zero ] raise: KeyNotFound
+	self should: [ namespace removeBindingFor: #Zero ] raise: ObjectNotFound 
 ]

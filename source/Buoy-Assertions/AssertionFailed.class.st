@@ -6,25 +6,3 @@ Class {
 	#superclass : #Error,
 	#category : 'Buoy-Assertions'
 }
-
-{ #category : #signaling }
-AssertionFailed class >> signal: aFailureExplanation [
-
-	^ self new
-		tag: {aFailureExplanation};
-		signal: aFailureExplanation
-]
-
-{ #category : #signaling }
-AssertionFailed class >> signalAll: failureExplanations [
-
-	^ self new
-		tag: failureExplanations;
-		signal: ('. ' join: failureExplanations)
-]
-
-{ #category : #Accessing }
-AssertionFailed >> failures [
-	
-	^tag 
-]

@@ -19,7 +19,7 @@ Namespace >> >> aName [
 { #category : #accessing }
 Namespace >> at: aName [
 
-	^ bindings at: aName
+	^ self at: aName ifAbsent: [ self signalNotFoundFor: aName ]
 ]
 
 { #category : #accessing }
@@ -31,7 +31,10 @@ Namespace >> at: aName ifAbsent: aBlock [
 { #category : #binding }
 Namespace >> bind: aSymbol to: anObject [
 
-	bindings at: aSymbol ifPresent: [ AssertionFailed signal: ('There''s already an object bound to <1s>' expandMacrosWith: aSymbol) ] ifAbsentPut: anObject
+	bindings
+		at: aSymbol
+		ifPresent: [ ConflictingObjectFound signal: ('<1s> is already bound to some object.' expandMacrosWith: aSymbol) ]
+		ifAbsentPut: anObject
 ]
 
 { #category : #initialization }
@@ -56,5 +59,11 @@ Namespace >> rebind: aSymbol to: anObject [
 { #category : #binding }
 Namespace >> removeBindingFor: aSymbol [
 
-	^ bindings removeKey: aSymbol
+	^ bindings removeKey: aSymbol ifAbsent: [ self signalNotFoundFor: aSymbol ]
+]
+
+{ #category : #'private - signaling' }
+Namespace >> signalNotFoundFor: aName [
+
+	^ ObjectNotFound signal: ('There''s no object bound to <1s>' expandMacrosWith: aName)
 ]
