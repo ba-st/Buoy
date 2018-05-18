@@ -137,5 +137,9 @@ NamespaceTest >> testRemoveBindingForUnknownName [
 
 	namespace := Namespace new.
 
-	self should: [ namespace removeBindingFor: #Zero ] raise: ObjectNotFound 
+	self
+		should: [ namespace removeBindingFor: #Zero ]
+		raise: ObjectNotFound
+		whoseDescriptionIncludes: 'There''s no object bound to Zero'
+		description: 'An object was found when no one was expected.'
 ]
