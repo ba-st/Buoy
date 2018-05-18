@@ -1,5 +1,5 @@
 "
-I'm an interface declaring a set of messages to be  understood by the objects implementing me.
+I'm an interface declaring a set of messages to be understood by the objects implementing me.
 
 I'm not intended to be used as some kind of static type check, but to document an expected protocol.
 "

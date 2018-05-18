@@ -63,10 +63,8 @@ NamespaceTest >> testBindTo [
 	namespace bind: #Zero to: 0.
 
 	self
-		assert: namespace names size equals: 1;
-		assert: (namespace names includes: #Zero).
-
-	self assert: namespace >> #Zero equals: 0
+		assertCollection: namespace names equals: #(#Zero);
+		assert: namespace >> #Zero equals: 0
 ]
 
 { #category : #'tests-binding' }
@@ -119,7 +117,9 @@ NamespaceTest >> testRemoveBinding [
 
 	self
 		assert: namespace names isEmpty;
-		assert: removed equals: 0
+		assert: removed equals: 0.
+
+	self should: [ namespace >> #Zero ] raise: NotFound
 ]
 
 { #category : #'tests-binding' }
