@@ -13,7 +13,9 @@ MessageSendingCollector >> filterBlock [
 { #category : #private }
 MessageSendingCollector >> matchingSelectorsCollect: aTransformationBlock [
 
-	^ self receiver class allSelectors select: self filterBlock thenCollect: aTransformationBlock
+	^ self receiver class allSelectors asSortedCollection
+		select: self filterBlock
+		thenCollect: aTransformationBlock
 ]
 
 { #category : #private }

@@ -10,9 +10,9 @@ Class {
 	#instVars : [
 		'separator',
 		'elementFormatter',
-		'lastSeparator'
+		'lastSeparatorOptional'
 	],
-	#category : 'Buoy-Collections'
+	#category : #'Buoy-Collections'
 }
 
 { #category : #'instance creation' }
@@ -45,8 +45,8 @@ CollectionFormatter class >> separatingWith: aSeparator andLastWith: aLastSepara
 { #category : #private }
 CollectionFormatter class >> separatingWith: aSeparator andOptionallyLastWith: anOptionalSeparator applyingToEach: anElementFormatter [
 
-	^ self new
-		initializeSeparatingEachWith: aSeparator
+	^ super new
+		initializeSeparatingEachWith: aSeparator asString
 		andOptionallyLastWith: anOptionalSeparator
 		applyingToEach: anElementFormatter
 ]
@@ -79,35 +79,24 @@ CollectionFormatter >> format: aCollection on: aStream [
 			index := index + 1.
 			aStream nextPutAll: (elementFormatter value: element) ]
 		separatedBy: [ index = size
-				ifTrue: [ lastSeparator
+				ifTrue: [ lastSeparatorOptional
 						withContentDo: [ :content | self put: content on: aStream ]
-						ifUnused: [ self putSeparatorOn: aStream ] ]
-				ifFalse: [ self putSeparatorOn: aStream ] ].
-			
-	^aStream contents
+						ifUnused: [ self put: separator on: aStream ] ]
+				ifFalse: [ self put: separator on: aStream ] ].
+
+	^ aStream contents
 ]
 
 { #category : #initialization }
 CollectionFormatter >> initializeSeparatingEachWith: aSeparator andOptionallyLastWith: anOptional applyingToEach: aBlock [
 
 	separator := aSeparator.
-	lastSeparator := anOptional.
+	lastSeparatorOptional := anOptional.
 	elementFormatter := aBlock
 ]
 
 { #category : #formatting }
 CollectionFormatter >> put: aSeparator on: aStream [
 
-	^ aStream
-		nextPut: Character space;
-		nextPut: aSeparator;
-		nextPut: Character space
-]
-
-{ #category : #formatting }
-CollectionFormatter >> putSeparatorOn: aStream [
-
-	^ aStream
-		nextPut: separator;
-		nextPut: Character space
+	^ aStream nextPutAll: aSeparator
 ]

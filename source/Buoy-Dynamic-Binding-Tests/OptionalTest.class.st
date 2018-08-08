@@ -7,19 +7,70 @@ Class {
 	#category : 'Buoy-Dynamic-Binding-Tests'
 }
 
-{ #category : #'tests-Printing' }
+{ #category : #private }
+OptionalTest >> sumOf: addends [
+
+	^addends inject: 0 into: [:sum :current | sum + current]
+]
+
+{ #category : #'tests-comparing' }
+OptionalTest >> testEqualsWhenUnused [
+
+	| optional |
+
+	optional := Optional unused.
+	self
+		assert: optional = optional;
+		deny: optional = (Optional containing: 'content');
+		deny: (Optional containing: 'content') = optional;
+		deny: optional = (Optional containing: 1);
+		deny: (Optional containing: 1) = optional;
+		assert: optional = Optional unused;
+		assert: Optional unused = optional
+]
+
+{ #category : #'tests-comparing' }
+OptionalTest >> testEqualsWhenUsed [
+
+	| optional |
+
+	optional := Optional containing: 1.
+	self
+		assert: optional = optional;
+		deny: optional = (Optional containing: 'content');
+		deny: (Optional containing: 'content') = optional;
+		assert: optional = (Optional containing: 1);
+		assert: (Optional containing: 1) = optional;
+		deny: optional = Optional unused;
+		deny: Optional unused = optional
+]
+
+{ #category : #'tests-comparing' }
+OptionalTest >> testHash [
+
+	| optional |
+
+	optional := Optional containing: 1.
+	self
+		assert: optional hash = (Optional containing: 1) hash;
+		deny: optional hash = (Optional containing: 'content') hash;
+		deny: optional hash = Optional unused hash;
+		assert: Optional unused hash = Optional unused hash
+]
+
+{ #category : #'tests-printing' }
 OptionalTest >> testPrintingUnusedOptional [
 
 	self assert: (Optional unusedBecause: 'This feature is disabled.') printString equals: 'This feature is disabled.'
 ]
 
-{ #category : #'tests-Printing' }
+{ #category : #'tests-printing' }
 OptionalTest >> testPrintingUsedOptional [
 
 	self assert: (Optional containing: 1) printString equals: '1'
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testReturn [
 
 	((Optional containing: 0) return: [ :number | number + 1 ]) withContentDo: [ :number | self assert: number equals: 1 ] ifUnused: [ self fail ].
@@ -27,7 +78,7 @@ OptionalTest >> testReturn [
 	(Optional unused return: [ :number | number + 1 ]) withContentDo: [ self fail ]
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWhenAllUsedInInjectInto [
 
 	| firstOptional secondOptional thirdOptional combinedOptional |
@@ -55,7 +106,7 @@ OptionalTest >> testWhenAllUsedInInjectInto [
 	combinedOptional withContentDo: [ :sum | self assert: sum equals: 4 ] ifUnused: [ self fail ]
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWhenAllUsedInInjectIntoWhenEmpty [
 
 	| combinedOptional |
@@ -65,7 +116,7 @@ OptionalTest >> testWhenAllUsedInInjectIntoWhenEmpty [
 	self assert: (combinedOptional withContentDo: [ :x | self fail ] ifUnused: [ 0 ]) isZero
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWhenAllUsedInInjectIntoWhenFirstUnused [
 
 	| firstOptional secondOptional thirdOptional combinedOptional |
@@ -84,7 +135,7 @@ OptionalTest >> testWhenAllUsedInInjectIntoWhenFirstUnused [
 	self assert: (combinedOptional withContentDo: [ :min | self fail ] ifUnused: [ 0 ]) isZero
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWhenAllUsedInInjectIntoWhenSomeUnused [
 
 	| firstOptional secondOptional thirdOptional combinedOptional |
@@ -103,7 +154,7 @@ OptionalTest >> testWhenAllUsedInInjectIntoWhenSomeUnused [
 	self assert: (combinedOptional withContentDo: [ :min | self fail ] ifUnused: [ 0 ]) isZero
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWhenAllUsedInReturn [
 
 	| firstOptional secondOptional thirdOptional combinedOptional result |
@@ -116,7 +167,7 @@ OptionalTest >> testWhenAllUsedInReturn [
 		whenAllUsedIn:
 			{secondOptional.
 			thirdOptional}
-		return: [ :addends | addends sum ].
+		return: [ :addends | self sumOf: addends ].
 
 	result := 0.
 	combinedOptional withContentDo: [ :sum | result := sum ] ifUnused: [ self fail ].
@@ -127,24 +178,26 @@ OptionalTest >> testWhenAllUsedInReturn [
 			{firstOptional.
 			secondOptional.
 			thirdOptional}
-		return: [ :addends | addends sum ].
+		return: [ :addends | self sumOf: addends ].
 
 	result := 0.
 	combinedOptional withContentDo: [ :sum | result := sum ] ifUnused: [ self fail ].
 	self assert: result equals: 5
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWhenAllUsedInReturnWhenEmpty [
 
 	| combinedOptional |
 
-	combinedOptional := Optional whenAllUsedIn: #() return: [ :addends | addends sum ].
+	combinedOptional := Optional whenAllUsedIn: #() return: [ :addends | self sumOf: addends ].
 
-	combinedOptional withContentDo: [ :sum | self fail ] ifUnused: [ :explanations | self assert: explanations isEmpty ]
+	combinedOptional
+		withContentDo: [ :sum | self fail ]
+		ifUnused: [ :explanations | self assert: explanations isEmpty ]
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWhenAllUsedInReturnWhenFirstIsUnused [
 
 	| firstOptional secondOptional thirdOptional combinedOptional |
@@ -157,21 +210,27 @@ OptionalTest >> testWhenAllUsedInReturnWhenFirstIsUnused [
 		whenAllUsedIn:
 			{secondOptional.
 			thirdOptional}
-		return: [ :addends | addends sum ].
+		return: [ :addends | self sumOf: addends ].
 
-	combinedOptional withContentDo: [ :sum | self fail ] ifUnused: [ :explanations | self assert: explanations equals: #('This is expected.' 'This is also expected.') ].
+	combinedOptional
+		withContentDo: [ :sum | self fail ]
+		ifUnused:
+			[ :explanations | self assert: explanations equals: #('This is expected.' 'This is also expected.') ].
 
 	combinedOptional := Optional
 		whenAllUsedIn:
 			{firstOptional.
 			secondOptional.
 			thirdOptional}
-		return: [ :addends | addends sum ].
-		
-	combinedOptional withContentDo: [ :sum | self fail ] ifUnused: [ :explanations | self assert: explanations equals: #('This is expected.' 'This is also expected.') ]
+		return: [ :addends | self sumOf: addends ].
+
+	combinedOptional
+		withContentDo: [ :sum | self fail ]
+		ifUnused:
+			[ :explanations | self assert: explanations equals: #('This is expected.' 'This is also expected.') ]
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWhenAllUsedInReturnWhenSomeAreUnused [
 
 	| firstOptional secondOptional thirdOptional combinedOptional |
@@ -184,21 +243,25 @@ OptionalTest >> testWhenAllUsedInReturnWhenSomeAreUnused [
 		whenAllUsedIn:
 			{secondOptional.
 			thirdOptional}
-		return: [ :addends | addends sum ].
+		return: [ :addends | self sumOf: addends ].
 
-	combinedOptional withContentDo: [ :sum | self fail ] ifUnused: [ :explanations | self assert: explanations isEmpty ].
+	combinedOptional
+		withContentDo: [ :sum | self fail ]
+		ifUnused: [ :explanations | self assert: explanations isEmpty ].
 
 	combinedOptional := Optional
 		whenAllUsedIn:
 			{firstOptional.
 			secondOptional.
 			thirdOptional}
-		return: [ :addends | addends sum ].
+		return: [ :addends | self sumOf: addends ].
 
-	combinedOptional withContentDo: [ :sum | self fail ] ifUnused: [ :explanations | self assert: explanations isEmpty ]
+	combinedOptional
+		withContentDo: [ :sum | self fail ]
+		ifUnused: [ :explanations | self assert: explanations isEmpty ]
 ]
 
-{ #category : #'tests-Accessing' }
+{ #category : #'tests-accessing' }
 OptionalTest >> testWithContentDo [
 
 	| optional expectedContent content |
@@ -213,7 +276,7 @@ OptionalTest >> testWithContentDo [
 	self assert: content equals: expectedContent
 ]
 
-{ #category : #'tests-Accessing' }
+{ #category : #'tests-accessing' }
 OptionalTest >> testWithContentDoIfUnused [
 
 	| optional expectedContent content |
@@ -227,7 +290,7 @@ OptionalTest >> testWithContentDoIfUnused [
 	self assert: content equals: expectedContent
 ]
 
-{ #category : #'tests-Accessing' }
+{ #category : #'tests-accessing' }
 OptionalTest >> testWithContentDoIfUnusedWhenUnused [
 
 	| optional defaultContent content expectedExplanation |
@@ -245,7 +308,7 @@ OptionalTest >> testWithContentDoIfUnusedWhenUnused [
 	self assert: content equals: defaultContent
 ]
 
-{ #category : #'tests-Accessing' }
+{ #category : #'tests-accessing' }
 OptionalTest >> testWithContentDoWhenUnused [
 
 	| optional expectedExplanation |
@@ -257,7 +320,7 @@ OptionalTest >> testWithContentDoWhenUnused [
 	optional withContentDo: [ :theContent | self fail ]
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithUsedOnlyInInjectInto [
 
 	| firstOptional secondOptional thirdOptional combinedOptional result |
@@ -289,7 +352,7 @@ OptionalTest >> testWithUsedOnlyInInjectInto [
 	self assert: result equals: 6
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithUsedOnlyInInjectIntoWhenEmpty [
 
 	| combinedOptional |
@@ -299,7 +362,7 @@ OptionalTest >> testWithUsedOnlyInInjectIntoWhenEmpty [
 	self assert: (combinedOptional withContentDo: [ :x | self fail ] ifUnused: [ 0 ]) isZero
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithUsedOnlyInInjectIntoWhenFirstUnused [
 
 	| firstOptional secondOptional thirdOptional combinedOptional result |
@@ -320,7 +383,7 @@ OptionalTest >> testWithUsedOnlyInInjectIntoWhenFirstUnused [
 	self assert: result equals: 4
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithUsedOnlyInInjectIntoWhenSomeUnused [
 
 	| firstOptional secondOptional thirdOptional combinedOptional result |
@@ -341,7 +404,7 @@ OptionalTest >> testWithUsedOnlyInInjectIntoWhenSomeUnused [
 	self assert: result equals: 5
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithUsedOnlyInReturn [
 
 	| firstOptional secondOptional thirdOptional combinedOptional result |
@@ -354,7 +417,7 @@ OptionalTest >> testWithUsedOnlyInReturn [
 		whenAllUsedIn:
 			{secondOptional.
 			thirdOptional}
-		return: [ :addends | addends sum ].
+		return: [ :addends | self sumOf: addends ].
 
 	result := 0.
 	combinedOptional withContentDo: [ :sum | result := sum ] ifUnused: [ self fail ].
@@ -365,19 +428,19 @@ OptionalTest >> testWithUsedOnlyInReturn [
 			{firstOptional.
 			secondOptional.
 			thirdOptional}
-		return: [ :addends | addends sum ].
+		return: [ :addends | self sumOf: addends ].
 
 	result := 0.
 	combinedOptional withContentDo: [ :sum | result := sum ] ifUnused: [ self fail ].
 	self assert: result equals: 5
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithUsedOnlyInReturnWhenEmpty [
 
 	| combinedOptional explanations |
 
-	combinedOptional := Optional withUsedOnlyIn: #() return: [ :addends | addends sum ].
+	combinedOptional := Optional withUsedOnlyIn: #() return: [ :addends | self sumOf: addends ].
 
 	explanations := 'something'.
 	combinedOptional
@@ -386,7 +449,7 @@ OptionalTest >> testWithUsedOnlyInReturnWhenEmpty [
 	self assert: explanations isEmpty
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithUsedOnlyInReturnWhenFirstIsUnused [
 
 	| firstOptional secondOptional thirdOptional combinedOptional result |
@@ -399,7 +462,7 @@ OptionalTest >> testWithUsedOnlyInReturnWhenFirstIsUnused [
 		withUsedOnlyIn:
 			{secondOptional.
 			thirdOptional}
-		return: [ :addends | addends sum ].
+		return: [ :addends | self sumOf: addends ].
 
 	result := 0.
 	combinedOptional
@@ -412,7 +475,7 @@ OptionalTest >> testWithUsedOnlyInReturnWhenFirstIsUnused [
 			{firstOptional.
 			secondOptional.
 			thirdOptional}
-		return: [ :addends | addends sum ].
+		return: [ :addends | self sumOf: addends ].
 
 	result := 0.
 	combinedOptional
@@ -421,7 +484,7 @@ OptionalTest >> testWithUsedOnlyInReturnWhenFirstIsUnused [
 	self assert: result equals: 3
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithUsedOnlyInReturnWhenSomeAreUnused [
 
 	| firstOptional secondOptional thirdOptional combinedOptional result |
@@ -434,7 +497,7 @@ OptionalTest >> testWithUsedOnlyInReturnWhenSomeAreUnused [
 		withUsedOnlyIn:
 			{secondOptional.
 			thirdOptional}
-		return: [ :addends | addends sum ].
+		return: [ :addends | self sumOf: addends ].
 
 	result := 0.
 	combinedOptional
@@ -447,7 +510,7 @@ OptionalTest >> testWithUsedOnlyInReturnWhenSomeAreUnused [
 			{firstOptional.
 			secondOptional.
 			thirdOptional}
-		return: [ :addends | addends sum ].
+		return: [ :addends | self sumOf: addends ].
 
 	result := 0.
 	combinedOptional
@@ -456,7 +519,7 @@ OptionalTest >> testWithUsedOnlyInReturnWhenSomeAreUnused [
 	self assert: result equals: 4
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithWhenAnyUsedReturn [
 
 	| firstOptional secondOptional combinedOptional result |
@@ -473,7 +536,7 @@ OptionalTest >> testWithWhenAnyUsedReturn [
 	self assert: result equals: 3
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithWhenAnyUsedReturnWhenBothAreUnused [
 
 	| firstOptional secondOptional combinedOptional |
@@ -492,7 +555,7 @@ OptionalTest >> testWithWhenAnyUsedReturnWhenBothAreUnused [
 					0 ]) isZero
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithWhenAnyUsedReturnWhenFirstIsUnused [
 
 	| firstOptional secondOptional combinedOptional result |
@@ -509,7 +572,7 @@ OptionalTest >> testWithWhenAnyUsedReturnWhenFirstIsUnused [
 	self assert: result equals: 2
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithWhenAnyUsedReturnWhenSecondIsUnused [
 
 	| firstOptional secondOptional combinedOptional result |
@@ -526,7 +589,7 @@ OptionalTest >> testWithWhenAnyUsedReturnWhenSecondIsUnused [
 	self assert: result equals: 2
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithWhenBothUsedReturn [
 
 	| firstOptional secondOptional combinedOptional |
@@ -539,7 +602,7 @@ OptionalTest >> testWithWhenBothUsedReturn [
 	combinedOptional withContentDo: [ :sum | self assert: sum equals: 3 ] ifUnused: [ self fail ]
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithWhenBothUsedReturnWhenBothAreUnused [
 
 	| firstOptional secondOptional combinedOptional |
@@ -558,7 +621,7 @@ OptionalTest >> testWithWhenBothUsedReturnWhenBothAreUnused [
 					0 ]) isZero
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithWhenBothUsedReturnWhenFirstIsUnused [
 
 	| firstOptional secondOptional combinedOptional |
@@ -571,7 +634,7 @@ OptionalTest >> testWithWhenBothUsedReturnWhenFirstIsUnused [
 	self assert: (combinedOptional withContentDo: [ :sum | self fail ] ifUnused: [ 0 ]) isZero
 ]
 
-{ #category : #'tests-Combining' }
+{ #category : #'tests-combining' }
 OptionalTest >> testWithWhenBothUsedReturnWhenSecondIsUnused [
 
 	| firstOptional secondOptional combinedOptional |
