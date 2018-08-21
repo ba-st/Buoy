@@ -1,4 +1,6 @@
-# Math
+---
+title: Math
+---
 
 ## Percentages
 

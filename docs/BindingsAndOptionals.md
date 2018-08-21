@@ -1,3 +1,7 @@
+---
+title: Bindings & Optionals
+---
+
 ## Bindings
 
 A binding is useful for describing situations when there's a need for a required value that can be missing at the beginning. As this is a required value, the contract is to ask for it, and in case it is still missing we will raise an exception.

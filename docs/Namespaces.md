@@ -1,4 +1,6 @@
-## Namespaces
+---
+title: Namespaces
+---
 
 A namespace is responsible of binding a set of symbols to objects of various kinds, so that these objects may be referred to by name.
 

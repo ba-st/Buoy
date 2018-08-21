@@ -1,4 +1,6 @@
-# Collections
+---
+title: Collections
+---
 
 ## Circular Iterator
 

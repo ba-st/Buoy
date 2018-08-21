@@ -1,4 +1,6 @@
-## Interfaces
+---
+title: Interfaces
+---
 
 An interface is useful for declaring a set of messages to be understood by the objects implementing it.
 
