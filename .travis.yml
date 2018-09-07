@@ -6,7 +6,19 @@ smalltalk:
 - Pharo64-7.0
 - Pharo-7.0
 - Pharo-6.1
+
 matrix:
+  include:
+    - language: node_js
+      node_js: '8'
+      cache:
+        yarn: true
+      script:
+        - git config --global user.name "${GH_NAME}"
+        - git config --global user.email "${GH_EMAIL}"
+        - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
+        - cd website && yarn install && GIT_USER="${GH_NAME}" yarn run publish-gh-pages
+        
   allow_failures:
   - smalltalk: Pharo64-7.0
   - smalltalk: Pharo-7.0
