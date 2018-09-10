@@ -10,10 +10,18 @@ Class {
 	#category : 'Buoy-Dynamic-Binding'
 }
 
-{ #category : #'Instance Creation' }
+{ #category : #'instance creation' }
 UnusedOptional class >> explainedByAll: anExplanationCollection [
 
 	^ self new initializeExplainedByAll: anExplanationCollection
+]
+
+{ #category : #private }
+UnusedOptional >> equalsTo: anObject [
+
+	^ anObject
+		withContentDo: [ :anotherContent | false ]
+		ifUnused: [ :anotherExplanations | explanations = anotherExplanations ]
 ]
 
 { #category : #initialization }
@@ -32,19 +40,19 @@ UnusedOptional >> printOn: aStream [
 				space ]
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 UnusedOptional >> return: aMonadycBlock [
 
 	^ self
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 UnusedOptional >> whenAllUsedIn: optionals return: aMonadycBlock [
 
 	^ self whenAllUsedIn: optionals injectInto: [ :x :y |  ]
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 UnusedOptional >> with: anOptional whenAnyUsedReturn: aBlockClosure [
 
 	^ anOptional
@@ -52,7 +60,7 @@ UnusedOptional >> with: anOptional whenAnyUsedReturn: aBlockClosure [
 		ifUnused: [ :foreignExplanations | self class explainedByAll: explanations , foreignExplanations ]
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 UnusedOptional >> with: anOptional whenBothUsedReturn: aBlockClosure [
 
 	^ anOptional
@@ -60,13 +68,13 @@ UnusedOptional >> with: anOptional whenBothUsedReturn: aBlockClosure [
 		ifUnused: [ :foreignExplanations | self class explainedByAll: explanations , foreignExplanations ]
 ]
 
-{ #category : #Accessing }
+{ #category : #accessing }
 UnusedOptional >> withContentDo: aBlockClosure ifUnused: aNothingBlock [ 
 	
 	^aNothingBlock cull: explanations 
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 UnusedOptional >> withUsedOnlyIn: optionals return: aMonadycBlock [
 
 	^ self withUsedOnlyIn: optionals injectInto: [ :x :y |  ]

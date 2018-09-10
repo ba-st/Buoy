@@ -11,7 +11,7 @@ Class {
 CollectionFormatterTest >> testFormat [
 
 	| formatter |
-	formatter := CollectionFormatter separatingWith: $,.
+	formatter := CollectionFormatter separatingWith: ', '.
 	self assert: (formatter format: #(1 2 3)) equals: '1, 2, 3'
 ]
 
@@ -19,7 +19,7 @@ CollectionFormatterTest >> testFormat [
 CollectionFormatterTest >> testFormatEmptyCollection [
 
 	| formatter |
-	formatter := CollectionFormatter separatingWith: $, andLastWith: $y.
+	formatter := CollectionFormatter separatingWith: ', ' andLastWith: ' and '.
 	self assert: (formatter format: #()) equals: String new
 ]
 
@@ -27,8 +27,9 @@ CollectionFormatterTest >> testFormatEmptyCollection [
 CollectionFormatterTest >> testFormatOn [
 
 	| formatter stream |
+
 	stream := WriteStream on: String new.
-	formatter := CollectionFormatter separatingWith: $,.
+	formatter := CollectionFormatter separatingWith: ', '.
 	formatter format: #(1 2 3) on: stream.
 	self assert: stream contents equals: '1, 2, 3'
 ]
@@ -37,7 +38,8 @@ CollectionFormatterTest >> testFormatOn [
 CollectionFormatterTest >> testFormatOneElementCollection [
 
 	| formatter |
-	formatter := CollectionFormatter separatingWith: $, andLastWith: $y.
+
+	formatter := CollectionFormatter separatingWith: ', ' andLastWith: ' and '.
 	self assert: (formatter format: #(1)) equals: '1'
 ]
 
@@ -45,8 +47,9 @@ CollectionFormatterTest >> testFormatOneElementCollection [
 CollectionFormatterTest >> testFormatTwoElementCollectionWithLastSeparator [
 
 	| formatter |
-	formatter := CollectionFormatter separatingWith: $, andLastWith: $y.
-	self assert: (formatter format: #(1 2)) equals: '1 y 2'
+
+	formatter := CollectionFormatter separatingWith: ', ' andLastWith: ' and '.
+	self assert: (formatter format: #(1 2)) equals: '1 and 2'
 ]
 
 { #category : #tests }
@@ -57,13 +60,14 @@ CollectionFormatterTest >> testFormatWithElementFormater [
 	formatter := CollectionFormatter
 		separatingWith: $,
 		applyingToEach: [ :element | '/<1p>/' expandMacrosWith: element ].
-	self assert: (formatter format: #(1 2 3)) equals: '/1/, /2/, /3/'
+	self assert: (formatter format: #(1 2 3)) equals: '/1/,/2/,/3/'
 ]
 
 { #category : #tests }
 CollectionFormatterTest >> testFormatWithLastSeparator [
 
 	| formatter |
-	formatter := CollectionFormatter separatingWith: $, andLastWith: $y.
-	self assert: (formatter format: #(1 2 3)) equals: '1, 2 y 3'
+
+	formatter := CollectionFormatter separatingWith: ', ' andLastWith: ' and '.
+	self assert: (formatter format: #(1 2 3)) equals: '1, 2 and 3'
 ]

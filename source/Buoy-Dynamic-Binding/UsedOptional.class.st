@@ -10,10 +10,18 @@ Class {
 	#category : 'Buoy-Dynamic-Binding'
 }
 
-{ #category : #'Instance Creation' }
+{ #category : #'instance creation' }
 UsedOptional class >> containing: anObject [
 
 	^self new initializeContaining: anObject 
+]
+
+{ #category : #private }
+UsedOptional >> equalsTo: anObject [
+
+	^ anObject
+		withContentDo: [ :anotherContent | content = anotherContent ]
+		ifUnused: [ false ]
 ]
 
 { #category : #initialization }
@@ -28,13 +36,13 @@ UsedOptional >> printOn: aStream [
 	aStream nextPutAll: content asString
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 UsedOptional >> return: aMonadycBlock [
 
 	^ self class containing: (aMonadycBlock value: content)
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 UsedOptional >> whenAllUsedIn: optionals return: aMonadycBlock [
 
 	| combined |
@@ -49,7 +57,7 @@ UsedOptional >> whenAllUsedIn: optionals return: aMonadycBlock [
 	^ combined withContentDo: [ :contents | self class containing: (aMonadycBlock value: contents) ] ifUnused: [ combined ]
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 UsedOptional >> with: anOptional whenAnyUsedReturn: aDyadicBlock [
 
 	^ anOptional
@@ -57,7 +65,7 @@ UsedOptional >> with: anOptional whenAnyUsedReturn: aDyadicBlock [
 		ifUnused: [ self ]
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 UsedOptional >> with: anOptional whenBothUsedReturn: aDyadicBlock [
 
 	^ anOptional
@@ -66,13 +74,13 @@ UsedOptional >> with: anOptional whenBothUsedReturn: aDyadicBlock [
 		ifUnused: [ anOptional ]
 ]
 
-{ #category : #Accessing }
+{ #category : #accessing }
 UsedOptional >> withContentDo: aBlockClosure ifUnused: aNothingBlock [ 
 	
 	^aBlockClosure cull: content 
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 UsedOptional >> withUsedOnlyIn: optionals return: aMonadycBlock [
 
 	| combined |

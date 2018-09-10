@@ -7,43 +7,43 @@ Class {
 	#category : 'Buoy-Dynamic-Binding'
 }
 
-{ #category : #'Instance Creation' }
+{ #category : #'instance creation' }
 Optional class >> containing: anObject [
 
 	^UsedOptional containing: anObject 
 ]
 
-{ #category : #'Instance Creation' }
+{ #category : #'instance creation' }
 Optional class >> unused [
 
 	^self unusedBecauseAll: #()
 ]
 
-{ #category : #'Instance Creation' }
+{ #category : #'instance creation' }
 Optional class >> unusedBecause: anExplanation [
 
 	^self unusedBecauseAll: { anExplanation }
 ]
 
-{ #category : #'Instance Creation' }
+{ #category : #'instance creation' }
 Optional class >> unusedBecauseAll: anExplanationCollection [ 
 	
 	^UnusedOptional explainedByAll: anExplanationCollection 
 ]
 
-{ #category : #'Instance Creation' }
+{ #category : #'instance creation' }
 Optional class >> whenAllUsedIn: optionals injectInto: aDyadicBlock [
 
 	^ optionals ifNotEmpty: [ optionals first whenAllUsedIn: optionals allButFirst injectInto: aDyadicBlock ] ifEmpty: [ self unused ]
 ]
 
-{ #category : #'Instance Creation' }
+{ #category : #'instance creation' }
 Optional class >> whenAllUsedIn: optionals return: aMonadycBlock [
 
 	^ optionals ifNotEmpty: [ optionals first whenAllUsedIn: optionals allButFirst return: aMonadycBlock ] ifEmpty: [ self unused ]
 ]
 
-{ #category : #'Instance Creation' }
+{ #category : #'instance creation' }
 Optional class >> withUsedOnlyIn: optionals injectInto: aDyadicBlock [
 
 	^ optionals
@@ -51,7 +51,7 @@ Optional class >> withUsedOnlyIn: optionals injectInto: aDyadicBlock [
 		ifEmpty: [ self unused ]
 ]
 
-{ #category : #'Instance Creation' }
+{ #category : #'instance creation' }
 Optional class >> withUsedOnlyIn: optionals return: aMonadycBlock [
 
 	^ optionals
@@ -59,49 +59,70 @@ Optional class >> withUsedOnlyIn: optionals return: aMonadycBlock [
 		ifEmpty: [ self unused ]
 ]
 
-{ #category : #Combining }
+{ #category : #comparing }
+Optional >> = anObject [
+
+	^ self value == anObject
+		or: [ (anObject isA: self class) and: [ self equalsTo: anObject ] ]
+]
+
+{ #category : #private }
+Optional >> equalsTo: anObject [
+
+	^ self subclassResponsibility
+]
+
+{ #category : #comparing }
+Optional >> hash [
+
+	^ self
+		withContentDo: [ :content | content hash ]
+		ifUnused: [ :explanations | explanations hash ]
+]
+
+{ #category : #combining }
 Optional >> return: aMonadycBlock [
 
 	self subclassResponsibility 
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 Optional >> whenAllUsedIn: optionals injectInto: aDyadicBlock [
 
 	^ optionals inject: self into: [ :combinedOptional :currentOptional | combinedOptional with: currentOptional whenBothUsedReturn: aDyadicBlock ]
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 Optional >> whenAllUsedIn: optionals return: aMonadycBlock [
 
 	self subclassResponsibility 
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 Optional >> with: anOptional whenAnyUsedReturn: aDyadicBlock [
 
 	self subclassResponsibility 
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 Optional >> with: anOptional whenBothUsedReturn: aDyadicBlock [
 
 	self subclassResponsibility 
 ]
 
-{ #category : #Accessing }
+{ #category : #accessing }
 Optional >> withContentDo: aMonadycBlock [
 
 	self withContentDo: aMonadycBlock ifUnused: [  ]
 ]
 
-{ #category : #Accessing }
+{ #category : #accessing }
 Optional >> withContentDo: aMonadycBlock ifUnused: aNothingBlock [
 
 	self subclassResponsibility 
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 Optional >> withUsedOnlyIn: optionals injectInto: aDyadicBlock [
 
 	^ optionals
@@ -110,7 +131,7 @@ Optional >> withUsedOnlyIn: optionals injectInto: aDyadicBlock [
 			[ :combinedOptional :currentOptional | combinedOptional with: currentOptional whenAnyUsedReturn: aDyadicBlock ]
 ]
 
-{ #category : #Combining }
+{ #category : #combining }
 Optional >> withUsedOnlyIn: optionals return: aMonadycBlock [
 
 	self subclassResponsibility 
