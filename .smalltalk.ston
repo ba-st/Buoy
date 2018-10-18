@@ -4,16 +4,15 @@ SmalltalkCISpec {
       #baseline : 'Buoy',
       #directory : 'source',
       #load : [ 'Development' ],
-      #platforms : [  #pharo ]
+      #platforms : [  #pharo, #gemstone ]
     }
   ],
   #testing : {
     #coverage : {
        #packages : [ 'Buoy*' ]
     },
-    #include : {  
+    #include : {
        #packages : [ 'Buoy-Tests*' ]
     }
   }
-} 
-
+}
