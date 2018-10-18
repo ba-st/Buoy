@@ -6,6 +6,7 @@ smalltalk:
 - Pharo64-7.0
 - Pharo-7.0
 - Pharo-6.1
+- GemStone-3.3.4
 matrix:
   allow_failures:
   - smalltalk: Pharo64-7.0
