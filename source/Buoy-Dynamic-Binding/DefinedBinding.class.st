@@ -27,3 +27,9 @@ DefinedBinding >> initializeConnectedTo: anObject [
 
 	content := anObject 
 ]
+
+{ #category : #testing }
+DefinedBinding >> isDefined [
+
+	^ true 
+]
