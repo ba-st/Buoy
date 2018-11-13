@@ -1,8 +1,19 @@
+"
+I'm an unit test for the Behavior of Binding
+"
 Class {
 	#name : #BindingTest,
 	#superclass : #TestCase,
-	#category : 'Buoy-Dynamic-Binding-Tests'
+	#category : #'Buoy-Dynamic-Binding-Tests'
 }
+
+{ #category : #tests }
+BindingTest >> testIsDefined [
+
+	self
+		assert: (Binding to: 1) isDefined;
+		deny: (Binding undefinedExplainedBy: '') isDefined
+]
 
 { #category : #tests }
 BindingTest >> testTo [
