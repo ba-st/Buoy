@@ -28,23 +28,18 @@ BindingTest >> testTo [
 { #category : #tests }
 BindingTest >> testUndefinedExplainedBy [
 
-	| binding explanation messageObtained |
+	| binding explanation |
 
 	explanation := 'Parameter not yet configured'.
 	binding := Binding undefinedExplainedBy: explanation.
 
-	self
-		should: [ binding content ]
-		raise: AssertionFailed
-		withExceptionDo: [ :error | messageObtained := error messageText ].
-
-	self assert: messageObtained equals: explanation
+	self should: [ binding content ] raise: AssertionFailed withMessageText: explanation
 ]
 
 { #category : #tests }
 BindingTest >> testUndefinedExplainedByAllRaising [
 
-	| binding explanations messageObtained |
+	| binding explanations |
 
 	explanations := {'Parameter not yet configured' . 'Parameter seems wrong'}.
 	binding := Binding undefinedExplainedByAll: explanations raising: InstanceCreationFailed.
@@ -52,17 +47,13 @@ BindingTest >> testUndefinedExplainedByAllRaising [
 	self
 		should: [ binding content ]
 		raise: InstanceCreationFailed
-		withExceptionDo: [ :error | messageObtained := error messageText ].
-
-	self
-		assert: messageObtained
-		equals: 'Parameter not yet configured. Parameter seems wrong'
+		withMessageText: 'Parameter not yet configured. Parameter seems wrong'
 ]
 
 { #category : #tests }
 BindingTest >> testUndefinedExplainedByRaising [
 
-	| binding explanation messageObtained |
+	| binding explanation |
 
 	explanation := 'Parameter not yet configured'.
 	binding := Binding undefinedExplainedBy: explanation raising: InstanceCreationFailed.
@@ -70,7 +61,5 @@ BindingTest >> testUndefinedExplainedByRaising [
 	self
 		should: [ binding content ]
 		raise: InstanceCreationFailed
-		withExceptionDo: [ :error | messageObtained := error messageText ].
-
-	self assert: messageObtained equals: explanation
+		withMessageText: explanation
 ]

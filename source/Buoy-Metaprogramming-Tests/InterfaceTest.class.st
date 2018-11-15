@@ -10,7 +10,7 @@ Class {
 { #category : #tests }
 InterfaceTest >> testCantDeclareAnEmptyInterface [
 
-	self should: [ Interface named: 'Empty' declaring: #() ] raise: InstanceCreationFailed
+	self should: [ Interface named: 'Empty' declaring: #() ] raise: InstanceCreationFailed withMessageText: 'An interface must declare at least one message.'
 ]
 
 { #category : #tests }
