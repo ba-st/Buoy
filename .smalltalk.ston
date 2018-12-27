@@ -3,17 +3,13 @@ SmalltalkCISpec {
     SCIMetacelloLoadSpec {
       #baseline : 'Buoy',
       #directory : 'source',
-      #load : [ 'Development' ],
+      #load : [ 'CI' ],
       #platforms : [  #pharo ]
     }
   ],
   #testing : {
     #coverage : {
        #packages : [ 'Buoy*' ]
-    },
-    #include : {  
-       #packages : [ 'Buoy-Tests*' ]
     }
   }
-} 
-
+}

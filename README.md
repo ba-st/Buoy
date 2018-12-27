@@ -1,27 +1,20 @@
-![Buoy](https://maxcdn.icons8.com/Color/PNG/48/Transport/buoy-48.png) Buoy
-===========================================================================
-![GitHub release](https://img.shields.io/github/release/ba-st/Buoy.svg)
+<p align="center"><img src="https://img.icons8.com/color/128/000000/buoy.png">
+ <h1 align="center">Buoy</h1>
+  <p align="center">
+    This project aims to complement [Pharo](http://www.pharo.org) adding useful extensions.
+    <br>
+    <a href="docs/"><strong>Explore the docs »</strong></a>
+    <br>
+    <br>
+    <a href="https://github.com/ba-st/Buoy/issues/new?labels=Type%3A+Defect">Report a defect</a>
+    |
+    <a href="https://github.com/ba-st/Buoy/issues/new?labels=Type%3A+Feature">Request feature</a>
+  </p>
+</p>
+
+[![GitHub release](https://img.shields.io/github/release/ba-st/Buoy.svg)](https://github.com/ba-st/Buoy/releases/latest)
 [![Build Status](https://travis-ci.org/ba-st/Buoy.svg?branch=master)](https://travis-ci.org/ba-st/Buoy)
 [![Coverage Status](https://coveralls.io/repos/github/ba-st/Buoy/badge.svg?branch=master)](https://coveralls.io/github/ba-st/Buoy?branch=master)
-
-This project aims to complement [Pharo](http://www.pharo.org) adding useful extensions.
-
-## License
-The project source code is [MIT](LICENSE) licensed. Any contribution submitted to the code repository is considered to be under the same license.
-
-The documentation is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
-
-## Get started!
-
-- Download a [Pharo Image and VM](http://get.pharo.org)
-- Open a Playground and evaluate:
-
-```smalltalk
-Metacello new
-  baseline: 'Buoy';
-  repository: 'github://ba-st/Buoy:master/source';
-  load
-```
 
 ## Feature List
 
@@ -41,9 +34,23 @@ This library provides support to express optional values and required values, th
 
 This library provides additional abstractions for Collections. See the [related documentation.](docs/Collections.md)
 
+## License
+- The code is licensed under [MIT](LICENSE).
+- The documentation is licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/).
+
+## Quick Start
+
+- Download the latest [Pharo 32](https://get.pharo.org/) or [64 bits VM](https://get.pharo.org/64/).
+- Download a ready to use image from the [release page](https://github.com/ba-st/Buoy/releases/latest)
+- Explore the [documentation](docs/)
+
+## Installation
+
+To load the project in a Pharo image, or declare it as a dependency of your own project follow this [instructions](docs/Installation.md).
+
 ## Contributing
 
-If you want to help check the [contribution guidelines.](CONTRIBUTING.md)
+Check the [Contribution Guidelines](CONTRIBUTING.md)
 
 ---
-[Icon pack by Icons8](https://icons8.com)
+<small><a href="https://icons8.com/icon/20988/buoy">Buoy icon by Icons8</a></small>

@@ -35,5 +35,6 @@ BaselineOfBuoy >> baseline: spec [
 				group: 'Dev-Tools' with: #('Buoy-Development-Tools' 'SUnit');
 				group: 'Development'
 					with: #('Deployment' 'SUnit' 'Buoy-Assertions-Tests' 'Buoy-Math-Tests' 'Buoy-Metaprogramming-Tests' 'Buoy-Dynamic-Binding-Tests' 'Buoy-Collections-Tests' 'Buoy-Conditions-Tests' 'Buoy-SUnit-Tests');
+				group: 'CI' with: 'Development';
 				group: 'default' with: #('Deployment' 'Dev-Tools' 'SUnit') ]
 ]
