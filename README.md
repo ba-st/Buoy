@@ -13,8 +13,8 @@
 </p>
 
 [![GitHub release](https://img.shields.io/github/release/ba-st/Buoy.svg)](https://github.com/ba-st/Buoy/releases/latest)
-[![Build Status](https://travis-ci.org/ba-st/Buoy.svg?branch=master)](https://travis-ci.org/ba-st/Buoy)
-[![Coverage Status](https://coveralls.io/repos/github/ba-st/Buoy/badge.svg?branch=master)](https://coveralls.io/github/ba-st/Buoy?branch=master)
+[![Build Status](https://travis-ci.org/ba-st/Buoy.svg?branch=release-candidate)](https://travis-ci.org/ba-st/Buoy)
+[![Coverage Status](https://coveralls.io/repos/github/ba-st/Buoy/badge.svg?branch=release-candidate)](https://coveralls.io/github/ba-st/Buoy?branch=release-candidate)
 
 ## Feature List
 
