@@ -1,7 +1,7 @@
 <p align="center"><img src="https://img.icons8.com/color/128/000000/buoy.png">
  <h1 align="center">Buoy</h1>
   <p align="center">
-    This project aims to complement [Pharo](http://www.pharo.org) adding useful extensions.
+ This project aims to complement <a href="http://www.pharo.org">Pharo</a> adding useful extensions.
     <br>
     <a href="docs/"><strong>Explore the docs »</strong></a>
     <br>
