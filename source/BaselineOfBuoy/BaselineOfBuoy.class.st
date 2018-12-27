@@ -12,29 +12,102 @@ BaselineOfBuoy >> baseline: spec [
 
 	<baseline>
 	spec
-		for: #common
-		do: [ spec
-				package: 'Buoy-SUnit-Model';
-				package: 'Buoy-Assertions';
-				package: 'Buoy-Conditions';
-				package: 'Buoy-Metaprogramming' with: [ spec requires: 'Buoy-Assertions' ];
-				package: 'Buoy-Math' with: [ spec requires: 'Buoy-Assertions' ];
-				package: 'Buoy-Collections' with: [ spec requires: #('Buoy-Assertions' 'Buoy-Dynamic-Binding') ];
-				package: 'Buoy-Dynamic-Binding' with: [ spec requires: #('Buoy-Assertions' 'Buoy-Metaprogramming') ];
-				package: 'Buoy-SUnit-Tests' with: [ spec requires: 'Buoy-SUnit-Model' ];
-				package: 'Buoy-Assertions-Tests' with: [ spec requires: #('Buoy-Assertions' 'SUnit') ];
-				package: 'Buoy-Conditions-Tests' with: [ spec requires: 'Buoy-Conditions' ];
-				package: 'Buoy-Metaprogramming-Tests' with: [ spec requires: 'Buoy-Metaprogramming' ];
-				package: 'Buoy-Math-Tests' with: [ spec requires: #('Buoy-Math' 'SUnit') ];
-				package: 'Buoy-Collections-Tests' with: [ spec requires: #('Buoy-Collections' 'SUnit') ];
-				package: 'Buoy-Dynamic-Binding-Tests' with: [ spec requires: #('Buoy-Dynamic-Binding' 'SUnit') ];
-				package: 'Buoy-Development-Tools' with: [ spec requires: 'Buoy-Metaprogramming' ].
+		for: #pharo
+		do: [ self
+				baselineAssertions: spec;
+				baselineCollections: spec;
+				baselineConditions: spec;
+				baselineDynamicBinding: spec;
+				baselineMath: spec;
+				baselineMetaprogramming: spec;
+				baselineSUnit: spec;
+				baselineTools: spec.
 			spec
-				group: 'Deployment' with: #('Buoy-Assertions' 'Buoy-Math' 'Buoy-Metaprogramming' 'Buoy-Dynamic-Binding' 'Buoy-Collections' 'Buoy-Conditions');
-				group: 'SUnit' with: #('Buoy-SUnit-Model');
-				group: 'Dev-Tools' with: #('Buoy-Development-Tools' 'SUnit');
-				group: 'Development'
-					with: #('Deployment' 'SUnit' 'Buoy-Assertions-Tests' 'Buoy-Math-Tests' 'Buoy-Metaprogramming-Tests' 'Buoy-Dynamic-Binding-Tests' 'Buoy-Collections-Tests' 'Buoy-Conditions-Tests' 'Buoy-SUnit-Tests');
-				group: 'CI' with: 'Development';
-				group: 'default' with: #('Deployment' 'Dev-Tools' 'SUnit') ]
+				group: 'CI' with: 'Tests';
+				group: 'Development' with: #('Tools' 'Tests')
+			]
+]
+
+{ #category : #baselines }
+BaselineOfBuoy >> baselineAssertions: spec [
+
+	spec
+		package: 'Buoy-Assertions';
+		group: 'Deployment' with: 'Buoy-Assertions';
+		package: 'Buoy-Assertions-Tests' with: [ spec requires: #('Buoy-Assertions' 'Dependent-SUnit-Extensions') ];
+		group: 'Tests' with: 'Buoy-Assertions-Tests'
+]
+
+{ #category : #baselines }
+BaselineOfBuoy >> baselineCollections: spec [
+
+	spec
+		package: 'Buoy-Collections' with: [ spec requires: #('Buoy-Assertions' 'Buoy-Dynamic-Binding') ];
+		group: 'Deployment' with: 'Buoy-Collections';
+		package: 'Buoy-Collections-Tests' with: [ spec requires: #('Buoy-Collections' 'Dependent-SUnit-Extensions') ];
+		group: 'Tests' with: 'Buoy-Collections-Tests'
+]
+
+{ #category : #baselines }
+BaselineOfBuoy >> baselineConditions: spec [
+
+	spec
+		package: 'Buoy-Conditions';
+		group: 'Deployment' with: 'Buoy-Conditions';
+		package: 'Buoy-Conditions-Tests' with: [ spec requires: 'Buoy-Conditions' ];
+		group: 'Tests' with: 'Buoy-Conditions-Tests'
+]
+
+{ #category : #baselines }
+BaselineOfBuoy >> baselineDynamicBinding: spec [
+
+	spec
+		package: 'Buoy-Dynamic-Binding' with: [ spec requires: #('Buoy-Assertions' 'Buoy-Metaprogramming') ];
+		group: 'Deployment' with: 'Buoy-Dynamic-Binding';
+		package: 'Buoy-Dynamic-Binding-Tests' with: [ spec requires: #('Buoy-Dynamic-Binding' 'Dependent-SUnit-Extensions') ];
+		group: 'Tests' with: 'Buoy-Dynamic-Binding-Tests'
+]
+
+{ #category : #baselines }
+BaselineOfBuoy >> baselineMath: spec [
+
+	spec
+		package: 'Buoy-Math' with: [ spec requires: 'Buoy-Assertions' ];
+		group: 'Deployment' with: 'Buoy-Math';
+		package: 'Buoy-Math-Tests' with: [ spec requires: #('Buoy-Math' 'Dependent-SUnit-Extensions') ];
+		group: 'Tests' with: 'Buoy-Math-Tests'
+]
+
+{ #category : #baselines }
+BaselineOfBuoy >> baselineMetaprogramming: spec [
+
+	spec
+		package: 'Buoy-Metaprogramming' with: [ spec requires: 'Buoy-Assertions' ];
+		group: 'Deployment' with: 'Buoy-Metaprogramming';
+		package: 'Buoy-Metaprogramming-Tests' with: [ spec requires: 'Buoy-Metaprogramming' ];
+		group: 'Tests' with: 'Buoy-Metaprogramming-Tests'
+]
+
+{ #category : #baselines }
+BaselineOfBuoy >> baselineSUnit: spec [
+
+	spec
+		package: 'Buoy-SUnit-Model';
+		group: 'Dependent-SUnit-Extensions' with: 'Buoy-SUnit-Model';
+		package: 'Buoy-SUnit-Tests' with: [ spec requires: 'Dependent-SUnit-Extensions' ];
+		group: 'Tests' with: 'Buoy-SUnit-Tests'
+]
+
+{ #category : #baselines }
+BaselineOfBuoy >> baselineTools: spec [
+
+	spec
+		package: 'Buoy-Development-Tools' with: [ spec requires: 'Deployment' ];
+		group: 'Tools' with: #('Buoy-Development-Tools' 'Dependent-SUnit-Extensions')
+]
+
+{ #category : #accessing }
+BaselineOfBuoy >> projectClass [
+
+	^ MetacelloCypressBaselineProject
 ]
