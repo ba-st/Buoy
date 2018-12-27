@@ -36,3 +36,9 @@ Binding >> content [
 
 	self subclassResponsibility 
 ]
+
+{ #category : #testing }
+Binding >> isDefined [
+
+	^ self subclassResponsibility 
+]

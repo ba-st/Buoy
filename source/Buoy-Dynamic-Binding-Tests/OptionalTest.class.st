@@ -20,13 +20,13 @@ OptionalTest >> testEqualsWhenUnused [
 
 	optional := Optional unused.
 	self
-		assert: optional = optional;
+		assert: optional equals: optional;
 		deny: optional = (Optional containing: 'content');
 		deny: (Optional containing: 'content') = optional;
 		deny: optional = (Optional containing: 1);
 		deny: (Optional containing: 1) = optional;
-		assert: optional = Optional unused;
-		assert: Optional unused = optional
+		assert: optional equals: Optional unused;
+		assert: Optional unused equals: optional
 ]
 
 { #category : #'tests-comparing' }
@@ -36,11 +36,11 @@ OptionalTest >> testEqualsWhenUsed [
 
 	optional := Optional containing: 1.
 	self
-		assert: optional = optional;
+		assert: optional equals: optional;
 		deny: optional = (Optional containing: 'content');
 		deny: (Optional containing: 'content') = optional;
-		assert: optional = (Optional containing: 1);
-		assert: (Optional containing: 1) = optional;
+		assert: optional equals: (Optional containing: 1);
+		assert: (Optional containing: 1) equals: optional;
 		deny: optional = Optional unused;
 		deny: Optional unused = optional
 ]
@@ -52,16 +52,18 @@ OptionalTest >> testHash [
 
 	optional := Optional containing: 1.
 	self
-		assert: optional hash = (Optional containing: 1) hash;
+		assert: optional hash equals: (Optional containing: 1) hash;
 		deny: optional hash = (Optional containing: 'content') hash;
 		deny: optional hash = Optional unused hash;
-		assert: Optional unused hash = Optional unused hash
+		assert: Optional unused hash equals: Optional unused hash
 ]
 
 { #category : #'tests-printing' }
 OptionalTest >> testPrintingUnusedOptional [
 
-	self assert: (Optional unusedBecause: 'This feature is disabled.') printString equals: 'This feature is disabled.'
+	self
+		assert: (Optional unusedBecause: 'This feature is disabled.') printString
+		equals: 'This feature is disabled.'
 ]
 
 { #category : #'tests-printing' }
@@ -73,7 +75,9 @@ OptionalTest >> testPrintingUsedOptional [
 { #category : #'tests-combining' }
 OptionalTest >> testReturn [
 
-	((Optional containing: 0) return: [ :number | number + 1 ]) withContentDo: [ :number | self assert: number equals: 1 ] ifUnused: [ self fail ].
+	((Optional containing: 0) return: [ :number | number + 1 ])
+		withContentDo: [ :number | self assert: number equals: 1 ]
+		ifUnused: [ self fail ].
 
 	(Optional unused return: [ :number | number + 1 ]) withContentDo: [ self fail ]
 ]

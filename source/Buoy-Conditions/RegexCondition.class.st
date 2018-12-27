@@ -26,12 +26,12 @@ RegexCondition class >> matching: aPattern [
 
 { #category : #initialization }
 RegexCondition >> initializeMatching: aPattern [
-	
-	pattern := aPattern
+
+	pattern := aPattern asRegex
 ]
 
 { #category : #testing }
-RegexCondition >> isSatisfiedBy: aString [ 
+RegexCondition >> isSatisfiedBy: aString [
 
-	^ aString matchesRegex: pattern
+	^ pattern matches: aString
 ]

@@ -19,8 +19,12 @@ BuoyNumberExtensionsTest >> testDecreasedBy [
 	self
 		assert: (1000 decreasedBy: 60 percent) equals: 400;
 		assert: (200 decreasedBy: Percentage oneHundred) equals: 0;
-		should: [ 143 decreasedBy: 101 percent ] raise: ArithmeticError;
-		should: [ 1 decreasedBy: -1 percent ] raise: ArithmeticError
+		should: [ 143 decreasedBy: 101 percent ]
+			raise: ArithmeticError
+			withMessageText: 'A number can''t be decreased by a percentage greater than 100% and lesser than 0%';
+		should: [ 1 decreasedBy: -1 percent ]
+			raise: ArithmeticError
+			withMessageText: 'A number can''t be decreased by a percentage greater than 100% and lesser than 0%'
 ]
 
 { #category : #tests }
@@ -29,7 +33,9 @@ BuoyNumberExtensionsTest >> testIncreasedBy [
 	self
 		assert: (1000 increasedBy: 100 percent) equals: 2000;
 		assert: (200 increasedBy: 10 percent) equals: 220;
-		should: [ 1 increasedBy: -1 percent ] raise: ArithmeticError
+		should: [ 1 increasedBy: -1 percent ]
+			raise: ArithmeticError
+			withMessageText: 'A number can''t be increased by a negative percentage'
 ]
 
 { #category : #tests }

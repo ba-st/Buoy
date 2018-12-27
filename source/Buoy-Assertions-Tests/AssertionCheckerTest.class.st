@@ -13,7 +13,7 @@ AssertionCheckerTest >> testEnforceOneFactFailing [
 	| explanation |
 
 	explanation := 'A false statement'.
-	self should: [ AssertionChecker enforce: [ false ] because: explanation ] raise: AssertionFailed withExceptionDo: [ :exception | self assert: exception messageText equals: explanation ]
+	self should: [ AssertionChecker enforce: [ false ] because: explanation ] raise: AssertionFailed withMessageText: explanation
 ]
 
 { #category : #tests }
@@ -23,7 +23,7 @@ AssertionCheckerTest >> testEnforceOneFactFailingRaisingError [
 
 	explanation := 'A false statement'.
 	"For single fact checking any exception can be configured to be raised, but it's not the case when using multiple fact checking"
-	self should: [ AssertionChecker enforce: [ false ] because: explanation raising: Error ] raise: Error withExceptionDo: [ :exception | self assert: exception messageText equals: explanation ]
+	self should: [ AssertionChecker enforce: [ false ] because: explanation raising: Error ] raise: Error withMessageText: explanation
 ]
 
 { #category : #tests }
@@ -36,7 +36,7 @@ AssertionCheckerTest >> testEnforceOneFactFailingRaisingNonDefaultException [
 	self
 		should: [ AssertionChecker enforce: [ false ] because: explanation raising: InstanceCreationFailed ]
 		raise: InstanceCreationFailed
-		withExceptionDo: [ :exception | self assert: exception messageText equals: explanation ]
+		withMessageText: explanation
 ]
 
 { #category : #tests }
@@ -53,7 +53,7 @@ AssertionCheckerTest >> testRefuseOneFactFailing [
 	| explanation |
 
 	explanation := 'A false statement'.
-	self should: [ AssertionChecker refuse: [ true ] because: explanation ] raise: AssertionFailed withExceptionDo: [ :exception | self assert: exception messageText equals: explanation ]
+	self should: [ AssertionChecker refuse: [ true ] because: explanation ] raise: AssertionFailed withMessageText: explanation
 ]
 
 { #category : #tests }

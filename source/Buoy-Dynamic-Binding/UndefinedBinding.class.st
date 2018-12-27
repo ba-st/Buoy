@@ -29,3 +29,9 @@ UndefinedBinding >> initializeExplainedByAll: anExplanationCollection raising: a
 	explanations := anExplanationCollection.
 	errorClass := anErrorClass
 ]
+
+{ #category : #testing }
+UndefinedBinding >> isDefined [
+
+	^ false 
+]
