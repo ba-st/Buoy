@@ -18,6 +18,7 @@ BaselineOfBuoy >> baseline: spec [
 				baselineCollections: spec;
 				baselineConditions: spec;
 				baselineDynamicBinding: spec;
+				baselineExceptionHandlingSystem: spec;
 				baselineMath: spec;
 				baselineMetaprogramming: spec;
 				baselineSUnit: spec;
@@ -66,6 +67,16 @@ BaselineOfBuoy >> baselineDynamicBinding: spec [
 		group: 'Deployment' with: 'Buoy-Dynamic-Binding';
 		package: 'Buoy-Dynamic-Binding-Tests' with: [ spec requires: #('Buoy-Dynamic-Binding' 'Dependent-SUnit-Extensions') ];
 		group: 'Tests' with: 'Buoy-Dynamic-Binding-Tests'
+]
+
+{ #category : #baselines }
+BaselineOfBuoy >> baselineExceptionHandlingSystem: spec [
+
+	spec
+		package: 'Buoy-Exception-Handling-System';
+		group: 'Deployment' with: 'Buoy-Exception-Handling-System';
+		package: 'Buoy-Exception-Handling-System-Tests' with: [ spec requires: 'Buoy-Exception-Handling-System' ];
+		group: 'Tests' with: 'Buoy-Exception-Handling-System-Tests'
 ]
 
 { #category : #baselines }

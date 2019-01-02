@@ -87,6 +87,12 @@ PartsPerFraction >> asFloat [
 ]
 
 { #category : #converting }
+PartsPerFraction >> asFraction [
+
+	^ ratio asFraction
+]
+
+{ #category : #converting }
 PartsPerFraction >> asNumber [
 
 	^ ratio

@@ -17,6 +17,34 @@ PercentageTest >> testAbs [
 		assert: (Percentage of: -15) abs printString equals: '15%'
 ]
 
+{ #category : #'tests - converting' }
+PercentageTest >> testAsFloat [
+
+	self
+		assert: 0 percent asFloat equals: 0.0;
+		assert: 100 percent asFloat equals: 1.0;
+		assert: 50 percent asFloat equals: 0.5;
+		assert: 5.0 percent asFloat equals: 0.05
+]
+
+{ #category : #'tests - converting' }
+PercentageTest >> testAsFraction [
+
+	self
+		assert: Percentage zero asFraction equals: 0;
+		assert: Percentage oneHundred asFraction equals: 1;
+		assert: ( Percentage of: 50 ) asFraction equals: 1 / 2
+]
+
+{ #category : #'tests - converting' }
+PercentageTest >> testAsNumber [
+
+	self
+		assert: 0 percent asNumber identicalTo: 0;
+		assert: 100 percent asNumber identicalTo: 1;
+		assert: 50 percent asNumber equals: 1 / 2
+]
+
 { #category : #'tests-magnitude-API' }
 PercentageTest >> testBetweenAnd [
 

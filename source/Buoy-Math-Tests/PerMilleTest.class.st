@@ -17,6 +17,34 @@ PerMilleTest >> testAbs [
 		assert: -15 perMille abs printString equals: '15‰'
 ]
 
+{ #category : #'tests - converting' }
+PerMilleTest >> testAsFloat [
+
+	self
+		assert: 0 perMille asFloat equals: 0.0;
+		assert: 1000 perMille asFloat equals: 1.0;
+		assert: 500 perMille asFloat equals: 0.5;
+		assert: 5.0 perMille asFloat equals: 0.005
+]
+
+{ #category : #'tests - converting' }
+PerMilleTest >> testAsFraction [
+
+	self
+		assert: 0 perMille asFraction equals: 0;
+		assert: 1000 perMille asFraction equals: 1;
+		assert: 500 perMille asFraction equals: 1 / 2
+]
+
+{ #category : #'tests - converting' }
+PerMilleTest >> testAsNumber [
+
+	self
+		assert: 0 perMille asNumber identicalTo: 0;
+		assert: 1000 perMille asNumber identicalTo: 1;
+		assert: 500 perMille asNumber equals: 1 / 2
+]
+
 { #category : #'tests-magnitude-API' }
 PerMilleTest >> testBetweenAnd [
 
