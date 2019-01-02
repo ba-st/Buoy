@@ -40,8 +40,8 @@ PerMilleTest >> testAsFraction [
 PerMilleTest >> testAsNumber [
 
 	self
-		assert: 0 perMille asNumber identicalTo: 0;
-		assert: 1000 perMille asNumber identicalTo: 1;
+		assert: 0 perMille asNumber equals: 0;
+		assert: 1000 perMille asNumber equals: 1;
 		assert: 500 perMille asNumber equals: 1 / 2
 ]
 

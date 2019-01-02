@@ -40,8 +40,8 @@ PercentageTest >> testAsFraction [
 PercentageTest >> testAsNumber [
 
 	self
-		assert: 0 percent asNumber identicalTo: 0;
-		assert: 100 percent asNumber identicalTo: 1;
+		assert: 0 percent asNumber equals: 0;
+		assert: 100 percent asNumber equals: 1;
 		assert: 50 percent asNumber equals: 1 / 2
 ]
 
