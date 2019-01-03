@@ -18,7 +18,7 @@ BaselineOfBuoy >> baseline: spec [
 				baselineCollections: spec;
 				baselineConditions: spec;
 				baselineDynamicBinding: spec;
-				baselineExceptionHandlingSystem: spec;
+				baselineExceptionHandling: spec;
 				baselineMath: spec;
 				baselineMetaprogramming: spec;
 				baselineSUnit: spec;
@@ -70,13 +70,13 @@ BaselineOfBuoy >> baselineDynamicBinding: spec [
 ]
 
 { #category : #baselines }
-BaselineOfBuoy >> baselineExceptionHandlingSystem: spec [
+BaselineOfBuoy >> baselineExceptionHandling: spec [
 
 	spec
-		package: 'Buoy-Exception-Handling-System';
-		group: 'Deployment' with: 'Buoy-Exception-Handling-System';
-		package: 'Buoy-Exception-Handling-System-Tests' with: [ spec requires: 'Buoy-Exception-Handling-System' ];
-		group: 'Tests' with: 'Buoy-Exception-Handling-System-Tests'
+		package: 'Buoy-Exception-Handling';
+		group: 'Deployment' with: 'Buoy-Exception-Handling';
+		package: 'Buoy-Exception-Handling-Tests' with: [ spec requires: 'Buoy-Exception-Handling' ];
+		group: 'Tests' with: 'Buoy-Exception-Handling-Tests'
 ]
 
 { #category : #baselines }
