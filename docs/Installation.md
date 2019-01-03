@@ -44,4 +44,4 @@ baseline: spec
 - `Dependent-SUnit-Extensions` will load the extensions to the SUnit framework
 - `Tools` will load the extensions to the SUnit framework and development tools (inspector and spotter extensions)
 - `CI` is the group loaded in the continuous integration setup
-- `Development` will load all the needed packages to develop the project
+- `Development` will load all the needed packages to develop and contribute to the project

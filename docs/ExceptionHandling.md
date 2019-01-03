@@ -1,6 +1,8 @@
 # Exception handling
 
-- `on:except:do:` provides an extension to the exception handling machinery to allow handling an exception, but ignoring some subclass of it. For example:
+- `on:except:do:` provides an extension to the exception handling allowing to ignore some subclass of the exception being handled.
+
+For example:
 
 ```smalltalk
 [ 1 / 0 ] on: Error except: ZeroDivide do: [ ... ]
