@@ -22,6 +22,10 @@
 
 This library is aimed at providing a simpler way to enforce and check assertions. The main focus point is to use it in the business model. Read the [online tutorial](docs/Assertions.md).
 
+### Collections
+
+This library provides additional abstractions for Collections. See the [related documentation.](docs/Collections.md)
+
 ### Math
 
 This library provides basic arithmetic abstractions like Percentages. See the [related documentation.](docs/Math.md)
@@ -30,9 +34,17 @@ This library provides basic arithmetic abstractions like Percentages. See the [r
 
 This library provides support to express optional values and required values, that can be unknown at the beginning of an execution. See the [related documentation.](docs/BindingsAndOptionals.md)
 
-### Collections
+### Exception Handling
 
-This library provides additional abstractions for Collections. See the [related documentation.](docs/Collections.md)
+Provides extensions to the [exception handling mechanics](docs/ExceptionHandling.md).
+
+### Metaprogramming
+
+This library provides some abstractions like [namespaces](docs/Namespaces.md) and [interfaces](docs/Interfaces.md).
+
+### SUnit
+
+Provides [extensions to the SUnit framework](docs/SUnit.md).
 
 ## License
 - The code is licensed under [MIT](LICENSE).
