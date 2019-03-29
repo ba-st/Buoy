@@ -29,7 +29,7 @@ UnaryMessageSendingCollector class >> sendingAllMessagesEndingWith: aSuffix to: 
 { #category : #'Instance Creation' }
 UnaryMessageSendingCollector class >> sendingAllMessagesMatching: aFilterBlock to: aReceiver [
 
-	^ self new intializeSendingAllMessagesMatching: aFilterBlock to: aReceiver
+	^ self new initializeSendingAllMessagesMatching: aFilterBlock to: aReceiver
 ]
 
 { #category : #private }
@@ -39,7 +39,7 @@ UnaryMessageSendingCollector >> filterBlock [
 ]
 
 { #category : #initialization }
-UnaryMessageSendingCollector >> intializeSendingAllMessagesMatching: aFilterBlock to: aReceiver [
+UnaryMessageSendingCollector >> initializeSendingAllMessagesMatching: aFilterBlock to: aReceiver [
 
 	filterBlock := aFilterBlock.
 	receiver := aReceiver
