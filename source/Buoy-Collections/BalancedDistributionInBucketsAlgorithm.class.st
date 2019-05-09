@@ -83,7 +83,7 @@ BalancedDistributionInBucketsAlgorithm >> execute [
 
 	^ [ self distributeBalancedIn: self numberOfBuckets bucketsAroundOfSize: numberOfObjectsPerBucket ]
 		unless: numberOfObjectsPerBucket isInteger
-		inSuchCase: [ self distributeIn: self numberOfBuckets bucketsOfSize: numberOfObjectsPerBucket ]
+		inWhichCase: [ self distributeIn: self numberOfBuckets bucketsOfSize: numberOfObjectsPerBucket ]
 ]
 
 { #category : #initialization }

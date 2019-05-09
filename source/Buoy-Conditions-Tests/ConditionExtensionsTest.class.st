@@ -22,19 +22,19 @@ ConditionExtensionsTest >> testBlockUnless [
 ]
 
 { #category : #tests }
-ConditionExtensionsTest >> testBlockUnlessInSuchCase [
+ConditionExtensionsTest >> testBlockUnlessInWhichCase [
 
 	| collection result |
 
 	collection := #().
 
-	result := [ self fail ] unless: collection isEmpty inSuchCase: [ 0 ].
+	result := [ self fail ] unless: collection isEmpty inWhichCase: [ 0 ].
 
 	self assert: result equals: 0.
 
 	collection := #(2 3 4).
 
-	result := [ collection first ] unless: collection isEmpty inSuchCase: [ self fail ].
+	result := [ collection first ] unless: collection isEmpty inWhichCase: [ self fail ].
 
 	self assert: result equals: 2
 ]

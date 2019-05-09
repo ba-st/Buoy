@@ -81,7 +81,7 @@ CollectionFormatter >> format: aCollection on: aStream [
 			]
 		separatedBy: [ [ aStream nextPutAll: separator ]
 				unless: index = size
-				inSuchCase: [ lastSeparatorOptional
+				inWhichCase: [ lastSeparatorOptional
 						withContentDo: [ :content | aStream nextPutAll: content ]
 						ifUnused: [ aStream nextPutAll: separator ]
 					]

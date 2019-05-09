@@ -7,7 +7,7 @@ BlockClosure >> unless: aBoolean [
 ]
 
 { #category : #'*Buoy-Conditions' }
-BlockClosure >> unless: aBoolean inSuchCase: anAlternativeBlock [
+BlockClosure >> unless: aBoolean inWhichCase: anAlternativeBlock [
 
 	^ aBoolean then: anAlternativeBlock otherwise: self
 ]
