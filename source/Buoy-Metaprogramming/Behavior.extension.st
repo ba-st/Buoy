@@ -6,10 +6,6 @@ Behavior >> allLeafSubclasses [
 	| leafs |
 
 	leafs := OrderedCollection new.
-	self
-		allSubclassesDo: [ :class | 
-			class subclasses isEmpty
-				ifTrue: [ leafs add: class ]
-			].
+	self allSubclassesDo: [ :class | class subclasses ifEmpty: [ leafs add: class ] ].
 	^ leafs
 ]

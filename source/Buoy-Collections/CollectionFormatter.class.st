@@ -63,7 +63,7 @@ CollectionFormatter class >> separatingWith: aSeparator applyingToEach: anElemen
 { #category : #formatting }
 CollectionFormatter >> format: aCollection [
 
-	 ^ self format:  aCollection on: (WriteStream on: String new)
+	^ String streamContents: [ :stream | self format: aCollection on: stream ]
 ]
 
 { #category : #formatting }
@@ -77,14 +77,15 @@ CollectionFormatter >> format: aCollection on: aStream [
 	aCollection
 		do: [ :element | 
 			index := index + 1.
-			aStream nextPutAll: (elementFormatter value: element) ]
-		separatedBy: [ index = size
-				ifTrue: [ lastSeparatorOptional
-						withContentDo: [ :content | self put: content on: aStream ]
-						ifUnused: [ self put: separator on: aStream ] ]
-				ifFalse: [ self put: separator on: aStream ] ].
-
-	^ aStream contents
+			aStream nextPutAll: ( elementFormatter value: element )
+			]
+		separatedBy: [ [ aStream nextPutAll: separator ]
+				unless: index = size
+				inWhichCase: [ lastSeparatorOptional
+						withContentDo: [ :content | aStream nextPutAll: content ]
+						ifUnused: [ aStream nextPutAll: separator ]
+					]
+			]
 ]
 
 { #category : #initialization }
@@ -93,10 +94,4 @@ CollectionFormatter >> initializeSeparatingEachWith: aSeparator andOptionallyLas
 	separator := aSeparator.
 	lastSeparatorOptional := anOptional.
 	elementFormatter := aBlock
-]
-
-{ #category : #formatting }
-CollectionFormatter >> put: aSeparator on: aStream [
-
-	^ aStream nextPutAll: aSeparator
 ]

@@ -72,8 +72,8 @@ BinarySearchAlgorithm >> execute [
 	[ lowIndex <= highIndex ]
 		whileTrue: [ middleIndex := ( lowIndex + highIndex ) // 2.
 			( searchKeyBlock value: ( collection at: middleIndex ) ) <= searchKey
-				ifTrue: [ lowIndex := middleIndex + 1 ]
-				ifFalse: [ highIndex := middleIndex - 1 ]
+				then: [ lowIndex := middleIndex + 1 ]
+				otherwise: [ highIndex := middleIndex - 1 ]
 			].
 	^ lowIndex
 ]

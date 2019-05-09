@@ -28,8 +28,8 @@ AssertionCheck class >> checking: aFact onSuccess: aSuccessAction onFailure: anE
 AssertionCheck >> checkApplying: anAssertionFailurePolicy [
 
 	factToCheck value
-		ifTrue: [ successAction value: anAssertionFailurePolicy ]
-		ifFalse: [ anAssertionFailurePolicy assertionFailedBecause: self explanation ]
+		then: [ successAction value: anAssertionFailurePolicy ]
+		otherwise: [ anAssertionFailurePolicy assertionFailedBecause: self explanation ]
 ]
 
 { #category : #private }
