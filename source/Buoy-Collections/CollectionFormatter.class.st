@@ -79,15 +79,13 @@ CollectionFormatter >> format: aCollection on: aStream [
 			index := index + 1.
 			aStream nextPutAll: ( elementFormatter value: element )
 			]
-		separatedBy: [ [ self put: separator on: aStream ]
+		separatedBy: [ [ aStream nextPutAll: separator ]
 				unless: index = size
 				inSuchCase: [ lastSeparatorOptional
-						withContentDo: [ :content | self put: content on: aStream ]
-						ifUnused: [ self put: separator on: aStream ]
+						withContentDo: [ :content | aStream nextPutAll: content ]
+						ifUnused: [ aStream nextPutAll: separator ]
 					]
-			].
-
-	^ aStream contents
+			]
 ]
 
 { #category : #initialization }
@@ -96,10 +94,4 @@ CollectionFormatter >> initializeSeparatingEachWith: aSeparator andOptionallyLas
 	separator := aSeparator.
 	lastSeparatorOptional := anOptional.
 	elementFormatter := aBlock
-]
-
-{ #category : #formatting }
-CollectionFormatter >> put: aSeparator on: aStream [
-
-	^ aStream nextPutAll: aSeparator
 ]
