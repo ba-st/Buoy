@@ -2,13 +2,13 @@
 Unit test for Test Asserter
 "
 Class {
-	#name : #TestAsserterTest,
+	#name : #TestAsserterBuoyExtensionsTest,
 	#superclass : #TestCase,
 	#category : #'Buoy-SUnit-Tests'
 }
 
 { #category : #tests }
-TestAsserterTest >> testAssertIncludes [
+TestAsserterBuoyExtensionsTest >> testAssertIncludes [
 
 	| asserter |
 
@@ -19,7 +19,7 @@ TestAsserterTest >> testAssertIncludes [
 ]
 
 { #category : #tests }
-TestAsserterTest >> testAssertionFailedInRaiseWithExceptionDo [
+TestAsserterBuoyExtensionsTest >> testAssertionFailedInRaiseWithExceptionDo [
 
 	| asserter |
 
@@ -28,7 +28,7 @@ TestAsserterTest >> testAssertionFailedInRaiseWithExceptionDo [
 ]
 
 { #category : #tests }
-TestAsserterTest >> testDenyIncludes [
+TestAsserterBuoyExtensionsTest >> testDenyIncludes [
 
 	| asserter |
 
@@ -39,7 +39,7 @@ TestAsserterTest >> testDenyIncludes [
 ]
 
 { #category : #tests }
-TestAsserterTest >> testDifferentExceptionInShouldRaiseWithExceptionDo [
+TestAsserterBuoyExtensionsTest >> testDifferentExceptionInShouldRaiseWithExceptionDo [
 
 	| asserter |
 
@@ -48,7 +48,7 @@ TestAsserterTest >> testDifferentExceptionInShouldRaiseWithExceptionDo [
 ]
 
 { #category : #tests }
-TestAsserterTest >> testErrorInRaiseWithExceptionDo [
+TestAsserterBuoyExtensionsTest >> testErrorInRaiseWithExceptionDo [
 
 	| asserter |
 	asserter := TestAsserter new.
@@ -62,7 +62,7 @@ TestAsserterTest >> testErrorInRaiseWithExceptionDo [
 ]
 
 { #category : #tests }
-TestAsserterTest >> testFail [
+TestAsserterBuoyExtensionsTest >> testFail [
 
 	| asserter |
 	asserter := TestAsserter new.
@@ -72,7 +72,7 @@ TestAsserterTest >> testFail [
 ]
 
 { #category : #tests }
-TestAsserterTest >> testNoExceptionInShouldRaiseWithExceptionDo [
+TestAsserterBuoyExtensionsTest >> testNoExceptionInShouldRaiseWithExceptionDo [
 
 	| asserter |
 	asserter := TestAsserter new.
@@ -86,7 +86,7 @@ TestAsserterTest >> testNoExceptionInShouldRaiseWithExceptionDo [
 ]
 
 { #category : #tests }
-TestAsserterTest >> testShouldRaiseWithExceptionDoTest [
+TestAsserterBuoyExtensionsTest >> testShouldRaiseWithExceptionDoTest [
 
 	| asserter |
 	asserter := TestAsserter new.
@@ -100,7 +100,7 @@ TestAsserterTest >> testShouldRaiseWithExceptionDoTest [
 ]
 
 { #category : #tests }
-TestAsserterTest >> testShouldRaiseWithMessageText [
+TestAsserterBuoyExtensionsTest >> testShouldRaiseWithMessageText [
 
 	| asserter |
 	asserter := TestAsserter new.
@@ -121,7 +121,7 @@ TestAsserterTest >> testShouldRaiseWithMessageText [
 ]
 
 { #category : #tests }
-TestAsserterTest >> testWithTheOnlyOneInDo [
+TestAsserterBuoyExtensionsTest >> testWithTheOnlyOneInDo [
 
 	| asserter |
 
