@@ -166,6 +166,16 @@ BalancedDistributionInBucketsAlgorithmTest >> testComplexDistribution [
 ]
 
 { #category : #tests }
+BalancedDistributionInBucketsAlgorithmTest >> testDistributingEmptyCollection [
+
+	| buckets |
+
+	buckets := ( BalancedDistributionInBucketsAlgorithm distributing: #() maxPerBucket: 7 ) execute.
+
+	self assert: buckets isEmpty
+]
+
+{ #category : #tests }
 BalancedDistributionInBucketsAlgorithmTest >> testSimpleDistribution [
 
 	| buckets |
