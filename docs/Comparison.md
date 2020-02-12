@@ -40,6 +40,8 @@ comparison := StandardComparison differentiatingSending: #(asArray).
 comparison check: (Set with: 34) against: (Set with: 34) >>> true.
 
 ```
+
+```
 | comparison |
 
 comparison :=
