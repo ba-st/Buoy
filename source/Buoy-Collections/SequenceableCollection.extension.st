@@ -23,3 +23,16 @@ SequenceableCollection >> copyNoMoreThanLast: n [
 
 	^ self copyLast: ( n min: self size )
 ]
+
+{ #category : #'*Buoy-Collections' }
+SequenceableCollection >> withoutFirst [
+
+	^self withoutFirst: 1
+]
+
+{ #category : #'*Buoy-Collections' }
+SequenceableCollection >> withoutFirst: n [
+
+	(self size <= n) ifTrue: [^self species new].
+	^self copyFrom: n + 1 to: self size
+]

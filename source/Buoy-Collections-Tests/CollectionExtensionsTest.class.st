@@ -63,3 +63,15 @@ CollectionExtensionsTest >> testMinUsing [
 	self assert: ( #(#(3 1) #(1) #(2)) minUsing: [ :anArray | anArray first ] ) equals: 1.
 	self should: [ #() minUsing: [ :anArray | anArray first ] ] raise: Error
 ]
+
+{ #category : #'tests - copying' }
+CollectionExtensionsTest >> testWithoutFirst [
+
+	self
+		assert: #(p r u e b a) withoutFirst equals: #(r u e b a);
+		assert: (#(p r u e b a) withoutFirst: 0) equals: #(p r u e b a);
+		assert: (#(p r u e b a) withoutFirst: 1) equals: #(r u e b a);
+		assert: (#(p r u e b a) withoutFirst: 20) isEmpty;
+		assert: (#(p r u e b a) withoutFirst: 6) isEmpty;
+		assert: (#(p r u e b a) withoutFirst: 2) equals: #(u e b a)
+]
