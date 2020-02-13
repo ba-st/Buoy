@@ -34,14 +34,14 @@ comparison check: (Set with: 11) against: (Set with: 22) >>> true.
 comparison check: (Set with: 11) against: (OrderedCollection with: 11) >>> false.
 ```
 
-```
+```smalltalk
 | comparison |
-comparison := StandardComparison differentiatingSending: #(asArray).
-comparison check: (Set with: 34) against: (Set with: 34) >>> true.
-
+comparison := StandardComparison differentiatingSending: #(abs).
+comparison check: 1 against: -1 >>> true.
+comparison check: 1 against: 2 >>> false.
 ```
 
-```
+```smalltalk
 | comparison |
 
 comparison :=
@@ -49,4 +49,5 @@ StandardComparison differentiatingThrough: [:oneObject :anotherObject |
 oneObject asArray = anotherObject asArray].
 
 comparison check: (Set with: 34) against: (Set with: 34) >>> true.
+comparison check: (Set with: 34) against: (Set with: 33) >>> false.
 ```
