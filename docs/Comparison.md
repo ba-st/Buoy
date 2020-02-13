@@ -1,12 +1,12 @@
 # Comparison
 
-This package includes classes to comparing objects both for equality and for identity. They are typically used to implement the `=` and `hash` methods.
+This package includes classes to compare objects both for equality and identity. They are typically used to implement the `=` and `hash` methods.
 
 ## `ExclusiveLogicalOr` 
-It builds an exclusive or with all arguments. There are three ways of using it: 
-- `ofAll:` : it execute a `bitXor:` of each element. It will fail if the collection is empty.
-- `ofHashesOfAll::` : it execute a hash and then `bitXor:` of each element. It will fail if the collection is empty.
-- `collecting: aBlock ofAll: anObjectCollection` : it collects the `aBlock:` of all elements and then execute a `bitor:` of each element. It will fail if the collection is empty.
+It builds an exclusive or between all its arguments. There are three ways of using it: 
+- `ofAll:` : executes a `bitXor:` iterating over the elements. It will fail if the collection is empty.
+- `ofHashesOfAll::` : executes a hash and then `bitXor:` iterating over the elements. It will fail if the collection is empty.
+- `collecting: aBlock ofAll: anObjectCollection` : collects the `aBlock:` of all elements and then executes `bitXor:` iterating over the results. It will fail if the collection is empty.
 
 Some examples
 
@@ -19,10 +19,10 @@ Some examples
 ```
 
 ## `StandardComparison`
-It eases the implementation of comparison for equality of objects. Comparison instance can be build in different ways:
+It eases the implementation of comparison for equality of objects. Instances can be built in different ways:
 
-- `StandardComparison differentiatingType`: it will only compare `==` or if an object isKindOf anotherObject. 
-- `StandardComparison differentiatingSending: aSelectorsCollection`: it will compare `==` or if an object isKindOf anotherObject. Then evaluate comparison of all selectors of boths objects.
+- `StandardComparison differentiatingType`: compares for identity (`==`) or if an object `isKindOf` anotherObject. 
+- `StandardComparison differentiatingSending: aSelectorsCollection`: compares for identity (`==`), or if an object `isKindOf` anotherObject and all selectors are equal for both objects.
 - `StandardComparison differentiatingThrough: aBlock`: it will compare `==` or if an object isKindOf anotherObject. Then evaluate comparison using aBlock of boths objects.
 
 Some examples
