@@ -11,42 +11,43 @@ Class {
 CollectionExtensionsTest >> testCopyFirst [
 
 	self
-		assert: ( #(p r u e b a) copyFirst: 0 ) isEmpty;
-		assert: ( #(p r u e b a) copyFirst: 2 ) equals: #(p r);
-		assert: ( #(p r u e b a) copyFirst: 6 ) equals: #(p r u e b a).
+		assert: ( #(a b c d e f) copyFirst: 0 ) isEmpty;
+		assert: ( #(a b c d e f) copyFirst: 2 ) equals: #(a b);
+		assert: ( #(a b c d e f) copyFirst: 6 ) equals: #(a b c d e f).
 
-	self should: [ #(p r u e b a) copyFirst: 7 ] raise: Error
+	self should: [ #(a b c d e f) copyFirst: 7 ] raise: Error
 ]
 
 { #category : #'tests - copying' }
 CollectionExtensionsTest >> testCopyLast [
 
 	self
-		assert: ( #(p r u e b a) copyLast: 0 ) isEmpty;
-		assert: ( #(p r u e b a) copyLast: 2 ) equals: #(b a);
-		assert: ( #(p r u e b a) copyLast: 6 ) equals: #(p r u e b a).
+		assert: ( #(a b c d e f) copyLast: 0 ) isEmpty;
+		assert: ( #(a b c d e f) copyLast: 2 ) equals: #(e f);
+		assert: ( #(a b c d e f) copyLast: 6 ) equals: #(a b c d e f).
 
-	self should: [ #(p r u e b a) copyLast: 7 ] raise: Error
+	self should: [ #(a b c d e f) copyLast: 7 ] raise: Error
 ]
 
 { #category : #'tests - copying' }
 CollectionExtensionsTest >> testCopyNoMoreThanFirst [
 
 	self
-		assert: ( #(p r u e b a) copyNoMoreThanFirst: 0 ) isEmpty;
-		assert: ( #(p r u e b a) copyNoMoreThanFirst: 2 ) equals: #(p r);
-		assert: ( #(p r u e b a) copyNoMoreThanFirst: 20 ) equals: #(p r u e b a);
-		assert: ( #(p r u e b a) copyNoMoreThanFirst: 6 ) equals: #(p r u e b a)
+		assert: ( #(a b c d e f) copyNoMoreThanFirst: 0 ) isEmpty;
+		assert: ( #(a b c d e f) copyNoMoreThanFirst: 2 ) equals: #(a b);
+		assert: ( #(a b c d e f) copyNoMoreThanFirst: 6 ) equals: #(a b c d e f);
+		assert: ( #(a b c d e f) copyNoMoreThanFirst: 20 ) equals: #(a b c d e f)
 ]
 
 { #category : #'tests - copying' }
 CollectionExtensionsTest >> testCopyNoMoreThanLast [
 
 	self
-		assert: ( #(p r u e b a) copyNoMoreThanLast: 0 ) isEmpty;
-		assert: ( #(p r u e b a) copyNoMoreThanLast: 2 ) equals: #(b a);
-		assert: ( #(p r u e b a) copyNoMoreThanLast: 20 ) equals: #(p r u e b a);
-		assert: ( #(p r u e b a) copyNoMoreThanLast: 6 ) equals: #(p r u e b a)
+		assert: ( #(a b c d e f) copyNoMoreThanLast: 0 ) isEmpty;
+		assert: ( #(a b c d e f) copyNoMoreThanLast: 2 ) equals: #(e f);
+		assert: ( #(a b c d e f) copyNoMoreThanLast: 6 ) equals: #(a b c d e f);
+		assert: ( #(a b c d e f) copyNoMoreThanLast: 20 ) equals: #(a b c d e f)
+
 ]
 
 { #category : #tests }
@@ -68,10 +69,10 @@ CollectionExtensionsTest >> testMinUsing [
 CollectionExtensionsTest >> testWithoutFirst [
 
 	self
-		assert: #(p r u e b a) withoutFirst equals: #(r u e b a);
-		assert: (#(p r u e b a) withoutFirst: 0) equals: #(p r u e b a);
-		assert: (#(p r u e b a) withoutFirst: 1) equals: #(r u e b a);
-		assert: (#(p r u e b a) withoutFirst: 20) isEmpty;
-		assert: (#(p r u e b a) withoutFirst: 6) isEmpty;
-		assert: (#(p r u e b a) withoutFirst: 2) equals: #(u e b a)
+		assert: #(a b c d e f) withoutFirst equals: #(b c d e f);
+		assert: ( #(a b c d e f) withoutFirst: 0 ) equals: #(a b c d e f);
+		assert: ( #(a b c d e f) withoutFirst: 1 ) equals: #(b c d e f);
+		assert: ( #(a b c d e f) withoutFirst: 2 ) equals: #(c d e f);
+		assert: ( #(a b c d e f) withoutFirst: 6 ) isEmpty;
+		assert: ( #(a b c d e f) withoutFirst: 20 ) isEmpty
 ]
