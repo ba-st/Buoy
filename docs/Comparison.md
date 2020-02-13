@@ -19,7 +19,7 @@ Some examples
 ```
 
 ## `StandardComparison`
-It allows to execute a comparison of objects. Comparison instance can be build in different ways:
+It eases the implementation of comparison for equality of objects. Comparison instance can be build in different ways:
 
 - `StandardComparison differentiatingType`: it will only compare `==` or if an object isKindOf anotherObject. 
 - `StandardComparison differentiatingSending: aSelectorsCollection`: it will compare `==` or if an object isKindOf anotherObject. Then evaluate comparison of all selectors of boths objects.
@@ -50,6 +50,5 @@ oneObject asArray = anotherObject asArray].
 
 comparison check: (Set with: 34) against: (Set with: 34) >>> true.
 ```
-
 
 
