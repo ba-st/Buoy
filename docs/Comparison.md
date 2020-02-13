@@ -3,7 +3,7 @@
 This package include classes for comparing objects and generating hash. These classes can be use to define `=` or `hash`.
 
 ## `ExclusiveLogicalOr` 
-It builds logical or of all arguments. There are three ways of using it: 
+It builds an exclusive or with all arguments. There are three ways of using it: 
 - `ofAll:` : it execute a `bitXor:` of each element. It will fail if the collection is empty.
 - `ofHashesOfAll::` : it execute a hash and then `bitXor:` of each element. It will fail if the collection is empty.
 - `collecting: aBlock ofAll: anObjectCollection` : it collects the `aBlock:` of all elements and then execute a `bitor:` of each element. It will fail if the collection is empty.
@@ -50,5 +50,4 @@ oneObject asArray = anotherObject asArray].
 
 comparison check: (Set with: 34) against: (Set with: 34) >>> true.
 ```
-
 
