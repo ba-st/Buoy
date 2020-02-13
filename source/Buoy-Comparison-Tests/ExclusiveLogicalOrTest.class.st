@@ -10,7 +10,7 @@ ExclusiveLogicalOrTest >> testComputeOnEmptyCollectionShouldRaiseError [
 	self
 		should: [ ExclusiveLogicalOr ofAll: #() ]
 		raise: AssertionFailed
-		withMessageText: 'Se requieren más de dos operandos para calcular el xor'
+		withMessageText: 'At least 2 operands are required to compute the Logical Or'
 ]
 
 { #category : #tests }

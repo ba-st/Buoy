@@ -23,7 +23,7 @@ It eases the implementation of comparison for equality of objects. Instances can
 
 - `StandardComparison differentiatingType`: compares for identity (`==`) or if an object `isKindOf` anotherObject. 
 - `StandardComparison differentiatingSending: aSelectorsCollection`: compares for identity (`==`), or if an object `isKindOf` anotherObject and all selectors are equal for both objects.
-- `StandardComparison differentiatingThrough: aBlock`: it will compare `==` or if an object isKindOf anotherObject. Then evaluate comparison using aBlock of boths objects.
+- `StandardComparison differentiatingThrough: aBlock`: compares for identity (`==`), or if an object `isKindOf` anotherObject and the block returns true when applied to both objects.
 
 Some examples
 
@@ -31,7 +31,7 @@ Some examples
 |comparison|
 comparison := StandardComparison differentiatingType.
 comparison check: (Set with: 11) against: (Set with: 22) >>> true.
-comparison check: (Set with: 11) against: (OrderedCollection with: 22) >>> false.
+comparison check: (Set with: 11) against: (OrderedCollection with: 11) >>> false.
 ```
 
 ```

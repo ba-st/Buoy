@@ -16,7 +16,7 @@ ExclusiveLogicalOr class >> ofAll: anObjectCollection [
 	anObjectCollection isEmpty
 		ifTrue: [
 			AssertionFailed 
-				signal: 'Se requieren más de dos operandos para calcular el xor'].
+				signal: 'At least 2 operands are required to compute the Logical Or'].
 
 	^anObjectCollection withoutFirst
 		inject: anObjectCollection first
