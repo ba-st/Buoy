@@ -1,6 +1,6 @@
 # Comparison
 
-This package include classes for comparing objects and generating hash. These classes can be use to define `=` or `hash`.
+This package includes classes to comparing objects both for equality and for identity. They are typically used to implement the `=` and `hash` methods.
 
 ## `ExclusiveLogicalOr` 
 It builds an exclusive or with all arguments. There are three ways of using it: 
@@ -50,4 +50,3 @@ oneObject asArray = anotherObject asArray].
 
 comparison check: (Set with: 34) against: (Set with: 34) >>> true.
 ```
-
