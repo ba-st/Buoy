@@ -16,7 +16,7 @@ For example:
 ```
 [self createLabelFor: aParameter] unless: aParameter isOptional
       inWhichCase: [self createOptionalWidgetsFor: aParameter].
-      ```
+```
 
 ## Conditions
 

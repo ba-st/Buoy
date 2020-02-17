@@ -20,6 +20,8 @@ Some examples
 - `copyLast:` Copy the last `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will raise an Error.
 - `copyNoMoreThanFirst:` Copy at max the first `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will return the whole collection.
 - `copyNoMoreThanLast:` Copy at max the last `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will return the whole collection.
+- `withoutFirst` Copy the collection excluding the first element. If the collection is empty it will return an empty collection.
+- `withoutFirst:` Copy the collection excluding the first `n` elements of it. If `n` is 0 it will return the same collection. If `n` is greater than the collection size it will return an empty collection.
 
 Some examples
 
@@ -39,6 +41,13 @@ Some examples
 #( a b c d e f ) copyNoMoreThanLast: 0 >>> #()
 #( a b c d e f ) copyNoMoreThanLast: 3 >>> #( d e f )
 #( a b c d e f ) copyNoMoreThanLast: 7 >>> #( a b c d e f )
+
+#( a b c d e f ) withoutFirst >>> #(b c d e f)
+#() withoutFirst >>> #()
+#( a b c d e f ) withoutFirst: 0 >>> #( a b c d e f )
+#( a b c d e f ) withoutFirst: 3 >>> #( d e f )
+#( a b c d e f ) withoutFirst: 7 >>> #()
+
 ```
 
 ## Circular Iterator

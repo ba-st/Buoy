@@ -17,6 +17,7 @@ BaselineOfBuoy >> baseline: spec [
 				baselineAssertions: spec;
 				baselineCollections: spec;
 				baselineConditions: spec;
+				baselineComparison: spec;
 				baselineDynamicBinding: spec;
 				baselineExceptionHandling: spec;
 				baselineMath: spec;
@@ -48,6 +49,17 @@ BaselineOfBuoy >> baselineCollections: spec [
 		group: 'Deployment' with: 'Buoy-Collections';
 		package: 'Buoy-Collections-Tests' with: [ spec requires: #('Buoy-Collections' 'Dependent-SUnit-Extensions') ];
 		group: 'Tests' with: 'Buoy-Collections-Tests'
+]
+
+{ #category : #baselines }
+BaselineOfBuoy >> baselineComparison: spec [
+
+	spec
+		package: 'Buoy-Comparison' with: [ spec requires: #('Buoy-Assertions' 'Buoy-Collections') ];
+		group: 'Deployment' with: 'Buoy-Comparison';
+		package: 'Buoy-Comparison-Tests'
+			with: [ spec requires: #('Buoy-Comparison' 'Dependent-SUnit-Extensions') ];
+		group: 'Tests' with: 'Buoy-Comparison-Tests'
 ]
 
 { #category : #baselines }

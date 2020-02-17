@@ -29,6 +29,10 @@ This library is aimed at providing a simpler way to enforce and check assertions
 
 This library provides additional abstractions for Collections. See the [related documentation.](docs/Collections.md)
 
+### Comparison
+
+This  library provides support to compare objects both for equality and identity. They are typically used to implement the = and hash methods. See the [related documentation.](docs/Comparison.md)
+
 ### Math
 
 This library provides basic arithmetic abstractions like Percentages. See the [related documentation.](docs/Math.md)
