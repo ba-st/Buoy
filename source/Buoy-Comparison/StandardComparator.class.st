@@ -1,5 +1,5 @@
 Class {
-	#name : #StandardComparison,
+	#name : #StandardComparator,
 	#superclass : #Object,
 	#instVars : [
 		'differentiationBlock'
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-StandardComparison class >> differentiatingSending: aSelectorsCollection [
+StandardComparator class >> differentiatingSending: aSelectorsCollection [
 
 	^aSelectorsCollection isEmpty
 		ifTrue: [self differentiatingType]
@@ -19,13 +19,13 @@ StandardComparison class >> differentiatingSending: aSelectorsCollection [
 ]
 
 { #category : #'instance creation' }
-StandardComparison class >> differentiatingThrough: aBlock [
+StandardComparator class >> differentiatingThrough: aBlock [
 
 	^self new initializeDifferentiatingThrough: aBlock
 ]
 
 { #category : #'instance creation' }
-StandardComparison class >> differentiatingType [
+StandardComparator class >> differentiatingType [
 
 	^self differentiatingThrough: [:anObject :anotherObject | true]
 
@@ -33,7 +33,7 @@ StandardComparison class >> differentiatingType [
 ]
 
 { #category : #Testing }
-StandardComparison >> check: anObject against: anotherObject [
+StandardComparator >> check: anObject against: anotherObject [
 
 	^anObject == anotherObject or: [
 		(anotherObject isA: anObject class)
@@ -41,7 +41,7 @@ StandardComparison >> check: anObject against: anotherObject [
 ]
 
 { #category : #initialization }
-StandardComparison >> initializeDifferentiatingThrough: aBlock [
+StandardComparator >> initializeDifferentiatingThrough: aBlock [
 
 	differentiationBlock := aBlock
 ]
