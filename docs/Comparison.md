@@ -18,36 +18,36 @@ Some examples
  ExclusiveLogicalOr ofHashesOfAll: #('alpha' 'beta' 'gamma') >>> (( 'alpha' hash bitXor: 'beta' hash ) bitXor: 'gamma' hash ) 
 ```
 
-## `StandardComparison`
+## `StandardComparator`
 It eases the implementation of comparison for equality of objects. Instances can be built in different ways:
 
-- `StandardComparison differentiatingType`: compares for identity (`==`) or if an object `isKindOf` anotherObject. 
-- `StandardComparison differentiatingSending: aSelectorsCollection`: compares for identity (`==`), or if an object `isKindOf` anotherObject and all selectors are equal for both objects.
-- `StandardComparison differentiatingThrough: aBlock`: compares for identity (`==`), or if an object `isKindOf` anotherObject and the block returns true when applied to both objects.
+- `StandardComparator differentiatingType`: compares for identity (`==`) or if an object `isKindOf` anotherObject. 
+- `StandardComparator differentiatingSending: aSelectorsCollection`: compares for identity (`==`), or if an object `isKindOf` anotherObject and all selectors are equal for both objects.
+- `StandardComparator differentiatingThrough: aBlock`: compares for identity (`==`), or if an object `isKindOf` anotherObject and the block returns true when applied to both objects.
 
 Some examples
 
 ```smalltalk
-|comparison|
-comparison := StandardComparison differentiatingType.
-comparison check: (Set with: 11) against: (Set with: 22) >>> true.
-comparison check: (Set with: 11) against: (OrderedCollection with: 11) >>> false.
+|comparator|
+comparator := StandardComparator differentiatingType.
+comparator check: (Set with: 11) against: (Set with: 22) >>> true.
+comparator check: (Set with: 11) against: (OrderedCollection with: 11) >>> false.
 ```
 
 ```smalltalk
-| comparison |
-comparison := StandardComparison differentiatingSending: #(abs).
-comparison check: 1 against: -1 >>> true.
-comparison check: 1 against: 2 >>> false.
+| comparator |
+comparator := StandardComparator differentiatingSending: #(abs).
+comparator check: 1 against: -1 >>> true.
+comparator check: 1 against: 2 >>> false.
 ```
 
 ```smalltalk
-| comparison |
+| comparator |
 
-comparison :=
-StandardComparison differentiatingThrough: [:oneObject :anotherObject |
+comparator :=
+StandardComparator differentiatingThrough: [:oneObject :anotherObject |
 oneObject asArray = anotherObject asArray].
 
-comparison check: (Set with: 34) against: (Set with: 34) >>> true.
-comparison check: (Set with: 34) against: (Set with: 33) >>> false.
+comparator check: (Set with: 34) against: (Set with: 34) >>> true.
+comparator check: (Set with: 34) against: (Set with: 33) >>> false.
 ```
