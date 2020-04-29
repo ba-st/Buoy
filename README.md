@@ -13,8 +13,8 @@
 </p>
 
 [![GitHub release](https://img.shields.io/github/release/ba-st/Buoy.svg)](https://github.com/ba-st/Buoy/releases/latest)
-[![Build Status](https://travis-ci.org/ba-st/Buoy.svg?branch=release-candidate)](https://travis-ci.org/ba-st/Buoy)
-[![Coverage Status](https://coveralls.io/repos/github/ba-st/Buoy/badge.svg?branch=release-candidate)](https://coveralls.io/github/ba-st/Buoy?branch=release-candidate)
+[![Build Status](https://github.com/ba-st/Buoy/workflows/Build/badge.svg)](https://github.com/ba-st/Buoy/workflows/Build)
+[![Coverage Status](https://codecov.io/github/ba-st/Buoy/coverage.svg?branch=release-candidate)](https://codecov.io/gh/ba-st/Buoy/branch/release-candidate)
 [![Pharo 6.1](https://img.shields.io/badge/Pharo-6.1-informational)](https://pharo.org)
 [![Pharo 7.0](https://img.shields.io/badge/Pharo-7.0-informational)](https://pharo.org)
 [![Pharo 8.0](https://img.shields.io/badge/Pharo-8.0-informational)](https://pharo.org)
