@@ -71,6 +71,21 @@ NamespaceTest >> testBindTo [
 ]
 
 { #category : #'tests-binding' }
+NamespaceTest >> testBindToOnlyWorksForSymbols [
+
+	| namespace |
+
+	namespace := Namespace new.
+	self assert: namespace names isEmpty.
+
+	self
+		should: [ namespace bind: 'Zero' to: 0 ]
+		raise: AssertionFailed
+		withDescription: 'Only symbols can be bound. ''Zero'' is not valid'.
+	self assert: namespace names isEmpty
+]
+
+{ #category : #'tests-binding' }
 NamespaceTest >> testCantBindToAlreadyUsedName [
 
 	| namespace |
@@ -110,6 +125,21 @@ NamespaceTest >> testRebindTo [
 
 	namespace rebind: #One to: 1.
 	self assert: namespace >> #One equals: 1
+]
+
+{ #category : #'tests-binding' }
+NamespaceTest >> testRebindToOnlyWorksForSymbols [
+
+	| namespace |
+
+	namespace := Namespace new.
+	self assert: namespace names isEmpty.
+
+	self
+		should: [ namespace rebind: 'Zero' to: 0 ]
+		raise: AssertionFailed
+		withDescription: 'Only symbols can be bound. ''Zero'' is not valid'.
+	self assert: namespace names isEmpty
 ]
 
 { #category : #'tests-binding' }
