@@ -81,7 +81,7 @@ NamespaceTest >> testBindToOnlyWorksForSymbols [
 	self
 		should: [ namespace bind: 'Zero' to: 0 ]
 		raise: AssertionFailed
-		withDescription: 'Only symbols can be bound. ''Zero'' is not valid'.
+		withMessageText: 'Only symbols can be bound. ''Zero'' is not valid'.
 	self assert: namespace names isEmpty
 ]
 
