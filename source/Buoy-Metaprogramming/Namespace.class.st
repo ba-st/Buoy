@@ -19,9 +19,9 @@ Namespace >> >> aName [
 { #category : #'private - preconditions' }
 Namespace >> assertIsSymbol: aSymbol [
 
-	aSymbol isSymbol
-		ifFalse: [ AssertionFailed
-				signal: ( 'Only symbols can be bound. <1p> is not valid' expandMacrosWith: aSymbol ) ]
+	AssertionChecker 
+		enforce: [ aSymbol isSymbol] 
+		because: [ 'Only symbols can be bound. <1p> is not valid' expandMacrosWith: aSymbol ]
 ]
 
 { #category : #accessing }
