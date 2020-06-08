@@ -16,6 +16,14 @@ Namespace >> >> aName [
 	^ self at: aName
 ]
 
+{ #category : #'private - preconditions' }
+Namespace >> assertIsSymbol: aSymbol [
+
+	AssertionChecker 
+		enforce: [ aSymbol isSymbol] 
+		because: [ 'Only symbols can be bound. <1p> is not valid' expandMacrosWith: aSymbol ]
+]
+
 { #category : #accessing }
 Namespace >> at: aName [
 
@@ -31,9 +39,11 @@ Namespace >> at: aName ifAbsent: aBlock [
 { #category : #binding }
 Namespace >> bind: aSymbol to: anObject [
 
+	self assertIsSymbol: aSymbol.
 	bindings
 		at: aSymbol
-		ifPresent: [ ConflictingObjectFound signal: ('<1s> is already bound to some object.' expandMacrosWith: aSymbol) ]
+		ifPresent: [ ConflictingObjectFound
+				signal: ( '<1s> is already bound to some object.' expandMacrosWith: aSymbol ) ]
 		ifAbsentPut: anObject
 ]
 
@@ -53,6 +63,7 @@ Namespace >> names [
 { #category : #binding }
 Namespace >> rebind: aSymbol to: anObject [
 
+	self assertIsSymbol: aSymbol.
 	bindings at: aSymbol put: anObject
 ]
 
