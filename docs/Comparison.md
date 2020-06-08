@@ -3,7 +3,7 @@
 This package includes classes to ease the comparison of objects both for equality and identity. They are typically used to implement the `=` and `hash` methods.
 
 ## Hash Combinators
-Hash combinators help to implement the `hash` or `identityHash` methods by providing an easy way to combine hashes. Any object can send to himself the `equalityHashCombinator` message and then use it to calculate the combined hash value. The default equality hash combinator uses bitXor operations, but any object can override it and provide a more specific policy.
+Hash combinators help to implement the `hash` or `identityHash` methods by providing an easy way to combine hashes. Any object can send to itself the `equalityHashCombinator` message and then use it to calculate the combined hash value. The default equality hash combinator uses bitXor operations, but any object can override this default behavior and provide a more specific policy.
 
 It will apply the combinator operator to each one of the objects:
 - `combineHashesOfAll:` will send the hash message to every object in the collection and then combine them.
