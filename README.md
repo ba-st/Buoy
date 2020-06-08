@@ -31,7 +31,7 @@ This library provides additional abstractions for Collections. See the [related 
 
 ### Comparison
 
-This  library provides support to compare objects both for equality and identity. They are typically used to implement the = and hash methods. See the [related documentation.](docs/Comparison.md)
+This  library provides support to compare objects both for equality and identity. They are typically used to implement the `=` and `hash` methods. See the [related documentation.](docs/Comparison.md)
 
 ### Math
 

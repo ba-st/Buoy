@@ -1,27 +1,32 @@
 # Comparison
 
-This package includes classes to compare objects both for equality and identity. They are typically used to implement the `=` and `hash` methods.
+This package includes classes to ease the comparison of objects both for equality and identity. They are typically used to implement the `=` and `hash` methods.
 
-## `ExclusiveLogicalOr` 
-It builds an exclusive or between all its arguments. There are three ways of using it: 
-- `ofAll:` : executes a `bitXor:` iterating over the elements. It will fail if the collection is empty.
-- `ofHashesOfAll::` : executes a hash and then `bitXor:` iterating over the elements. It will fail if the collection is empty.
-- `collecting: aBlock ofAll: anObjectCollection` : collects the `aBlock:` of all elements and then executes `bitXor:` iterating over the results. It will fail if the collection is empty.
+## Hash Combinators
+Hash combinators help to implement the `hash` or `identityHash` methods by providing an easy way to combine hashes. Any object can send to himself the `equalityHashCombinator` message and then use it to calculate the combined hash value. The default equality hash combinator uses bitXor operations, but any object can override it and provide a more specific policy.
 
-Some examples
+It will apply the combinator operator to each one of the objects:
+- `combineHashesOfAll:` will send the hash message to every object in the collection and then combine them.
+- `combineHashOf:with:` will send the hash message to the two objects and then combine them.
+- `combineAll::` expectes a collection of hashes and will combine them.
+- `combine:with:` will combine two hash values
+
+### Examples
 
 ```smalltalk
- ExclusiveLogicalOr ofAll: #(2 5 6)  >>>  ( ( 2 bitXor: 5 ) bitXor: 6 )
- ExclusiveLogicalOr ofAll: #(100 0 4 50) >>> ( ( ( 100 bitXor: 50 ) bitXor: 4 ) bitXor: 0 )
- 
- ExclusiveLogicalOr collecting: #hash ofAll: #('alpha' 'beta' 'gamma') >>> (( 'alpha' hash bitXor: 'beta' hash ) bitXor: 'gamma' hash )
- ExclusiveLogicalOr ofHashesOfAll: #('alpha' 'beta' 'gamma') >>> (( 'alpha' hash bitXor: 'beta' hash ) bitXor: 'gamma' hash ) 
+hash
+
+  ^ self equalityHashCombinator combineAll: #(2 5 6)
+
+hash
+
+  ^ self equalityHashCombinator combineHashesOfAll: { alpha. beta. gamma }
 ```
 
 ## `StandardComparator`
 It eases the implementation of comparison for equality of objects. Instances can be built in different ways:
 
-- `StandardComparator differentiatingType`: compares for identity (`==`) or if an object `isKindOf` anotherObject. 
+- `StandardComparator differentiatingType`: compares for identity (`==`) or if an object `isKindOf` anotherObject.
 - `StandardComparator differentiatingSending: aSelectorsCollection`: compares for identity (`==`), or if an object `isKindOf` anotherObject and all selectors are equal for both objects.
 - `StandardComparator differentiatingThrough: aBlock`: compares for identity (`==`), or if an object `isKindOf` anotherObject and the block returns true when applied to both objects.
 
