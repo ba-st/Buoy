@@ -4,7 +4,7 @@ A CircularIteratorTest is a test class for testing the behavior of CircularItera
 Class {
 	#name : #CircularIteratorTest,
 	#superclass : #TestCase,
-	#category : 'Buoy-Collections-Tests'
+	#category : #'Buoy-Collections-Tests'
 }
 
 { #category : #'tests-accessing' }
@@ -40,12 +40,11 @@ CircularIteratorTest >> testIncludes [
 	| iterator |
 
 	iterator := CircularIterator cyclingOver: #(1 2 3).
-
 	self
-		assert: (iterator includes: 1);
-		assert: (iterator includes: 2);
-		assert: (iterator includes: 3);
-		deny: (iterator includes: 4)
+		assert: iterator includes: 1;
+		assert: iterator includes: 2;
+		assert: iterator includes: 3;
+		deny: iterator includes: 4
 ]
 
 { #category : #'tests-accessing' }

@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'arguments'
 	],
-	#category : 'Buoy-Metaprogramming-Tests'
+	#category : #'Buoy-Metaprogramming-Tests'
 }
 
 { #category : #initialization }
@@ -24,7 +24,7 @@ KeywordMessageSendingCollectorTest >> testValue [
 
 	self
 		assert: arguments size equals: 1;
-		assert: (arguments includes: 1)
+		assert: arguments includes: 1
 ]
 
 { #category : #private }

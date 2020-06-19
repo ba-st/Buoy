@@ -4,7 +4,7 @@ An OptionalTest is a test class for testing the behavior of Optional
 Class {
 	#name : #OptionalTest,
 	#superclass : #TestCase,
-	#category : 'Buoy-Dynamic-Binding-Tests'
+	#category : #'Buoy-Dynamic-Binding-Tests'
 }
 
 { #category : #private }
@@ -21,10 +21,10 @@ OptionalTest >> testEqualsWhenUnused [
 	optional := Optional unused.
 	self
 		assert: optional equals: optional;
-		deny: optional = (Optional containing: 'content');
-		deny: (Optional containing: 'content') = optional;
-		deny: optional = (Optional containing: 1);
-		deny: (Optional containing: 1) = optional;
+		deny: optional equals: ( Optional containing: 'content' );
+		deny: ( Optional containing: 'content' ) equals: optional;
+		deny: optional equals: ( Optional containing: 1 );
+		deny: ( Optional containing: 1 ) equals: optional;
 		assert: optional equals: Optional unused;
 		assert: Optional unused equals: optional
 ]
@@ -37,12 +37,12 @@ OptionalTest >> testEqualsWhenUsed [
 	optional := Optional containing: 1.
 	self
 		assert: optional equals: optional;
-		deny: optional = (Optional containing: 'content');
-		deny: (Optional containing: 'content') = optional;
-		assert: optional equals: (Optional containing: 1);
-		assert: (Optional containing: 1) equals: optional;
-		deny: optional = Optional unused;
-		deny: Optional unused = optional
+		deny: optional equals: ( Optional containing: 'content' );
+		deny: ( Optional containing: 'content' ) equals: optional;
+		assert: optional equals: ( Optional containing: 1 );
+		assert: ( Optional containing: 1 ) equals: optional;
+		deny: optional equals: Optional unused;
+		deny: Optional unused equals: optional
 ]
 
 { #category : #'tests-comparing' }
@@ -52,9 +52,9 @@ OptionalTest >> testHash [
 
 	optional := Optional containing: 1.
 	self
-		assert: optional hash equals: (Optional containing: 1) hash;
-		deny: optional hash = (Optional containing: 'content') hash;
-		deny: optional hash = Optional unused hash;
+		assert: optional hash equals: ( Optional containing: 1 ) hash;
+		deny: optional hash equals: ( Optional containing: 'content' ) hash;
+		deny: optional hash equals: Optional unused hash;
 		assert: Optional unused hash equals: Optional unused hash
 ]
 

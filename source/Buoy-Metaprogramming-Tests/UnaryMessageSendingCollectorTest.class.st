@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'messagesSent'
 	],
-	#category : 'Buoy-Metaprogramming-Tests'
+	#category : #'Buoy-Metaprogramming-Tests'
 }
 
 { #category : #private }
@@ -20,33 +20,36 @@ UnaryMessageSendingCollectorTest >> setUp [
 { #category : #'tests-evaluating' }
 UnaryMessageSendingCollectorTest >> testValue [
 
-	(UnaryMessageSendingCollector sendingAllMessagesBeginningWith: 'zzzTest' andEndingWith: 'Test' to: self) value.
+	( UnaryMessageSendingCollector
+		sendingAllMessagesBeginningWith: 'zzzTest'
+		andEndingWith: 'Test'
+		to: self ) value.
 
 	self
 		assert: messagesSent size equals: 1;
-		assert: (messagesSent includes: #zzzTest)
+		assert: messagesSent includes: #zzzTest
 ]
 
 { #category : #'tests-evaluating' }
 UnaryMessageSendingCollectorTest >> testValueWithPrefix [
 
-	(UnaryMessageSendingCollector sendingAllMessagesBeginningWith: 'zzzTest' to: self) value.
+	( UnaryMessageSendingCollector sendingAllMessagesBeginningWith: 'zzzTest' to: self ) value.
 
 	self
 		assert: messagesSent size equals: 2;
-		assert: (messagesSent includes: #zzzTest);
-		assert: (messagesSent includes: #zzzTest2)
+		assert: messagesSent includes: #zzzTest;
+		assert: messagesSent includes: #zzzTest2
 ]
 
 { #category : #'tests-evaluating' }
 UnaryMessageSendingCollectorTest >> testValueWithSuffix [
 
-	(UnaryMessageSendingCollector sendingAllMessagesEndingWith: 'Test2' to: self) value.
+	( UnaryMessageSendingCollector sendingAllMessagesEndingWith: 'Test2' to: self ) value.
 
 	self
 		assert: messagesSent size equals: 2;
-		assert: (messagesSent includes: #zzzTest2);
-		assert: (messagesSent includes: #zzTest2)
+		assert: messagesSent includes: #zzzTest2;
+		assert: messagesSent includes: #zzTest2
 ]
 
 { #category : #private }
