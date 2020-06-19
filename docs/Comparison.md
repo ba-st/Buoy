@@ -36,11 +36,11 @@ By default `equalityChecker` is an instance of `PropertyBasedEqualityChecker` an
 
 The property based equality checker has always an implicit rule checking first if the target object is of the same type of the receiver. You check all the configured rules by sending `checkAgainst:` to the checker with the target object.
 
-It's also available `SequenceableCollectionEqualityChecker` that can be used to compare two sequenceable collections by sending to it the message `check:against:` with both collections. It will check that both collections are sequenceable and contains the same elements in the same order.
+Buoy also offers a `SequenceableCollectionEqualityChecker` that can be used to compare two sequenceable collections by sending to it the message `check:against:` with both collections. It will check that both collections are sequenceable and contains the same elements in the same order.
 
 ### Examples
 
-This examples assume that equalityChecker is not reimplemented.
+This examples assumes that equalityChecker is not reimplemented.
 
 ```smalltalk
 "Just type checking"

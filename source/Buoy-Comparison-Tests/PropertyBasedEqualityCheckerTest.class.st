@@ -1,5 +1,5 @@
 "
-An EqualityCheckerTest is a test class for testing the behavior of EqualityChecker
+An #PropertyBasedEqualityCheckerTest is a test class for testing the behavior of #PropertyBasedEqualityChecker
 "
 Class {
 	#name : #PropertyBasedEqualityCheckerTest,

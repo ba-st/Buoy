@@ -12,7 +12,7 @@ Class {
 	#category : #'Buoy-Comparison'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 PropertyBasedEqualityChecker class >> on: aBaseObject [
 
 	^ self new initializeOn: aBaseObject
