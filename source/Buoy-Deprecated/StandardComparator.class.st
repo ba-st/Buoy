@@ -31,7 +31,7 @@ StandardComparator class >> differentiatingType [
 
 	self
 		deprecated: 'Use equalityChecker'
-		transformWith: '`@object differentiatingThrough: `@block' -> 'self equalityChecker'.
+		transformWith: '`@object differentiatingType' -> 'self equalityChecker'.
 	^ self
 ]
 
