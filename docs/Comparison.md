@@ -23,36 +23,45 @@ hash
   ^ self equalityHashCombinator combineHashesOfAll: { alpha. beta. gamma }
 ```
 
-## `StandardComparator`
-It eases the implementation of comparison for equality of objects. Instances can be built in different ways:
+## Equality Checkers
+Equality checkers help to implement the equality method for objects. Any object can send to itself the message `equalityChecker`, configure it and then use it to check against the target object of the comparison.
 
-- `StandardComparator differentiatingType`: compares for identity (`==`) or if an object `isKindOf` anotherObject.
-- `StandardComparator differentiatingSending: aSelectorsCollection`: compares for identity (`==`), or if an object `isKindOf` anotherObject and all selectors are equal for both objects.
-- `StandardComparator differentiatingThrough: aBlock`: compares for identity (`==`), or if an object `isKindOf` anotherObject and the block returns true when applied to both objects.
+Equality checkers always performs a `==` comparison first and proceeds with the rest of the rules only if the objects are not identical.
 
-Some examples
+By default `equalityChecker` is an instance of `PropertyBasedEqualityChecker` and it alredy knowns the receiving instance. It can be configured with:
+- `compare: selector` will add a rule to the checker that sends the provided message on the receiver and target object and compare the results by `=`
+- `compare: block` will add a rule to the checker that evaluates the provided block on the receiver and target object and compare the results by `=`
+- `compareAll:` it's like `compare:` but receives a collection of selectors or blocks.
+- `compareWith: block` receives a two argument block and will add a rule to the checker that evaluates that block with the receiver and target objects. It expects that `block` evaluates to a `Boolean`.
+
+The property based equality checker has always an implicit rule checking first if the target object is of the same type of the receiver. You check all the configured rules by sending `checkAgainst:` to the checker with the target object.
+
+Buoy also offers a `SequenceableCollectionEqualityChecker` that can be used to compare two sequenceable collections by sending to it the message `check:against:` with both collections. It will check that both collections are sequenceable and contains the same elements in the same order.
+
+### Examples
+
+This examples assumes that equalityChecker is not reimplemented.
 
 ```smalltalk
-|comparator|
-comparator := StandardComparator differentiatingType.
-comparator check: (Set with: 11) against: (Set with: 22) >>> true.
-comparator check: (Set with: 11) against: (OrderedCollection with: 11) >>> false.
+"Just type checking"
+|checker|
+checker :=  (Set with: 11) equalityChecker.
+(checker checkAgainst: (Set with: 22)) >>> true.
+(checker checkAgainst: #(11)) >>> false.
 ```
 
 ```smalltalk
-| comparator |
-comparator := StandardComparator differentiatingSending: #(abs).
-comparator check: 1 against: -1 >>> true.
-comparator check: 1 against: 2 >>> false.
+| checker |
+checker := 1 equalityChecker.
+checker compare: #abs.
+(checker checkAgainst: -1) >>> true.
+(checker checkAgainst: 2) >>> false      
 ```
 
 ```smalltalk
-| comparator |
-
-comparator :=
-StandardComparator differentiatingThrough: [:oneObject :anotherObject |
-oneObject asArray = anotherObject asArray].
-
-comparator check: (Set with: 34) against: (Set with: 34) >>> true.
-comparator check: (Set with: 34) against: (Set with: 33) >>> false.
+| checker |
+checker := (Set with: 34) equalityChecker.
+checker compareWith: [:a :b | a asArray = b asArray].
+(checker checkAgainst: (Set with: 34)) >>> true.
+(checker checkAgainst: (Set with: 33)) >>> false.
 ```
