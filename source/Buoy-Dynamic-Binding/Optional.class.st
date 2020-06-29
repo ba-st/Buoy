@@ -4,7 +4,7 @@ I'm an abstract  class representing the fact that some object can be optional.  
 Class {
 	#name : #Optional,
 	#superclass : #Object,
-	#category : 'Buoy-Dynamic-Binding'
+	#category : #'Buoy-Dynamic-Binding'
 }
 
 { #category : #'instance creation' }
@@ -62,8 +62,9 @@ Optional class >> withUsedOnlyIn: optionals return: aMonadycBlock [
 { #category : #comparing }
 Optional >> = anObject [
 
-	^ self value == anObject
-		or: [ (anObject isA: self class) and: [ self equalsTo: anObject ] ]
+	^ self equalityChecker
+		compareWith: [ :base :target | base equalsTo: target ];
+		checkAgainst: anObject
 ]
 
 { #category : #private }
