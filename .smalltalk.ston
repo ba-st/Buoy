@@ -9,9 +9,9 @@ SmalltalkCISpec {
   ],
   #testing : {
     #coverage : {
-       #packages : [ 'Buoy*' ]
-    },
-    #service: #codecov,
-    #auto_upload: false
+      #packages : [ 'Buoy*' ],
+      #service: #codecov,
+      #auto_upload: false
+    }
   }
 }
