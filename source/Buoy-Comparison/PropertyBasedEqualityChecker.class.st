@@ -53,14 +53,14 @@ PropertyBasedEqualityChecker >> compareWith: aDyadicBlock [
 	comparisonRules add: aDyadicBlock
 ]
 
-{ #category : #initalize }
+{ #category : #initialization }
 PropertyBasedEqualityChecker >> initialize [ 
 
 	super initialize.
 	comparisonRules := OrderedCollection new
 ]
 
-{ #category : #initalize }
+{ #category : #initialization }
 PropertyBasedEqualityChecker >> initializeOn: aBaseObject [
 
 	base := aBaseObject

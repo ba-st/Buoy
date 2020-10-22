@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'ratio'
 	],
-	#category : 'Buoy-Math'
+	#category : #'Buoy-Math'
 }
 
 { #category : #private }
@@ -56,13 +56,13 @@ PartsPerFraction >> / aNumber [
 	^ratio / aNumber
 ]
 
-{ #category : #testing }
+{ #category : #comparing }
 PartsPerFraction >> < aNumber [ 
 	
 	^ratio < aNumber 
 ]
 
-{ #category : #testing }
+{ #category : #comparing }
 PartsPerFraction >> = aNumber [
 
 	^ aNumber isNumber and: [ self asNumber = aNumber asNumber ]

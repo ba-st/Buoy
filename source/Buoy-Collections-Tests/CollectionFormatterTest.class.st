@@ -4,7 +4,7 @@ I'm a CollectionFormatterTest,  a test class for testing the behavior of Collect
 Class {
 	#name : #CollectionFormatterTest,
 	#superclass : #TestCase,
-	#category : 'Buoy-Collections-Tests'
+	#category : #'Buoy-Collections-Tests'
 }
 
 { #category : #tests }
@@ -53,7 +53,7 @@ CollectionFormatterTest >> testFormatTwoElementCollectionWithLastSeparator [
 ]
 
 { #category : #tests }
-CollectionFormatterTest >> testFormatWithElementFormater [
+CollectionFormatterTest >> testFormatWithElementFormatter [
 
 	| formatter |
 

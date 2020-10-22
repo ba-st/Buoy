@@ -10,7 +10,7 @@ Class {
 	#category : #'Buoy-Metaprogramming-Tests'
 }
 
-{ #category : #private }
+{ #category : #initialization }
 UnaryMessageSendingCollectorTest >> setUp [
 
 	super setUp.
