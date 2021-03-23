@@ -18,5 +18,7 @@ BuoyComparisonObjectExtensionsTest >> testEqual [
 { #category : #tests }
 BuoyComparisonObjectExtensionsTest >> testHash [
 
-	self assert: ( ObjectUsingComparisonAffordances with: 1 and: 2 ) hash equals: ( 1 bitXor: 2 )
+	self
+		assert: (ObjectUsingComparisonAffordances with: 1 and: 2) hash
+		equals: (1 hash bitXor: 2 hash)
 ]
