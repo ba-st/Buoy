@@ -6,10 +6,10 @@ This package includes classes to ease the comparison of objects both for equalit
 Hash combinators help to implement the `hash` or `identityHash` methods by providing an easy way to combine hashes. Any object can send to itself the `equalityHashCombinator` message and then use it to calculate the combined hash value. The default equality hash combinator uses bitXor operations, but any object can override this default behavior and provide a more specific policy.
 
 It will apply the combinator operator to each one of the objects:
-- `combineHashesOfAll:` will send the hash message to every object in the collection and then combine them.
-- `combineHashOf:with:` will send the hash message to the two objects and then combine them.
-- `combineAll::` expectes a collection of hashes and will combine them.
-- `combine:with:` will combine two hash values
+  - `combineHashesOfAll:` will send the hash message to every object in the collection and then combine them.
+  - `combineHashOf:with:` will send the hash message to the two objects and then combine them.
+  - `combineAll::` expectes a collection of hashes and will combine them.
+  - `combine:with:` will combine two hash values
 
 ### Examples
 
@@ -29,10 +29,10 @@ Equality checkers help to implement the equality method for objects. Any object 
 Equality checkers always performs a `==` comparison first and proceeds with the rest of the rules only if the objects are not identical.
 
 By default `equalityChecker` is an instance of `PropertyBasedEqualityChecker` and it alredy knowns the receiving instance. It can be configured with:
-- `compare: selector` will add a rule to the checker that sends the provided message on the receiver and target object and compare the results by `=`
-- `compare: block` will add a rule to the checker that evaluates the provided block on the receiver and target object and compare the results by `=`
-- `compareAll:` it's like `compare:` but receives a collection of selectors or blocks.
-- `compareWith: block` receives a two argument block and will add a rule to the checker that evaluates that block with the receiver and target objects. It expects that `block` evaluates to a `Boolean`.
+  - `compare: selector` will add a rule to the checker that sends the provided message on the receiver and target object and compare the results by `=`
+  - `compare: block` will add a rule to the checker that evaluates the provided block on the receiver and target object and compare the results by `=`
+  - `compareAll:` it's like `compare:` but receives a collection of selectors or blocks.
+  - `compareWith: block` receives a two argument block and will add a rule to the checker that evaluates that block with the receiver and target objects. It expects that `block` evaluates to a `Boolean`.
 
 The property based equality checker has always an implicit rule checking first if the target object is of the same type of the receiver. You check all the configured rules by sending `checkAgainst:` to the checker with the target object.
 

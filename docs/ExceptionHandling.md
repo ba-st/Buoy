@@ -1,6 +1,6 @@
 # Exception handling
 
-- `on:except:do:` provides an extension to the exception handling allowing to ignore some subclass of the exception being handled.
+  - `on:except:do:` provides an extension to the exception handling allowing to ignore some subclass of the exception being handled.
 
 For example:
 

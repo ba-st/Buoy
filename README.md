@@ -46,8 +46,8 @@ This library provides some abstractions like [namespaces](docs/Namespaces.md) an
 Provides [extensions to the SUnit framework](docs/SUnit.md).
 
 ## License
-- The code is licensed under [MIT](LICENSE).
-- The documentation is licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/).
+  - The code is licensed under [MIT](LICENSE).
+  - The documentation is licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/).
 
 ## Installation
 

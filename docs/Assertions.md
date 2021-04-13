@@ -89,8 +89,8 @@ AssertionCheckerBuilder new
 ```
 
 Here we are introducing two new features:
-- First `enforce:because:onSuccess:`, the main idea is that the conditions enforced in the success block will be evaluated only if the outer condition is satisfied. So we can make assumptions about what `code` looks like at this point.
-- Second, using a block as the `because:` argument. This avoids creating unnecessary objects because the explanation will only be evaluated if the condition is not met. In this case the argument is a literal String, so it makes no difference.
+  - First `enforce:because:onSuccess:`, the main idea is that the conditions enforced in the success block will be evaluated only if the outer condition is satisfied. So we can make assumptions about what `code` looks like at this point.
+  - Second, using a block as the `because:` argument. This avoids creating unnecessary objects because the explanation will only be evaluated if the condition is not met. In this case the argument is a literal String, so it makes no difference.
 
 ## Refusing
 
@@ -119,7 +119,8 @@ AssertionCheckerBuilder new
 ## Configuring the error to raise
 
 If not specified the library will raise `AssertionFailed` when some check fails. If you want to raise a different kind of error there are two ways to configure it:
-- For single condition checks you can use `enforce:because:raising:` or `refuse:because:raising:`.
+
+For single condition checks you can use `enforce:because:raising:` or `refuse:because:raising:`.
 
 ```smalltalk
 | code |
@@ -132,7 +133,7 @@ AssertionChecker
   raising: Error
 ```
 
-- When using the builder you should use:
+When using the builder you should use:
 
 ```smalltalk
 | code |

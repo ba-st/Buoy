@@ -2,16 +2,16 @@
 
 This package include some extensions to base classes with the intention of improving readability.
 
-- `Boolean>>#then:` is the equivalent to `ifTrue:`, except that `nil` is not returned if the condition is false.
-- `Boolean>>#then:otherwise:` is the equivalent of `ifTrue:ifFalse:`
-- `BlockClosure>>#unless:` evaluates the block unless the condition is met. It's used to emphasize the block action as the usual case. For example:
+  - `Boolean>>#then:` is the equivalent to `ifTrue:`, except that `nil` is not returned if the condition is false.
+  - `Boolean>>#then:otherwise:` is the equivalent of `ifTrue:ifFalse:`
+  - `BlockClosure>>#unless:` evaluates the block unless the condition is met. It's used to emphasize the block action as the usual case. For example:
 ```
 [ html
     attributeAt: 'x:num'
     put: (self xnumAmountFormatter format: amount)]
       unless: amount isUndefined
 ```
-- `BlockClosure>>#unless:inWhichCase:` is used when you want to emphasize a positive action, and in the exceptional case that the condition is met, evaluate an exceptional action.
+  - `BlockClosure>>#unless:inWhichCase:` is used when you want to emphasize a positive action, and in the exceptional case that the condition is met, evaluate an exceptional action.
 For example:
 ```
 [self createLabelFor: aParameter] unless: aParameter isOptional
