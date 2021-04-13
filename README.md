@@ -1,23 +1,15 @@
-<p align="center"><img src="https://img.icons8.com/color/128/000000/buoy.png">
- <h1 align="center">Buoy</h1>
-  <p align="center">
- This project aims to complement <a href="http://www.pharo.org">Pharo</a> adding useful extensions.
-    <br>
-    <a href="docs/"><strong>Explore the docs »</strong></a>
-    <br>
-    <br>
-    <a href="https://github.com/ba-st/Buoy/issues/new?labels=Type%3A+Defect">Report a defect</a>
-    |
-    <a href="https://github.com/ba-st/Buoy/issues/new?labels=Type%3A+Feature">Request feature</a>
-  </p>
-</p>
+![Buoy](https://img.icons8.com/color/128/000000/buoy.png)
+# Buoy
+This project aims to complement [Pharo](https://www.pharo.org) adding useful extensions.
 
 [![GitHub release](https://img.shields.io/github/release/ba-st/Buoy.svg)](https://github.com/ba-st/Buoy/releases/latest)
-[![Build Status](https://github.com/ba-st/Buoy/workflows/Build/badge.svg?branch=release-candidate)](https://github.com/ba-st/Buoy/actions?query=workflow%3ABuild)
+[![Build Status](https://github.com/ba-st/Buoy/workflows/Unit%20Tests/badge.svg?branch=release-candidate)](https://github.com/ba-st/Buoy/actions?query=workflow%3AUnit%20Tests)
 [![Coverage Status](https://codecov.io/github/ba-st/Buoy/coverage.svg?branch=release-candidate)](https://codecov.io/gh/ba-st/Buoy/branch/release-candidate)
 [![Pharo 7.0](https://img.shields.io/badge/Pharo-7.0-informational)](https://pharo.org)
 [![Pharo 8.0](https://img.shields.io/badge/Pharo-8.0-informational)](https://pharo.org)
 [![Pharo 9.0](https://img.shields.io/badge/Pharo-9.0-informational)](https://pharo.org)
+
+Quick actions: [**Explore the docs**](docs/) | [Report a defect](https://github.com/ba-st/Buoy/issues/new?labels=Type%3A+Defect) | [Request a feature](https://github.com/ba-st/Buoy/issues/new?labels=Type%3A+Feature)
 
 ## Feature List
 

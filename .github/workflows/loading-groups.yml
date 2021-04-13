@@ -1,9 +1,9 @@
 name: Group loading check
 
-on: [push,pull_request]
+on: [push,pull_request,workflow_dispatch]
 
 jobs:
-   build:
+   group-loading:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -15,9 +15,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: hpi-swa/setup-smalltalkCI@v1
         with:
-          smalltalk-version: ${{ matrix.smalltalk }}
+          smalltalk-image: ${{ matrix.smalltalk }}
       - name: Load group in image
-        run: smalltalkci -s ${{ matrix.smalltalk }} .loading.${{ matrix.load-spec }}.ston
+        run: smalltalkci -s ${{ matrix.smalltalk }} .smalltakci/.loading.${{ matrix.load-spec }}.ston
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         timeout-minutes: 15
