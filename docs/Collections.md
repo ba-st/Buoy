@@ -2,10 +2,10 @@
 
 ## `Collection` extensions
 
-- `maxUsing:` : Allows to get the maximum element in the collection following the provided criteria. It will fail if the collection is empty.
-- `maxUsing:ifEmpty:` : Allows to get the maximum element in the collection following the provided criteria. It will evaluate the failBlock if the collection is empty.
-- `minUsing:` : Allows to get the minimum element in the collection following the provided criteria. It will fail if the collection is empty.
-- `minUsing:ifEmpty:` : Allows to get the minimum element in the collection following the provided criteria. It will evaluate the failBlock if the collection is empty.
+-  `maxUsing:` : Allows to get the maximum element in the collection following the provided criteria. It will fail if the collection is empty.
+-   `maxUsing:ifEmpty:` : Allows to get the maximum element in the collection following the provided criteria. It will evaluate the failBlock if the collection is empty.
+-   `minUsing:` : Allows to get the minimum element in the collection following the provided criteria. It will fail if the collection is empty.
+-   `minUsing:ifEmpty:` : Allows to get the minimum element in the collection following the provided criteria. It will evaluate the failBlock if the collection is empty.
 
 Some examples
 
@@ -16,12 +16,12 @@ Some examples
 
 ## `SequenceableCollection` extensions
 
-- `copyFirst:` Copy the first `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will raise an Error.
-- `copyLast:` Copy the last `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will raise an Error.
-- `copyNoMoreThanFirst:` Copy at max the first `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will return the whole collection.
-- `copyNoMoreThanLast:` Copy at max the last `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will return the whole collection.
-- `withoutFirst` Copy the collection excluding the first element. If the collection is empty it will return an empty collection.
-- `withoutFirst:` Copy the collection excluding the first `n` elements of it. If `n` is 0 it will return the same collection. If `n` is greater than the collection size it will return an empty collection.
+-   `copyFirst:` Copy the first `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will raise an Error.
+-   `copyLast:` Copy the last `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will raise an Error.
+-   `copyNoMoreThanFirst:` Copy at max the first `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will return the whole collection.
+-   `copyNoMoreThanLast:` Copy at max the last `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will return the whole collection.
+-   `withoutFirst` Copy the collection excluding the first element. If the collection is empty it will return an empty collection.
+-   `withoutFirst:` Copy the collection excluding the first `n` elements of it. If `n` is 0 it will return the same collection. If `n` is greater than the collection size it will return an empty collection.
 
 Some examples
 
