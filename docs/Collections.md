@@ -2,7 +2,7 @@
 
 ## `Collection` extensions
 
--  `maxUsing:` : Allows to get the maximum element in the collection following the provided criteria. It will fail if the collection is empty.
+-   `maxUsing:` : Allows to get the maximum element in the collection following the provided criteria. It will fail if the collection is empty.
 -   `maxUsing:ifEmpty:` : Allows to get the maximum element in the collection following the provided criteria. It will evaluate the failBlock if the collection is empty.
 -   `minUsing:` : Allows to get the minimum element in the collection following the provided criteria. It will fail if the collection is empty.
 -   `minUsing:ifEmpty:` : Allows to get the minimum element in the collection following the provided criteria. It will evaluate the failBlock if the collection is empty.

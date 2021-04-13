@@ -6,10 +6,10 @@ This package includes classes to ease the comparison of objects both for equalit
 Hash combinators help to implement the `hash` or `identityHash` methods by providing an easy way to combine hashes. Any object can send to itself the `equalityHashCombinator` message and then use it to calculate the combined hash value. The default equality hash combinator uses bitXor operations, but any object can override this default behavior and provide a more specific policy.
 
 It will apply the combinator operator to each one of the objects:
-- `combineHashesOfAll:` will send the hash message to every object in the collection and then combine them.
-- `combineHashOf:with:` will send the hash message to the two objects and then combine them.
-- `combineAll::` expectes a collection of hashes and will combine them.
-- `combine:with:` will combine two hash values
+-   `combineHashesOfAll:` will send the hash message to every object in the collection and then combine them.
+-   `combineHashOf:with:` will send the hash message to the two objects and then combine them.
+-   `combineAll::` expectes a collection of hashes and will combine them.
+-   `combine:with:` will combine two hash values
 
 ### Examples
 

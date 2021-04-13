@@ -89,8 +89,8 @@ AssertionCheckerBuilder new
 ```
 
 Here we are introducing two new features:
-- First `enforce:because:onSuccess:`, the main idea is that the conditions enforced in the success block will be evaluated only if the outer condition is satisfied. So we can make assumptions about what `code` looks like at this point.
-- Second, using a block as the `because:` argument. This avoids creating unnecessary objects because the explanation will only be evaluated if the condition is not met. In this case the argument is a literal String, so it makes no difference.
+-   First `enforce:because:onSuccess:`, the main idea is that the conditions enforced in the success block will be evaluated only if the outer condition is satisfied. So we can make assumptions about what `code` looks like at this point.
+-   Second, using a block as the `because:` argument. This avoids creating unnecessary objects because the explanation will only be evaluated if the condition is not met. In this case the argument is a literal String, so it makes no difference.
 
 ## Refusing
 
