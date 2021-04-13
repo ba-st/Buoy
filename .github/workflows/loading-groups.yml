@@ -17,7 +17,7 @@ jobs:
         with:
           smalltalk-image: ${{ matrix.smalltalk }}
       - name: Load group in image
-        run: smalltalkci -s ${{ matrix.smalltalk }} .smalltakci/.loading.${{ matrix.load-spec }}.ston
+        run: smalltalkci -s ${{ matrix.smalltalk }} .smalltalkci/.loading.${{ matrix.load-spec }}.ston
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         timeout-minutes: 15
