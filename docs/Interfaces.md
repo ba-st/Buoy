@@ -1,4 +1,4 @@
-## Interfaces
+# Interfaces
 
 An interface is useful for declaring a set of messages to be understood by the objects implementing it.
 
@@ -11,6 +11,7 @@ Once you have an interface you can ask it if some object is implementing it:
 interface := Interface named: 'Assertable' declaring: #( #assert: #deny: ).
 interface isImplementedBy: 1
 ```
+
 will return `false`
 
 You can also ask it if an instance of some class will implement it:
@@ -20,4 +21,5 @@ You can also ask it if an instance of some class will implement it:
 interface := Interface named: 'Assertable' declaring: #( #assert: #deny: ).
 interface isImplementedByInstancesOf: TestCase
 ```
+
 will return `true`

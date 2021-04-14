@@ -2,7 +2,7 @@ SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
       #baseline : 'Buoy',
-      #directory : 'source',
+      #directory : '../source',
       #load : [ 'Development' ],
       #platforms : [  #pharo ]
     }

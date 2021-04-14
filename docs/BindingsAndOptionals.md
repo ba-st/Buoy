@@ -1,3 +1,5 @@
+# Bindings and Optionals
+
 ## Bindings
 
 A binding is useful for describing situations when there's a need for a required value that can be missing at the beginning. As this is a required value, the contract is to ask for it, and in case it is still missing we will raise an exception.
@@ -38,8 +40,8 @@ This is the simplest use, now suppose we want to take some action in case the fi
 
 ```smalltalk
 fileOptional
-		withContentDo: [ :file | self renderDetailsOf: file ]
-		ifUnused: [ self renderUploadInstructions ]
+  withContentDo: [ :file | self renderDetailsOf: file ]
+  ifUnused: [ self renderUploadInstructions ]
 ```
 
 ### Combinations
@@ -49,6 +51,7 @@ We can transform an optional:
 ```smalltalk
 fileOptional return: [:file | file asUrl ]
 ```
+
 This will produce a new optional that will have an URL based on the file, or an unused one in case the file is missing.
 
 We can easily combine two optionals:
@@ -59,6 +62,7 @@ fileOptional
   return: [:fileName : fileExtension |
     '<1s>.<2s>' expandMacrosWith: fileName with: fileExtension ]
 ```
+
 This will produce a new optional that will have the concatenation as its content, or an unused one in case some part is missing.
 
 If we have a list of optionals it's possible to combine them to get a new optional as a result. So suppose we have a list of possible numbers and we want to get the sum only if all are available. We can do that by sending the following message:

@@ -79,6 +79,7 @@ events
   select: [:event | startingDate < event creationDate  
                     and: [ event creationDate <= endDate ]]
 ```
+
 Or using binary search like this:
 
 ```smalltalk
@@ -113,8 +114,10 @@ For example:
   distributing: #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 )
   maxPerBucket: 4 ) execute.
 ```
+
 will produce 7 buckets:
-```
+
+```smalltalk
 #( 1 2 3 4)
 #( 5 6 7 8)
 #( 9 10 11 12)
