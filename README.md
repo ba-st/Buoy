@@ -9,7 +9,10 @@ This project aims to complement [Pharo](https://www.pharo.org) adding useful ext
 [![Pharo 8.0](https://img.shields.io/badge/Pharo-8.0-informational)](https://pharo.org)
 [![Pharo 9.0](https://img.shields.io/badge/Pharo-9.0-informational)](https://pharo.org)
 
-Quick actions: [**Explore the docs**](docs/) | [Report a defect](https://github.com/ba-st/Buoy/issues/new?labels=Type%3A+Defect) | [Request a feature](https://github.com/ba-st/Buoy/issues/new?labels=Type%3A+Feature)
+Quick links
+- [**Explore the docs**](docs/) 
+- [Report a defect](https://github.com/ba-st/Buoy/issues/new?labels=Type%3A+Defect) 
+- [Request a feature](https://github.com/ba-st/Buoy/issues/new?labels=Type%3A+Feature)
 
 ## Feature List
 
