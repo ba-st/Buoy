@@ -1,15 +1,15 @@
 name: Markdown Lint
-on: [push,pull_request,workflow_dispatch]
+on: [pull_request,workflow_dispatch]
 jobs:
   remark-lint:
-    name: runner / remark-lint
+    name: runner / markdownlint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: remark-lint
-        uses: reviewdog/action-remark-lint@v1
+      - name: markdownlint
+        uses: reviewdog/action-markdownlint@v0.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-check
           level: warning
           fail_on_error: true
+          reporter: github-pr-review

@@ -12,6 +12,7 @@ Percentage oneHundred "100%"
  ```
 
 Percentages can also be created providing a ratio:
+
 ```smalltalk
 Percentage ratio: 1. "100%"
 Percentage ratio: 1/2 "50%"

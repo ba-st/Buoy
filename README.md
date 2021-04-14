@@ -1,5 +1,5 @@
-![Buoy](https://img.icons8.com/color/128/000000/buoy.png)
 # Buoy
+
 This project aims to complement [Pharo](https://www.pharo.org) adding useful extensions.
 
 [![GitHub release](https://img.shields.io/github/release/ba-st/Buoy.svg)](https://github.com/ba-st/Buoy/releases/latest)
@@ -46,8 +46,9 @@ This library provides some abstractions like [namespaces](docs/Namespaces.md) an
 Provides [extensions to the SUnit framework](docs/SUnit.md).
 
 ## License
--   The code is licensed under [MIT](LICENSE).
--   The documentation is licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/).
+
+- The code is licensed under [MIT](LICENSE).
+- The documentation is licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/).
 
 ## Installation
 
@@ -56,6 +57,3 @@ To load the project in a Pharo image, or declare it as a dependency of your own 
 ## Contributing
 
 Check the [Contribution Guidelines](CONTRIBUTING.md)
-
----
-<small><a href="https://icons8.com/icon/20988/buoy">Buoy icon by Icons8</a></small>
