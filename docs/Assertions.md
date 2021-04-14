@@ -41,6 +41,7 @@ AssertionCheckerBuilder new
     ];
   buildAndCheck
 ```
+
 Note that in this case we're creating an `AssertionCheckerBuilder` and configuring all the conditions to enforce. Let's try now replacing `code` with `'AR3'` and `Do it` again. By default all the conditions to enforce are checked so you should get an error message combining both explanations, and if you handle the raised exception you can get all the failures by sending it the message `failures`.
 
 If you want the more usual behavior of stopping after the first failure you can configure the builder to fail fast:
@@ -89,8 +90,9 @@ AssertionCheckerBuilder new
 ```
 
 Here we are introducing two new features:
--   First `enforce:because:onSuccess:`, the main idea is that the conditions enforced in the success block will be evaluated only if the outer condition is satisfied. So we can make assumptions about what `code` looks like at this point.
--   Second, using a block as the `because:` argument. This avoids creating unnecessary objects because the explanation will only be evaluated if the condition is not met. In this case the argument is a literal String, so it makes no difference.
+
+- First `enforce:because:onSuccess:`, the main idea is that the conditions enforced in the success block will be evaluated only if the outer condition is satisfied. So we can make assumptions about what `code` looks like at this point.
+- Second, using a block as the `because:` argument. This avoids creating unnecessary objects because the explanation will only be evaluated if the condition is not met. In this case the argument is a literal String, so it makes no difference.
 
 ## Refusing
 
