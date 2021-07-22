@@ -7,7 +7,8 @@
 
  The easier way to create a percentage is to send the message `percent` to a
  number. For example `5 percent` will create an object representing `5%`.
-  There are two common cases also covered as instance creation methods (`0%` and `100%`):
+  There are two common cases also covered as instance creation methods (`0%` and
+  `100%`):
 
  ```smalltalk
 Percentage zero. "0%"
