@@ -48,7 +48,7 @@ AssertionCheckerBuilder new
   buildAndCheck
 ```
 
-Note that in this case we're creating an `AssertionCheckerBuilder` and
+Note that in this case we are creating an `AssertionCheckerBuilder` and
 configuring all the conditions to enforce. Let's try now replacing `code` with
 `'AR3'` and `Do it` again. By default all the conditions to enforce are checked
 so you should get an error message combining both explanations, and if you

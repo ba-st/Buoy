@@ -38,7 +38,7 @@ Equality checkers help to implement the equality method for objects. Any object
 can send to itself the message `equalityChecker`, configure it and then use it
 to check against the target object of the comparison.
 
-Equality checkers always performs a `==` comparison first and proceeds with the
+Equality checkers always performs a `==` comparison first and proceed with the
 rest of the rules only if the objects are not identical.
 
 By default `equalityChecker` is an instance of `PropertyBasedEqualityChecker`
@@ -51,14 +51,14 @@ and it alredy knowns the receiving instance. It can be configured with:
 - `compareAll:` it's like `compare:` but receives a collection of selectors or blocks.
 - `compareWith: block` receives a two argument block and will add a rule to the
   checker that evaluates that block with the receiver and target objects. It
-  expects that `block` evaluates to a `Boolean`.
+  expects that `block` evaluate to a `Boolean`.
 
 The property based equality checker has always an implicit rule checking first
 if the target object is of the same type of the receiver. You check all the
 configured rules by sending `checkAgainst:` to the checker with the target object.
 
 Buoy also offers a `SequenceableCollectionEqualityChecker` that can be used to
-compare two sequenceable collections by sending to it the message
+compare two sequenceable collections by sending it the message
 `check:against:` with both collections. It will check that both collections are
 sequenceable and contains the same elements in the same order.
 

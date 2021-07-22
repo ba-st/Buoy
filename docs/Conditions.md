@@ -1,6 +1,6 @@
 # Extensions to the base library
 
-This package include some extensions to base classes with the intention of
+This package includes some extensions to base classes with the intention of
 improving readability.
 
 - `Boolean>>#then:` is the equivalent to `ifTrue:`, except that `nil` is not
