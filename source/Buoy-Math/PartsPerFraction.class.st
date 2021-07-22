@@ -16,6 +16,12 @@ PartsPerFraction class >> fraction [
 	^ self subclassResponsibility
 ]
 
+{ #category : #testing }
+PartsPerFraction class >> isAbstract [
+
+	^ self = PartsPerFraction
+]
+
 { #category : #'Instance Creation' }
 PartsPerFraction class >> of: aNumber [
 
@@ -117,9 +123,27 @@ PartsPerFraction >> negated [
 ]
 
 { #category : #arithmetic }
+PartsPerFraction >> nthRoot: aPositiveInteger [
+
+	^ ratio nthRoot: aPositiveInteger
+]
+
+{ #category : #arithmetic }
 PartsPerFraction >> reciprocal [
 
 	^ self class ratio: ratio reciprocal
+]
+
+{ #category : #arithmetic }
+PartsPerFraction >> round: numberOfWishedDecimal [
+
+	^ ratio round: numberOfWishedDecimal
+]
+
+{ #category : #arithmetic }
+PartsPerFraction >> sqrt [
+
+	^ ratio sqrt
 ]
 
 { #category : #evaluating }

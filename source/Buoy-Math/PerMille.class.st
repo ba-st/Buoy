@@ -4,7 +4,7 @@ A per mille is a number or ratio expressed as a fraction of 1000. It is often de
 Class {
 	#name : #PerMille,
 	#superclass : #PartsPerFraction,
-	#category : 'Buoy-Math'
+	#category : #'Buoy-Math'
 }
 
 { #category : #private }
@@ -24,6 +24,15 @@ PerMille >> printOn: aStream base: anInteger [
 PerMille >> storeOn: aStream [
 
 	self value storeOn: aStream.
+	aStream
+		space;
+		nextPutAll: 'perMille'
+]
+
+{ #category : #printing }
+PerMille >> storeOn: aStream base: base [
+
+	self value storeOn: aStream base: base.
 	aStream
 		space;
 		nextPutAll: 'perMille'
