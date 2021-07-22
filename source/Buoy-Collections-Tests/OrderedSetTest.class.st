@@ -61,11 +61,11 @@ OrderedSetTest >> testAddAll [
 
 	set := self newEmptySet.
 
-	set addAll: #( 1 2 1 3 4 1 2 ).
+	set addAll: #( 1 2 1 4 3 1 2 ).
 
 	self
 		assert: set size equals: 4;
-		assert: set hasTheSameElementsInTheSameOrderThat: #( 1 2 3 4 )
+		assert: set hasTheSameElementsInTheSameOrderThat: #( 1 2 4 3 )
 ]
 
 { #category : #'tests - testing' }
