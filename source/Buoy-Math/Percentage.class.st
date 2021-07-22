@@ -8,7 +8,7 @@ Class {
 		'zeroPercent',
 		'oneHundredPercent'
 	],
-	#category : 'Buoy-Math'
+	#category : #'Buoy-Math'
 }
 
 { #category : #private }
@@ -42,6 +42,12 @@ Percentage >> isPercentage [
 	^true
 ]
 
+{ #category : #testing }
+Percentage >> isWellKnown [
+
+	^ #( 0 1 ) includes: ratio
+]
+
 { #category : #printing }
 Percentage >> printOn: aStream base: anInteger [
 
@@ -68,4 +74,18 @@ Percentage >> storeOn: aStream [
 		nextPutAll: 'of:';
 		space.
 	self value storeOn: aStream
+]
+
+{ #category : #printing }
+Percentage >> storeOn: aStream base: base [
+
+	self isWellKnown ifTrue: [ self storeOn: aStream ]
+		ifFalse: [ 
+			aStream
+				nextPutAll: self class name asString;
+				space;
+				nextPutAll: 'of:';
+				space.
+			self value storeOn: aStream base: base
+			]
 ]
