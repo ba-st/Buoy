@@ -194,7 +194,7 @@ OrderedSet >> swap: oneIndex with: anotherIndex [
 	anotherElement := self at: anotherIndex 
 	
 	"We need to temporarily put another thing in the second index
-	because this collection don't allow duplicates.".
+	because this collection doesn't allow duplicates.".
 	self at: anotherIndex put: Object new.
 	
 	self at: oneIndex put: anotherElement.
