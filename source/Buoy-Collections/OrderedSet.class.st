@@ -49,6 +49,12 @@ OrderedSet >> add: newObject [
 	^ newObject
 ]
 
+{ #category : #converting }
+OrderedSet >> asOrderedSet [
+
+	^ self
+]
+
 { #category : #accessing }
 OrderedSet >> at: index [
 
