@@ -25,6 +25,12 @@ SequenceableCollection >> copyNoMoreThanLast: n [
 ]
 
 { #category : #'*Buoy-Collections' }
+SequenceableCollection >> equalityChecker [
+
+	^ SequenceableCollectionEqualityChecker new
+]
+
+{ #category : #'*Buoy-Collections' }
 SequenceableCollection >> withoutFirst [
 
 	^self withoutFirst: 1
