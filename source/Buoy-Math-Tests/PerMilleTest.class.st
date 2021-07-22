@@ -206,6 +206,14 @@ PerMilleTest >> testHash [
 		assert: 1.123 hash equals: (PerMille ratio: 1.123) hash
 ]
 
+{ #category : #'tests - testing' }
+PerMilleTest >> testIsAbstract [
+
+	self
+		deny: PerMille isAbstract;
+		assert: PerMille superclass isAbstract
+]
+
 { #category : #'tests - magnitude-API' }
 PerMilleTest >> testLessThan [
 

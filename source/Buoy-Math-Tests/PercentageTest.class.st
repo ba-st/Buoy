@@ -206,6 +206,14 @@ PercentageTest >> testHash [
 		assert: 1.123 hash equals: (Percentage ratio: 1.123) hash
 ]
 
+{ #category : #'tests - testing' }
+PercentageTest >> testIsAbstract [
+
+	self
+		deny: Percentage isAbstract;
+		assert: Percentage superclass isAbstract
+]
+
 { #category : #'tests - magnitude-API' }
 PercentageTest >> testLessThan [
 
