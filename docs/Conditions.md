@@ -1,10 +1,13 @@
 # Extensions to the base library
 
-This package include some extensions to base classes with the intention of improving readability.
+This package include some extensions to base classes with the intention of
+improving readability.
 
-- `Boolean>>#then:` is the equivalent to `ifTrue:`, except that `nil` is not returned if the condition is false.
+- `Boolean>>#then:` is the equivalent to `ifTrue:`, except that `nil` is not
+  returned if the condition is false.
 - `Boolean>>#then:otherwise:` is the equivalent of `ifTrue:ifFalse:`
-- `BlockClosure>>#unless:` evaluates the block unless the condition is met. It's used to emphasize the block action as the usual case. For example:
+- `BlockClosure>>#unless:` evaluates the block unless the condition is met. It's
+  used to emphasize the block action as the usual case. For example:
 
 ```smalltalk
 [ html
@@ -13,7 +16,9 @@ This package include some extensions to base classes with the intention of impro
       unless: amount isUndefined
 ```
 
-- `BlockClosure>>#unless:inWhichCase:` is used when you want to emphasize a positive action, and in the exceptional case that the condition is met, evaluate an exceptional action.
+- `BlockClosure>>#unless:inWhichCase:` is used when you want to emphasize a
+positive action, and in the exceptional case that the condition is met,
+evaluate an exceptional action.
 For example:
 
 ```smalltalk
@@ -49,7 +54,8 @@ condition isSatisfiedBy: 0. "returns true"
 
 ### Composite Condition
 
-You can compose conditions using AND or OR as a logic operator. A simple AND composition could be used to test if a number is within an interval.
+You can compose conditions using AND or OR as a logic operator. A simple AND
+composition could be used to test if a number is within an interval.
 
 ```smalltalk
 | condition |

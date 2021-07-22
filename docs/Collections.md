@@ -2,10 +2,16 @@
 
 ## `Collection` extensions
 
-- `maxUsing:` : Allows to get the maximum element in the collection following the provided criteria. It will fail if the collection is empty.
-- `maxUsing:ifEmpty:` : Allows to get the maximum element in the collection following the provided criteria. It will evaluate the failBlock if the collection is empty.
-- `minUsing:` : Allows to get the minimum element in the collection following the provided criteria. It will fail if the collection is empty.
-- `minUsing:ifEmpty:` : Allows to get the minimum element in the collection following the provided criteria. It will evaluate the failBlock if the collection is empty.
+- `maxUsing:` : Allows to get the maximum element in the collection following
+  the provided criteria. It will fail if the collection is empty.
+- `maxUsing:ifEmpty:` : Allows to get the maximum element in the collection
+  following the provided criteria. It will evaluate the failBlock if the
+  collection is empty.
+- `minUsing:` : Allows to get the minimum element in the collection following
+  the provided criteria. It will fail if the collection is empty.
+- `minUsing:ifEmpty:` : Allows to get the minimum element in the collection
+  following the provided criteria. It will evaluate the failBlock if the
+  collection is empty.
 
 Some examples
 
@@ -16,12 +22,23 @@ Some examples
 
 ## `SequenceableCollection` extensions
 
-- `copyFirst:` Copy the first `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will raise an Error.
-- `copyLast:` Copy the last `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will raise an Error.
-- `copyNoMoreThanFirst:` Copy at max the first `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will return the whole collection.
-- `copyNoMoreThanLast:` Copy at max the last `n` elements of the collection. If `n` is 0 it will return an empty collection. If `n` is greater than the collection size it will return the whole collection.
-- `withoutFirst` Copy the collection excluding the first element. If the collection is empty it will return an empty collection.
-- `withoutFirst:` Copy the collection excluding the first `n` elements of it. If `n` is 0 it will return the same collection. If `n` is greater than the collection size it will return an empty collection.
+- `copyFirst:` Copy the first `n` elements of the collection. If `n` is 0 it
+  will return an empty collection. If `n` is greater than the collection size it
+  will raise an Error.
+- `copyLast:` Copy the last `n` elements of the collection. If `n` is 0 it will
+  return an empty collection. If `n` is greater than the collection size it will
+  raise an Error.
+- `copyNoMoreThanFirst:` Copy at max the first `n` elements of the collection.
+  If `n` is 0 it will return an empty collection. If `n` is greater than the
+  collection size it will return the whole collection.
+- `copyNoMoreThanLast:` Copy at max the last `n` elements of the collection. If
+  `n` is 0 it will return an empty collection. If `n` is greater than the
+  collection size it will return the whole collection.
+- `withoutFirst` Copy the collection excluding the first element. If the
+  collection is empty it will return an empty collection.
+- `withoutFirst:` Copy the collection excluding the first `n` elements of it.
+  If `n` is 0 it will return the same collection. If `n` is greater than the
+  collection size it will return an empty collection.
 
 Some examples
 
@@ -52,7 +69,8 @@ Some examples
 
 ## Circular Iterator
 
-A `CircularIterator` provides an abstraction to iterate over a collection rolling over when the end is reached:
+A `CircularIterator` provides an abstraction to iterate over a collection
+rolling over when the end is reached:
 
 ```smalltalk
 | iterator |
@@ -64,15 +82,31 @@ iterator next "$a".
 iterator next "$b".
 ```
 
+## Ordered Set
+
+An `OrderderSet` is a set preserving the element's insertion order. It complies
+with the sequenceable collection protocol.
+
+```smalltalk
+#(1 5 2 $a 1 $a) asOrderedSet >>> OrderedSet(1 5 2 $a)
+```
+
 ## Algorithms
 
 ### Binary Search
 
-`BinarySearchAlgorithm` implements a [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm) operating on a collection previously sorted. Given a `search key` it will return the insertion index for it. It's useful as a building block for slicing collections with the provided properties in a given range, or inserting new elements in the proper place.
+`BinarySearchAlgorithm` implements a
+[binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm) operating
+on a collection previously sorted. Given a `search key` it will return the
+insertion index for it. It's useful as a building block for slicing collections
+with the provided properties in a given range, or inserting new elements in the
+proper place.
 
 Let's see an example:
 
-Suppose we have a collection holding some events including a creation date, and it's already sorted by it, and now be want to get the events created after some starting date and before or on another creation date. You can do it with:
+Suppose we have a collection holding some events including a creation date, and
+it's already sorted by it, and now be want to get the events created after some
+starting date and before or on another creation date. You can do it with:
 
 ```smalltalk
 events
@@ -105,13 +139,17 @@ upper :=
 
 ### Balanced distribution in buckets
 
-`BalancedDistributionInBucketsAlgorithm` implements an algorithm that given a starting collection and a maximum bucket size will return a list of buckets (respecting the max bucket size) including all the collection elements distributed in the buckets in a balanced fashion (so no bucket will look almost empty).
+`BalancedDistributionInBucketsAlgorithm` implements an algorithm that given a
+starting collection and a maximum bucket size will return a list of buckets
+(respecting the max bucket size) including all the collection elements
+distributed in the buckets in a balanced fashion (so no bucket will look almost empty).
 
 For example:
 
 ```smalltalk
 ( BalancedDistributionInBucketsAlgorithm
-  distributing: #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 )
+  distributing: 
+    #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 )
   maxPerBucket: 4 ) execute.
 ```
 

@@ -22,7 +22,8 @@ Quick links
 
 ### Assertions
 
-This library is aimed at providing a simpler way to enforce and check assertions. The main focus point is to use it in the business model. Read the [online tutorial](docs/Assertions.md).
+This library is aimed at providing a simpler way to enforce and check assertions.
+The main focus point is to use it in the business model. Read the [online tutorial](docs/Assertions.md).
 
 ### Collections
 
@@ -30,15 +31,19 @@ This library provides additional abstractions for Collections. See the [related 
 
 ### Comparison
 
-This  library provides support to compare objects both for equality and identity. They are typically used to implement the `=` and `hash` methods. See the [related documentation.](docs/Comparison.md)
+This  library provides support to compare objects both for equality and identity.
+They are typically used to implement the `=` and `hash` methods. See the
+[related documentation.](docs/Comparison.md)
 
 ### Math
 
-This library provides basic arithmetic abstractions like Percentages. See the [related documentation.](docs/Math.md)
+This library provides basic arithmetic abstractions like Percentages. See the
+[related documentation.](docs/Math.md)
 
 ### Bindings and Optionals
 
-This library provides support to express optional values and required values, that can be unknown at the beginning of an execution. See the [related documentation.](docs/BindingsAndOptionals.md)
+This library provides support to express optional values and required values,
+that can be unknown at the beginning of an execution. See the [related documentation.](docs/BindingsAndOptionals.md)
 
 ### Exception Handling
 
@@ -46,7 +51,8 @@ Provides extensions to the [exception handling mechanics](docs/ExceptionHandling
 
 ### Metaprogramming
 
-This library provides some abstractions like [namespaces](docs/Namespaces.md) and [interfaces](docs/Interfaces.md).
+This library provides some abstractions like [namespaces](docs/Namespaces.md)
+and [interfaces](docs/Interfaces.md).
 
 ### SUnit
 
@@ -59,7 +65,8 @@ Provides [extensions to the SUnit framework](docs/SUnit.md).
 
 ## Installation
 
-To load the project in a Pharo image, or declare it as a dependency of your own project follow this [instructions](docs/Installation.md).
+To load the project in a Pharo image, or declare it as a dependency of your own
+project follow this [instructions](docs/Installation.md).
 
 ## Contributing
 
