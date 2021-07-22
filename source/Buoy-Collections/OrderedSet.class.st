@@ -31,7 +31,7 @@ OrderedSet class >> newFrom: aCollection [
 { #category : #copying }
 OrderedSet >> , aCollection [
 
-	^ ( self class withAll: collection )
+	^ ( self species withAll: collection )
 		  addAll: aCollection;
 		  yourself
 ]
@@ -77,13 +77,13 @@ OrderedSet >> collect: aBlock [
 { #category : #copying }
 OrderedSet >> copyFrom: start to: stop [
 
-	^ self class withAll: ( collection copyFrom: start to: stop )
+	^ self species withAll: ( collection copyFrom: start to: stop )
 ]
 
 { #category : #copying }
 OrderedSet >> copyReplaceFrom: start to: stop with: replacementCollection [
 
-	^ self class withAll: ( collection copyReplaceFrom: start to: stop with: replacementCollection )
+	^ self species withAll: ( collection copyReplaceFrom: start to: stop with: replacementCollection )
 ]
 
 { #category : #copying }
@@ -91,7 +91,7 @@ OrderedSet >> copyWith: newElement [
 
 	^ ( self includes: newElement ) 
 		then: [ self copy ]
-		otherwise: [ self class withAll: ( collection copyWith: newElement ) ]
+		otherwise: [ self species withAll: ( collection copyWith: newElement ) ]
 ]
 
 { #category : #enumerating }
@@ -111,7 +111,7 @@ OrderedSet >> grownBy: length [
 	"We need to put different objects in the grown collection,
 	otherwise they will be wiped out as repetitions.".
 	currentSize + 1 to: currentSize + length do: [ :index | grownCollection at: index put: Object new ].
-	^ self class withAll: grownCollection
+	^ self species withAll: grownCollection
 ]
 
 { #category : #comparing }
@@ -129,7 +129,7 @@ OrderedSet >> initialize: size [
 { #category : #enumerating }
 OrderedSet >> intersection: aCollection [
 
-	^ aCollection inject: self class new into: [ :set :each | 
+	^ aCollection inject: self species new into: [ :set :each | 
 		  ( self includes: each ) ifTrue: [ set add: each ].
 		  set
 		  ]
@@ -146,7 +146,7 @@ OrderedSet >> occurrencesOf: anObject [
 { #category : #enumerating }
 OrderedSet >> reject: aBlock [
 
-	^ self class withAll: ( collection reject: aBlock )
+	^ self species withAll: ( collection reject: aBlock )
 ]
 
 { #category : #removing }
@@ -164,13 +164,13 @@ OrderedSet >> removeAll [
 { #category : #converting }
 OrderedSet >> reversed [
 
-	^self class withAll: collection reversed
+	^self species withAll: collection reversed
 ]
 
 { #category : #enumerating }
 OrderedSet >> select: aBlock [
 
-	^ self class withAll: ( collection select: aBlock )
+	^ self species withAll: ( collection select: aBlock )
 ]
 
 { #category : #accessing }
