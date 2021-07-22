@@ -1,6 +1,12 @@
 Extension { #name : #Collection }
 
 { #category : #'*Buoy-Collections' }
+Collection >> asOrderedSet [
+
+	^ self as: OrderedSet
+]
+
+{ #category : #'*Buoy-Collections' }
 Collection >> maxUsing: aBlock [
 
 	^ self maxUsing: aBlock ifEmpty: [ self errorEmptyCollection ]

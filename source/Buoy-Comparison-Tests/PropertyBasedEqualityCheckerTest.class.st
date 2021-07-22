@@ -7,6 +7,12 @@ Class {
 	#category : #'Buoy-Comparison-Tests'
 }
 
+{ #category : #private }
+PropertyBasedEqualityCheckerTest >> equalityCheckerOn: anObject [
+
+	^ PropertyBasedEqualityChecker on: anObject
+]
+
 { #category : #tests }
 PropertyBasedEqualityCheckerTest >> testCheckingIdenticalObjects [
 
@@ -23,23 +29,23 @@ PropertyBasedEqualityCheckerTest >> testPropertyBlockComparison [
 
 	| checker |
 
-	checker := #(1 2 3 4) equalityChecker.
+	checker := self equalityCheckerOn: #( 1 2 3 4 ).
 	checker compare: [ :collection | collection last even ].
 
 	self
-		assert: ( checker checkAgainst: #(2) );
-		assert: ( checker checkAgainst: #(1 2 3 4) );
-		deny: ( checker checkAgainst: #(3) );
-		deny: ( checker checkAgainst: #(1 2 3 3) ).
+		assert: ( checker checkAgainst: #( 2 ) );
+		assert: ( checker checkAgainst: #( 1 2 3 4 ) );
+		deny: ( checker checkAgainst: #( 3 ) );
+		deny: ( checker checkAgainst: #( 1 2 3 3 ) ).
 
-	checker := #(1 2 3 3) equalityChecker.
+	checker := self equalityCheckerOn: #( 1 2 3 3 ).
 	checker compare: [ :collection | collection last even ].
 
 	self
-		assert: ( checker checkAgainst: #(1) );
-		assert: ( checker checkAgainst: #(1 2 3 3) );
-		deny: ( checker checkAgainst: #(2) );
-		deny: ( checker checkAgainst: #(1 2 3 4) )
+		assert: ( checker checkAgainst: #( 1 ) );
+		assert: ( checker checkAgainst: #( 1 2 3 3 ) );
+		deny: ( checker checkAgainst: #( 2 ) );
+		deny: ( checker checkAgainst: #( 1 2 3 4 ) )
 ]
 
 { #category : #tests }
@@ -47,12 +53,12 @@ PropertyBasedEqualityCheckerTest >> testPropertyComparison [
 
 	| checker |
 
-	checker := #(1 2 3 4) equalityChecker.
+	checker := self equalityCheckerOn: #( 1 2 3 4 ).
 	checker compare: #first.
 
 	self
-		assert: ( checker checkAgainst: #(1 1 1 1) );
-		deny: ( checker checkAgainst: #(2 2 3 4) )
+		assert: ( checker checkAgainst: #( 1 1 1 1 ) );
+		deny: ( checker checkAgainst: #( 2 2 3 4 ) )
 ]
 
 { #category : #tests }
@@ -60,13 +66,13 @@ PropertyBasedEqualityCheckerTest >> testSeveralPropertiesComparison [
 
 	| checker |
 
-	checker := #(1 2 3 4) equalityChecker.
-	checker compareAll: #(#first #second).
+	checker := self equalityCheckerOn: #( 1 2 3 4 ).
+	checker compareAll: #( #first #second ).
 
 	self
-		assert: ( checker checkAgainst: #(1 2 1 2) );
-		deny: ( checker checkAgainst: #(1 1 3 4) );
-		deny: ( checker checkAgainst: #(2 2 3 4) )
+		assert: ( checker checkAgainst: #( 1 2 1 2 ) );
+		deny: ( checker checkAgainst: #( 1 1 3 4 ) );
+		deny: ( checker checkAgainst: #( 2 2 3 4 ) )
 ]
 
 { #category : #tests }
