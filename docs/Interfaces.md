@@ -1,8 +1,10 @@
 # Interfaces
 
-An interface is useful for declaring a set of messages to be understood by the objects implementing it.
+An interface is useful for declaring a set of messages to be understood by the
+objects implementing it.
 
-> It's not intended to be used as some kind of static type check, but to document an expected protocol.
+> It's not intended to be used as some kind of static type check, but to
+> document an expected protocol.
 
 Once you have an interface you can ask it if some object is implementing it:
 
