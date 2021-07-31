@@ -1,5 +1,7 @@
 # Buoy
 
+![Logo](assets/logo.svg)
+
 This project aims to complement [Pharo](https://www.pharo.org) adding useful extensions.
 
 [![Unit Tests](https://github.com/ba-st/Buoy/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/ba-st/Buoy/actions/workflows/unit-tests.yml)
@@ -71,3 +73,7 @@ project follow this [instructions](docs/Installation.md).
 ## Contributing
 
 Check the [Contribution Guidelines](CONTRIBUTING.md)
+
+---
+
+> *Icons by [Icons8](https://icons8.com)*
