@@ -57,7 +57,7 @@ BaselineOfBuoy >> baselineCollections: spec [
 BaselineOfBuoy >> baselineComparison: spec [
 
 	spec
-		package: 'Buoy-Comparison' with: [ spec requires: #('Buoy-Assertions' 'Buoy-Collections') ];
+		package: 'Buoy-Comparison' with: [ spec requires: 'Buoy-Assertions' ];
 		group: 'Deployment' with: 'Buoy-Comparison';
 		package: 'Buoy-Comparison-Tests'
 			with: [ spec requires: #('Buoy-Comparison' 'Dependent-SUnit-Extensions') ];
