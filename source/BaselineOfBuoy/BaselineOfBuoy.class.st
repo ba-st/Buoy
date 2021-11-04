@@ -4,7 +4,7 @@ Baseline of Buoy
 Class {
 	#name : #BaselineOfBuoy,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfBuoy'
+	#category : #BaselineOfBuoy
 }
 
 { #category : #baselines }
@@ -45,9 +45,11 @@ BaselineOfBuoy >> baselineAssertions: spec [
 BaselineOfBuoy >> baselineCollections: spec [
 
 	spec
-		package: 'Buoy-Collections' with: [ spec requires: #('Buoy-Assertions' 'Buoy-Dynamic-Binding') ];
+		package: 'Buoy-Collections'
+		with: [ spec requires: #( 'Buoy-Assertions' 'Buoy-Dynamic-Binding' 'Buoy-Comparison' ) ];
 		group: 'Deployment' with: 'Buoy-Collections';
-		package: 'Buoy-Collections-Tests' with: [ spec requires: #('Buoy-Collections' 'Dependent-SUnit-Extensions') ];
+		package: 'Buoy-Collections-Tests'
+		with: [ spec requires: #( 'Buoy-Collections' 'Dependent-SUnit-Extensions' ) ];
 		group: 'Tests' with: 'Buoy-Collections-Tests'
 ]
 
@@ -55,7 +57,7 @@ BaselineOfBuoy >> baselineCollections: spec [
 BaselineOfBuoy >> baselineComparison: spec [
 
 	spec
-		package: 'Buoy-Comparison' with: [ spec requires: #('Buoy-Assertions' 'Buoy-Collections') ];
+		package: 'Buoy-Comparison' with: [ spec requires: 'Buoy-Assertions' ];
 		group: 'Deployment' with: 'Buoy-Comparison';
 		package: 'Buoy-Comparison-Tests'
 			with: [ spec requires: #('Buoy-Comparison' 'Dependent-SUnit-Extensions') ];
