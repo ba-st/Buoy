@@ -8,8 +8,16 @@ Namespace >> gtInspectorItemsIn: composite [
 ]
 
 { #category : #'*Buoy-Development-Tools' }
-Namespace >> spotterForKeysFor: aStep [
-	<spotterOrder: 15>
+Namespace >> inspectionItems: builder [
 
+	<inspectorPresentationOrder: 0 title: 'Items'>
+	^ bindings inspectionItems: builder
+]
+
+{ #category : #'*Buoy-Development-Tools' }
+Namespace >> spotterForKeysFor: aStep [
+
+	<spotterOrder: 15>
+	<stSpotterOrder: 15>
 	^ bindings spotterForKeysFor: aStep
 ]
