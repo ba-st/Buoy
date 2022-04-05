@@ -3,7 +3,7 @@
 Buoy aims to complement [Pharo](https://www.pharo.org) adding useful extensions.
 
 To learn about the project, [install it](how-to/how-to-load-in-pharo.md) and
-[follow the assertions tutorial](tutorials/Assertions.md), or expand your
+[follow the assertions tutorial](tutorial/Assertions.md), or expand your
 understanding over specific topics:
 
 - **Collections**: Additional abstractions for Collections.
