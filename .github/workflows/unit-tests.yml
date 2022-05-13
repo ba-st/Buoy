@@ -20,7 +20,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         timeout-minutes: 15
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v3
         with:
-          name: ${{matrix.os}}-${{matrix.smalltalk}}
-          token: ${{ secrets.CODECOV_TOKEN }}
+          name: Unit-Tests-${{matrix.smalltalk}}
