@@ -34,7 +34,7 @@ ExceptionHandlingSystemTest >> testCatchingSetsOfExceptions [
 
 	| result |
 
-	result := [ 1 / 0 + Warning signal ]
+	result := [ ZeroDivide signal + Warning signal ]
 		on: Warning , ZeroDivide
 		do: [ :ex | ex resume: 1 ].
 		
@@ -46,7 +46,7 @@ ExceptionHandlingSystemTest >> testCatchingSetsOfExceptionsWithHierarchy [
 
 	| result |
 
-	result := [ 1 / 0 + Warning signal ]
+	result := [ ZeroDivide signal + Warning signal ]
 		on: Notification , Error
 		do: [ :ex | ex resume: 1 ].
 		
@@ -87,13 +87,13 @@ ExceptionHandlingSystemTest >> testExceptionSetsConcatenation [
 
 	| result |
 
-	result := [ 1 / 0 + Warning signal ]
+	result := [ ZeroDivide signal + Warning signal ]
 		on: Warning , ZeroDivide , ( MessageNotUnderstood , Error )
 		do: [ :ex | ex resume: 1 ].
 
 	self assert: result equals: 2.
 
-	result := [ 1 / 0 + Warning signal ]
+	result := [ ZeroDivide signal + Warning signal ]
 		on: MessageNotUnderstood , Error , ( Warning , ZeroDivide )
 		do: [ :ex | ex resume: 1 ].
 
