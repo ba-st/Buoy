@@ -172,5 +172,5 @@ AssertionChecker
   ]
 ```
 
-but keep in mind when multiple conditions, that the error to raise must understand
+but keep in mind when using multiple conditions, that the error to raise must understand
 `signalAll:` in order to work.
