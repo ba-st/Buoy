@@ -17,7 +17,7 @@ understanding over specific topics:
   required values, that can be unknown at the beginning of an execution.
   See the [related documentation.](reference/BindingsAndOptionals.md)
 - **Exception Handling**: Extensions to the [exception handling mechanics](reference/ExceptionHandling.md).
-- **Metaprogramming**: Some abstractions like [namespaces](reference/Namespaces.md)
+- **Meta-programming**: Some abstractions like [namespaces](reference/Namespaces.md)
 and [interfaces](reference/Interfaces.md).
 - **SUnit**: [Extensions to the SUnit framework](reference/SUnit.md).
 
