@@ -8,13 +8,30 @@ Class {
 		'asserter',
 		'failurePolicy'
 	],
-	#category : 'Buoy-Assertions'
+	#category : #'Buoy-Assertions'
 }
 
 { #category : #'instance creation' }
 AssertionChecker class >> applying: aFailurePolicy to: anAsserter [
 
 	^ self new initializeApplying: aFailurePolicy to: anAsserter
+]
+
+{ #category : #checking }
+AssertionChecker class >> check: checkingBlock [
+
+	^ self check: checkingBlock configuredBy: [ :checker |  ]
+]
+
+{ #category : #checking }
+AssertionChecker class >> check: checkingBlock configuredBy: configurationBlock [
+
+	| builder |
+
+	builder := AssertionCheckerBuilder new.
+	configurationBlock value: builder.
+	builder checking: checkingBlock.
+	^ builder buildAndCheck
 ]
 
 { #category : #private }
