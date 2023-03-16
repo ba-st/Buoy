@@ -84,7 +84,7 @@ iterator next "$b".
 
 ## Ordered Set
 
-An `OrderderSet` is a set preserving the element's insertion order. It complies
+An `OrderedSet` is a set preserving the element's insertion order. It complies
 with the sequenceable collection protocol.
 
 ```smalltalk

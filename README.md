@@ -29,7 +29,7 @@ Quick links
 - Additional Math abstractions
 - Bindings and Optionals
 - Exception Handling extensions
-- Metaprogramming
+- Meta-programming
 - SUnit extensions
 
 ## License

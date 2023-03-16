@@ -17,7 +17,7 @@ It will apply the combinator operator to each one of the objects:
   collection and then combine them.
 - `combineHashOf:with:` will send the hash message to the two objects and then
   combine them.
-- `combineAll::` expectes a collection of hashes and will combine them.
+- `combineAll::` expects a collection of hashes and will combine them.
 - `combine:with:` will combine two hash values
 
 ### Hash Combinator Examples
@@ -42,7 +42,7 @@ Equality checkers always performs a `==` comparison first and proceed with the
 rest of the rules only if the objects are not identical.
 
 By default `equalityChecker` is an instance of `PropertyBasedEqualityChecker`
-and it alredy knowns the receiving instance. It can be configured with:
+and it already knowns the receiving instance. It can be configured with:
 
 - `compare: selector` will add a rule to the checker that sends the provided
   message on the receiver and target object and compare the results by `=`

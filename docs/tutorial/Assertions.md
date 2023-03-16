@@ -37,42 +37,39 @@ a valid code consists only of letters. So let's rewrite our example:
 
 code := 'AR'.
 
-AssertionCheckerBuilder new
-  checking: [ :asserter |
+AssertionChecker
+  check: [ :asserter |
     asserter
       enforce: [ code size = 2 ]
       because: 'ISO 3166-1 Alpha-2 codes must have exactly two letters';
       enforce: [ code allSatisfy: #isLetter ]
       because: 'ISO 3166-1 Alpha-2 codes must only contain letters'
-    ];
-  buildAndCheck
+    ]
 ```
 
-Note that in this case we are creating an `AssertionCheckerBuilder` and
-configuring all the conditions to enforce. Let's try now replacing `code` with
-`'AR3'` and `Do it` again. By default all the conditions to enforce are checked
-so you should get an error message combining both explanations, and if you
-handle the raised exception you can get all the failures by sending it the
-message `failures`.
+Note that in this case we are configuring all the conditions to enforce. Let's
+try now replacing `code` with `'AR3'` and `Do it` again. By default all the
+conditions to enforce are checked so you should get an error message combining
+both explanations, and if you handle the raised exception you can get all the
+failures by sending it the message `failures`.
 
 If you want the more usual behavior of stopping after the first failure you can
-configure the builder to fail fast:
+configure it to fail fast:
 
 ```smalltalk
 | code |
 
 code := 'AR3'.
 
-AssertionCheckerBuilder new
-  failFast;
-  checking: [ :asserter |
+AssertionChecker
+  check: [ :asserter |
     asserter
       enforce: [ code size = 2 ]
       because: 'ISO 3166-1 Alpha-2 codes must have exactly two letters';
       enforce: [ code allSatisfy: #isLetter ]
       because: 'ISO 3166-1 Alpha-2 codes must only contain letters'
-    ];
-  buildAndCheck
+    ]
+  configuredBy: [ :checker | checker failFast ]
 ```
 
 If you `Do it` you will get only the first failure, the next conditions won't
@@ -90,19 +87,18 @@ valid code. Now we will consider only the officially assigned codes as valid:
 code := 'AA'.
 officiallyAssignedCodes := #('AR' 'BR' 'US').
 
-AssertionCheckerBuilder new
-  checking: [ :asserter |
+AssertionChecker
+  check: [ :asserter |
     asserter
       enforce: [ code size = 2 and: [ code allSatisfy: #isLetter ]]
       because: 'ISO 3166-1 Alpha-2 codes must have exactly two letters'
-      onSuccess: [ :sucessAsserter |
-        sucessAsserter
+      onSuccess: [ :successAsserter |
+        successAsserter
           enforce: [ officiallyAssignedCodes includes: code ]
           because: [ '<1s> is not an officially assigned code'
             expandMacrosWith: code ]
         ]
-    ];
-    buildAndCheck
+    ]
 ```
 
 Here we are introducing two new features:
@@ -112,8 +108,7 @@ Here we are introducing two new features:
   is satisfied. So we can make assumptions about what `code` looks like at this point.
 - Second, using a block as the `because:` argument. This avoids creating
   unnecessary objects because the explanation will only be evaluated if the
-  condition is not met. In this case the argument is a literal String, so it
-  makes no difference.
+  condition is not met.
 
 ## Refusing
 
@@ -126,18 +121,17 @@ Sometimes it's easier to explain a condition using negative logic, so
 code := 'AR'.
 unassignedCodes := #('LO' 'LP' 'OU').
 
-AssertionCheckerBuilder new
-  checking: [ :asserter |
+AssertionChecker
+  check: [ :asserter |
     asserter
       enforce: [ code size = 2 and: [ code allSatisfy: #isLetter ]]
       because: 'ISO 3166-1 Alpha-2 codes must have exactly two letters'
-      onSuccess: [ :sucessAsserter |
-        sucessAsserter
+      onSuccess: [ :successAsserter |
+        successAsserter
           refuse: [ unassignedCodes includes: code ]
           because: [ '<1s> is an unassigned code' expandMacrosWith: code ]
         ]
-    ];
-    buildAndCheck
+    ]
 ```
 
 ## Configuring the error to raise
@@ -145,7 +139,7 @@ AssertionCheckerBuilder new
 If not specified the library will raise `AssertionFailed` when some check fails.
 If you want to raise a different kind of error there are two ways to configure it:
 
-For single condition checks you can use `enforce:because:raising:` or `refuse:because:raising:`.
+For single condition checks, use `enforce:because:raising:` or `refuse:because:raising:`
 
 ```smalltalk
 | code |
@@ -158,24 +152,25 @@ AssertionChecker
   raising: Error
 ```
 
-When using the builder you should use:
+For multiple condition checks, use:
 
 ```smalltalk
 | code |
 
 code := 'AR'.
 
-AssertionCheckerBuilder new
-  raising: InstanceCreationFailed;
-  checking: [ :asserter |
+AssertionChecker
+  check: [ :asserter |
     asserter
       enforce: [ code size = 2 ]
       because: 'ISO 3166-1 Alpha-2 codes must have exactly two letters';
       enforce: [ code allSatisfy: #isLetter ]
       because: 'ISO 3166-1 Alpha-2 codes must only contain letters'
-    ];
-  buildAndCheck
+  ]
+  configuredBy: [ :checker |
+    checker raising: InstanceCreationFailed
+  ]
 ```
 
-but keep in mind when using the builder that the error to raise must understand
+but keep in mind when using multiple conditions, that the error to raise must understand
 `signalAll:` in order to work.
