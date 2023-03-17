@@ -24,3 +24,4 @@ jobs:
         with:
           name: Unit-Tests-${{matrix.smalltalk}}
           token: ${{ secrets.CODECOV_TOKEN }}
+          flags: unit
