@@ -2,7 +2,8 @@
 
 ![Logo](assets/logo.svg)
 
-This project aims to complement [Pharo](https://www.pharo.org) adding useful extensions.
+This project aims to complement [Pharo](https://www.pharo.org) and [GS64](https://gemtalksystems.com/products/gs64/)
+adding useful extensions.
 
 [![Unit Tests](https://github.com/ba-st/Buoy/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/ba-st/Buoy/actions/workflows/unit-tests.yml)
 [![Coverage Status](https://codecov.io/github/ba-st/Buoy/coverage.svg?branch=release-candidate)](https://codecov.io/gh/ba-st/Buoy/branch/release-candidate)

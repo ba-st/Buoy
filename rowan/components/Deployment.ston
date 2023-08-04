@@ -1,0 +1,20 @@
+RwSimpleProjectLoadComponentV2 {
+  #name : 'Deployment',
+  #projectNames : [ ],
+  #componentNames : [ ],
+  #packageNames : [
+    'Buoy-Collections-GS64-Extensions'
+  ],
+  #conditionalPackageMapSpecs : {
+    'gemstone' : {
+      'allusers' : {
+        #packageNameToPlatformPropertiesMap : {
+          'Buoy-Collections-GS64-Extensions' : {
+            'symbolDictName' : 'Globals'
+          }
+        }
+      }
+    }
+  },
+  #comment : 'Extensions to Collections'
+}

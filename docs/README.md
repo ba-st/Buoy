@@ -1,6 +1,7 @@
 # Buoy Documentation
 
-Buoy aims to complement [Pharo](https://www.pharo.org) adding useful extensions.
+Buoy aims to complement [Pharo](https://www.pharo.org) and [GS64](https://gemtalksystems.com/products/gs64/)
+adding useful extensions.
 
 To learn about the project, [install it](how-to/how-to-load-in-pharo.md) and
 [follow the assertions tutorial](tutorial/Assertions.md), or expand your

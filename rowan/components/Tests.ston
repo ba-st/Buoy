@@ -1,0 +1,13 @@
+RwSimpleProjectLoadComponentV2 {
+  #name : 'Tests',
+  #condition : 'tests',
+  #projectNames : [ ],
+  #componentNames : [
+    'Deployment',
+    'SUnit-Dependent-Extensions'
+  ],
+  #packageNames : [
+    'Buoy-SUnit-Tests'
+  ],
+  #comment : ''
+}
