@@ -1,0 +1,17 @@
+RwLoadSpecificationV2 {
+  #specName: 'Buoy-CI',
+  #projectName : 'Buoy',
+  #diskUrl : '/opt/gemstone/projects/Buoy',
+  #projectSpecFile : 'rowan/project.ston',
+  #componentNames : [
+    'Tests'
+  ],
+  #platformProperties : {
+    'gemstone' : {
+      'allusers' : {
+        #defaultSymbolDictName : 'Buoy'
+      }
+    }
+  },
+  #comment : 'Loading spec for the continuous integration setup'
+}

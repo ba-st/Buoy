@@ -1,0 +1,21 @@
+RwSimpleProjectLoadComponentV2 {
+  #name : 'SUnit-Dependent-Extensions',
+  #condition : 'sunit',
+  #projectNames : [ ],
+  #componentNames : [ ],
+  #packageNames : [
+    'Buoy-SUnit-Model'
+  ],
+  #conditionalPackageMapSpecs : {
+    'gemstone' : {
+      'allusers' : {
+        #packageNameToPlatformPropertiesMap : {
+          'Buoy-SUnit-Model' : {
+            'symbolDictName' : 'Globals'
+          }
+        }
+      }
+    }
+  },
+  #comment : 'Extensions to TestAsserter'
+}
