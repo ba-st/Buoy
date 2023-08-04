@@ -4,6 +4,9 @@ Extension { #name : #BlockClosure }
 BlockClosure >> on: selector except: exclusionSelector do: action [
 
 	^ self
-		on: selector - exclusionSelector
-		do: action
+		  on: selector
+		  do: [ :exception |
+			  (exclusionSelector handles: exception)
+				  ifTrue: [ exception pass ]
+				  ifFalse: [ action value: exception ] ]
 ]
