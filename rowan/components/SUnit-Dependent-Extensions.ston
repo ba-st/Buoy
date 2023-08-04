@@ -4,13 +4,17 @@ RwSimpleProjectLoadComponentV2 {
   #projectNames : [ ],
   #componentNames : [ ],
   #packageNames : [
-    'Buoy-SUnit-Model'
+    'Buoy-SUnit-Model',
+    'Buoy-SUnit-GS64-Extensions'
   ],
   #conditionalPackageMapSpecs : {
     'gemstone' : {
       'allusers' : {
         #packageNameToPlatformPropertiesMap : {
           'Buoy-SUnit-Model' : {
+            'symbolDictName' : 'Globals'
+          },
+          'Buoy-SUnit-GS64-Extensions' : {
             'symbolDictName' : 'Globals'
           }
         }
