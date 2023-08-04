@@ -68,6 +68,8 @@ BaselineOfBuoy >> baselineComparison: spec [
 BaselineOfBuoy >> baselineConditions: spec [
 
 	spec
+		package: 'Buoy-Conditions-Extensions';
+		group: 'Deployment' with: 'Buoy-Conditions-Extensions';
 		package: 'Buoy-Conditions';
 		group: 'Deployment' with: 'Buoy-Conditions';
 		package: 'Buoy-Conditions-Tests' with: [ spec requires: 'Buoy-Conditions' ];
