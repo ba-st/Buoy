@@ -3,6 +3,7 @@ RwSimpleProjectLoadComponentV2 {
   #condition : 'tests',
   #projectNames : [ ],
   #componentNames : [
+    'Deployment',
     'SUnit-Dependent-Extensions'
   ],
   #packageNames : [
