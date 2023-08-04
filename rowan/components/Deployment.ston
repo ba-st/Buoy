@@ -3,13 +3,17 @@ RwSimpleProjectLoadComponentV2 {
   #projectNames : [ ],
   #componentNames : [ ],
   #packageNames : [
-    'Buoy-Collections-GS64-Extensions'
+    'Buoy-Collections-GS64-Extensions' ,
+    'Buoy-Exception-Handling'
   ],
   #conditionalPackageMapSpecs : {
     'gemstone' : {
       'allusers' : {
         #packageNameToPlatformPropertiesMap : {
           'Buoy-Collections-GS64-Extensions' : {
+            'symbolDictName' : 'Globals'
+          } ,
+          'Buoy-Exception-Handling' : {
             'symbolDictName' : 'Globals'
           }
         }
