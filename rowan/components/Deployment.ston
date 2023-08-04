@@ -5,7 +5,8 @@ RwSimpleProjectLoadComponentV2 {
   #packageNames : [
     'Buoy-Collections-GS64-Extensions',
     'Buoy-Conditions-Extensions',
-    'Buoy-Conditions'
+    'Buoy-Conditions',
+    'Buoy-Metaprogramming-Extensions'
   ],
   #conditionalPackageMapSpecs : {
     'gemstone' : {
@@ -15,6 +16,9 @@ RwSimpleProjectLoadComponentV2 {
             'symbolDictName' : 'Globals'
           },
           'Buoy-Conditions-Extensions' : {
+            'symbolDictName' : 'Globals'
+          },
+          'Buoy-Metaprogramming-Extensions' : {
             'symbolDictName' : 'Globals'
           }
         }
