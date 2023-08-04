@@ -112,9 +112,15 @@ BaselineOfBuoy >> baselineMath: spec [
 BaselineOfBuoy >> baselineMetaprogramming: spec [
 
 	spec
-		package: 'Buoy-Metaprogramming' with: [ spec requires: 'Buoy-Assertions' ];
+		package: 'Buoy-Metaprogramming'
+		with: [ spec requires: 'Buoy-Assertions' ];
 		group: 'Deployment' with: 'Buoy-Metaprogramming';
-		package: 'Buoy-Metaprogramming-Tests' with: [ spec requires: 'Buoy-Metaprogramming' ];
+		package: 'Buoy-Metaprogramming-Extensions'
+		with: [ spec requires: 'Buoy-Assertions' ];
+		group: 'Deployment' with: 'Buoy-Metaprogramming-Extensions';
+		package: 'Buoy-Metaprogramming-Tests' with: [
+			spec requires:
+					#( 'Buoy-Metaprogramming' 'Buoy-Metaprogramming-Extensions' ) ];
 		group: 'Tests' with: 'Buoy-Metaprogramming-Tests'
 ]
 
