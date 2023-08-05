@@ -15,7 +15,7 @@ Class {
 	#instVars : [
 		'pattern'
 	],
-	#category : 'Buoy-Conditions'
+	#category : #'Buoy-Conditions-Pharo-Extensions'
 }
 
 { #category : #'instance creation' }

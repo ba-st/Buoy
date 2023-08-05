@@ -1,7 +1,7 @@
 Class {
 	#name : #RegexConditionTest,
 	#superclass : #TestCase,
-	#category : 'Buoy-Conditions-Tests'
+	#category : #'Buoy-Conditions-Pharo-Extensions-Tests'
 }
 
 { #category : #tests }

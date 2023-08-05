@@ -72,10 +72,17 @@ BaselineOfBuoy >> baselineConditions: spec [
 		group: 'Deployment' with: 'Buoy-Conditions-Extensions';
 		package: 'Buoy-Conditions';
 		group: 'Deployment' with: 'Buoy-Conditions';
+		package: 'Buoy-Conditions-Pharo-Extensions'
+		with: [
+			spec requires: #( 'Buoy-Conditions' 'Buoy-Conditions-Extensions' ) ];
+		group: 'Deployment' with: 'Buoy-Conditions-Pharo-Extensions';
 		package: 'Buoy-Conditions-Tests'
 		with: [
 			spec requires: #( 'Buoy-Conditions' 'Buoy-Conditions-Extensions' ) ];
-		group: 'Tests' with: 'Buoy-Conditions-Tests'
+		group: 'Tests' with: 'Buoy-Conditions-Tests';
+		package: 'Buoy-Conditions-Pharo-Extensions-Tests'
+		with: [ spec requires: 'Buoy-Conditions-Pharo-Extensions' ];
+		group: 'Tests' with: 'Buoy-Conditions-Pharo-Extensions-Tests'
 ]
 
 { #category : #baselines }
