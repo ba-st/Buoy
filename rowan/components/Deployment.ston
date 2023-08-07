@@ -5,10 +5,16 @@ RwSimpleProjectLoadComponentV2 {
   #packageNames : [
     'Buoy-Assertions',
     'Buoy-Assertions-Extensions',
+    'Buoy-Collections-Extensions',
     'Buoy-Collections-GS64-Extensions',
-    'Buoy-Conditions-Extensions',
+    'Buoy-Comparison',
+    'Buoy-Comparison-Extensions',
     'Buoy-Conditions',
+    'Buoy-Conditions-Extensions',
+    'Buoy-Dynamic-Binding',
     'Buoy-Exception-Handling-Extensions',
+    'Buoy-Math-GS64-Extensions',
+    'Buoy-Metaprogramming',
     'Buoy-Metaprogramming-Extensions',
     'Buoy-Metaprogramming-GS64-Extensions'
   ],
@@ -19,15 +25,24 @@ RwSimpleProjectLoadComponentV2 {
           'Buoy-Assertions-Extensions' : {
             'symbolDictName' : 'Globals'
           },
+          'Buoy-Collections-Extensions' : {
+            'symbolDictName' : 'Globals'
+          },
           'Buoy-Collections-GS64-Extensions' : {
             'symbolDictName' : 'Globals'
            },
+          'Buoy-Comparison-Extensions' : {
+            'symbolDictName' : 'Globals'
+          },
           'Buoy-Conditions-Extensions' : {
             'symbolDictName' : 'Globals'
           },
           'Buoy-Exception-Handling-Extensions' : {
             'symbolDictName' : 'Globals'
            },
+          'Buoy-Math-GS64-Extensions' : {
+            'symbolDictName' : 'Globals'
+          },
           'Buoy-Metaprogramming-Extensions' : {
             'symbolDictName' : 'Globals'
           },

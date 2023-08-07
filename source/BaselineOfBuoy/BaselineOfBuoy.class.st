@@ -50,11 +50,17 @@ BaselineOfBuoy >> baselineAssertions: spec [
 BaselineOfBuoy >> baselineCollections: spec [
 
 	spec
-		package: 'Buoy-Collections'
-		with: [ spec requires: #( 'Buoy-Assertions' 'Buoy-Dynamic-Binding' 'Buoy-Comparison' ) ];
+		package: 'Buoy-Collections' with: [
+			spec requires:
+					#( 'Buoy-Assertions' 'Buoy-Dynamic-Binding'
+					   'Buoy-Comparison' ) ];
 		group: 'Deployment' with: 'Buoy-Collections';
-		package: 'Buoy-Collections-Tests'
-		with: [ spec requires: #( 'Buoy-Collections' 'Dependent-SUnit-Extensions' ) ];
+		package: 'Buoy-Collections-Extensions'
+		with: [ spec requires: 'Buoy-Collections' ];
+		group: 'Deployment' with: 'Buoy-Collections-Extensions';
+		package: 'Buoy-Collections-Tests' with: [
+			spec requires: #( 'Buoy-Collections' 'Buoy-Collections-Extensions'
+					   'Dependent-SUnit-Extensions' ) ];
 		group: 'Tests' with: 'Buoy-Collections-Tests'
 ]
 
@@ -62,10 +68,15 @@ BaselineOfBuoy >> baselineCollections: spec [
 BaselineOfBuoy >> baselineComparison: spec [
 
 	spec
-		package: 'Buoy-Comparison' with: [ spec requires: 'Buoy-Assertions' ];
+		package: 'Buoy-Comparison'
+		with: [ spec requires: 'Buoy-Assertions' ];
 		group: 'Deployment' with: 'Buoy-Comparison';
+		package: 'Buoy-Comparison-Extensions'
+		with: [ spec requires: 'Buoy-Comparison' ];
+		group: 'Deployment' with: 'Buoy-Comparison-Extensions';
 		package: 'Buoy-Comparison-Tests'
-			with: [ spec requires: #('Buoy-Comparison' 'Dependent-SUnit-Extensions') ];
+		with: [
+			spec requires: #( 'Buoy-Comparison-Extensions' 'Dependent-SUnit-Extensions' ) ];
 		group: 'Tests' with: 'Buoy-Comparison-Tests'
 ]
 
@@ -106,8 +117,8 @@ BaselineOfBuoy >> baselineExceptionHandling: spec [
 	spec
 		package: 'Buoy-Exception-Handling-Extensions';
 		group: 'Deployment' with: 'Buoy-Exception-Handling-Extensions';
-		package: 'Buoy-Exception-Handling-Extensions-Tests' with: [ spec requires: 'Buoy-Exception-Handling-Extensions' ];
-		group: 'Tests' with: 'Buoy-Exception-Handling-Extensions-Tests'
+		package: 'Buoy-Exception-Handling-Tests' with: [ spec requires: 'Buoy-Exception-Handling-Extensions' ];
+		group: 'Tests' with: 'Buoy-Exception-Handling-Tests'
 ]
 
 { #category : #baselines }
@@ -129,10 +140,12 @@ BaselineOfBuoy >> baselineMetaprogramming: spec [
 		group: 'Deployment' with: 'Buoy-Metaprogramming';
 		package: 'Buoy-Metaprogramming-Extensions'
 		with: [ spec requires: 'Buoy-Assertions' ];
-		group: 'Deployment' with: 'Buoy-Metaprogramming-Extensions';
+		package: 'Buoy-Metaprogramming-Pharo-Extensions';
+		group: 'Deployment' with: 'Buoy-Metaprogramming-Pharo-Extensions';
 		package: 'Buoy-Metaprogramming-Tests' with: [
 			spec requires:
-					#( 'Buoy-Metaprogramming' 'Buoy-Metaprogramming-Extensions' ) ];
+					#( 'Buoy-Metaprogramming' 'Buoy-Metaprogramming-Extensions'
+					   'Buoy-Metaprogramming-Pharo-Extensions' ) ];
 		group: 'Tests' with: 'Buoy-Metaprogramming-Tests'
 ]
 

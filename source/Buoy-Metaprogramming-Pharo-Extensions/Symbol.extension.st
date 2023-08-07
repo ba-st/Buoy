@@ -1,6 +1,6 @@
 Extension { #name : #Symbol }
 
-{ #category : #'*Buoy-Metaprogramming' }
+{ #category : #'*Buoy-Metaprogramming-Pharo-Extensions' }
 Symbol >> argumentCount [
 
 	^self numArgs

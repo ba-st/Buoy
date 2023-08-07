@@ -7,6 +7,12 @@ CharacterCollection >> expandMacros [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+CharacterCollection >> expandMacrosWith: anObject [
+
+	^ self expandMacrosWithArguments: { anObject }
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> expandMacrosWith: anObject with: anotherObject [
 
 	^ self expandMacrosWithArguments:

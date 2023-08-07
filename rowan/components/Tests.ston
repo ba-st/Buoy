@@ -8,8 +8,11 @@ RwSimpleProjectLoadComponentV2 {
   ],
   #packageNames : [
     'Buoy-Assertions-Tests',
+    'Buoy-Comparison-Tests',
     'Buoy-Conditions-Tests',
-    'Buoy-Exception-Handling-Extensions-Tests',
+    'Buoy-Dynamic-Binding-Tests',
+    'Buoy-Exception-Handling-Tests',
+    'Buoy-Metaprogramming-Tests',
     'Buoy-SUnit-Tests'
   ],
   #comment : ''

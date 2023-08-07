@@ -1,6 +1,6 @@
 Extension { #name : #Behavior }
 
-{ #category : #'*Buoy-Metaprogramming' }
+{ #category : #'*Buoy-Metaprogramming-Pharo-Extensions' }
 Behavior >> allLeafSubclasses [
 
 	| leafs |
