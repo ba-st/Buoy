@@ -4,7 +4,7 @@ I'm a test case for the exception handling system.
 Class {
 	#name : #ExceptionHandlingSystemTest,
 	#superclass : #TestCase,
-	#category : #'Buoy-Exception-Handling-Tests'
+	#category : #'Buoy-Exception-Handling-Extensions-Tests'
 }
 
 { #category : #private }
@@ -32,25 +32,27 @@ ExceptionHandlingSystemTest >> handleZeroDivideAndReturnWithCaret [
 { #category : #'tests - exception sets' }
 ExceptionHandlingSystemTest >> testCatchingSetsOfExceptions [
 
-	| result |
+	self assert: ([
+		 Warning signal.
+		 false ]
+			 on: Warning , ZeroDivide
+			 do: [ :ex | ex return: true ]).
 
-	result := [ ZeroDivide signal + Warning signal ]
-		on: Warning , ZeroDivide
-		do: [ :ex | ex resume: 1 ].
-		
-	self assert: result equals: 2
+	self assert: ([
+		 ZeroDivide signal.
+		 false ]
+			 on: Warning , ZeroDivide
+			 do: [ :ex | ex return: true ])
 ]
 
 { #category : #'tests - exception sets' }
 ExceptionHandlingSystemTest >> testCatchingSetsOfExceptionsWithHierarchy [
 
-	| result |
-
-	result := [ ZeroDivide signal + Warning signal ]
-		on: Notification , Error
-		do: [ :ex | ex resume: 1 ].
-		
-	self assert: result equals: 2
+	self assert: ([
+		 Warning signal.
+		 false ]
+			 on: Notification , Error
+			 do: [ :ex | ex return: true ])
 ]
 
 { #category : #'tests - ensure' }
@@ -85,19 +87,13 @@ ExceptionHandlingSystemTest >> testEnsureSemanticsWhenNoException [
 { #category : #'tests - exception sets' }
 ExceptionHandlingSystemTest >> testExceptionSetsConcatenation [
 
-	| result |
+	self assert: ([ ZeroDivide signal ]
+			 on: Warning , ZeroDivide , (MessageNotUnderstood , Error)
+			 do: [ :ex | ex return: true ]).
 
-	result := [ ZeroDivide signal + Warning signal ]
-		on: Warning , ZeroDivide , ( MessageNotUnderstood , Error )
-		do: [ :ex | ex resume: 1 ].
-
-	self assert: result equals: 2.
-
-	result := [ ZeroDivide signal + Warning signal ]
-		on: MessageNotUnderstood , Error , ( Warning , ZeroDivide )
-		do: [ :ex | ex resume: 1 ].
-
-	self assert: result equals: 2
+	self assert: ([ Object new perform: #asdf ]
+			 on: MessageNotUnderstood , Error , (Warning , ZeroDivide)
+			 do: [ :ex | ex return: true ])
 ]
 
 { #category : #'tests - exception sets' }
