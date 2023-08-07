@@ -4,7 +4,7 @@ RwSimpleProjectLoadComponentV2 {
   #componentNames : [ ],
   #packageNames : [
     'Buoy-Assertions',
-    'Buoy-Assertions-Extensions'
+    'Buoy-Assertions-Extensions',
     'Buoy-Collections-GS64-Extensions',
     'Buoy-Conditions-Extensions',
     'Buoy-Conditions',
