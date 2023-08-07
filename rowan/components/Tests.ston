@@ -7,6 +7,7 @@ RwSimpleProjectLoadComponentV2 {
     'SUnit-Dependent-Extensions'
   ],
   #packageNames : [
+    'Buoy-Assertions-Tests',
     'Buoy-Conditions-Tests',
     'Buoy-SUnit-Tests'
   ],
