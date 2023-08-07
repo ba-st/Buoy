@@ -13,3 +13,9 @@ Collection >> ifEmpty: emptyBlock ifNotEmpty: notEmptyBlock [
 		  ifTrue: emptyBlock
 		  ifFalse: [ notEmptyBlock cull: self ]
 ]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> select: selectBlock thenCollect: collectBlock [
+
+	^ (self select: selectBlock) collect: collectBlock
+]
