@@ -11,6 +11,7 @@ RwSimpleProjectLoadComponentV2 {
     'Buoy-Comparison-Tests',
     'Buoy-Conditions-Tests',
     'Buoy-Dynamic-Binding-Tests',
+    'Buoy-Exception-Handling-Tests',
     'Buoy-Metaprogramming-Tests',
     'Buoy-SUnit-Tests'
   ],
