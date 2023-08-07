@@ -129,10 +129,12 @@ BaselineOfBuoy >> baselineMetaprogramming: spec [
 		group: 'Deployment' with: 'Buoy-Metaprogramming';
 		package: 'Buoy-Metaprogramming-Extensions'
 		with: [ spec requires: 'Buoy-Assertions' ];
-		group: 'Deployment' with: 'Buoy-Metaprogramming-Extensions';
+		package: 'Buoy-Metaprogramming-Pharo-Extensions';
+		group: 'Deployment' with: 'Buoy-Metaprogramming-Pharo-Extensions';
 		package: 'Buoy-Metaprogramming-Tests' with: [
 			spec requires:
-					#( 'Buoy-Metaprogramming' 'Buoy-Metaprogramming-Extensions' ) ];
+					#( 'Buoy-Metaprogramming' 'Buoy-Metaprogramming-Extensions'
+					   'Buoy-Metaprogramming-Pharo-Extensions' ) ];
 		group: 'Tests' with: 'Buoy-Metaprogramming-Tests'
 ]
 
