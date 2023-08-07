@@ -3,6 +3,8 @@ RwSimpleProjectLoadComponentV2 {
   #projectNames : [ ],
   #componentNames : [ ],
   #packageNames : [
+    'Buoy-Assertions',
+    'Buoy-Assertions-Extensions'
     'Buoy-Collections-GS64-Extensions',
     'Buoy-Conditions-Extensions',
     'Buoy-Conditions',
@@ -12,6 +14,9 @@ RwSimpleProjectLoadComponentV2 {
     'gemstone' : {
       'allusers' : {
         #packageNameToPlatformPropertiesMap : {
+          'Buoy-Assertions-Extensions' : {
+            'symbolDictName' : 'Globals'
+          },
           'Buoy-Collections-GS64-Extensions' : {
             'symbolDictName' : 'Globals'
           },
