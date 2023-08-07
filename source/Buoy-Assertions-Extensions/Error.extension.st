@@ -1,12 +1,12 @@
 Extension { #name : #Error }
 
-{ #category : #'*Buoy-Assertions' }
+{ #category : #'*Buoy-Assertions-Extensions' }
 Error >> failures [
 
 	^ tag
 ]
 
-{ #category : #'*Buoy-Assertions' }
+{ #category : #'*Buoy-Assertions-Extensions' }
 Error class >> signal: aFailureExplanation [
 
 	^ self new
@@ -14,7 +14,7 @@ Error class >> signal: aFailureExplanation [
 		signal: aFailureExplanation
 ]
 
-{ #category : #'*Buoy-Assertions' }
+{ #category : #'*Buoy-Assertions-Extensions' }
 Error class >> signalAll: failureExplanations [
 
 	^ self new

@@ -34,10 +34,15 @@ BaselineOfBuoy >> baseline: spec [
 BaselineOfBuoy >> baselineAssertions: spec [
 
 	spec
-		package: 'Buoy-Assertions' with: [ spec requires: 'Buoy-Conditions' ];
+		package: 'Buoy-Assertions-Extensions';
+		group: 'Deployment' with: 'Buoy-Assertions-Extensions';
+		package: 'Buoy-Assertions'
+		with: [
+			spec requires: #( 'Buoy-Conditions' 'Buoy-Assertions-Extensions' ) ];
 		group: 'Deployment' with: 'Buoy-Assertions';
 		package: 'Buoy-Assertions-Tests'
-			with: [ spec requires: #('Buoy-Assertions' 'Dependent-SUnit-Extensions') ];
+		with: [
+			spec requires: #( 'Buoy-Assertions' 'Dependent-SUnit-Extensions' ) ];
 		group: 'Tests' with: 'Buoy-Assertions-Tests'
 ]
 
