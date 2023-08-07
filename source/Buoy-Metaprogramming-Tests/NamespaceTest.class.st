@@ -66,7 +66,7 @@ NamespaceTest >> testBindTo [
 	namespace bind: #Zero to: 0.
 
 	self
-		assertCollection: namespace names equals: #(#Zero);
+		assertCollection: namespace names hasSameElements: #(#Zero);
 		assert: namespace >> #Zero equals: 0
 ]
 
