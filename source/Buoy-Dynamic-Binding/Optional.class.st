@@ -34,29 +34,37 @@ Optional class >> unusedBecauseAll: anExplanationCollection [
 { #category : #'instance creation' }
 Optional class >> whenAllUsedIn: optionals injectInto: aDyadicBlock [
 
-	^ optionals ifNotEmpty: [ optionals first whenAllUsedIn: optionals allButFirst injectInto: aDyadicBlock ] ifEmpty: [ self unused ]
+	^ optionals ifEmpty: [ self unused ] ifNotEmpty: [
+		  optionals first
+			  whenAllUsedIn: optionals allButFirst
+			  injectInto: aDyadicBlock ]
 ]
 
 { #category : #'instance creation' }
 Optional class >> whenAllUsedIn: optionals return: aMonadycBlock [
 
-	^ optionals ifNotEmpty: [ optionals first whenAllUsedIn: optionals allButFirst return: aMonadycBlock ] ifEmpty: [ self unused ]
+	^ optionals ifEmpty: [ self unused ] ifNotEmpty: [
+		  optionals first
+			  whenAllUsedIn: optionals allButFirst
+			  return: aMonadycBlock ]
 ]
 
 { #category : #'instance creation' }
 Optional class >> withUsedOnlyIn: optionals injectInto: aDyadicBlock [
 
-	^ optionals
-		ifNotEmpty: [ optionals first withUsedOnlyIn: optionals allButFirst injectInto: aDyadicBlock ]
-		ifEmpty: [ self unused ]
+	^ optionals ifEmpty: [ self unused ] ifNotEmpty: [
+		  optionals first
+			  withUsedOnlyIn: optionals allButFirst
+			  injectInto: aDyadicBlock ]
 ]
 
 { #category : #'instance creation' }
 Optional class >> withUsedOnlyIn: optionals return: aMonadycBlock [
 
-	^ optionals
-		ifNotEmpty: [ optionals first withUsedOnlyIn: optionals allButFirst return: aMonadycBlock ]
-		ifEmpty: [ self unused ]
+	^ optionals ifEmpty: [ self unused ] ifNotEmpty: [
+		  optionals first
+			  withUsedOnlyIn: optionals allButFirst
+			  return: aMonadycBlock ]
 ]
 
 { #category : #comparing }
