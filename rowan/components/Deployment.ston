@@ -21,6 +21,15 @@ RwSimpleProjectLoadComponentV2 {
           },
           'Buoy-Collections-GS64-Extensions' : {
             'symbolDictName' : 'Globals'
+           },
+          'Buoy-Conditions-Extensions' : {
+            'symbolDictName' : 'Globals'
+          },
+          'Buoy-Metaprogramming-Extensions' : {
+            'symbolDictName' : 'Globals'
+          },
+          'Buoy-Metaprogramming-GS64-Extensions' : {
+            'symbolDictName' : 'Globals'
           }
         }
       }
