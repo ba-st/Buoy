@@ -50,11 +50,17 @@ BaselineOfBuoy >> baselineAssertions: spec [
 BaselineOfBuoy >> baselineCollections: spec [
 
 	spec
-		package: 'Buoy-Collections'
-		with: [ spec requires: #( 'Buoy-Assertions' 'Buoy-Dynamic-Binding' 'Buoy-Comparison' ) ];
+		package: 'Buoy-Collections' with: [
+			spec requires:
+					#( 'Buoy-Assertions' 'Buoy-Dynamic-Binding'
+					   'Buoy-Comparison' ) ];
 		group: 'Deployment' with: 'Buoy-Collections';
-		package: 'Buoy-Collections-Tests'
-		with: [ spec requires: #( 'Buoy-Collections' 'Dependent-SUnit-Extensions' ) ];
+		package: 'Buoy-Collections-Extensions'
+		with: [ spec requires: 'Buoy-Collections' ];
+		group: 'Deployment' with: 'Buoy-Collections-Extensions';
+		package: 'Buoy-Collections-Tests' with: [
+			spec requires: #( 'Buoy-Collections' 'Buoy-Collections-Extensions'
+					   'Dependent-SUnit-Extensions' ) ];
 		group: 'Tests' with: 'Buoy-Collections-Tests'
 ]
 
