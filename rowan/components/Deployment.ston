@@ -8,6 +8,8 @@ RwSimpleProjectLoadComponentV2 {
     'Buoy-Collections-GS64-Extensions',
     'Buoy-Conditions-Extensions',
     'Buoy-Conditions',
+    'Buoy-Dynamic-Binding',
+    'Buoy-Metaprogramming',
     'Buoy-Metaprogramming-Extensions',
     'Buoy-Metaprogramming-GS64-Extensions'
   ],
