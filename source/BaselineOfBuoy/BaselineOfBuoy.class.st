@@ -104,10 +104,10 @@ BaselineOfBuoy >> baselineDynamicBinding: spec [
 BaselineOfBuoy >> baselineExceptionHandling: spec [
 
 	spec
-		package: 'Buoy-Exception-Handling';
-		group: 'Deployment' with: 'Buoy-Exception-Handling';
-		package: 'Buoy-Exception-Handling-Tests' with: [ spec requires: 'Buoy-Exception-Handling' ];
-		group: 'Tests' with: 'Buoy-Exception-Handling-Tests'
+		package: 'Buoy-Exception-Handling-Extensions';
+		group: 'Deployment' with: 'Buoy-Exception-Handling-Extensions';
+		package: 'Buoy-Exception-Handling-Extensions-Tests' with: [ spec requires: 'Buoy-Exception-Handling-Extensions' ];
+		group: 'Tests' with: 'Buoy-Exception-Handling-Extensions-Tests'
 ]
 
 { #category : #baselines }

@@ -4,7 +4,7 @@ I'm a test case for the exception handling system.
 Class {
 	#name : #ExceptionHandlingSystemTest,
 	#superclass : #TestCase,
-	#category : #'Buoy-Exception-Handling-Tests'
+	#category : #'Buoy-Exception-Handling-Extensions-Tests'
 }
 
 { #category : #private }

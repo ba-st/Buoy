@@ -8,7 +8,7 @@ RwSimpleProjectLoadComponentV2 {
     'Buoy-Collections-GS64-Extensions',
     'Buoy-Conditions-Extensions',
     'Buoy-Conditions',
-    'Buoy-Exception-Handling',
+    'Buoy-Exception-Handling-Extensions',
     'Buoy-Metaprogramming-Extensions',
     'Buoy-Metaprogramming-GS64-Extensions'
   ],
@@ -25,6 +25,9 @@ RwSimpleProjectLoadComponentV2 {
           'Buoy-Conditions-Extensions' : {
             'symbolDictName' : 'Globals'
           },
+          'Buoy-Exception-Handling-Extensions' : {
+            'symbolDictName' : 'Globals'
+           },
           'Buoy-Metaprogramming-Extensions' : {
             'symbolDictName' : 'Globals'
           },
