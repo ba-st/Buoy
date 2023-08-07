@@ -1,5 +1,6 @@
 RwSimpleProjectLoadComponentV2 {
   #name : 'Deployment',
+  #preloadDoitName : 'scripts/moveSequenceableCollectionCopyLast',
   #projectNames : [ ],
   #componentNames : [ ],
   #packageNames : [
