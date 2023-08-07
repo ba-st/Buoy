@@ -15,6 +15,12 @@ Collection >> ifEmpty: emptyBlock ifNotEmpty: notEmptyBlock [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> isSequenceable [
+
+	^ false
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 Collection >> select: selectBlock thenCollect: collectBlock [
 
 	^ (self select: selectBlock) collect: collectBlock

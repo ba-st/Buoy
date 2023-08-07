@@ -9,5 +9,5 @@ AbstractDictionary >> at: key ifPresent: aBlock ifAbsentPut: anAbsentBlock [
 		                absentValue := anAbsentBlock value.
 		                self at: key put: absentValue.
 		                ^ absentValue ].
-	^ aBlock value: presentValue
+	^ aBlock cull: presentValue
 ]
