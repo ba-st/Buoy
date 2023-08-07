@@ -5,6 +5,7 @@ RwSimpleProjectLoadComponentV2 {
   #packageNames : [
     'Buoy-Assertions',
     'Buoy-Assertions-Extensions',
+    'Buoy-Collections-Extensions',
     'Buoy-Collections-GS64-Extensions',
     'Buoy-Comparison',
     'Buoy-Comparison-Extensions',
@@ -21,6 +22,9 @@ RwSimpleProjectLoadComponentV2 {
       'allusers' : {
         #packageNameToPlatformPropertiesMap : {
           'Buoy-Assertions-Extensions' : {
+            'symbolDictName' : 'Globals'
+          },
+          'Buoy-Collections-Extensions' : {
             'symbolDictName' : 'Globals'
           },
           'Buoy-Collections-GS64-Extensions' : {
