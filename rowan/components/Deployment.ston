@@ -3,7 +3,10 @@ RwSimpleProjectLoadComponentV2 {
   #projectNames : [ ],
   #componentNames : [ ],
   #packageNames : [
-    'Buoy-Collections-GS64-Extensions'
+    'Buoy-Collections-GS64-Extensions',
+    'Buoy-Conditions-Extensions',
+    'Buoy-Conditions',
+    'Buoy-Metaprogramming-Extensions'
   ],
   #conditionalPackageMapSpecs : {
     'gemstone' : {
@@ -11,10 +14,16 @@ RwSimpleProjectLoadComponentV2 {
         #packageNameToPlatformPropertiesMap : {
           'Buoy-Collections-GS64-Extensions' : {
             'symbolDictName' : 'Globals'
+          },
+          'Buoy-Conditions-Extensions' : {
+            'symbolDictName' : 'Globals'
+          },
+          'Buoy-Metaprogramming-Extensions' : {
+            'symbolDictName' : 'Globals'
           }
         }
       }
     }
   },
-  #comment : 'Extensions to Collections'
+  #comment : ''
 }

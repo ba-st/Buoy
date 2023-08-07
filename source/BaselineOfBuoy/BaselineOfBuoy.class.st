@@ -68,10 +68,21 @@ BaselineOfBuoy >> baselineComparison: spec [
 BaselineOfBuoy >> baselineConditions: spec [
 
 	spec
+		package: 'Buoy-Conditions-Extensions';
+		group: 'Deployment' with: 'Buoy-Conditions-Extensions';
 		package: 'Buoy-Conditions';
 		group: 'Deployment' with: 'Buoy-Conditions';
-		package: 'Buoy-Conditions-Tests' with: [ spec requires: 'Buoy-Conditions' ];
-		group: 'Tests' with: 'Buoy-Conditions-Tests'
+		package: 'Buoy-Conditions-Pharo-Extensions'
+		with: [
+			spec requires: #( 'Buoy-Conditions' 'Buoy-Conditions-Extensions' ) ];
+		group: 'Deployment' with: 'Buoy-Conditions-Pharo-Extensions';
+		package: 'Buoy-Conditions-Tests'
+		with: [
+			spec requires: #( 'Buoy-Conditions' 'Buoy-Conditions-Extensions' ) ];
+		group: 'Tests' with: 'Buoy-Conditions-Tests';
+		package: 'Buoy-Conditions-Pharo-Extensions-Tests'
+		with: [ spec requires: 'Buoy-Conditions-Pharo-Extensions' ];
+		group: 'Tests' with: 'Buoy-Conditions-Pharo-Extensions-Tests'
 ]
 
 { #category : #baselines }
@@ -108,9 +119,15 @@ BaselineOfBuoy >> baselineMath: spec [
 BaselineOfBuoy >> baselineMetaprogramming: spec [
 
 	spec
-		package: 'Buoy-Metaprogramming' with: [ spec requires: 'Buoy-Assertions' ];
+		package: 'Buoy-Metaprogramming'
+		with: [ spec requires: 'Buoy-Assertions' ];
 		group: 'Deployment' with: 'Buoy-Metaprogramming';
-		package: 'Buoy-Metaprogramming-Tests' with: [ spec requires: 'Buoy-Metaprogramming' ];
+		package: 'Buoy-Metaprogramming-Extensions'
+		with: [ spec requires: 'Buoy-Assertions' ];
+		group: 'Deployment' with: 'Buoy-Metaprogramming-Extensions';
+		package: 'Buoy-Metaprogramming-Tests' with: [
+			spec requires:
+					#( 'Buoy-Metaprogramming' 'Buoy-Metaprogramming-Extensions' ) ];
 		group: 'Tests' with: 'Buoy-Metaprogramming-Tests'
 ]
 
