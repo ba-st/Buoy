@@ -11,6 +11,7 @@ RwSimpleProjectLoadComponentV2 {
     'Buoy-Conditions',
     'Buoy-Conditions-Extensions',
     'Buoy-Dynamic-Binding',
+    'Buoy-Math-GS64-Extensions',
     'Buoy-Metaprogramming',
     'Buoy-Metaprogramming-Extensions',
     'Buoy-Metaprogramming-GS64-Extensions'
@@ -29,6 +30,9 @@ RwSimpleProjectLoadComponentV2 {
             'symbolDictName' : 'Globals'
           },
           'Buoy-Conditions-Extensions' : {
+            'symbolDictName' : 'Globals'
+          },
+          'Buoy-Math-GS64-Extensions' : {
             'symbolDictName' : 'Globals'
           },
           'Buoy-Metaprogramming-Extensions' : {
