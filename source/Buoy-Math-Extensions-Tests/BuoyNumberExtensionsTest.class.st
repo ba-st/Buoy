@@ -4,7 +4,7 @@ I'm a Test Case for the extensions defined in this package to Number.
 Class {
 	#name : #BuoyNumberExtensionsTest,
 	#superclass : #TestCase,
-	#category : 'Buoy-Math-Tests'
+	#category : #'Buoy-Math-Extensions-Tests'
 }
 
 { #category : #tests }
