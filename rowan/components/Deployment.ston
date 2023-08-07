@@ -7,7 +7,7 @@ RwSimpleProjectLoadComponentV2 {
     'Buoy-Assertions-Extensions',
     'Buoy-Collections-GS64-Extensions',
     'Buoy-Comparison',
-    'Buoy-Comparison-Extentions',
+    'Buoy-Comparison-Extensions',
     'Buoy-Conditions',
     'Buoy-Conditions-Extensions',
     'Buoy-Dynamic-Binding',
