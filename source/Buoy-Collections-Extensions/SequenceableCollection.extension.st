@@ -7,12 +7,6 @@ SequenceableCollection >> copyFirst: n [
 ]
 
 { #category : #'*Buoy-Collections-Extensions' }
-SequenceableCollection >> copyLast: n [
-
-	^ [ self copyFrom: self size - n + 1 to: self size ] unless: n = 0 inWhichCase: [ self species new ]
-]
-
-{ #category : #'*Buoy-Collections-Extensions' }
 SequenceableCollection >> copyNoMoreThanFirst: n [
 
 	^ self copyFirst: ( self size min: n )
