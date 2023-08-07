@@ -3,22 +3,28 @@ RwSimpleProjectLoadComponentV2 {
   #projectNames : [ ],
   #componentNames : [ ],
   #packageNames : [
-    'Buoy-Collections-GS64-Extensions' ,
-    'Buoy-Exception-Handling'
+    'Buoy-Assertions',
+    'Buoy-Assertions-Extensions',
+    'Buoy-Collections-GS64-Extensions',
+    'Buoy-Conditions-Extensions',
+    'Buoy-Conditions',
+    'Buoy-Exception-Handling',
+    'Buoy-Metaprogramming-Extensions',
+    'Buoy-Metaprogramming-GS64-Extensions'
   ],
   #conditionalPackageMapSpecs : {
     'gemstone' : {
       'allusers' : {
         #packageNameToPlatformPropertiesMap : {
-          'Buoy-Collections-GS64-Extensions' : {
+          'Buoy-Assertions-Extensions' : {
             'symbolDictName' : 'Globals'
-          } ,
-          'Buoy-Exception-Handling' : {
+          },
+          'Buoy-Collections-GS64-Extensions' : {
             'symbolDictName' : 'Globals'
           }
         }
       }
     }
   },
-  #comment : 'Extensions to Collections'
+  #comment : ''
 }
