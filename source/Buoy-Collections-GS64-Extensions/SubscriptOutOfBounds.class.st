@@ -20,6 +20,12 @@ Class {
 	#category : #'Buoy-Collections-GS64-Extensions'
 }
 
+{ #category : #exceptionselector }
+SubscriptOutOfBounds class >> handles: exception [
+
+	^ (super handles: exception) or: [ OffsetError handles: exception ]
+]
+
 { #category : #signaling }
 SubscriptOutOfBounds class >> signalFor: subscript [
 	^ self
