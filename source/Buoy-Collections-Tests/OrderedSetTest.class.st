@@ -1106,19 +1106,19 @@ OrderedSetTest >> testWriteStream [
 		nextPut: $d;
 		nextPut: $e;
 		nextPut: $f.
+		
+	"According to ANSI standard it is unspecified whether or not the
+	returned collection is the same object as the backing store collection.
+	
+	Se we just test over the stream contents"
+	
 	self
-		assert: set size equals: 3;
-		assert: set first equals: $d;
-		assert: set second equals: $e;
-		assert: set last equals: $f.
+		assert: stream contents size equals: 3;
+		assert: stream contents first equals: $d;
+		assert: stream contents second equals: $e;
+		assert: stream contents last equals: $f.
 
 	stream nextPut: $g.
-
-	self
-		assert: set size equals: 3;
-		assert: set first equals: $d;
-		assert: set second equals: $e;
-		assert: set last equals: $f.
 
 	self
 		assert: stream contents size equals: 4;

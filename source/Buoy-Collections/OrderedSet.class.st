@@ -128,7 +128,17 @@ OrderedSet >> copyReplaceAll: oldSubCollection with: newSubCollection [
 { #category : #copying }
 OrderedSet >> copyReplaceFrom: start to: stop with: replacementCollection [
 
-	^ self species withAll: ( collection copyReplaceFrom: start to: stop with: replacementCollection )
+	stop >= start then: [ "When stop>=start this method will do a replacement, otherwise an insertion"
+		AssertionChecker
+			enforce: [ stop - start + 1 = replacementCollection size ]
+			because:
+			'The replacement collection doesn''t have the expected size.'
+			raising: SubscriptOutOfBounds ].
+
+	^ self species withAll: (collection
+			   copyReplaceFrom: start
+			   to: stop
+			   with: replacementCollection)
 ]
 
 { #category : #copying }
