@@ -1,6 +1,12 @@
 Extension { #name : #TestAsserter }
 
 { #category : #'*Buoy-SUnit-GS64-Extensions' }
+TestAsserter >> assert: actual identicalTo: expected [
+
+	self assert: expected == actual
+]
+
+{ #category : #'*Buoy-SUnit-GS64-Extensions' }
 TestAsserter >> assertCollection: actual hasSameElements: expected [
 	"Assert that a collection contains the same elements as the given collection. Order is not checked, only the presence/absence of elements. Occurences of elements mater."
 
@@ -25,6 +31,12 @@ TestAsserter >> assertCollection: actual hasSameElements: expected [
 				 nextPutAll: 'missing: ';
 				 print: missingElements asArray;
 				 lf ])
+]
+
+{ #category : #'*Buoy-SUnit-GS64-Extensions' }
+TestAsserter >> deny: actual identicalTo: expected [
+
+	self deny: expected == actual
 ]
 
 { #category : #'*Buoy-SUnit-GS64-Extensions' }
