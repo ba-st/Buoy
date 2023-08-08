@@ -1,6 +1,12 @@
 Extension { #name : #SequenceableCollection }
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+SequenceableCollection >> anyOne [
+
+	^ self first
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 SequenceableCollection >> copyAfter: anElement [
 	"Answer a copy of the receiver from after the first occurrence
 	of anElement up to the end. If no such element exists, answer

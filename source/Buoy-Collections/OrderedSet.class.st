@@ -210,6 +210,12 @@ OrderedSet >> removeAll [
 ]
 
 { #category : #converting }
+OrderedSet >> reverse [
+
+	^ self reversed
+]
+
+{ #category : #converting }
 OrderedSet >> reversed [
 
 	^self species withAll: collection reversed
