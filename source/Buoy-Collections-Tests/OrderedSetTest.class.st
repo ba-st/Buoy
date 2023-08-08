@@ -466,7 +466,7 @@ OrderedSetTest >> testCopyReplaceFromToWithInsertingAtEnd [
 
 	original := self abcSet.
 
-	copy := original copyReplaceFrom: 4 to: 4 with: 'f'.
+	copy := original copyReplaceFrom: 4 to: 3 with: 'f'.
 
 	self
 		assert: copy size equals: 4;

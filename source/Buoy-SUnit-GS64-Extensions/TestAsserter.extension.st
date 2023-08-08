@@ -55,7 +55,7 @@ TestAsserter >> should: aBlock raise: anException withExceptionDo: anotherBlock 
 		[
 			aBlock value.
 			false]
-				sunitOn: anException
+				on: anException
 				do: [:aSignal |
 					anotherBlock value: aSignal.
 					aSignal sunitExitWith: true].

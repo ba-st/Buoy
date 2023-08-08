@@ -117,6 +117,15 @@ OrderedSet >> copyFrom: start to: stop [
 ]
 
 { #category : #copying }
+OrderedSet >> copyReplaceAll: oldSubCollection with: newSubCollection [
+
+	^ self species withAll:
+		  (collection
+			   copyReplaceAll: oldSubCollection
+			   with: newSubCollection)
+]
+
+{ #category : #copying }
 OrderedSet >> copyReplaceFrom: start to: stop with: replacementCollection [
 
 	^ self species withAll: ( collection copyReplaceFrom: start to: stop with: replacementCollection )
