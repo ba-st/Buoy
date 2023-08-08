@@ -24,6 +24,43 @@ Collection >> collect: aBlock as: aClass [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> count: aBlock [
+	"Evaluate aBlock with each of the receiver's elements as the argument.
+	Answer the number of elements that answered true."
+
+	| sum |
+	sum := 0.
+	self do: [ :each | (aBlock value: each) ifTrue: [ sum := sum + 1 ] ].
+	^ sum
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> detect: aBlock ifFound: foundBlock [
+	"Evaluate aBlock with each of the receiver's elements as the argument.
+	If some element evaluates aBlock to true, then cull this element into
+	foundBlock.
+	If no element matches the criteria then do nothing.
+	Always returns self to avoid misuse and a potential isNil check on the sender."
+
+	self
+		detect: aBlock
+		ifFound: foundBlock
+		ifNone: [ "Do nothing on purpose" ]
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> detect: aBlock ifFound: foundBlock ifNone: exceptionBlock [
+	"Evaluate aBlock with each of the receiver's elements as the argument.
+	If some element evaluates aBlock to true, then cull this element into
+	foundBlock and answer the result of this evaluation.
+	If none evaluate to true, then evaluate exceptionBlock."
+
+	self do: [ :each |
+		(aBlock value: each) ifTrue: [ ^ foundBlock cull: each ] ].
+	^ exceptionBlock value
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 Collection >> fillFrom: aCollection with: aBlock [
 	"Private.
 	Evaluate aBlock with each of aCollections's elements as the argument.
