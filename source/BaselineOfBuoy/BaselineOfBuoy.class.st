@@ -131,7 +131,9 @@ BaselineOfBuoy >> baselineMath: spec [
 	spec
 		package: 'Buoy-Math' with: [ spec requires: 'Buoy-Assertions' ];
 		group: 'Deployment' with: 'Buoy-Math';
-		package: 'Buoy-Math-Tests' with: [ spec requires: #('Buoy-Math' 'Dependent-SUnit-Extensions') ];
+		package: 'Buoy-Math-Extensions' with: [ spec requires: 'Buoy-Math' ];
+		group: 'Deployment' with: 'Buoy-Math-Extensions';
+		package: 'Buoy-Math-Tests' with: [ spec requires: #('Buoy-Math-Extensions' 'Dependent-SUnit-Extensions') ];
 		group: 'Tests' with: 'Buoy-Math-Tests'
 ]
 
