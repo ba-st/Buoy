@@ -1,10 +1,10 @@
 | symbolDictionary |
 symbolDictionary := Rowan image 
-	symbolDictNamed:'Buoy'
+	symbolDictNamed: 'Buoy'
 	ifAbsent: [
 			Rowan image symbolList createDictionaryNamed: 'Buoy' at: 1.
-			Rowan image symbolDictNamed:'Buoy'
+			Rowan image symbolDictNamed: 'Buoy'
 	].
 symbolDictionary at: #SubscriptOutOfBounds put: OffsetError.
 symbolDictionary at: #NotFound put: LookupError.
-
+symbolDictionary at: #ArithmeticError put: NumericError.
