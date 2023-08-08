@@ -466,7 +466,7 @@ OrderedSetTest >> testCopyReplaceFromToWithInsertingAtEnd [
 
 	original := self abcSet.
 
-	copy := original copyReplaceFrom: 4 to: 4 with: 'f'.
+	copy := original copyReplaceFrom: 4 to: 3 with: 'f'.
 
 	self
 		assert: copy size equals: 4;
@@ -1073,6 +1073,17 @@ OrderedSetTest >> testWithDo [
 	self assert: count equals: 3
 ]
 
+{ #category : #'tests - instance creation' }
+OrderedSetTest >> testWithWithWithWith [
+
+	| set |
+
+	set := OrderedSet with: #a with: #c with: #b with: #a .
+	self assert: set hasTheSameElementsInTheSameOrderThat: #( a c b ).
+
+	
+]
+
 { #category : #'tests - copying' }
 OrderedSetTest >> testWithoutFirst [
 
@@ -1106,19 +1117,19 @@ OrderedSetTest >> testWriteStream [
 		nextPut: $d;
 		nextPut: $e;
 		nextPut: $f.
+		
+	"According to ANSI standard it is unspecified whether or not the
+	returned collection is the same object as the backing store collection.
+	
+	Se we just test over the stream contents"
+	
 	self
-		assert: set size equals: 3;
-		assert: set first equals: $d;
-		assert: set second equals: $e;
-		assert: set last equals: $f.
+		assert: stream contents size equals: 3;
+		assert: stream contents first equals: $d;
+		assert: stream contents second equals: $e;
+		assert: stream contents last equals: $f.
 
 	stream nextPut: $g.
-
-	self
-		assert: set size equals: 3;
-		assert: set first equals: $d;
-		assert: set second equals: $e;
-		assert: set last equals: $f.
 
 	self
 		assert: stream contents size equals: 4;
