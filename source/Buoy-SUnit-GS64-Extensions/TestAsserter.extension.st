@@ -1,6 +1,12 @@
 Extension { #name : #TestAsserter }
 
 { #category : #'*Buoy-SUnit-GS64-Extensions' }
+TestAsserter >> assert: actual identicalTo: expected [
+
+	self assert: expected == actual
+]
+
+{ #category : #'*Buoy-SUnit-GS64-Extensions' }
 TestAsserter >> assertCollection: actual hasSameElements: expected [
 	"Assert that a collection contains the same elements as the given collection. Order is not checked, only the presence/absence of elements. Occurences of elements mater."
 
@@ -28,6 +34,12 @@ TestAsserter >> assertCollection: actual hasSameElements: expected [
 ]
 
 { #category : #'*Buoy-SUnit-GS64-Extensions' }
+TestAsserter >> deny: actual identicalTo: expected [
+
+	self deny: expected == actual
+]
+
+{ #category : #'*Buoy-SUnit-GS64-Extensions' }
 TestAsserter >> fail [
 	"I make my receiver fail with TestFailure"
 
@@ -43,7 +55,7 @@ TestAsserter >> should: aBlock raise: anException withExceptionDo: anotherBlock 
 		[
 			aBlock value.
 			false]
-				sunitOn: anException
+				on: anException
 				do: [:aSignal |
 					anotherBlock value: aSignal.
 					aSignal sunitExitWith: true].

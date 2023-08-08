@@ -28,6 +28,36 @@ OrderedSet class >> newFrom: aCollection [
 	^ self withAll: aCollection
 ]
 
+{ #category : #'instance creation' }
+OrderedSet class >> with: firstObject with: secondObject [
+
+	^ self new
+		  add: firstObject;
+		  add: secondObject;
+		  yourself
+]
+
+{ #category : #'instance creation' }
+OrderedSet class >> with: firstObject with: secondObject with: thirdObject [
+
+	^ self new
+		  add: firstObject;
+		  add: secondObject;
+		  add: thirdObject;
+		  yourself
+]
+
+{ #category : #'instance creation' }
+OrderedSet class >> with: firstObject with: secondObject with: thirdObject with: fourthObject [
+
+	^ self new
+		  add: firstObject;
+		  add: secondObject;
+		  add: thirdObject;
+		  add: fourthObject;
+		  yourself
+]
+
 { #category : #copying }
 OrderedSet >> , aCollection [
 
@@ -87,9 +117,28 @@ OrderedSet >> copyFrom: start to: stop [
 ]
 
 { #category : #copying }
+OrderedSet >> copyReplaceAll: oldSubCollection with: newSubCollection [
+
+	^ self species withAll:
+		  (collection
+			   copyReplaceAll: oldSubCollection
+			   with: newSubCollection)
+]
+
+{ #category : #copying }
 OrderedSet >> copyReplaceFrom: start to: stop with: replacementCollection [
 
-	^ self species withAll: ( collection copyReplaceFrom: start to: stop with: replacementCollection )
+	stop >= start then: [ "When stop>=start this method will do a replacement, otherwise an insertion"
+		AssertionChecker
+			enforce: [ stop - start + 1 = replacementCollection size ]
+			because:
+			'The replacement collection doesn''t have the expected size.'
+			raising: SubscriptOutOfBounds ].
+
+	^ self species withAll: (collection
+			   copyReplaceFrom: start
+			   to: stop
+			   with: replacementCollection)
 ]
 
 { #category : #copying }
@@ -104,6 +153,12 @@ OrderedSet >> copyWith: newElement [
 OrderedSet >> difference: aCollection [
 
 	^ self reject: [ :each | aCollection includes: each ]
+]
+
+{ #category : #accessing }
+OrderedSet >> first [
+
+	^ self at: 1
 ]
 
 { #category : #copying }
@@ -141,6 +196,12 @@ OrderedSet >> intersection: aCollection [
 		  ]
 ]
 
+{ #category : #accessing }
+OrderedSet >> last [
+
+	^ self at: self size
+]
+
 { #category : #enumerating }
 OrderedSet >> occurrencesOf: anObject [
 
@@ -165,6 +226,12 @@ OrderedSet >> remove: oldObject ifAbsent: anExceptionBlock [
 OrderedSet >> removeAll [
 
 	collection removeAll
+]
+
+{ #category : #converting }
+OrderedSet >> reverse [
+
+	^ self reversed
 ]
 
 { #category : #converting }

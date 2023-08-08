@@ -58,8 +58,12 @@ BaselineOfBuoy >> baselineCollections: spec [
 		package: 'Buoy-Collections-Extensions'
 		with: [ spec requires: 'Buoy-Collections' ];
 		group: 'Deployment' with: 'Buoy-Collections-Extensions';
+		package: 'Buoy-Collections-Pharo-Extensions'
+		with: [ spec requires: 'Buoy-Collections' ];
+		group: 'Deployment' with: 'Buoy-Collections-Pharo-Extensions';
 		package: 'Buoy-Collections-Tests' with: [
 			spec requires: #( 'Buoy-Collections' 'Buoy-Collections-Extensions'
+					   'Buoy-Collections-Pharo-Extensions'
 					   'Dependent-SUnit-Extensions' ) ];
 		group: 'Tests' with: 'Buoy-Collections-Tests'
 ]
