@@ -136,6 +136,12 @@ OrderedSet >> difference: aCollection [
 	^ self reject: [ :each | aCollection includes: each ]
 ]
 
+{ #category : #accessing }
+OrderedSet >> first [
+
+	^ self at: 1
+]
+
 { #category : #copying }
 OrderedSet >> grownBy: length [
 
@@ -169,6 +175,12 @@ OrderedSet >> intersection: aCollection [
 		  ( self includes: each ) ifTrue: [ set add: each ].
 		  set
 		  ]
+]
+
+{ #category : #accessing }
+OrderedSet >> last [
+
+	^ self at: self size
 ]
 
 { #category : #enumerating }

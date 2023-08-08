@@ -95,6 +95,16 @@ Collection class >> newFrom: aCollection [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> removeAll [
+	"Remove each element from the receiver and leave it empty.
+	There are two good reasons why a subclass should override this message:
+	1) the subclass does not support being modified while being iterated
+	2) the subclass provides a much faster way than iterating through each element"
+
+	self do: [ :each | self remove: each ]
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 Collection >> select: selectBlock thenCollect: collectBlock [
 
 	^ (self select: selectBlock) collect: collectBlock
