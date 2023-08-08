@@ -1073,6 +1073,17 @@ OrderedSetTest >> testWithDo [
 	self assert: count equals: 3
 ]
 
+{ #category : #'tests - instance creation' }
+OrderedSetTest >> testWithWithWithWith [
+
+	| set |
+
+	set := OrderedSet with: #a with: #c with: #b with: #a .
+	self assert: set hasTheSameElementsInTheSameOrderThat: #( a c b ).
+
+	
+]
+
 { #category : #'tests - copying' }
 OrderedSetTest >> testWithoutFirst [
 
