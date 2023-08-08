@@ -49,6 +49,13 @@ Percentage >> isWellKnown [
 ]
 
 { #category : #printing }
+Percentage >> printOn: stream [
+
+	super printOn: stream.
+	stream nextPut: $%
+]
+
+{ #category : #printing }
 Percentage >> printOn: aStream base: anInteger [
 
 	self value printOn: aStream base: anInteger.

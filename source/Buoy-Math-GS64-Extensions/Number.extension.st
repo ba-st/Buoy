@@ -11,3 +11,9 @@ Number >> isZero [
 
 	^ self = 0
 ]
+
+{ #category : #'*Buoy-Math-GS64-Extensions' }
+Number >> storeOn: aStream [
+
+	self printOn: aStream
+]
