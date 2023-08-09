@@ -49,13 +49,6 @@ Percentage >> isWellKnown [
 ]
 
 { #category : #printing }
-Percentage >> printOn: aStream base: anInteger [
-
-	self value printOn: aStream base: anInteger.
-	aStream nextPut: $%
-]
-
-{ #category : #printing }
 Percentage >> storeOn: aStream [
 
 	ratio isZero
@@ -74,18 +67,4 @@ Percentage >> storeOn: aStream [
 		nextPutAll: 'of:';
 		space.
 	self value storeOn: aStream
-]
-
-{ #category : #printing }
-Percentage >> storeOn: aStream base: base [
-
-	self isWellKnown ifTrue: [ self storeOn: aStream ]
-		ifFalse: [ 
-			aStream
-				nextPutAll: self class name asString;
-				space;
-				nextPutAll: 'of:';
-				space.
-			self value storeOn: aStream base: base
-			]
 ]

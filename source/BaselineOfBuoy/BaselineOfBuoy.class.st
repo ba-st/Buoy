@@ -141,7 +141,10 @@ BaselineOfBuoy >> baselineMath: spec [
 			spec requires:
 					#( 'Buoy-Math-Extensions' 'Buoy-Math-Pharo-Extensions'
 					   'Dependent-SUnit-Extensions' ) ];
-		group: 'Tests' with: 'Buoy-Math-Tests'
+		group: 'Tests' with: 'Buoy-Math-Tests';
+		package: 'Buoy-Math-Pharo-Extensions-Tests' with: [
+			spec requires: 'Buoy-Math-Tests' ];
+		group: 'Tests' with: 'Buoy-Math-Pharo-Extensions-Tests'
 ]
 
 { #category : #baselines }

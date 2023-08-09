@@ -387,15 +387,6 @@ PerMilleTest >> testStoreOn [
 		assert: (PerMille of: 12) storeString equals: '12 perMille'
 ]
 
-{ #category : #'tests - printing' }
-PerMilleTest >> testStoreOnBase [
-
-	self
-		assert: ( 0 perMille storeStringBase: 16 ) equals: '16r0 perMille';
-		assert: ( 1000 perMille storeStringBase: 16 ) equals: '16r3E8 perMille';
-		assert: ( ( PerMille of: 12 ) storeStringBase: 16 ) equals: '16rC perMille'
-]
-
 { #category : #'tests - testing' }
 PerMilleTest >> testStrictlyPositive [
 

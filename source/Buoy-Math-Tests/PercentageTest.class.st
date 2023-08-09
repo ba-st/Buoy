@@ -387,15 +387,6 @@ PercentageTest >> testStoreOn [
 		assert: (Percentage of: 12) storeString equals: 'Percentage of: 12'
 ]
 
-{ #category : #'tests - printing' }
-PercentageTest >> testStoreOnBase [
-
-	self
-		assert: ( Percentage zero storeStringBase: 16 ) equals: 'Percentage zero';
-		assert: ( Percentage oneHundred storeStringBase: 16 ) equals: 'Percentage oneHundred';
-		assert: ( ( Percentage of: 12 ) storeStringBase: 16 ) equals: 'Percentage of: 16rC'
-]
-
 { #category : #'tests - testing' }
 PercentageTest >> testStrictlyPositive [
 
