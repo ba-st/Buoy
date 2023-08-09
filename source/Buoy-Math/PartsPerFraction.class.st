@@ -74,30 +74,6 @@ PartsPerFraction >> = aNumber [
 	^ aNumber isNumber and: [ self asNumber = aNumber asNumber ]
 ]
 
-{ #category : #'as yet unclassified' }
-PartsPerFraction >> _coerce: aNumber [
-
-	^self class ratio: (ratio _coerce: aNumber)
-]
-
-{ #category : #'as yet unclassified' }
-PartsPerFraction >> _generality [
-
-	^ ratio _generality + 1
-]
-
-{ #category : #converting }
-PartsPerFraction >> adaptToFraction: aFraction andSend: selector [
-
-	^ aFraction adaptToFraction: ratio andSend: selector
-]
-
-{ #category : #converting }
-PartsPerFraction >> adaptToInteger: anInteger andSend: aSymbol [
-	
-	^anInteger adaptToInteger: ratio  andSend: aSymbol 
-]
-
 { #category : #converting }
 PartsPerFraction >> asFloat [
 
@@ -144,12 +120,6 @@ PartsPerFraction >> nthRoot: aPositiveInteger [
 PartsPerFraction >> printOn: stream [
 
 	self value printOn: stream
-]
-
-{ #category : #printing }
-PartsPerFraction >> printString [
-
-	^ String streamContents: [ :stream | self printOn: stream ]
 ]
 
 { #category : #arithmetic }
