@@ -61,12 +61,12 @@ PerMilleTest >> testCreationShortcut [
 	self
 		assert: 5 perMille printString equals: '5‰';
 		assert: 50 perMille equals: 1 / 20;
-		assert: 5.0 perMille printString equals: '5.0‰';
+		assert: 50.0 perMille printString equals: '50.0‰';
 		assert: 50.0 perMille equals: 0.05;
 		runOnlyInPharo: [
-			self assert: 5.0s2 perMille printString equals: '5.00s2‰' ];
+			self assert: 50.0s2 perMille printString equals: '50.00s2‰' ];
 		runOnlyInGemStone64: [
-			self assert: 5.0s2 perMille printString equals: '5.00‰' ];
+			self assert: 50.0s2 perMille printString equals: '50.00‰' ];
 		assert: 50.0s2 perMille equals: 0.05s2;
 		runOnlyInPharo: [
 			self assert: (1 / 2) perMille printString equals: '(1/2)‰' ];
