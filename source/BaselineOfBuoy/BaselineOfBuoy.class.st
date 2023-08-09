@@ -171,6 +171,8 @@ BaselineOfBuoy >> baselineSUnit: spec [
 	spec
 		package: 'Buoy-SUnit-Model';
 		group: 'Dependent-SUnit-Extensions' with: 'Buoy-SUnit-Model';
+		package: 'Buoy-SUnit-Pharo-Extensions';
+		group: 'Dependent-SUnit-Extensions' with: 'Buoy-SUnit-Pharo-Extensions';
 		package: 'Buoy-SUnit-Tests' with: [ spec requires: 'Dependent-SUnit-Extensions' ];
 		group: 'Tests' with: 'Buoy-SUnit-Tests'
 ]
