@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        load-spec: [ Deployment, Dependent-Sunit-Extensions ]
+        load-spec: [ Deployment, Dependent-SUnit-Extensions ]
     name: GS64 + ${{ matrix.load-spec }}
     steps:
       - uses: actions/checkout@v3
