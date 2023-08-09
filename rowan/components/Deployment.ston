@@ -17,6 +17,7 @@ RwSimpleProjectLoadComponentV2 {
     'Buoy-Exception-Handling-Extensions',
     'Buoy-Math',
     'Buoy-Math-Extensions',
+    'Buoy-Math-GS64-Base-Extensions',
     'Buoy-Math-GS64-Extensions',
     'Buoy-Metaprogramming',
     'Buoy-Metaprogramming-Extensions',
@@ -47,7 +48,7 @@ RwSimpleProjectLoadComponentV2 {
           'Buoy-Math-Extensions' : {
             'symbolDictName' : 'Globals'
           },
-          'Buoy-Math-GS64-Extensions' : {
+          'Buoy-Math-GS64-Base-Extensions' : {
             'symbolDictName' : 'Globals'
           },
           'Buoy-Metaprogramming-Extensions' : {
