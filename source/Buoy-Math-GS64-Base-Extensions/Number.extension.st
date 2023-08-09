@@ -19,6 +19,12 @@ Number >> isZero [
 ]
 
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
+Number >> nthRoot: aPositiveInteger [
+
+	^ self raisedTo: aPositiveInteger reciprocal
+]
+
+{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
 Number >> round: numberOfWishedDecimal [
 
 	^ self roundTo: (10 raisedTo: numberOfWishedDecimal negated)
