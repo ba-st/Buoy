@@ -13,6 +13,12 @@ PartsPerFraction >> _generality [
 ]
 
 { #category : #'*Buoy-Math-GS64-Extensions' }
+PartsPerFraction >> printOn: stream [
+
+	self value printOn: stream
+]
+
+{ #category : #'*Buoy-Math-GS64-Extensions' }
 PartsPerFraction >> printString [
 
 	^ String streamContents: [ :stream | self printOn: stream ]

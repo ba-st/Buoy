@@ -14,13 +14,6 @@ PerMille class >> fraction [
 ]
 
 { #category : #printing }
-PerMille >> printOn: stream [
-
-	super printOn: stream.
-	stream nextPut: $‰
-]
-
-{ #category : #printing }
 PerMille >> printOn: aStream base: anInteger [
 
 	self value printOn: aStream base: anInteger.

@@ -116,12 +116,6 @@ PartsPerFraction >> nthRoot: aPositiveInteger [
 	^ ratio nthRoot: aPositiveInteger
 ]
 
-{ #category : #printing }
-PartsPerFraction >> printOn: stream [
-
-	self value printOn: stream
-]
-
 { #category : #arithmetic }
 PartsPerFraction >> reciprocal [
 
