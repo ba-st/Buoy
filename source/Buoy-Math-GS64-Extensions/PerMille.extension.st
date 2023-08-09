@@ -4,5 +4,5 @@ Extension { #name : #PerMille }
 PerMille >> printOn: stream [
 
 	super printOn: stream.
-	stream nextPut: $‰
+	stream nextPutAll: '‰'
 ]
