@@ -74,7 +74,10 @@ PerMilleTest >> testDivisionWithFloats [
 
 	self
 		assert: 0 perMille / 100.0 equals: 0.0;
-		should: [ 100.0 / 0 perMille ] raise: ZeroDivide;
+		runOnlyInPharo: [
+			self should: [ 100.0 / 0 perMille ] raise: ZeroDivide ];
+		runOnlyInGemStone64: [
+			self assert: (100.0 / 0 perMille) isInfinite ];
 		assert: 1000 perMille / 5.0 equals: 0.2;
 		assert: 5.0 / 1000 perMille equals: 5.0;
 		assert: (PerMille of: 500) / 5.0 equals: 0.1;

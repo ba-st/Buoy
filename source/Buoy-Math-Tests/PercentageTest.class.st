@@ -74,7 +74,10 @@ PercentageTest >> testDivisionWithFloats [
 
 	self
 		assert: Percentage zero / 100.0 equals: 0.0;
-		should: [ 100.0 / Percentage zero ] raise: ZeroDivide;
+		runOnlyInPharo: [
+			self should: [ 100.0 / Percentage zero ] raise: ZeroDivide ];
+		runOnlyInGemStone64: [
+			self assert: (100.0 / Percentage zero) isInfinite ];
 		assert: Percentage oneHundred / 5.0 equals: 0.2;
 		assert: 5.0 / Percentage oneHundred equals: 5.0;
 		assert: (Percentage of: 50) / 5.0 equals: 0.1;
