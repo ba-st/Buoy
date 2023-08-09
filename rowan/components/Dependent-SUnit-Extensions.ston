@@ -1,5 +1,5 @@
 RwSimpleProjectLoadComponentV2 {
-  #name : 'SUnit-Dependent-Extensions',
+  #name : 'Dependent-SUnit-Extensions',
   #condition : 'sunit',
   #projectNames : [ ],
   #componentNames : [ ],

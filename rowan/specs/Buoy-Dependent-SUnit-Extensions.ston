@@ -1,0 +1,20 @@
+RwLoadSpecificationV2 {
+  #specName: 'Buoy-CI',
+  #projectName : 'Buoy',
+  #diskUrl : '/opt/gemstone/projects/Buoy',
+  #projectSpecFile : 'rowan/project.ston',
+  #componentNames : [
+    'Dependent-SUnit-Extensions'
+  ],
+  #platformProperties : {
+    'gemstone' : {
+      'allusers' : {
+        #defaultSymbolDictName : 'Buoy'
+      }
+    }
+  },
+  #customConditionalAttributes : [
+    'sunit'
+  ],
+  #comment : 'Loading spec for Dependent-SUnit-Extensions'
+}
