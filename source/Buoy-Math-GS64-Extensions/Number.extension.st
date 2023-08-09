@@ -1,6 +1,12 @@
 Extension { #name : #Number }
 
 { #category : #'*Buoy-Math-GS64-Extensions' }
+Number >> asNumber [
+
+	^ self
+]
+
+{ #category : #'*Buoy-Math-GS64-Extensions' }
 Number >> isInteger [
 
 	^ false

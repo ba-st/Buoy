@@ -37,41 +37,53 @@ PartsPerFraction class >> ratio: aRatio [
 { #category : #arithmetic }
 PartsPerFraction >> * aNumber [
 
-	^ratio * aNumber 
+	^ ratio * aNumber asNumber
 ]
 
 { #category : #arithmetic }
 PartsPerFraction >> + aNumber [
 
 	^ (aNumber isA: self class)
-		ifTrue: [ self class ratio: ratio + aNumber ]
-		ifFalse: [ ratio + aNumber ]
+		  ifTrue: [ self class ratio: ratio + aNumber asNumber ]
+		  ifFalse: [ ratio + aNumber ]
 ]
 
 { #category : #arithmetic }
 PartsPerFraction >> - aNumber [
 
 	^ (aNumber isA: self class)
-		ifTrue: [ self class ratio: ratio - aNumber ]
-		ifFalse: [ ratio - aNumber ]
+		  ifTrue: [ self class ratio: ratio - aNumber asNumber ]
+		  ifFalse: [ ratio - aNumber ]
 ]
 
 { #category : #arithmetic }
-PartsPerFraction >> / aNumber [ 
+PartsPerFraction >> / aNumber [
 
-	^ratio / aNumber
+	^ ratio / aNumber asNumber
 ]
 
 { #category : #comparing }
-PartsPerFraction >> < aNumber [ 
-	
-	^ratio < aNumber 
+PartsPerFraction >> < aNumber [
+
+	^ ratio < aNumber asNumber
 ]
 
 { #category : #comparing }
 PartsPerFraction >> = aNumber [
 
 	^ aNumber isNumber and: [ self asNumber = aNumber asNumber ]
+]
+
+{ #category : #'as yet unclassified' }
+PartsPerFraction >> _coerce: aNumber [
+
+	^self class ratio: (ratio _coerce: aNumber)
+]
+
+{ #category : #'as yet unclassified' }
+PartsPerFraction >> _generality [
+
+	^ ratio _generality + 1
 ]
 
 { #category : #converting }
