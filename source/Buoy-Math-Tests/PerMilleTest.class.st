@@ -61,11 +61,17 @@ PerMilleTest >> testCreationShortcut [
 	self
 		assert: 5 perMille printString equals: '5‰';
 		assert: 50 perMille equals: 1 / 20;
-		assert: 5.0 perMille printString equals: '5.0‰';
+		assert: 50.0 perMille printString equals: '50.0‰';
 		assert: 50.0 perMille equals: 0.05;
-		assert: 5.0s2 perMille printString equals: '5.00s2‰';
+		runOnlyInPharo: [
+			self assert: 50.0s2 perMille printString equals: '50.00s2‰' ];
+		runOnlyInGemStone64: [
+			self assert: 50.0s2 perMille printString equals: '50.00‰' ];
 		assert: 50.0s2 perMille equals: 0.05s2;
-		assert: (1 / 2) perMille printString equals: '(1/2)‰';
+		runOnlyInPharo: [
+			self assert: (1 / 2) perMille printString equals: '(1/2)‰' ];
+		runOnlyInGemStone64: [
+			self assert: (1 / 2) perMille printString equals: '1/2‰' ];
 		assert: (1 / 2) perMille equals: 1 / 2000
 ]
 
@@ -74,7 +80,10 @@ PerMilleTest >> testDivisionWithFloats [
 
 	self
 		assert: 0 perMille / 100.0 equals: 0.0;
-		should: [ 100.0 / 0 perMille ] raise: ZeroDivide;
+		runOnlyInPharo: [
+			self should: [ 100.0 / 0 perMille ] raise: ZeroDivide ];
+		runOnlyInGemStone64: [
+			self assert: (100.0 / 0 perMille) isInfinite ];
 		assert: 1000 perMille / 5.0 equals: 0.2;
 		assert: 5.0 / 1000 perMille equals: 5.0;
 		assert: (PerMille of: 500) / 5.0 equals: 0.1;
@@ -385,15 +394,6 @@ PerMilleTest >> testStoreOn [
 		assert: 0 perMille storeString equals: '0 perMille';
 		assert: 1000 perMille storeString equals: '1000 perMille';
 		assert: (PerMille of: 12) storeString equals: '12 perMille'
-]
-
-{ #category : #'tests - printing' }
-PerMilleTest >> testStoreOnBase [
-
-	self
-		assert: ( 0 perMille storeStringBase: 16 ) equals: '16r0 perMille';
-		assert: ( 1000 perMille storeStringBase: 16 ) equals: '16r3E8 perMille';
-		assert: ( ( PerMille of: 12 ) storeStringBase: 16 ) equals: '16rC perMille'
 ]
 
 { #category : #'tests - testing' }

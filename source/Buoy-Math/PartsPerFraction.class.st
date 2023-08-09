@@ -37,53 +37,41 @@ PartsPerFraction class >> ratio: aRatio [
 { #category : #arithmetic }
 PartsPerFraction >> * aNumber [
 
-	^ratio * aNumber 
+	^ ratio * aNumber asNumber
 ]
 
 { #category : #arithmetic }
 PartsPerFraction >> + aNumber [
 
 	^ (aNumber isA: self class)
-		ifTrue: [ self class ratio: ratio + aNumber ]
-		ifFalse: [ ratio + aNumber ]
+		  ifTrue: [ self class ratio: ratio + aNumber asNumber ]
+		  ifFalse: [ ratio + aNumber ]
 ]
 
 { #category : #arithmetic }
 PartsPerFraction >> - aNumber [
 
 	^ (aNumber isA: self class)
-		ifTrue: [ self class ratio: ratio - aNumber ]
-		ifFalse: [ ratio - aNumber ]
+		  ifTrue: [ self class ratio: ratio - aNumber asNumber ]
+		  ifFalse: [ ratio - aNumber ]
 ]
 
 { #category : #arithmetic }
-PartsPerFraction >> / aNumber [ 
+PartsPerFraction >> / aNumber [
 
-	^ratio / aNumber
+	^ ratio / aNumber asNumber
 ]
 
 { #category : #comparing }
-PartsPerFraction >> < aNumber [ 
-	
-	^ratio < aNumber 
+PartsPerFraction >> < aNumber [
+
+	^ ratio < aNumber asNumber
 ]
 
 { #category : #comparing }
 PartsPerFraction >> = aNumber [
 
 	^ aNumber isNumber and: [ self asNumber = aNumber asNumber ]
-]
-
-{ #category : #converting }
-PartsPerFraction >> adaptToFraction: aFraction andSend: selector [
-
-	^ aFraction adaptToFraction: ratio andSend: selector
-]
-
-{ #category : #converting }
-PartsPerFraction >> adaptToInteger: anInteger andSend: aSymbol [
-	
-	^anInteger adaptToInteger: ratio  andSend: aSymbol 
 ]
 
 { #category : #converting }
@@ -144,6 +132,12 @@ PartsPerFraction >> round: numberOfWishedDecimal [
 PartsPerFraction >> sqrt [
 
 	^ ratio sqrt
+]
+
+{ #category : #private }
+PartsPerFraction >> storeValueOn: aStream [
+
+	self value printOn: aStream
 ]
 
 { #category : #evaluating }

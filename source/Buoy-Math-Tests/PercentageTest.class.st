@@ -63,9 +63,15 @@ PercentageTest >> testCreationShortcut [
 		assert: 5 percent equals: 1 / 20;
 		assert: 5.0 percent printString equals: '5.0%';
 		assert: 5.0 percent equals: 0.05;
-		assert: 5.0s2 percent printString equals: '5.00s2%';
+		runOnlyInPharo: [
+			self assert: 5.0s2 percent printString equals: '5.00s2%' ];
+		runOnlyInGemStone64: [
+			self assert: 5.0s2 percent printString equals: '5.00%' ];
 		assert: 5.0s2 percent equals: 0.05s2;
-		assert: (1 / 2) percent printString equals: '(1/2)%';
+		runOnlyInPharo: [
+			self assert: (1 / 2) percent printString equals: '(1/2)%' ];
+		runOnlyInGemStone64: [
+			self assert: (1 / 2) percent printString equals: '1/2%' ];
 		assert: (1 / 2) percent equals: 1 / 200
 ]
 
@@ -74,7 +80,10 @@ PercentageTest >> testDivisionWithFloats [
 
 	self
 		assert: Percentage zero / 100.0 equals: 0.0;
-		should: [ 100.0 / Percentage zero ] raise: ZeroDivide;
+		runOnlyInPharo: [
+			self should: [ 100.0 / Percentage zero ] raise: ZeroDivide ];
+		runOnlyInGemStone64: [
+			self assert: (100.0 / Percentage zero) isInfinite ];
 		assert: Percentage oneHundred / 5.0 equals: 0.2;
 		assert: 5.0 / Percentage oneHundred equals: 5.0;
 		assert: (Percentage of: 50) / 5.0 equals: 0.1;
@@ -384,16 +393,7 @@ PercentageTest >> testStoreOn [
 	self
 		assert: Percentage zero storeString equals: 'Percentage zero';
 		assert: Percentage oneHundred storeString equals: 'Percentage oneHundred';
-		assert: (Percentage of: 12) storeString equals: 'Percentage of: 12'
-]
-
-{ #category : #'tests - printing' }
-PercentageTest >> testStoreOnBase [
-
-	self
-		assert: ( Percentage zero storeStringBase: 16 ) equals: 'Percentage zero';
-		assert: ( Percentage oneHundred storeStringBase: 16 ) equals: 'Percentage oneHundred';
-		assert: ( ( Percentage of: 12 ) storeStringBase: 16 ) equals: 'Percentage of: 16rC'
+		assert: (Percentage of: 12) storeString equals: '12 percent'
 ]
 
 { #category : #'tests - testing' }

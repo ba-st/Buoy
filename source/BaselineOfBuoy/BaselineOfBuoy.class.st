@@ -131,8 +131,20 @@ BaselineOfBuoy >> baselineMath: spec [
 	spec
 		package: 'Buoy-Math' with: [ spec requires: 'Buoy-Assertions' ];
 		group: 'Deployment' with: 'Buoy-Math';
-		package: 'Buoy-Math-Tests' with: [ spec requires: #('Buoy-Math' 'Dependent-SUnit-Extensions') ];
-		group: 'Tests' with: 'Buoy-Math-Tests'
+		package: 'Buoy-Math-Extensions'
+		with: [ spec requires: 'Buoy-Math' ];
+		group: 'Deployment' with: 'Buoy-Math-Extensions';
+		package: 'Buoy-Math-Pharo-Extensions'
+		with: [ spec requires: 'Buoy-Math' ];
+		group: 'Deployment' with: 'Buoy-Math-Pharo-Extensions';
+		package: 'Buoy-Math-Tests' with: [
+			spec requires:
+					#( 'Buoy-Math-Extensions' 'Buoy-Math-Pharo-Extensions'
+					   'Dependent-SUnit-Extensions' ) ];
+		group: 'Tests' with: 'Buoy-Math-Tests';
+		package: 'Buoy-Math-Pharo-Extensions-Tests' with: [
+			spec requires: 'Buoy-Math-Tests' ];
+		group: 'Tests' with: 'Buoy-Math-Pharo-Extensions-Tests'
 ]
 
 { #category : #baselines }
@@ -159,6 +171,8 @@ BaselineOfBuoy >> baselineSUnit: spec [
 	spec
 		package: 'Buoy-SUnit-Model';
 		group: 'Dependent-SUnit-Extensions' with: 'Buoy-SUnit-Model';
+		package: 'Buoy-SUnit-Pharo-Extensions';
+		group: 'Dependent-SUnit-Extensions' with: 'Buoy-SUnit-Pharo-Extensions';
 		package: 'Buoy-SUnit-Tests' with: [ spec requires: 'Dependent-SUnit-Extensions' ];
 		group: 'Tests' with: 'Buoy-SUnit-Tests'
 ]

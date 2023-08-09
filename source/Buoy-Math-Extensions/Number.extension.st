@@ -1,6 +1,6 @@
 Extension { #name : #Number }
 
-{ #category : #'*Buoy-Math' }
+{ #category : #'*Buoy-Math-Extensions' }
 Number >> decreasedBy: aPercentage [
 
 	AssertionChecker
@@ -11,7 +11,7 @@ Number >> decreasedBy: aPercentage [
 	^ self * (Percentage oneHundred - aPercentage)
 ]
 
-{ #category : #'*Buoy-Math' }
+{ #category : #'*Buoy-Math-Extensions' }
 Number >> increasedBy: aPercentage [
 
 	AssertionChecker
@@ -22,19 +22,19 @@ Number >> increasedBy: aPercentage [
 	^ self * (Percentage oneHundred + aPercentage)
 ]
 
-{ #category : #'*Buoy-Math' }
+{ #category : #'*Buoy-Math-Extensions' }
 Number >> isPercentage [
 
 	^false
 ]
 
-{ #category : #'*Buoy-Math' }
+{ #category : #'*Buoy-Math-Extensions' }
 Number >> perMille [
 
 	^ PerMille of: self
 ]
 
-{ #category : #'*Buoy-Math' }
+{ #category : #'*Buoy-Math-Extensions' }
 Number >> percent [
 
 	^ Percentage of: self
