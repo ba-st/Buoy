@@ -134,6 +134,12 @@ PartsPerFraction >> sqrt [
 	^ ratio sqrt
 ]
 
+{ #category : #private }
+PartsPerFraction >> storeValueOn: aStream [
+
+	self value printOn: aStream
+]
+
 { #category : #evaluating }
 PartsPerFraction >> value [
 

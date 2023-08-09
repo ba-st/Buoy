@@ -23,9 +23,3 @@ PartsPerFraction >> printString [
 
 	^ String streamContents: [ :stream | self printOn: stream ]
 ]
-
-{ #category : #'*Buoy-Math-GS64-Extensions' }
-PartsPerFraction >> storeValueOn: aStream [
-
-	self value printOn: aStream
-]
