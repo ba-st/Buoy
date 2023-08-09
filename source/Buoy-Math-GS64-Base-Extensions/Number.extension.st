@@ -29,9 +29,3 @@ Number >> round: numberOfWishedDecimal [
 
 	^ self roundTo: (10 raisedTo: numberOfWishedDecimal negated)
 ]
-
-{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
-Number >> storeOn: aStream [
-
-	self printOn: aStream
-]

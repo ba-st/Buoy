@@ -11,3 +11,9 @@ PartsPerFraction >> adaptToInteger: anInteger andSend: aSymbol [
 	
 	^anInteger adaptToInteger: ratio  andSend: aSymbol 
 ]
+
+{ #category : #'*Buoy-Math-Pharo-Extensions' }
+PartsPerFraction >> storeValueOn: aStream [
+
+	self value storeOn: aStream
+]

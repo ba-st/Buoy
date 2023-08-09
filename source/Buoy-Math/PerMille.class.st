@@ -16,7 +16,7 @@ PerMille class >> fraction [
 { #category : #printing }
 PerMille >> storeOn: aStream [
 
-	self value storeOn: aStream.
+	self storeValueOn: aStream.
 	aStream
 		space;
 		nextPutAll: 'perMille'
