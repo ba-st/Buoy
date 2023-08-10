@@ -26,7 +26,7 @@ Some examples
 - `collect:as:` evaluates a block with each of the receiver's elements as the
   argument collecting the result into an instance of the argument class.
 - `count:` counts the number of elements evaluating true for the argument block.
-- `detect:ifFound:` evaluates an action block if any of the elements match the 
+- `detect:ifFound:` evaluates an action block if any of the elements match the
   condition block. If no elements match does nothing.
 - `detect:ifFound:ifNone:` evaluates an action block if any of the elements match
   the condition block. If no elements match evaluates the fail block.
