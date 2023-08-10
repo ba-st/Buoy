@@ -51,6 +51,104 @@ CollectionExtensionsTest >> testCopyNoMoreThanLast [
 ]
 
 { #category : #tests }
+CollectionExtensionsTest >> testDetectIfFoundIfNoneWhenNobodyIsFound [
+
+	| wasFound |
+	wasFound := #( 1 2 3 )
+		            detect: [ :each | each isNil ]
+		            ifFound: [ true ]
+		            ifNone: [ false ].
+	self deny: wasFound
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testDetectIfFoundIfNoneWhenSomethingIsFound [
+
+	| wasFound |
+	wasFound := #( 1 2 3 )
+		            detect: [ :each | each notNil ]
+		            ifFound: [ :found |
+			            self assert: found equals: 1.
+			            true ]
+		            ifNone: [ false ].
+	self assert: wasFound
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testDetectIfFoundIfNoneWhenSomethingIsFoundIgnoringTheFoundObject [
+
+	| wasFound |
+	wasFound := #( 1 2 3 )
+		            detect: [ :each | each notNil ]
+		            ifFound: [ true ]
+		            ifNone: [ false ].
+	self assert: wasFound
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testDetectIfFoundWhenNobodyIsFound [
+
+	| collection result |
+	collection := #( a b c ).
+	result := collection detect: #isNil ifFound: [ self fail ].
+	self assert: result identicalTo: collection
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testDetectIfFoundWhenSomethingIsFound [
+
+	| collection result wasFound |
+	wasFound := false.
+	collection := #( $a $b $e ).
+	result := collection detect: #isVowel ifFound: [ :vowel |
+		          self assert: vowel equals: $a.
+		          wasFound := true ].
+	self
+		assert: wasFound;
+		assert: result identicalTo: collection
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testDetectIfFoundWhenSomethingIsFoundIgnoringTheFoundObject [
+
+	| wasFound |
+	wasFound := false.
+	#( $a $b )
+		detect: [ :each | each notNil ]
+		ifFound: [ wasFound := true ].
+	self assert: wasFound
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testIfEmptyIfNotEmptyWhenEmpty [
+
+	| isEmpty |
+	isEmpty := false.
+	#(  ) ifEmpty: [ isEmpty := true ] ifNotEmpty: [ self fail ].
+	self assert: isEmpty
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testIfEmptyIfNotEmptyWhenNotEmpty [
+
+	| isNotEmpty |
+	isNotEmpty := false.
+	#( 1 ) ifEmpty: [ self fail ] ifNotEmpty: [ isNotEmpty := true ].
+	self assert: isNotEmpty
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testIfEmptyIfNotEmptyWhenNotEmptyUsingNotEmptyValue [
+
+	| isNotEmpty |
+	isNotEmpty := false.
+	#( 1 ) ifEmpty: [ self fail ] ifNotEmpty: [ :collection |
+		self assert: collection equals: #( 1 ).
+		isNotEmpty := true ].
+	self assert: isNotEmpty
+]
+
+{ #category : #tests }
 CollectionExtensionsTest >> testMaxUsing [
 
 	self assert: ( #(#(1) #(3 1) #(2)) maxUsing: [ :anArray | anArray first ] ) equals: 3.
@@ -63,6 +161,31 @@ CollectionExtensionsTest >> testMinUsing [
 
 	self assert: ( #(#(3 1) #(1) #(2)) minUsing: [ :anArray | anArray first ] ) equals: 1.
 	self should: [ #() minUsing: [ :anArray | anArray first ] ] raise: Error
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testRemoveAll [
+
+	{ Set. OrderedCollection. Bag } do: [ :collectionClass |
+		| collection |
+		collection := collectionClass withAll: #( 1 2 3 1 ).
+		self assert: collection notEmpty.
+		collection removeAll.
+		self assert: collection isEmpty ]
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testSelectThenCollect [
+
+	{ Set. OrderedCollection. Bag } do: [ :collectionClass |
+		| numbers evenDoubles |
+		numbers := collectionClass withAll: #( 3 2 12 2 16 ).
+		evenDoubles := numbers
+			               select: [ :each | each even ]
+			               thenCollect: [ :each | each * 2 ].
+		self
+			assert: evenDoubles size equals: numbers size - 1;
+			assertCollection: evenDoubles hasSameElements: #( 4 24 32 ) ]
 ]
 
 { #category : #'tests - copying' }
