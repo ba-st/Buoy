@@ -23,7 +23,8 @@ BaselineOfBuoy >> baseline: spec [
 				baselineMath: spec;
 				baselineMetaprogramming: spec;
 				baselineSUnit: spec;
-				baselineTools: spec.
+				baselineTools: spec;
+				baselineGS64Development: spec.
 			spec
 				group: 'CI' with: 'Tests';
 				group: 'Development' with: #('Tools' 'Tests')
@@ -123,6 +124,31 @@ BaselineOfBuoy >> baselineExceptionHandling: spec [
 		group: 'Deployment' with: 'Buoy-Exception-Handling-Extensions';
 		package: 'Buoy-Exception-Handling-Tests' with: [ spec requires: 'Buoy-Exception-Handling-Extensions' ];
 		group: 'Tests' with: 'Buoy-Exception-Handling-Tests'
+]
+
+{ #category : #baselines }
+BaselineOfBuoy >> baselineGS64Development: spec [
+
+	spec
+		package: 'Buoy-GS64-Compatibility'
+		with: [ spec requires: 'Development' ];
+		group: 'GS64-Development' with: 'Buoy-GS64-Compatibility';
+		package: 'Buoy-Collections-GS64-Extensions'
+		with: [ spec requires: 'Buoy-GS64-Compatibility' ];
+		group: 'GS64-Development' with: 'Buoy-Collections-GS64-Extensions';
+		package: 'Buoy-Math-GS64-Base-Extensions'
+		with: [ spec requires: 'Buoy-GS64-Compatibility' ];
+		group: 'GS64-Development' with: 'Buoy-Math-GS64-Base-Extensions';
+		package: 'Buoy-Math-GS64-Extensions'
+		with: [ spec requires: 'Buoy-GS64-Compatibility' ];
+		group: 'GS64-Development' with: 'Buoy-Math-GS64-Extensions';
+		package: 'Buoy-Metaprogramming-GS64-Extensions'
+		with: [ spec requires: 'Buoy-GS64-Compatibility' ];
+		group: 'GS64-Development'
+		with: 'Buoy-Metaprogramming-GS64-Extensions';
+		package: 'Buoy-SUnit-GS64-Extensions'
+		with: [ spec requires: 'Buoy-GS64-Compatibility' ];
+		group: 'GS64-Development' with: 'Buoy-SUnit-GS64-Extensions'
 ]
 
 { #category : #baselines }
