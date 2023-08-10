@@ -4,7 +4,7 @@ RwSimpleProjectLoadComponentV2 {
   #projectNames : [ ],
   #componentNames : [
     'Deployment',
-    'SUnit-Dependent-Extensions'
+    'Dependent-SUnit-Extensions'
   ],
   #packageNames : [
     'Buoy-Assertions-Tests',

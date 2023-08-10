@@ -20,6 +20,21 @@ Some examples
 #( #(1) #(3 1) #(2) ) minUsing: [:array | array first ] >>> 1
 ```
 
+### `Collection` extensions for GS64
+
+- `anyOne` is just an alias of `any`
+- `collect:as:` evaluates a block with each of the receiver's elements as the
+  argument collecting the result into an instance of the argument class.
+- `count:` counts the number of elements evaluating true for the argument block.
+- `detect:ifFound:` evaluates an action block if any of the elements match the
+  condition block. If no elements match does nothing.
+- `detect:ifFound:ifNone:` evaluates an action block if any of the elements match
+  the condition block. If no elements match evaluates the fail block.
+- `ifEmpty:ifNotEmpty:` evaluates one of two blocks depending on the collection emptiness.
+- `removeAll` removes all elements of the receiver.
+- `select:thenCollect:` filters the elements in the receiver using the condition
+  block, collecting after the results evaluating the action block.
+
 ## `SequenceableCollection` extensions
 
 - `copyFirst:` Copy the first `n` elements of the collection. If `n` is 0 it
@@ -66,6 +81,38 @@ Some examples
 #( a b c d e f ) withoutFirst: 7 >>> #()
 
 ```
+
+### `SequenceableCollection` extensions for GS64
+
+- `copyAfter:` returns a copy of the receiver after the first occurrence
+  of the argument up to the end, or empty if no element matches.
+- `endsWith:` returns true if the argument is a suffix of the receiver.
+- `writeStream` returns a write stream over the receiver.
+
+## `Dictionary` extensions for GS64
+
+- `at:ifPresent:ifAbsentPut:` lookups a value, if any matches evaluates a block,
+  if no one matches put under the key the result o evaluating the second block.
+
+## `String` extensions for GS64
+
+- `expandMacros`
+- `expandMacrosWith:`
+- `expandMacrosWith:With:`
+- `expandMacrosWith:With:With:`
+- `expandMacrosWith:With:With:With:`
+- `expandMacrosWithArguments:`
+
+These methods interpolate the receiver pattern using the provided arguments:
+
+- `<r>` is replaced by `CR`
+- `<l>` is replaced by `LF`
+- `<n>` is replaced by the underlying OS line delimiter
+- `<t>` is replaced by `TAB`
+- `<Np>` is replaced by the `printString` of the nth argument
+- `<Ns>` is replaced by the string provided in the nth argument
+- `<N?trueString:falseString>` is replaced by `trueString` or `falseString`
+  depending on the boolean provided in the nth argument.
 
 ## Circular Iterator
 

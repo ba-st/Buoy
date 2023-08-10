@@ -7,7 +7,7 @@
 
  The easier way to create a percentage is to send the message `percent` to a
  number. For example `5 percent` will create an object representing `5%`.
-  There are two common cases also covered as instance creation methods (`0%` and
+ There are two common cases also covered as instance creation methods (`0%` and
   `100%`):
 
  ```smalltalk
@@ -22,8 +22,8 @@ Percentage ratio: 1. "100%"
 Percentage ratio: 1/2 "50%"
 ```
 
-This percentages can be operated arithmetically with any number or other
- percentages. Try printing the following expressions:
+These percentages can be operated arithmetically with any number or other
+percentages. Try printing the following expressions:
 
 ```smalltalk
 20 percent * 5. "1"
@@ -53,5 +53,16 @@ create one is to send the message `perMille` to a number.
 12 perMille "12‰"
 ```
 
+## `Number` Extensions for GS64
+
+- `isZero` returns true if the receiver equals 0
+- `nthRoot:` returns the nth root of the receiver
+- `round:` round the decimal part of the receiver to be limited to the desired
+  number of decimal digits
+
+## `Float` Extensions for GS64
+
+- `isInfinite` returns true if the receiver is infinite
+
 ---
-Some definitions and examples are based on the ones in  [Wikipedia](https://en.wikipedia.org/wiki/Percentage)
+Some definitions and examples are based on the ones on [Wikipedia](https://en.wikipedia.org/wiki/Percentage)

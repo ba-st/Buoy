@@ -1,4 +1,6 @@
-# Baseline Groups
+# Baseline Groups & GS 64 Components
+
+## Pharo Baseline Groups
 
 Buoy includes the following groups in its Baseline that can be used as
 loading targets:
@@ -11,3 +13,18 @@ loading targets:
   particular case it is the same as `Tests`
 - `Development` will load all the needed packages to develop and contribute to
    the project
+
+- `GS64-Development` is an optional group that will load `Development` and all
+  the packages required to develop changes applicable to GS64. Loading this package
+  will make dirty other packages in the project but this is expected, just remember
+  to cherry-pick the changes to commit and don't remove the changed methods in the
+  Pharo package.
+
+## GS64 Components
+
+Buoy includes the following components in its Rowan configuration that can be
+used as loading targets:
+
+- `Deployment` will load all the packages needed in a deployed application
+- `Tests` will load the test cases
+- `Dependent-SUnit-Extensions` will load extensions to SUnit

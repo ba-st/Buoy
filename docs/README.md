@@ -18,13 +18,13 @@ understanding over specific topics:
   required values, that can be unknown at the beginning of an execution.
   See the [related documentation.](reference/BindingsAndOptionals.md)
 - **Exception Handling**: Extensions to the [exception handling mechanics](reference/ExceptionHandling.md).
-- **Meta-programming**: Some abstractions like [namespaces](reference/Namespaces.md)
-and [interfaces](reference/Interfaces.md).
+- **Meta-programming**: Some abstractions like [namespaces](reference/Namespaces.md),
+[interfaces](reference/Interfaces.md) and extensions to the [Object model](reference/MOP.md).
 - **SUnit**: [Extensions to the SUnit framework](reference/SUnit.md).
 
 ---
 
 To use the project as a dependency of your project, take a look at:
 
-- [How to use Buoy as a dependency](how-to/how-to-use-as-dependency-in-pharo.md)
-- [Baseline groups reference](reference/Baseline-groups.md)
+- [Pharo: How to use Buoy as a dependency](how-to/how-to-use-as-dependency-in-pharo.md)
+- [Baseline groups & components reference](reference/Baseline-groups.md)
