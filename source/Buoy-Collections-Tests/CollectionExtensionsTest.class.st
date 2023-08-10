@@ -175,17 +175,38 @@ CollectionExtensionsTest >> testRemoveAll [
 ]
 
 { #category : #tests }
-CollectionExtensionsTest >> testSelectThenCollect [
+CollectionExtensionsTest >> testSelectThenCollectOnBag [
 
-	{ Set. OrderedCollection. Bag } do: [ :collectionClass |
-		| numbers evenDoubles |
-		numbers := collectionClass withAll: #( 3 2 12 2 16 ).
-		evenDoubles := numbers
-			               select: [ :each | each even ]
-			               thenCollect: [ :each | each * 2 ].
-		self
-			assert: evenDoubles size equals: numbers size - 1;
-			assertCollection: evenDoubles hasSameElements: #( 4 24 32 ) ]
+	| numbers evenDoubles |
+	numbers := Bag withAll: #( 3 2 12 2 16 ).
+	evenDoubles := numbers
+		               select: [ :each | each even ]
+		               thenCollect: [ :each | each * 2 ].
+	self assert: evenDoubles equals: (Bag withAll: #( 4 4 24 32 ))
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testSelectThenCollectOnOrderedCollection [
+
+	| numbers evenDoubles |
+	numbers := OrderedCollection withAll: #( 3 2 12 2 16 ).
+	evenDoubles := numbers
+		               select: [ :each | each even ]
+		               thenCollect: [ :each | each * 2 ].
+	self
+		assert: evenDoubles
+		equals: (OrderedCollection withAll: #( 4 24 4 32 ))
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testSelectThenCollectOnSet [
+
+	| numbers evenDoubles |
+	numbers := Set withAll: #( 3 2 12 2 16 ).
+	evenDoubles := numbers
+		               select: [ :each | each even ]
+		               thenCollect: [ :each | each * 2 ].
+	self assert: evenDoubles equals: (Set withAll: #( 4 24 32 ))
 ]
 
 { #category : #'tests - copying' }
