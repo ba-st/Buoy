@@ -10,6 +10,7 @@ adding useful extensions.
 [![Coverage Status](https://codecov.io/github/ba-st/Buoy/coverage.svg?branch=release-candidate)](https://codecov.io/gh/ba-st/Buoy/branch/release-candidate)
 
 [![Baseline Groups](https://github.com/ba-st/Buoy/actions/workflows/loading-groups.yml/badge.svg)](https://github.com/ba-st/Buoy/actions/workflows/loading-groups.yml)
+[![GS64 Components](https://github.com/ba-st/Buoy/actions/workflows/loading-gs64-components.yml/badge.svg)](https://github.com/ba-st/Buoy/actions/workflows/loading-gs64-components.yml)
 [![Markdown Lint](https://github.com/ba-st/Buoy/actions/workflows/markdown-lint.yml/badge.svg)](https://github.com/ba-st/Buoy/actions/workflows/markdown-lint.yml)
 
 [![GitHub release](https://img.shields.io/github/release/ba-st/Buoy.svg)](https://github.com/ba-st/Buoy/releases/latest)
@@ -46,7 +47,7 @@ Quick links
 
 ## Installation
 
-To load the project in a Pharo image follow this [instructions](docs/how-to/how-to-load-in-pharo.md).
+To load the project in a Pharo image follow these [instructions](docs/how-to/how-to-load-in-pharo.md).
 
 ## Contributing
 
