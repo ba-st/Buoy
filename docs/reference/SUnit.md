@@ -20,4 +20,9 @@
 - `fail` will make the test fail
 - `should:raise:withExceptionDo:` asserts that a block raises a specific
   exception and evaluates the provided block with the signal
-  
+
+## `TestCase` extensions
+
+- `runOnlyInGemStone64:` evaluates the block only if running in GS64
+- `runOnlyInPharo:` evaluates the block only if running in Pharo
+- `runOnlyInVAST:` evaluates the block only if running in VAST Platform
