@@ -9,3 +9,9 @@ DynamicVariableForTesting class >> default [
 
 	^ 3
 ]
+
+{ #category : #accessing }
+DynamicVariableForTesting >> default [
+
+	^ self class default
+]

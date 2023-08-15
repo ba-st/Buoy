@@ -18,7 +18,7 @@ DynamicVariableTest >> testDynamicVariableBlockReturnValue [
 DynamicVariableTest >> testDynamicVariableDefault [
 
 	self
-		assert: DynamicVariableForTesting default equals: 3;
+		assert: DynamicVariableForTesting new default equals: 3;
 		assert: DynamicVariableForTesting value equals: 3
 ]
 
