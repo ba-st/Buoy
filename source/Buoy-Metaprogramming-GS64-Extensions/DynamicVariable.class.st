@@ -28,8 +28,8 @@ DynamicVariable class >> value: anObject during: aBlock [
 	oldValue := activeProcess
 		            environmentAt: self
 		            ifAbsent: [ self default ].
-	[
-	activeProcess environmentAt: self put: anObject.
-	aBlock value ] ensure: [
-		activeProcess environmentAt: self put: oldValue ]
+	^ [
+	  activeProcess environmentAt: self put: anObject.
+	  aBlock value ] ensure: [
+		  activeProcess environmentAt: self put: oldValue ]
 ]
