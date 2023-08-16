@@ -401,43 +401,6 @@ OrderedDictionary >> isHealthy [
 ]
 
 { #category : #accessing }
-OrderedDictionary >> keyAtIdentityValue: aValue [
-	^ dictionary keyAtIdentityValue: aValue
-]
-
-{ #category : #accessing }
-OrderedDictionary >> keyAtIdentityValue: aValue ifAbsent: aBlock [
-	^ dictionary keyAtIdentityValue: aValue ifAbsent: aBlock
-]
-
-{ #category : #accessing }
-OrderedDictionary >> keyAtIndex: anIndex [
-	^ self keyAtIndex: anIndex ifAbsent: [self errorInvalidIndex: anIndex]
-]
-
-{ #category : #accessing }
-OrderedDictionary >> keyAtIndex: anIndex ifAbsent: aBlock [
-	^ (anIndex > 0 and: [ anIndex <= self size ])
-		ifTrue: [ orderedKeys at: anIndex ]
-		ifFalse: [ aBlock value ]
-]
-
-{ #category : #accessing }
-OrderedDictionary >> keyAtValue: aValue [
-	^ dictionary keyAtValue: aValue
-]
-
-{ #category : #accessing }
-OrderedDictionary >> keyAtValue: aValue ifAbsent: aBlock [
-	^ dictionary keyAtValue: aValue ifAbsent: aBlock
-]
-
-{ #category : #accessing }
-OrderedDictionary >> keyForIdentity: anObject [
-	^ dictionary keyForIdentity: anObject
-]
-
-{ #category : #accessing }
 OrderedDictionary >> keys [
 	^ orderedKeys copyFrom: 1 to: self size
 ]

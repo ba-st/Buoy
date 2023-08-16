@@ -911,45 +911,6 @@ OrderedDictionaryExtensionsTest >> testIsDictionary [
 ]
 
 { #category : #'tests - accessing' }
-OrderedDictionaryExtensionsTest >> testKeyAtIdentityValue [
-	| dictionary |
-
-	dictionary := self emptyDictionary.
-	self orderedAssociations do: [:each |
-		self
-			should: [dictionary keyAtIdentityValue: each value]
-			raise: Error.
-
-		dictionary add: each.
-		self assert: (dictionary keyAtIdentityValue: each value) equals: each key.
-		self
-			should: [dictionary keyAtIdentityValue: each value copy]
-			raise: Error]
-]
-
-{ #category : #'tests - accessing' }
-OrderedDictionaryExtensionsTest >> testKeyAtIdentityValueIfAbsent [
-	| dictionary |
-
-	dictionary := self emptyDictionary.
-	self orderedAssociations do: [:each |
-		self assert:
-			(dictionary
-				keyAtIdentityValue: each value
-				ifAbsent: [self absentKey]) equals: self absentKey.
-
-		dictionary add: each.
-		self assert:
-			(dictionary
-				keyAtIdentityValue: each value
-				ifAbsent: [self fail]) equals: each key.
-		self assert:
-			(dictionary
-				keyAtIdentityValue: each value copy
-				ifAbsent: [self absentKey]) equals: self absentKey]
-]
-
-{ #category : #'tests - accessing' }
 OrderedDictionaryExtensionsTest >> testKeyAtIndex [
 	| dictionary |
 
@@ -964,74 +925,6 @@ OrderedDictionaryExtensionsTest >> testKeyAtIndex [
 
 		dictionary add: each.
 		self assert: (dictionary keyAtIndex: i) equals: each key]
-]
-
-{ #category : #'tests - accessing' }
-OrderedDictionaryExtensionsTest >> testKeyAtIndexIfAbsent [
-	| dictionary |
-
-	dictionary := self emptyDictionary.
-	self assert:
-		(dictionary
-			keyAtIndex: 0
-			ifAbsent: [self absentKey]) equals: self absentKey.
-	self orderedAssociations withIndexDo: [:each :i |
-		self assert:
-			(dictionary
-				keyAtIndex: i
-				ifAbsent: [self absentKey]) equals: self absentKey.
-
-		dictionary add: each.
-		self assert:
-			(dictionary
-				keyAtIndex: i
-				ifAbsent: [self fail]) equals: each key]
-]
-
-{ #category : #'tests - accessing' }
-OrderedDictionaryExtensionsTest >> testKeyAtValue [
-	| dictionary |
-
-	dictionary := self emptyDictionary.
-	self orderedAssociations do: [:each |
-		self
-			should: [dictionary keyAtValue: each value]
-			raise: Error.
-
-		dictionary add: each.
-		self assert: (dictionary keyAtValue: each value) equals: each key]
-]
-
-{ #category : #'tests - accessing' }
-OrderedDictionaryExtensionsTest >> testKeyAtValueIfAbsent [
-	| dictionary |
-
-	dictionary := self emptyDictionary.
-	self orderedAssociations do: [:each |
-		self assert:
-			(dictionary
-				keyAtValue: each value
-				ifAbsent: [self absentKey]) equals: self absentKey.
-
-		dictionary add: each.
-		self assert:
-			(dictionary
-				keyAtValue: each value
-				ifAbsent: [self fail]) equals: each key]
-]
-
-{ #category : #'tests - accessing' }
-OrderedDictionaryExtensionsTest >> testKeyForIdentity [
-	| dictionary |
-
-	dictionary := self emptyDictionary.
-	self orderedAssociations do: [:each |
-		self assert: (dictionary keyForIdentity: each value) isNil.
-
-		dictionary add: each.
-		self
-			assert: (dictionary keyForIdentity: each value) equals: each key;
-			assert: (dictionary keyForIdentity: each value copy) isNil]
 ]
 
 { #category : #'tests - accessing' }
