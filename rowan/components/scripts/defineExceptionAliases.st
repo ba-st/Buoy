@@ -10,3 +10,4 @@ symbolDictionary at: #ArithmeticError put: NumericError.
 symbolDictionary at: #KeyNotFound put: LookupError.
 symbolDictionary at: #NotFound put: LookupError.
 symbolDictionary at: #SubscriptOutOfBounds put: OffsetError.
+symbolDictionary at: #AssertionFailure put: AssertionFailed.
