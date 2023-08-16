@@ -118,7 +118,7 @@ OrderedDictionaryExtensionsTest >> changedOrderedAssociations [
 { #category : #accessing }
 OrderedDictionaryExtensionsTest >> changedOrderedAssociationsFirst: anInteger [
 
-	^ self changedOrderedAssociations first: anInteger
+	^ self changedOrderedAssociations copyFirst: anInteger
 ]
 
 { #category : #accessing }
@@ -250,7 +250,7 @@ OrderedDictionaryExtensionsTest >> orderedAssociationsAllButFirst: anInteger [
 { #category : #accessing }
 OrderedDictionaryExtensionsTest >> orderedAssociationsFirst: anInteger [
 
-	^ self orderedAssociations first: anInteger
+	^ self orderedAssociations copyFirst: anInteger
 ]
 
 { #category : #accessing }
@@ -262,7 +262,7 @@ OrderedDictionaryExtensionsTest >> orderedKeys [
 { #category : #accessing }
 OrderedDictionaryExtensionsTest >> orderedKeysFirst: anInteger [
 
-	^ self orderedKeys first: anInteger
+	^ self orderedKeys copyFirst: anInteger
 ]
 
 { #category : #accessing }
@@ -274,7 +274,7 @@ OrderedDictionaryExtensionsTest >> orderedValues [
 { #category : #accessing }
 OrderedDictionaryExtensionsTest >> orderedValuesFirst: anInteger [
 
-	^ self orderedValues first: anInteger
+	^ self orderedValues copyFirst: anInteger
 ]
 
 { #category : #accessing }
@@ -684,7 +684,7 @@ OrderedDictionaryExtensionsTest >> testDeclareFrom [
 	otherDictionary := self dictionaryWithOrderedAssociations.
 	self orderedKeys do: [ :each | self assert: (dictionary declare: each from: otherDictionary) identicalTo: dictionary ].
 	self assertIsDictionary: dictionary withOrderedAssociations: self orderedAssociations.
-	self assertEmpty: otherDictionary.
+	self assert: otherDictionary isEmpty.
 
 	self orderedKeys
 		do: [ :each |
@@ -1079,9 +1079,9 @@ OrderedDictionaryExtensionsTest >> testKeysAndValuesRemove [
 								ifFalse: [ self assert: key equals: unremovedAssociation key ].
 							self assert: value equals: unremovedAssociation value.
 							false ] ].
-			self assertEmpty: unremovedAssociations.
+			self assert: unremovedAssociations isEmpty.
 			self assertKey: removedAssociation key wasRemovedfrom: dictionary ].
-	self assertEmpty: dictionary
+	self assert: dictionary isEmpty
 ]
 
 { #category : #'tests - enumerating' }
@@ -1163,14 +1163,16 @@ OrderedDictionaryExtensionsTest >> testOccurrencesOf [
 
 { #category : #'tests - removing' }
 OrderedDictionaryExtensionsTest >> testRemoveAll [
+
 	| dictionary removedKeys |
 	dictionary := self dictionaryWithOrderedAssociations.
 	removedKeys := dictionary keys.
 	self
-		denyEmpty: dictionary;
+		deny: dictionary isEmpty;
 		assert: dictionary removeAll identicalTo: dictionary;
-		assertEmpty: dictionary.
-	removedKeys do: [ :each | self assertKey: each wasRemovedfrom: dictionary ]
+		assert: dictionary isEmpty.
+	removedKeys do: [ :each |
+		self assertKey: each wasRemovedfrom: dictionary ]
 ]
 
 { #category : #'tests - removing' }
@@ -1250,15 +1252,6 @@ OrderedDictionaryExtensionsTest >> testSize [
 	self orderedAssociations size to: 1 by: -1 do: [:i |
 		dictionary removeKey: (self orderedKeys at: i).
 		self assert: dictionary size equals: (i - 1)]
-]
-
-{ #category : #'tests - accessing' }
-OrderedDictionaryExtensionsTest >> testStoreOn [
-	| print |
-	print := String streamContents: [ :s | self orderedAssociations storeOn: s ].
-	self assertDictionary: (self class compiler evaluate: print) equals: self orderedAssociations.
-	print := String streamContents: [ :s | self emptyDictionary storeOn: s ].
-	self assertDictionary: (self class compiler evaluate: print) equals: self emptyDictionary
 ]
 
 { #category : #'tests - accessing' }

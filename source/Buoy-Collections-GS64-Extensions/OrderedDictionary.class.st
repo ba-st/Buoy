@@ -137,7 +137,11 @@ OrderedDictionary >> associationAt: aKey ifPresent: aBlock [
 
 { #category : #accessing }
 OrderedDictionary >> associationAt: key ifPresent: aPresentBlock ifAbsent: anAbsentBlock [
-	^ dictionary associationAt: key ifPresent: aPresentBlock ifAbsent: anAbsentBlock
+
+	^ dictionary
+		  associationAt: key
+		  ifPresent: aPresentBlock
+		  ifAbsent: anAbsentBlock
 ]
 
 { #category : #accessing }
@@ -216,23 +220,26 @@ OrderedDictionary >> at: aKey ifAbsentPut: aBlock [
 
 { #category : #accessing }
 OrderedDictionary >> at: aKey ifPresent: aBlock [
-	^ dictionary at: aKey ifPresent: aBlock
+
+	^ self at: aKey ifPresent: aBlock ifAbsent: [ nil ]
 ]
 
 { #category : #accessing }
 OrderedDictionary >> at: aKey ifPresent: aPresentBlock ifAbsent: anAbsentBlock [
+
 	^ dictionary
-		at: aKey
-		ifPresent: aPresentBlock
-		ifAbsent: anAbsentBlock
+		  at: aKey
+		  ifPresent: [ :value | aPresentBlock cull: value ]
+		  ifAbsent: anAbsentBlock
 ]
 
 { #category : #accessing }
 OrderedDictionary >> at: aKey ifPresent: aPresentBlock ifAbsentPut: anAbsentBlock [
-	^ dictionary
-		at: aKey
-		ifPresent: aPresentBlock
-		ifAbsent: [ self at: aKey put: anAbsentBlock value ]
+
+	^ self
+		  at: aKey
+		  ifPresent: aPresentBlock
+		  ifAbsent: [ self at: aKey put: anAbsentBlock value ]
 ]
 
 { #category : #accessing }
