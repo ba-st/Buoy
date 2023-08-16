@@ -131,11 +131,6 @@ OrderedDictionary >> associationAt: aKey ifAbsent: aBlock [
 ]
 
 { #category : #accessing }
-OrderedDictionary >> associationAt: aKey ifPresent: aBlock [
-	^ dictionary associationAt: aKey ifPresent: aBlock
-]
-
-{ #category : #accessing }
 OrderedDictionary >> associationAt: key ifPresent: aPresentBlock ifAbsent: anAbsentBlock [
 
 	^ dictionary
@@ -493,8 +488,9 @@ OrderedDictionary >> remove: anObject ifAbsent: aBlock [
 
 { #category : #removing }
 OrderedDictionary >> removeAll [
-	1 to: self size do: [:i | orderedKeys at: i put: nil].
-	dictionary removeAll
+
+	1 to: self size do: [ :i | orderedKeys at: i put: nil ].
+	dictionary keys copy do: [ :key | dictionary removeKey: key ]
 ]
 
 { #category : #removing }

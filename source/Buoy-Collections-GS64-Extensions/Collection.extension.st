@@ -26,6 +26,12 @@ Collection >> associationsDo: aBlock [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> capacity [
+
+	^ self size
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 Collection >> collect: aBlock as: aClass [
 	"Evaluate aBlock with each of the receiver's elements as the argument.
 	Collect the resulting values into an instance of aClass. Answer the resulting collection."
