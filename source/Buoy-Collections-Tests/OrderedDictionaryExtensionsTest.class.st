@@ -54,15 +54,22 @@ OrderedDictionaryExtensionsTest >> assertIsArray: anArray withElements: aCollect
 
 { #category : #assertions }
 OrderedDictionaryExtensionsTest >> assertIsDictionary: aFirstDictionary copiedFrom: aSecondDictionary withOrderedAssociations: anAssociationCollection [
+
 	self
 		deny: aFirstDictionary identicalTo: aSecondDictionary;
-		deny: aFirstDictionary dictionary identicalTo: aSecondDictionary dictionary;
-		deny: aFirstDictionary orderedKeys identicalTo: aSecondDictionary orderedKeys.
+		deny: aFirstDictionary dictionary
+		identicalTo: aSecondDictionary dictionary;
+		deny: aFirstDictionary orderedKeys
+		identicalTo: aSecondDictionary orderedKeys.
 
 	"esnure the associations were copied (the keys and values can be shared)"
-	aFirstDictionary associations do: [ :each | self deny: (aSecondDictionary associations identityIncludes: each) ].
+	aFirstDictionary associations do: [ :each |
+		self deny:
+			(aSecondDictionary associations includesIdenticalTo: each) ].
 
-	self assertIsDictionary: aFirstDictionary withOrderedAssociations: anAssociationCollection
+	self
+		assertIsDictionary: aFirstDictionary
+		withOrderedAssociations: anAssociationCollection
 ]
 
 { #category : #assertions }
