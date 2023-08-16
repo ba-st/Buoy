@@ -278,6 +278,12 @@ OrderedDictionary >> collect: aBlock [
 			each key -> (aBlock value: each value)])
 ]
 
+{ #category : #copying }
+OrderedDictionary >> copyEmpty [
+
+	^ self species new
+]
+
 { #category : #adding }
 OrderedDictionary >> declare: aKey from: aDictionary [
 	(self includesKey: aKey)

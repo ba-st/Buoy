@@ -850,17 +850,17 @@ OrderedDictionaryExtensionsTest >> testIncludesAssociation [
 ]
 
 { #category : #'tests - testing' }
-OrderedDictionaryExtensionsTest >> testIncludesIdentity [
-	| dictionary |
+OrderedDictionaryExtensionsTest >> testIncludesIdenticalTo [
 
+	| dictionary |
 	dictionary := self emptyDictionary.
-	self orderedAssociations do: [:each |
-		self deny: (dictionary includesIdentity: each value).
+	self orderedAssociations do: [ :each |
+		self deny: (dictionary includesIdenticalTo: each value).
 
 		dictionary add: each.
 		self
-			assert: (dictionary includesIdentity: each value);
-			deny: (dictionary includesIdentity: each value copy)]
+			assert: (dictionary includesIdenticalTo: each value);
+			deny: (dictionary includesIdenticalTo: each value copy) ]
 ]
 
 { #category : #'tests - testing' }
@@ -908,23 +908,6 @@ OrderedDictionaryExtensionsTest >> testIndexOfKeyIfAbsent [
 { #category : #'tests - accessing' }
 OrderedDictionaryExtensionsTest >> testIsDictionary [
 	self assert: self dictionaryClass new isDictionary
-]
-
-{ #category : #'tests - accessing' }
-OrderedDictionaryExtensionsTest >> testKeyAtIndex [
-	| dictionary |
-
-	dictionary := self emptyDictionary.
-	self
-		should: [dictionary keyAtIndex: 0]
-		raise: Error.
-	self orderedAssociations withIndexDo: [:each :i |
-		self
-			should: [dictionary keyAtIndex: i]
-			raise: Error.
-
-		dictionary add: each.
-		self assert: (dictionary keyAtIndex: i) equals: each key]
 ]
 
 { #category : #'tests - accessing' }
