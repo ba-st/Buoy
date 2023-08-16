@@ -1,6 +1,12 @@
 Extension { #name : #CharacterCollection }
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+CharacterCollection class >> cr [
+
+	^ self with: Character cr
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> expandMacros [
 
 	^ self expandMacrosWithArguments: #(  )
@@ -86,6 +92,12 @@ CharacterCollection >> expandMacrosWithArguments: anArray [
 									(char == $%
 										ifTrue: [ readStream next ]
 										ifFalse: [ char ]) ] ] ]
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+CharacterCollection class >> lf [
+
+	^ self with: Character lf
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
