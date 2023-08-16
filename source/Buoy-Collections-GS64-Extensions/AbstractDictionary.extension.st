@@ -1,12 +1,6 @@
 Extension { #name : #AbstractDictionary }
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
-AbstractDictionary >> at: key ifPresent: aBlock [
-
-	^ self at: key ifPresent: aBlock ifAbsent: [ nil ]
-]
-
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
 AbstractDictionary >> at: key ifPresent: aPresentBlock ifAbsent: anAbsentBlock [
 
 	| presentValue |
