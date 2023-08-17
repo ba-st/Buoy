@@ -12,14 +12,6 @@ Class {
 }
 
 { #category : #accessing }
-OrderedDictionaryExtensionsTest >> absentKey [
-
-	^self isTestingIdentityDictionary
-		ifTrue: [ self identityAbsentKey ]
-		ifFalse: [ self nonIdentityAbsentKey ]
-]
-
-{ #category : #accessing }
 OrderedDictionaryExtensionsTest >> absentValue [
 	^ 'absentValue'
 ]
@@ -80,18 +72,14 @@ OrderedDictionaryExtensionsTest >> assertIsDictionary: anObject withOrderedAssoc
 	self
 		assert: anObject class identicalTo: self dictionaryClass;
 		assert: anObject orderedKeys size >= anAssociationCollection size;
-		assert: anObject associations size equals: anAssociationCollection size.
+		assert: anObject associations size
+		equals: anAssociationCollection size.
 
-	anAssociationCollection
-		withIndexDo: [ :each :i |
-			self isTestingIdentityDictionary
-				ifTrue: [ self
-						assert: (anObject orderedKeys at: i) identicalTo: each key;
-						assert: (anObject associations at: i) key identicalTo: each key ]
-				ifFalse: [ self
-						assert: (anObject orderedKeys at: i) equals: each key;
-						assert: (anObject associations at: i) key equals: each key ].
-			self assert: (anObject associations at: i) value equals: each value ]
+	anAssociationCollection withIndexDo: [ :each :i |
+		self
+			assert: (anObject orderedKeys at: i) equals: each key;
+			assert: (anObject associations at: i) key equals: each key;
+			assert: (anObject associations at: i) value equals: each value ]
 ]
 
 { #category : #assertions }
@@ -109,11 +97,8 @@ OrderedDictionaryExtensionsTest >> assertIsDictionary: anObject withUnorderedAss
 OrderedDictionaryExtensionsTest >> assertKey: aKey wasRemovedfrom: aDictionary [
 
 	self deny: (aDictionary includesKey: aKey).
-	aDictionary keys asArray, aDictionary orderedKeys asArray do: [:each |
-		self deny:
-			(self isTestingIdentityDictionary
-				ifTrue: [each == aKey]
-				ifFalse: [each = aKey])]
+	aDictionary keys asArray , aDictionary orderedKeys asArray do: [
+		:each | self deny: each equals: aKey ]
 ]
 
 { #category : #accessing }
@@ -126,12 +111,6 @@ OrderedDictionaryExtensionsTest >> changedOrderedAssociations [
 OrderedDictionaryExtensionsTest >> changedOrderedAssociationsFirst: anInteger [
 
 	^ self changedOrderedAssociations copyFirst: anInteger
-]
-
-{ #category : #accessing }
-OrderedDictionaryExtensionsTest >> collectClass [
-
-	^ Array
 ]
 
 { #category : #accessing }
@@ -165,37 +144,9 @@ OrderedDictionaryExtensionsTest >> emptyInternalDictionary [
 ]
 
 { #category : #accessing }
-OrderedDictionaryExtensionsTest >> identityAbsentKey [
-
-	^ self orderedKeys first copy
-]
-
-{ #category : #accessing }
-OrderedDictionaryExtensionsTest >> identityOrderedAssociations [
-	"Returns ordered associations to use for identity dictionaries.
-	The keys are all #= equal but #== different, so only an
-	identity dictionary will be able to distinguish them."
-	identityOrderedAssociations
-		ifNil: [| key |
-			key := 'testKey'.
-			identityOrderedAssociations :=
-				Array
-					with: (key := key copy) -> 'testValue'
-					with: (key := key copy) -> 'testValue3'
-					with: (key := key copy) -> 'testValue2'
-					with: (key := key copy) -> 'testValue4'].
-	"Return copies of the associations so they can be safely modified
-	in one test without affecting another, but do not copy the keys
-	and values"
-	^ identityOrderedAssociations collect: [:each | each copy]
-]
-
-{ #category : #accessing }
 OrderedDictionaryExtensionsTest >> internalDictionaryClass [
 
-	^self isTestingIdentityDictionary
-		ifTrue: [ IdentityDictionary]
-		ifFalse: [ Dictionary]
+	^ Dictionary
 ]
 
 { #category : #accessing }
@@ -204,22 +155,10 @@ OrderedDictionaryExtensionsTest >> internalDictionaryWithAssociations [
 	^ self internalDictionaryClass newFrom: self orderedAssociations
 ]
 
-{ #category : #testing }
-OrderedDictionaryExtensionsTest >> isTestingIdentityDictionary [
-
-	^ false
-]
-
 { #category : #accessing }
 OrderedDictionaryExtensionsTest >> newValue [
 
 	^ 'newValue'
-]
-
-{ #category : #accessing }
-OrderedDictionaryExtensionsTest >> nonIdentityAbsentKey [
-
-	^ 'absentKey'
 ]
 
 { #category : #accessing }
@@ -243,9 +182,8 @@ OrderedDictionaryExtensionsTest >> nonIdentityOrderedAssociations [
 
 { #category : #accessing }
 OrderedDictionaryExtensionsTest >> orderedAssociations [
-	^self isTestingIdentityDictionary
-		ifTrue: [ self identityOrderedAssociations ]
-		ifFalse: [ self nonIdentityOrderedAssociations ]
+
+	^ self nonIdentityOrderedAssociations
 ]
 
 { #category : #accessing }
@@ -282,12 +220,6 @@ OrderedDictionaryExtensionsTest >> orderedValues [
 OrderedDictionaryExtensionsTest >> orderedValuesFirst: anInteger [
 
 	^ self orderedValues copyFirst: anInteger
-]
-
-{ #category : #accessing }
-OrderedDictionaryExtensionsTest >> otherOrderedDictionaryClasses [
-
-	^ OrderedDictionary withAllSubclasses copyWithout: self dictionaryClass
 ]
 
 { #category : #assertions }
@@ -921,26 +853,26 @@ OrderedDictionaryExtensionsTest >> testKeysAndValuesDo [
 
 { #category : #'tests - removing' }
 OrderedDictionaryExtensionsTest >> testKeysAndValuesRemove [
+
 	| dictionary |
 	dictionary := self dictionaryWithOrderedAssociations.
-	self orderedAssociations
-		withIndexDo: [ :removedAssociation :i |
-			| unremovedAssociations |
-			unremovedAssociations := (self orderedAssociationsAllButFirst: i) asOrderedCollection.
-			dictionary
-				keysAndValuesRemove: [ :key :value |
-					(self isTestingIdentityDictionary ifTrue: [ key == removedAssociation key ] ifFalse: [ key = removedAssociation key ])
-						ifTrue: [ self assert: value equals: removedAssociation value.
-							true ]
-						ifFalse: [ | unremovedAssociation |
-							unremovedAssociation := unremovedAssociations removeFirst.
-							self isTestingIdentityDictionary
-								ifTrue: [ self assert: key identicalTo: unremovedAssociation key ]
-								ifFalse: [ self assert: key equals: unremovedAssociation key ].
-							self assert: value equals: unremovedAssociation value.
-							false ] ].
-			self assert: unremovedAssociations isEmpty.
-			self assertKey: removedAssociation key wasRemovedfrom: dictionary ].
+	self orderedAssociations withIndexDo: [ :removedAssociation :i |
+		| unremovedAssociations |
+		unremovedAssociations := (self orderedAssociationsAllButFirst: i)
+			                         asOrderedCollection.
+		dictionary keysAndValuesRemove: [ :key :value |
+			key = removedAssociation key
+				ifTrue: [
+					self assert: value equals: removedAssociation value.
+					true ]
+				ifFalse: [
+					| unremovedAssociation |
+					unremovedAssociation := unremovedAssociations removeFirst.
+					self assert: key equals: unremovedAssociation key.
+					self assert: value equals: unremovedAssociation value.
+					false ] ].
+		self assert: unremovedAssociations isEmpty.
+		self assertKey: removedAssociation key wasRemovedfrom: dictionary ].
 	self assert: dictionary isEmpty
 ]
 
@@ -1069,16 +1001,22 @@ OrderedDictionaryExtensionsTest >> testRemoveKeyIfAbsent [
 
 { #category : #'tests - removing' }
 OrderedDictionaryExtensionsTest >> testRemoveKeys [
+
 	0 to: self orderedAssociations size do: [ :i |
 		| dictionary keysToRemove |
 		dictionary := self dictionaryWithOrderedAssociations.
 
 		"make it a set to ensure it supports non-Sequenceable collections"
-		keysToRemove := (self isTestingIdentityDictionary ifTrue: [ IdentitySet ] ifFalse: [ Set ]) withAll: (self orderedKeysFirst: i).
-		self assert: (dictionary removeKeys: keysToRemove) identicalTo: dictionary.
-		keysToRemove do: [ :each | self assertKey: each wasRemovedfrom: dictionary ].
+		keysToRemove := Set withAll: (self orderedKeysFirst: i).
+		self
+			assert: (dictionary removeKeys: keysToRemove)
+			identicalTo: dictionary.
+		keysToRemove do: [ :each |
+			self assertKey: each wasRemovedfrom: dictionary ].
 
-		self assertIsDictionary: dictionary withOrderedAssociations: (self orderedAssociationsAllButFirst: i) ]
+		self
+			assertIsDictionary: dictionary
+			withOrderedAssociations: (self orderedAssociationsAllButFirst: i) ]
 ]
 
 { #category : #'tests - enumerating' }
