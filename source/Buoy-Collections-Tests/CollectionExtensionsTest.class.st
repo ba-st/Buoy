@@ -8,6 +8,14 @@ Class {
 }
 
 { #category : #'tests - copying' }
+CollectionExtensionsTest >> testComma [
+
+	self
+		assert: #( 1 2 3 4 ) , #( 5 6 ) equals: #( 1 2 3 4 5 6 );
+		assert: #( 1 2 3 4 ) asSet , #( 2 5 ) equals: #( 1 2 3 4 5 ) asSet
+]
+
+{ #category : #'tests - copying' }
 CollectionExtensionsTest >> testCopyFirst [
 
 	self
@@ -207,6 +215,18 @@ CollectionExtensionsTest >> testSelectThenCollectOnSet [
 		               select: [ :each | each even ]
 		               thenCollect: [ :each | each * 2 ].
 	self assert: evenDoubles equals: (Set withAll: #( 4 24 32 ))
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testWithIndexCollect [
+
+	| numbers scaledNumbers |
+	numbers := #( 3 2 12 2 16 ).
+	scaledNumbers := numbers withIndexCollect: [ :each :index |
+		                 each * index ].
+	self
+		assert: scaledNumbers
+		hasTheSameElementsInTheSameOrderThat: #( 3 4 36 8 80 )
 ]
 
 { #category : #'tests - copying' }
