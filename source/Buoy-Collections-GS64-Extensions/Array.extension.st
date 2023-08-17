@@ -10,6 +10,12 @@ Array >> fillFrom: aCollection with: aBlock [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+Array >> isArray [
+
+	^ true
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 Array class >> newFrom: aCollection [
 	"Answer an instance of me containing the same elements as aCollection."
 

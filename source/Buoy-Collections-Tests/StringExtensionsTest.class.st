@@ -5,6 +5,23 @@ Class {
 }
 
 { #category : #tests }
+StringExtensionsTest >> testCr [
+
+	self
+		assert: String cr
+		equals: (String streamContents: [ :stream | stream cr ])
+]
+
+{ #category : #tests }
+StringExtensionsTest >> testCrlf [
+
+	self assert: String crlf equals: (String streamContents: [ :stream |
+			 stream
+				 cr;
+				 lf ])
+]
+
+{ #category : #tests }
 StringExtensionsTest >> testExpandMacros [
 
 	self
@@ -42,4 +59,12 @@ StringExtensionsTest >> testExpandMacrosWithArguments [
 		equals: '''str''''ing''';
 		assert: ('<1p>: <2p>' expandMacrosWith: 'Number' with: 5)
 		equals: '''Number'': 5'
+]
+
+{ #category : #tests }
+StringExtensionsTest >> testLf [
+
+	self
+		assert: String lf
+		equals: (String streamContents: [ :stream | stream lf ])
 ]

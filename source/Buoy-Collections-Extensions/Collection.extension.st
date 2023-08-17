@@ -7,6 +7,13 @@ Collection >> asOrderedSet [
 ]
 
 { #category : #'*Buoy-Collections-Extensions' }
+Collection >> includesIdenticalTo: anObject [
+
+	self do: [ :each | anObject == each ifTrue: [ ^ true ] ].
+	^ false
+]
+
+{ #category : #'*Buoy-Collections-Extensions' }
 Collection >> maxUsing: aBlock [
 
 	^ self maxUsing: aBlock ifEmpty: [ self errorEmptyCollection ]

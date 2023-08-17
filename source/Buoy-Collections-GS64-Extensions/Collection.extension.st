@@ -16,6 +16,22 @@ Collection >> as: aSimilarClass [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> associationsDo: aBlock [
+	"Evaluate aBlock for each of the receiver's elements (key/value
+	associations).  If any non-association is within, the error is not caught now,
+	but later, when a key or value message is sent to it.
+	The point of this method it to do the *right thing* on Dictionaries and related classes."
+
+	self do: aBlock
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> capacity [
+
+	^ self size
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 Collection >> collect: aBlock as: aClass [
 	"Evaluate aBlock with each of the receiver's elements as the argument.
 	Collect the resulting values into an instance of aClass. Answer the resulting collection."
