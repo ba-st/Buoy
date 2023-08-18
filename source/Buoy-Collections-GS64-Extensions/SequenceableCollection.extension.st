@@ -7,6 +7,12 @@ SequenceableCollection >> anyOne [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+SequenceableCollection >> atRandom [
+
+	^ self at: (Random new integerBetween: 1 and: self size)
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 SequenceableCollection >> copyAfter: anElement [
 	"Answer a copy of the receiver from after the first occurrence
 	of anElement up to the end. If no such element exists, answer
