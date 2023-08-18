@@ -8,6 +8,17 @@ Class {
 }
 
 { #category : #tests }
+BuoyNumberExtensionsTest >> testAsHexStringPaddedTo [
+
+	self
+		assert: (1 asHexStringPaddedTo: 4) equals: '0001';
+		assert: (10 asHexStringPaddedTo: 4) equals: '000A';
+		assert: (17 asHexStringPaddedTo: 4) equals: '0011';
+		assert: (17 asHexStringPaddedTo: 2) equals: '11';
+		assert: (17 asHexStringPaddedTo: 1) equals: '11'
+]
+
+{ #category : #tests }
 BuoyNumberExtensionsTest >> testCompoundingPercentages [
 
 	self assert: ((200 increasedBy: 10 percent) decreasedBy: 10 percent) equals: 198
