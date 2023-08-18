@@ -7,6 +7,7 @@ Class {
 { #category : #'class initialization' }
 PharoPlatform class >> initialize [
 
+	<ignoreForCoverage>
 	LanguagePlatform setCurrentTo: self new
 ]
 

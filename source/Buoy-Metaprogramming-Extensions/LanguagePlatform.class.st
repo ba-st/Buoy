@@ -17,8 +17,9 @@ LanguagePlatform class >> current [
 { #category : #accessing }
 LanguagePlatform class >> setCurrentTo: aLanguagePlatform [
 
+	<ignoreForCoverage>
 	Current := aLanguagePlatform.
-	^Current
+	^ Current
 ]
 
 { #category : #reflection }
