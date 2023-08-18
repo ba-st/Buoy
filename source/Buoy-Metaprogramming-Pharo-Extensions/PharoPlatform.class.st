@@ -15,3 +15,9 @@ PharoPlatform >> globalNamed: aSymbol ifAbsent: absentBlock [
 
 	^ Smalltalk globals at: aSymbol ifAbsent: absentBlock
 ]
+
+{ #category : #reflection }
+PharoPlatform >> includesGlobalNamed: aSymbol [
+
+	^ Smalltalk globals includesKey: aSymbol
+]

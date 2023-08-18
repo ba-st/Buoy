@@ -21,3 +21,13 @@ LanguagePlatformTest >> testGlobalNamedIfAbsent [
 				 ifAbsent: [ sentinel ])
 		identicalTo: sentinel
 ]
+
+{ #category : #tests }
+LanguagePlatformTest >> testIncludesGlobalNamed [
+
+	self
+		assert:
+			(LanguagePlatform current includesGlobalNamed: self class name);
+		deny: (LanguagePlatform current includesGlobalNamed:
+					 #AnImplausibleGlobalName)
+]

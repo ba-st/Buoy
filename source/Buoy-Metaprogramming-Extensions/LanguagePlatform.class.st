@@ -26,3 +26,9 @@ LanguagePlatform >> globalNamed: aSymbol ifAbsent: absentBlock [
 
 	^ self subclassResponsibility
 ]
+
+{ #category : #reflection }
+LanguagePlatform >> includesGlobalNamed: aSymbol [
+
+	^ self subclassResponsibility
+]

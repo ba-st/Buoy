@@ -16,3 +16,10 @@ GemStone64Platform >> globalNamed: aSymbol ifAbsent: absentBlock [
 	^ (GsCurrentSession currentSession symbolList objectNamed: aSymbol)
 		  ifNil: absentBlock
 ]
+
+{ #category : #reflection }
+GemStone64Platform >> includesGlobalNamed: aSymbol [
+
+	^ (GsCurrentSession currentSession symbolList objectNamed: aSymbol)
+		  notNil
+]
