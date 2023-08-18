@@ -15,6 +15,7 @@ BaselineOfBuoy >> baseline: spec [
 		for: #pharo
 		do: [ self
 				baselineAssertions: spec;
+				baselineChronology: spec;
 				baselineCollections: spec;
 				baselineConditions: spec;
 				baselineComparison: spec;
@@ -45,6 +46,17 @@ BaselineOfBuoy >> baselineAssertions: spec [
 		with: [
 			spec requires: #( 'Buoy-Assertions' 'Dependent-SUnit-Extensions' ) ];
 		group: 'Tests' with: 'Buoy-Assertions-Tests'
+]
+
+{ #category : #baselines }
+BaselineOfBuoy >> baselineChronology: spec [
+
+	spec
+		package: 'Buoy-Chronology-Pharo-Extensions';
+		group: 'Deployment' with: 'Buoy-Chronology-Pharo-Extensions';
+		package: 'Buoy-Chronology-Tests'
+		with: [ spec requires: 'Buoy-Chronology-Pharo-Extensions' ];
+		group: 'Tests' with: 'Buoy-Chronology-Tests'
 ]
 
 { #category : #baselines }
@@ -148,7 +160,10 @@ BaselineOfBuoy >> baselineGS64Development: spec [
 		with: 'Buoy-Metaprogramming-GS64-Extensions';
 		package: 'Buoy-SUnit-GS64-Extensions'
 		with: [ spec requires: 'Buoy-GS64-Compatibility' ];
-		group: 'GS64-Development' with: 'Buoy-SUnit-GS64-Extensions'
+		group: 'GS64-Development' with: 'Buoy-SUnit-GS64-Extensions';
+		package: 'Buoy-Chronology-GS64-Extensions'
+		with: [ spec requires: 'Buoy-GS64-Compatibility' ];
+		group: 'GS64-Development' with: 'Buoy-Chronology-GS64-Extensions'
 ]
 
 { #category : #baselines }

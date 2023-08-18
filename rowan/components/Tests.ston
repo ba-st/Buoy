@@ -8,6 +8,7 @@ RwSimpleProjectLoadComponentV2 {
   ],
   #packageNames : [
     'Buoy-Assertions-Tests',
+    'Buoy-Chronology-Tests',
     'Buoy-Collections-Tests',
     'Buoy-Comparison-Tests',
     'Buoy-Conditions-Tests',

@@ -8,6 +8,32 @@ Class {
 }
 
 { #category : #tests }
+BuoyNumberExtensionsTest >> testAsHexStringPaddedTo [
+
+	self
+		assert: (1 asHexStringPaddedTo: 4) equals: '0001';
+		assert: (10 asHexStringPaddedTo: 4) equals: '000A';
+		assert: (17 asHexStringPaddedTo: 4) equals: '0011';
+		assert: (17 asHexStringPaddedTo: 2) equals: '11';
+		assert: (17 asHexStringPaddedTo: 1) equals: '11'
+]
+
+{ #category : #tests }
+BuoyNumberExtensionsTest >> testCloseTo [
+
+	self assert: (3 closeTo: 3.00001).
+	self assert: (0 closeTo: 0.00001).
+	self deny: (3.3345 closeTo: 3.335).
+
+	self deny: (-1.0 closeTo: 1.0).
+
+	self assert: (1.0 / 3.0 closeTo: 1 / 3).
+	self assert: (1.0e-8 closeTo: 0).
+	self assert: (0 closeTo: 1.0e-8).
+	self assert: (1 + 1.0e-8 closeTo: 1.0)
+]
+
+{ #category : #tests }
 BuoyNumberExtensionsTest >> testCompoundingPercentages [
 
 	self assert: ((200 increasedBy: 10 percent) decreasedBy: 10 percent) equals: 198

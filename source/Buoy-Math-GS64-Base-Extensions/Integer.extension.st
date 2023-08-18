@@ -1,6 +1,12 @@
 Extension { #name : #Integer }
 
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
+Integer >> asHexStringPaddedTo: minimum [
+
+	^ (self asHexStringWithLength: minimum) asUppercase
+]
+
+{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
 Integer >> atRandom [
 
 	self = 0 ifTrue: [ ^ 0 ].

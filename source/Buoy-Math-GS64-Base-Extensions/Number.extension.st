@@ -7,6 +7,13 @@ Number >> asNumber [
 ]
 
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
+Number >> closeTo: num [
+	"Tell whether the receiver and arguments are close from each."
+
+	^ self asFloat closeTo: num
+]
+
+{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
 Number >> isInteger [
 
 	^ false
