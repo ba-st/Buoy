@@ -34,6 +34,14 @@ TestAsserter >> assertCollection: actual hasSameElements: expected [
 ]
 
 { #category : #'*Buoy-SUnit-GS64-Extensions' }
+TestAsserter >> assertString: aString equals: anotherString [
+
+	self
+		assert: aString asUnicodeString
+		equals: anotherString asUnicodeString
+]
+
+{ #category : #'*Buoy-SUnit-GS64-Extensions' }
 TestAsserter >> deny: actual identicalTo: expected [
 
 	self deny: expected == actual

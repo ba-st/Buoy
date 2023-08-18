@@ -7,6 +7,12 @@ SequenceableCollection >> anyOne [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+SequenceableCollection >> atRandom [
+
+	^ self at: (Random new integerBetween: 1 and: self size)
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 SequenceableCollection >> copyAfter: anElement [
 	"Answer a copy of the receiver from after the first occurrence
 	of anElement up to the end. If no such element exists, answer
@@ -37,6 +43,20 @@ SequenceableCollection >> isSequenceable [
 SequenceableCollection >> removeAll [
 
 	self ifNotEmpty: [ self removeFrom: 1 to: self size ]
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+SequenceableCollection >> withIndexCollect: elementAndIndexBlock [
+	"Just like with:collect: except that the iteration index supplies the second argument to the block."
+
+	| result |
+	result := self species new: self size.
+	1 to: self size do:
+		[:index | result at: index put:
+		(elementAndIndexBlock
+			value: (self at: index)
+			value: index)].
+	^ result
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }

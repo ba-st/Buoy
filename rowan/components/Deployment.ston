@@ -1,6 +1,6 @@
 RwSimpleProjectLoadComponentV2 {
   #name : 'Deployment',
-  #preloadDoitName : 'scripts/defineExceptionAliases',
+  #preloadDoitName : 'scripts/defineClassAliases',
   #postloadDoitName : 'scripts/definePostLoadExceptionAliases',
   #projectNames : [ ],
   #componentNames : [ ],

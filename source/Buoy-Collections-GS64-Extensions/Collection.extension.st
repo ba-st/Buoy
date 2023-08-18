@@ -1,6 +1,15 @@
 Extension { #name : #Collection }
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> , aCollection [
+	"Concatenate the receiver with the argument."
+
+	^ self copy
+		  addAll: aCollection;
+		  yourself
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 Collection >> anyOne [
 
 	^ self any
