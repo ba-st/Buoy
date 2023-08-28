@@ -32,3 +32,15 @@ DictionaryExtensionsTest >> testNewFromPairs [
 		assert: (dictionary at: #one) equals: 1;
 		assert: (dictionary at: #two) equals: 2
 ]
+
+{ #category : #tests }
+DictionaryExtensionsTest >> testRemoveAll [
+
+	| dictionary |
+	dictionary := Dictionary newFromPairs: #( one 1 two 2 ).
+
+	self assert: dictionary size equals: 2.
+
+	dictionary removeAll.
+	self assert: dictionary isEmpty
+]

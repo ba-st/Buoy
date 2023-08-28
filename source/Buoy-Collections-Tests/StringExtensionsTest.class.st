@@ -62,9 +62,73 @@ StringExtensionsTest >> testExpandMacrosWithArguments [
 ]
 
 { #category : #tests }
+StringExtensionsTest >> testFindTokens [
+
+	self
+		assert: ('find tokens' findTokens: #( $a $f $n ))
+		hasTheSameElementsInTheSameOrderThat: #( 'i' 'd toke' 's' );
+		
+		assert: ('éèàôüößäóñíá' findTokens: $á)
+		hasTheSameElementsInTheSameOrderThat: #( 'éèàôüößäóñí' );
+		
+		assert: ('' substrings: '')
+		hasTheSameElementsInTheSameOrderThat: #(  );
+		
+		assert: ('test this' substrings: 't')
+		hasTheSameElementsInTheSameOrderThat: #( 'es' ' ' 'his' )
+]
+
+{ #category : #tests }
+StringExtensionsTest >> testIncludesSubstring [
+
+	self
+		assert: ('testing this string' includesSubstring: 'ring');
+		assert: ('éèàôüößäóñíá' includesSubstring: '');
+		assert: ('' includesSubstring: '');
+		deny: ('éèàôüößäóñíá' includesSubstring: 'a');
+		assert: ('éèàôüößäóñíá' includesSubstring: 'ßä');
+		deny: ('kjdsnlksjdf' includesSubstring: 'K')
+]
+
+{ #category : #tests }
+StringExtensionsTest >> testIsAllDigits [
+
+	self
+		assert: '2345' isAllDigits;
+		assert: '0002345' isAllDigits;
+		deny: '2345.88' isAllDigits;
+		deny: '' isAllDigits
+]
+
+{ #category : #tests }
 StringExtensionsTest >> testLf [
 
 	self
 		assert: String lf
 		equals: (String streamContents: [ :stream | stream lf ])
+]
+
+{ #category : #tests }
+StringExtensionsTest >> testLines [
+
+	| string |
+	string := '1<r>2<l>3<r><l>4<n>5' expandMacros.
+
+	self assert: string lines equals: #( '1' '2' '3' '4' '5' )
+]
+
+{ #category : #tests }
+StringExtensionsTest >> testTab [
+
+	self
+		assert: String tab
+		equals: (String streamContents: [ :stream | stream tab ])
+]
+
+{ #category : #tests }
+StringExtensionsTest >> testWithoutQuoting [
+
+	#( '"foo"' 'foo' '''foo''' 'foo' '"foo''' '"foo''' '''foo"' '''foo"'
+	   '"foo' '"foo' 'foo"' 'foo"' 'foo' 'foo' ) pairsDo: [ :before :after |
+		self assert: before withoutQuoting equals: after ]
 ]

@@ -5,6 +5,24 @@ Class {
 }
 
 { #category : #tests }
+LanguagePlatformTest >> testForkNamedAt [
+
+	| wasEvaluated semaphore |
+	wasEvaluated := false.
+	semaphore := Semaphore new.
+
+	LanguagePlatform current
+		fork: [
+			wasEvaluated := true.
+			semaphore signal ]
+		named: 'Testing LanguagePlatform fork'
+		at: Processor userBackgroundPriority.
+	semaphore wait.
+
+	self assert: wasEvaluated
+]
+
+{ #category : #tests }
 LanguagePlatformTest >> testGlobalNamedIfAbsent [
 
 	| sentinel |
@@ -23,6 +41,28 @@ LanguagePlatformTest >> testGlobalNamedIfAbsent [
 ]
 
 { #category : #tests }
+LanguagePlatformTest >> testGlobalNamedIfPresentIfAbsent [
+
+	| sentinel |
+	self
+		assert: (LanguagePlatform current
+				 globalNamed: self class name
+				 ifPresent: [ :global |
+					 self assert: global equals: self class.
+					 global ]
+				 ifAbsent: [ self fail ])
+		equals: self class.
+
+	sentinel := Object new.
+	self
+		assert: (LanguagePlatform current
+				 globalNamed: #AnImplausibleGlobalName
+				 ifPresent: [ self fail ]
+				 ifAbsent: [ sentinel ])
+		identicalTo: sentinel
+]
+
+{ #category : #tests }
 LanguagePlatformTest >> testIncludesGlobalNamed [
 
 	self
@@ -30,4 +70,12 @@ LanguagePlatformTest >> testIncludesGlobalNamed [
 			(LanguagePlatform current includesGlobalNamed: self class name);
 		deny: (LanguagePlatform current includesGlobalNamed:
 					 #AnImplausibleGlobalName)
+]
+
+{ #category : #tests }
+LanguagePlatformTest >> testOSLineEnding [
+
+	self
+		assert: LanguagePlatform current os lineEnding
+		equals: '<n>' expandMacros
 ]

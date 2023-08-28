@@ -172,6 +172,41 @@ CollectionExtensionsTest >> testMinUsing [
 ]
 
 { #category : #tests }
+CollectionExtensionsTest >> testNoneSatisfy [
+
+	self
+		assert: (#( 2 4 6 ) noneSatisfy: [ :x | x odd ]);
+		deny: (#( 1 2 3 ) noneSatisfy: [ :x | x odd ]);
+		assert: ('hello!' noneSatisfy: #isUppercase);
+		deny: ('hello!' noneSatisfy: #isLetter);
+		assert: (#(  ) noneSatisfy: [ :x | self fail ])
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testPairsDo [
+
+	| result |
+	result := OrderedCollection new.
+	
+	#( 1 'fred' 2 'charlie' 3 'elmer' ) pairsDo: [ :number :word |
+		result add: ('<1p>-<2s>' expandMacrosWith: number with: word) ].
+	
+	self
+		assert: result
+		hasTheSameElementsInTheSameOrderThat:
+		#( '1-fred' '2-charlie' '3-elmer' )
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testPrintElementsOn [
+
+	self
+		assert:
+		(String streamContents: [ :s | { 10. 'hello' } printElementsOn: s ])
+		equals: '(10 ''hello'')'
+]
+
+{ #category : #tests }
 CollectionExtensionsTest >> testRemoveAll [
 
 	{ Set. OrderedCollection. Bag } do: [ :collectionClass |
@@ -215,6 +250,36 @@ CollectionExtensionsTest >> testSelectThenCollectOnSet [
 		               select: [ :each | each even ]
 		               thenCollect: [ :each | each * 2 ].
 	self assert: evenDoubles equals: (Set withAll: #( 4 24 32 ))
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testSetIntersection [
+
+	self
+		assert: (#( 1 2 3 4 ) asSet intersection: #( 3 4 5 ) asSet)
+		equals: #( 3 4 ) asSet;
+		assert: (#( 1 2 3 4 ) asSet intersection: Set new) isEmpty;
+		assert: (Set new intersection: #( 1 2 3 4 ) asSet) isEmpty
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testSorted [
+
+	self
+		assert: #( 3 1 4 2 ) sorted equals: #( 1 2 3 4 );
+		assert: 'hello' sorted equals: 'ehllo';
+		assert: (10 to: 1 by: -2) sorted equals: (2 to: 10 by: 2)
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testSplitIndicesDo [
+
+	self
+		assert: (String streamContents: [ :s |
+				 '||' split: 'foo||bar||2' indicesDo: [ :start :end |
+					 s << 's:' << start asString << ' ' << 'e:' << end asString
+					 << ' ' ] ])
+		equals: 's:1 e:3 s:6 e:8 s:11 e:11 '
 ]
 
 { #category : #tests }

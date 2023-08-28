@@ -14,11 +14,22 @@ loading targets:
 - `Development` will load all the needed packages to develop and contribute to
    the project
 
-- `GS64-Development` is an optional group that will load `Development` and all
-  the packages required to develop changes applicable to GS64. Loading this package
-  will make dirty other packages in the project but this is expected, just remember
-  to cherry-pick the changes to commit and don't remove the changed methods in the
-  Pharo package.
+## Pharo - GS64 Development glue
+
+`GS64-Development` is an optional group that will load `Development` and all
+the packages required to develop changes applicable to GS64 in a Pharo image.
+
+Loading this package can have unexpected consequences on to the Pharo image,
+because it extends and changes some kernel classes. To load this group you will
+need first to rename `DynamicVariable` to another thing because it will try to
+load a GS64 version of it, and it's used during the loading stage.
+
+Once the packages are loaded remove the extension in `Object class>>#new`
+to recover the cursor in the browsers.
+
+Other packages in the project will be marked as dirty, but this is expected;
+just remember to cherry-pick the changes to commit and don't remove the changed
+methods in the Pharo related packages.
 
 ## GS64 Components
 
