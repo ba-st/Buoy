@@ -8,3 +8,9 @@ Collection >> any [
 	self emptyCheck.
 	self do: [ :each | ^ each ]
 ]
+
+{ #category : #'*Buoy-GS64-Compatibility' }
+Collection >> sortAscending [
+
+	^self asArray sorted
+]
