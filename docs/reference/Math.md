@@ -64,5 +64,13 @@ create one is to send the message `perMille` to a number.
 
 - `isInfinite` returns true if the receiver is infinite
 
+## `Integer` Extensions for GS64
+
+- `#printStringHex` prints the receiver in hexadecimal
+- `#printStringLenght:padded:` prints the receiver to a minimum size, optionally padding
+  with zeros.
+- `readFrom:ifFail:` parses an Integer or evaluates the failure block if the format is
+  invalid.
+
 ---
 Some definitions and examples are based on the ones on [Wikipedia](https://en.wikipedia.org/wiki/Percentage)

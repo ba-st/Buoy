@@ -31,9 +31,12 @@ Some examples
 - `detect:ifFound:ifNone:` evaluates an action block if any of the elements match
   the condition block. If no elements match evaluates the fail block.
 - `ifEmpty:ifNotEmpty:` evaluates one of two blocks depending on the collection emptiness.
+- `noneSatisfy:` evaluates to true if no one in the collection satisfies the condition.
+- `printElementsOn:` prints the elements in the collection to a string.
 - `removeAll` removes all elements of the receiver.
 - `select:thenCollect:` filters the elements in the receiver using the condition
   block, collecting after the results evaluating the action block.
+- `sorted` returns a copy of the collection sorted.
 
 ## `SequenceableCollection` extensions
 
@@ -87,12 +90,15 @@ Some examples
 - `copyAfter:` returns a copy of the receiver after the first occurrence
   of the argument up to the end, or empty if no element matches.
 - `endsWith:` returns true if the argument is a suffix of the receiver.
+- `pairsDo:` evaluates the block for each pair of elements in the receiver.
 - `writeStream` returns a write stream over the receiver.
 
 ## `Dictionary` extensions for GS64
 
+- `associations` returns the collection of associations.
 - `at:ifPresent:ifAbsentPut:` lookups a value, if any matches evaluates a block,
   if no one matches put under the key the result o evaluating the second block.
+- `removeAll` removes all elments on the dictionary.
 
 ## `String` extensions for GS64
 
@@ -113,6 +119,13 @@ These methods interpolate the receiver pattern using the provided arguments:
 - `<Ns>` is replaced by the string provided in the nth argument
 - `<N?trueString:falseString>` is replaced by `trueString` or `falseString`
   depending on the boolean provided in the nth argument.
+
+- `findTokens:` returns a collection of the substrings between the delimiters passed as argument.
+- `includesSubstring:` returns true if the receiver includes the argument.
+- `isAllDigits` returns true if all the characters are digits.
+- `lines` returns a collection of the lines in the receiver.
+- `linesDo:` iterates over the lines in the receiver.
+- `withoutQuoting` returns a copy of the receiver trimming any posible quotes.
 
 ## Circular Iterator
 
