@@ -11,6 +11,18 @@ DynamicVariable class >> default [
 	^ nil
 ]
 
+{ #category : #testing }
+DynamicVariable class >> isInheritable [
+
+	^ false
+]
+
+{ #category : #accessing }
+DynamicVariable class >> soleInstance [
+
+	^ self
+]
+
 { #category : #evaluating }
 DynamicVariable class >> value [
 	"Answer the current value for this variable in the current context."
@@ -32,10 +44,4 @@ DynamicVariable class >> value: anObject during: aBlock [
 	  activeProcess environmentAt: self put: anObject.
 	  aBlock value ] ensure: [
 		  activeProcess environmentAt: self soleInstance put: oldValue ]
-]
-
-{ #category : #accessing }
-DynamicVariable class >> soleInstance [
-
-	^ self
 ]
