@@ -120,12 +120,13 @@ These methods interpolate the receiver pattern using the provided arguments:
 - `<N?trueString:falseString>` is replaced by `trueString` or `falseString`
   depending on the boolean provided in the nth argument.
 
-- `findTokens:` returns a collection of the substrings between the delimiters passed as argument.
+- `findTokens:` returns a collection of the substrings between the delimiters
+  passed as argument.
 - `includesSubstring:` returns true if the receiver includes the argument.
 - `isAllDigits` returns true if all the characters are digits.
 - `lines` returns a collection of the lines in the receiver.
 - `linesDo:` iterates over the lines in the receiver.
-- `withoutQuoting` returns a copy of the receiver trimming any posible quotes.
+- `withoutQuoting` returns a copy of the receiver trimming any possible quotes.
 
 ## Circular Iterator
 

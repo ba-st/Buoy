@@ -16,8 +16,8 @@ DynamicVariable class >> value [
 	"Answer the current value for this variable in the current context."
 
 	^ Processor activeProcess
-		  environmentAt: self
-		  ifAbsent: [ self default ]
+		  environmentAt: self soleInstance
+		  ifAbsent: [ self soleInstance default ]
 ]
 
 { #category : #evaluating }
@@ -26,10 +26,16 @@ DynamicVariable class >> value: anObject during: aBlock [
 	| activeProcess oldValue |
 	activeProcess := Processor activeProcess.
 	oldValue := activeProcess
-		            environmentAt: self
-		            ifAbsent: [ self default ].
+		            environmentAt: self soleInstance
+		            ifAbsent: [ self soleInstance default ].
 	^ [
 	  activeProcess environmentAt: self put: anObject.
 	  aBlock value ] ensure: [
-		  activeProcess environmentAt: self put: oldValue ]
+		  activeProcess environmentAt: self soleInstance put: oldValue ]
+]
+
+{ #category : #accessing }
+DynamicVariable class >> soleInstance [
+
+	^ self
 ]
