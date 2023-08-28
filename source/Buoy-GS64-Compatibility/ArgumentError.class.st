@@ -8,6 +8,6 @@ packages.
 "
 Class {
 	#name : #ArgumentError,
-	#superclass : #Error,
+	#superclass : #ImproperOperation,
 	#category : #'Buoy-GS64-Compatibility'
 }

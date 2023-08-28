@@ -11,6 +11,13 @@ Class >> allLeafSubclasses [
 ]
 
 { #category : #'*Buoy-Metaprogramming-GS64-Extensions' }
+Class >> allSubclassesDo: aBlock [
+	"Evaluate the argument, aBlock, for each of the receiver's subclasses."
+
+	self allSubclasses do: aBlock
+]
+
+{ #category : #'*Buoy-Metaprogramming-GS64-Extensions' }
 Class >> subclassesDo: aBlock [
 	"Evaluate the argument, aBlock, for each of the receiver's immediate subclasses."
 

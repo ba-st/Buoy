@@ -22,6 +22,12 @@ LanguagePlatform class >> setCurrentTo: aLanguagePlatform [
 	^ Current
 ]
 
+{ #category : #'process scheduling' }
+LanguagePlatform >> fork: block named: processName at: priority [
+
+	self subclassResponsibility
+]
+
 { #category : #reflection }
 LanguagePlatform >> globalNamed: aSymbol ifAbsent: absentBlock [
 
@@ -29,7 +35,22 @@ LanguagePlatform >> globalNamed: aSymbol ifAbsent: absentBlock [
 ]
 
 { #category : #reflection }
+LanguagePlatform >> globalNamed: aSymbol ifPresent: presentBlock ifAbsent: absentBlock [
+
+	| global |
+	global := self globalNamed: aSymbol ifAbsent: [ ^ absentBlock value ].
+	^ presentBlock cull: global
+]
+
+{ #category : #reflection }
 LanguagePlatform >> includesGlobalNamed: aSymbol [
+
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+LanguagePlatform >> os [
+	"Returns the underlying operating system abstraction"
 
 	^ self subclassResponsibility
 ]

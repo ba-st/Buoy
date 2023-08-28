@@ -65,9 +65,42 @@ BuoyNumberExtensionsTest >> testIncreasedBy [
 ]
 
 { #category : #tests }
+BuoyNumberExtensionsTest >> testIntegerReadFromIfFail [
+
+	self
+		assert: (Integer readFrom: '12' ifFail: [ self fail ]) equals: 12;
+		assert: (Integer readFrom: '-12' ifFail: [ self fail ]) equals: -12;
+		assert: (Integer readFrom: 'AA' ifFail: [ 95 ]) equals: 95;
+		assert: (Integer readFrom: '23AA' ifFail: [ self fail ]) equals: 23;
+		assert: (Integer readFrom: 'AA33' ifFail: [ 95 ]) equals: 95;
+		assert: (Integer readFrom: '12' readStream ifFail: [ self fail ])
+		equals: 12
+]
+
+{ #category : #tests }
 BuoyNumberExtensionsTest >> testIsPercentage [
 
 	self
 		assert: 10 percent isPercentage;
 		deny: 10 isPercentage
+]
+
+{ #category : #tests }
+BuoyNumberExtensionsTest >> testPrintStringHex [
+
+	self
+		assert: 1 printStringHex equals: '1';
+		assert: 10 printStringHex equals: 'A';
+		assert: 17 printStringHex equals: '11'
+]
+
+{ #category : #tests }
+BuoyNumberExtensionsTest >> testPrintStringLenghtPadded [
+
+	self
+		assert: (10 printStringLength: 4 padded: true) equals: '0010';
+		assert: (-10 printStringLength: 4 padded: true) equals: '-010';
+		assert: (10000 printStringLength: 4 padded: true) equals: '10000';
+		assert: (1000 printStringLength: 4 padded: true) equals: '1000';
+		assert: (10 printStringLength: 4 padded: false) equals: '  10'
 ]

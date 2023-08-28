@@ -18,6 +18,22 @@ BuoyMetaprogrammingExtensionsTest >> testBehaviorAllLeafSubclasses [
 		assert: MessageSendingCollector allLeafSubclasses includes: UnaryMessageSendingCollector
 ]
 
+{ #category : #tests }
+BuoyMetaprogrammingExtensionsTest >> testBehaviorAllSubclassesDo [
+
+	| collectorSubclasses |
+	self class allSubclassesDo: [ :class | self fail ].
+
+	collectorSubclasses := OrderedCollection new.
+	MessageSendingCollector allSubclassesDo: [ :class |
+		collectorSubclasses add: class ].
+	self
+		assert: collectorSubclasses size equals: 2;
+		assert: collectorSubclasses
+		includes: KeywordMessageSendingCollector;
+		assert: collectorSubclasses includes: UnaryMessageSendingCollector
+]
+
 { #category : #test }
 BuoyMetaprogrammingExtensionsTest >> testIsA [
 

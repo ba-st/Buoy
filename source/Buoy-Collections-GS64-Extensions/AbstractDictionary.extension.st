@@ -1,6 +1,18 @@
 Extension { #name : #AbstractDictionary }
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+AbstractDictionary >> associations [
+
+	^ self associationsAsArray
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+AbstractDictionary >> associationsSelect: aBlock [
+
+	^ self selectAssociations: aBlock
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 AbstractDictionary >> at: key ifPresent: aPresentBlock ifAbsent: anAbsentBlock [
 
 	| presentValue |
@@ -29,4 +41,10 @@ AbstractDictionary class >> newFromPairs: anArray [
 	newDictionary := self new: anArray size / 2.
 	1 to: anArray size - 1 by: 2 do: [ :i | newDictionary at: (anArray at: i) put: (anArray at: i + 1) ].
 	^ newDictionary
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+AbstractDictionary >> removeAll [
+
+	^ self removeAllKeys: self keys
 ]

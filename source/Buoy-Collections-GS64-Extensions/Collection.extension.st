@@ -120,6 +120,24 @@ Collection class >> newFrom: aCollection [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> noneSatisfy: aBlock [
+	"Evaluate aBlock with the elements of the receiver. If aBlock returns false for all elements return true. Otherwise return false"
+
+	self do: [ :item | (aBlock value: item) ifTrue: [ ^ false ] ].
+	^ true
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> printElementsOn: aStream [
+	"List elements betwen () and separated by spaces.
+	Is used by printOn: and other related printing methods."
+
+	aStream nextPut: $(.
+	self do: [:element | aStream print: element] separatedBy: [aStream space].
+	aStream nextPut: $)
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 Collection >> removeAll [
 	"Remove each element from the receiver and leave it empty.
 	There are two good reasons why a subclass should override this message:
@@ -133,4 +151,10 @@ Collection >> removeAll [
 Collection >> select: selectBlock thenCollect: collectBlock [
 
 	^ (self select: selectBlock) collect: collectBlock
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> sorted [
+
+	^self sortAscending
 ]

@@ -40,9 +40,37 @@ SequenceableCollection >> isSequenceable [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+SequenceableCollection >> pairsDo: aBlock [
+	"Evaluate aBlock with my elements taken two at a time.  If there's an odd number of items,
+	ignore the last one.  Allows use of a flattened array for things that naturally group into pairs."
+
+	1 to: self size // 2 do: [ :index |
+		aBlock value: (self at: 2 * index - 1) value: (self at: 2 * index) ]
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 SequenceableCollection >> removeAll [
 
 	self ifNotEmpty: [ self removeFrom: 1 to: self size ]
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+SequenceableCollection >> split: aSequenceableCollection indicesDo: aBlock [
+	"Perform an action specified as aBlock (with a start and end argument) to each of the indices of aSequenceableCollection that have been identified by taking the receiver as a splitter."
+
+	| position oldPosition |
+	position := 1.
+	oldPosition := position.
+	position := aSequenceableCollection indexOfSubCollection: self startingAt: position.
+
+	[ position > 0 ] whileTrue: [
+		aBlock value: oldPosition value: position - 1.
+		position := position + self size.
+		oldPosition := position.
+		position := aSequenceableCollection indexOfSubCollection: self startingAt: position.
+	].
+
+	aBlock value: oldPosition value: aSequenceableCollection size
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
