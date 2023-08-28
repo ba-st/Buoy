@@ -27,7 +27,8 @@ BaselineOfBuoy >> baseline: spec [
 				baselineGS64Development: spec.
 			spec
 				group: 'CI' with: 'Tests';
-				group: 'Development' with: #('Tools' 'Tests')
+				group: 'Development' with: #('Tools' 'Tests');
+				group: 'default' with: 'Development'
 			]
 ]
 
