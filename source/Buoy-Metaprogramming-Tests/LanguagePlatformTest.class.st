@@ -5,6 +5,24 @@ Class {
 }
 
 { #category : #tests }
+LanguagePlatformTest >> testForkNamedAt [
+
+	| wasEvaluated semaphore |
+	wasEvaluated := false.
+	semaphore := Semaphore new.
+
+	LanguagePlatform current
+		fork: [
+			wasEvaluated := true.
+			semaphore signal ]
+		named: 'Testing LanguagePlatform fork'
+		at: Processor userBackgroundPriority.
+	semaphore wait.
+
+	self assert: wasEvaluated
+]
+
+{ #category : #tests }
 LanguagePlatformTest >> testGlobalNamedIfAbsent [
 
 	| sentinel |
