@@ -38,11 +38,11 @@ Equality checkers help to implement the equality method for objects. Any object
 can send to itself the message `equalityChecker`, configure it and then use it
 to check against the target object of the comparison.
 
-Equality checkers always performs a `==` comparison first and proceed with the
+Equality checkers always perform a `==` comparison first and proceed with the
 rest of the rules only if the objects are not identical.
 
-By default `equalityChecker` is an instance of `PropertyBasedEqualityChecker`
-and it already knowns the receiving instance. It can be configured with:
+By default, `equalityChecker` is an instance of `PropertyBasedEqualityChecker`
+and it already knows the receiving instance. It can be configured with:
 
 - `compare: selector` will add a rule to the checker that sends the provided
   message on the receiver and target object and compare the results by `=`
@@ -64,7 +64,7 @@ sequenceable and contains the same elements in the same order.
 
 ### Equality Checker Examples
 
-This examples assumes that equalityChecker is not reimplemented.
+These examples assume that `equalityChecker` is not reimplemented.
 
 ```smalltalk
 "Just type checking"

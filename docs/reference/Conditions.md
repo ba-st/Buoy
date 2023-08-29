@@ -54,7 +54,7 @@ condition isSatisfiedBy: 0. "returns true"
 
 ### Composite Condition
 
-You can compose conditions using AND or OR as a logic operator. A simple AND
+You can compose conditions using `AND` or `OR` as a logic operator. A simple AND
 composition could be used to test if a number is within an interval.
 
 ```smalltalk
@@ -79,7 +79,7 @@ condition isSatisfiedBy: 0. "returns false"
 
 ### Regex Condition
 
-RegexCondition could be used to test a string against a regular expression.
+`RegexCondition` could be used to test a string against a regular expression.
 
 ```smalltalk
 | condition |

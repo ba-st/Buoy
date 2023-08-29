@@ -18,5 +18,23 @@ RwSimpleProjectLoadComponentV2 {
     'Buoy-Metaprogramming-Tests',
     'Buoy-SUnit-Tests'
   ],
+  #conditionalPackageMapSpecs : {
+    'gemstone' : {
+      'allusers' : {
+        #packageNameToPlatformPropertiesMap : {
+          'Buoy-Assertions-Tests' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Chronology-Tests' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Collections-Tests' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Comparison-Tests' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Conditions-Tests' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Dynamic-Binding-Tests' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Exception-Handling-Tests' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Math-Tests' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Metaprogramming-Tests' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-SUnit-Tests' : { 'symbolDictName' : 'Buoy' }
+        }
+      }
+    }
+  },
   #comment : ''
 }
