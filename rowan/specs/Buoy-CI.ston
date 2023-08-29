@@ -6,13 +6,6 @@ RwLoadSpecificationV2 {
   #componentNames : [
     'Tests'
   ],
-  #platformProperties : {
-    'gemstone' : {
-      'allusers' : {
-        #defaultSymbolDictName : 'Buoy'
-      }
-    }
-  },
   #customConditionalAttributes : [
     'tests',
     'sunit'

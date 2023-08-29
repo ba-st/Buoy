@@ -29,39 +29,25 @@ RwSimpleProjectLoadComponentV2 {
     'gemstone' : {
       'allusers' : {
         #packageNameToPlatformPropertiesMap : {
-          'Buoy-Assertions-Extensions' : {
-            'symbolDictName' : 'Globals'
-          },
-          'Buoy-Chronology-GS64-Extensions' : {
-            'symbolDictName' : 'Globals'
-          },
-          'Buoy-Collections-Extensions' : {
-            'symbolDictName' : 'Globals'
-          },
-          'Buoy-Collections-GS64-Extensions' : {
-            'symbolDictName' : 'Globals'
-           },
-          'Buoy-Comparison-Extensions' : {
-            'symbolDictName' : 'Globals'
-          },
-          'Buoy-Conditions-Extensions' : {
-            'symbolDictName' : 'Globals'
-          },
-          'Buoy-Exception-Handling-Extensions' : {
-            'symbolDictName' : 'Globals'
-           },
-          'Buoy-Math-Extensions' : {
-            'symbolDictName' : 'Globals'
-          },
-          'Buoy-Math-GS64-Base-Extensions' : {
-            'symbolDictName' : 'Globals'
-          },
-          'Buoy-Metaprogramming-Extensions' : {
-            'symbolDictName' : 'Globals'
-          },
-          'Buoy-Metaprogramming-GS64-Extensions' : {
-            'symbolDictName' : 'Globals'
-          }
+          'Buoy-Assertions' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Assertions-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Buoy-Chronology-GS64-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Buoy-Collections' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Collections-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Buoy-Collections-GS64-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Buoy-Comparison' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Comparison-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Buoy-Conditions' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Conditions-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Buoy-Dynamic-Binding' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Exception-Handling-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Buoy-Math' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Math-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Buoy-Math-GS64-Base-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Buoy-Math-GS64-Extensions' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Metaprogramming' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Metaprogramming-Extensions' : { 'symbolDictName' : 'Globals' },
+          'Buoy-Metaprogramming-GS64-Extensions' : { 'symbolDictName' : 'Globals' }
         }
       }
     }

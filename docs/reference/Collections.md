@@ -98,7 +98,7 @@ Some examples
 - `associations` returns the collection of associations.
 - `at:ifPresent:ifAbsentPut:` lookups a value, if any matches evaluates a block,
   if no one matches put under the key the result o evaluating the second block.
-- `removeAll` removes all elments on the dictionary.
+- `removeAll` removes all elements on the dictionary.
 
 ## `String` extensions for GS64
 

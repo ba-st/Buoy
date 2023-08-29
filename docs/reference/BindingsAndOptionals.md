@@ -21,7 +21,7 @@ either be present or not. In some ways it's similar to the Maybe monad, but it
 does not pretend to be a monad.
 
 So let's say we have a user interface where we want to show the details of some
-file the user has to upload. At the beginning there is no file so we can start
+file the user has to upload. At the beginning there is no file, so we can start
 with an unused optional:
 
 ```smalltalk
@@ -60,7 +60,7 @@ We can transform an optional:
 fileOptional return: [:file | file asUrl ]
 ```
 
-This will produce a new optional that will have an URL based on the file, or an
+This will produce a new optional that will have a URL based on the file, or an
 unused one in case the file is missing.
 
 We can easily combine two optionals:
@@ -75,9 +75,9 @@ fileOptional
 This will produce a new optional that will have the concatenation as its content,
 or an unused one in case some part is missing.
 
-If we have a list of optionals it's possible to combine them to get a new
-optional as a result. So suppose we have a list of possible numbers and we want
-to get the sum only if all are available. We can do that by sending the
+If we have a list of optionals, it's possible to combine them to get a new
+optional as a result. So suppose we have a list of possible numbers, and we
+want to get the sum only if all are available. We can do that by sending the
 following message:
 
 ```smalltalk

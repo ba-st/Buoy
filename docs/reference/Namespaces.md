@@ -13,7 +13,7 @@ cssConstants
   bind: #white to: Color white
 ```
 
-By default you can't bind a name already bound, but you can use the `rebind:to:`
+By default, you can't bind a name already bound, but you can use the `rebind:to:`
 message to accomplish that.
 
 Now it's possible to access the object bound by name:

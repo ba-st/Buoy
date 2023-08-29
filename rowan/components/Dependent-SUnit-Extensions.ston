@@ -11,12 +11,8 @@ RwSimpleProjectLoadComponentV2 {
     'gemstone' : {
       'allusers' : {
         #packageNameToPlatformPropertiesMap : {
-          'Buoy-SUnit-Model' : {
-            'symbolDictName' : 'Globals'
-          },
-          'Buoy-SUnit-GS64-Extensions' : {
-            'symbolDictName' : 'Globals'
-          }
+          'Buoy-SUnit-Model' : { 'symbolDictName' : 'Globals' },
+          'Buoy-SUnit-GS64-Extensions' : { 'symbolDictName' : 'Globals' }
         }
       }
     }

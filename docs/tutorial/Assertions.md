@@ -1,6 +1,6 @@
 # Assertions Tutorial
 
-For this tutorial we will use a simple model: ISO 3166-1 Alpha-2 codes. This
+For this tutorial we will use a simple model: ISO 3166-1 Alpha-2 codes. These
 codes are two-letter country codes defined in the corresponding [ISO standard](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 
 ## Single Conditions
@@ -29,7 +29,7 @@ exception is raised including the provided explanation.
 
 ## Multiple Conditions
 
-Now in the previous example we missed some of the requirements of the standard:
+Now in the previous example we missed some requirements of the standard:
 a valid code consists only of letters. So let's rewrite our example:
 
 ```smalltalk
@@ -48,8 +48,8 @@ AssertionChecker
 ```
 
 Note that in this case we are configuring all the conditions to enforce. Let's
-try now replacing `code` with `'AR3'` and `Do it` again. By default all the
-conditions to enforce are checked so you should get an error message combining
+try now replacing `code` with `'AR3'` and `Do it` again. By default, all the
+conditions to enforce are checked, so you should get an error message combining
 both explanations, and if you handle the raised exception you can get all the
 failures by sending it the message `failures`.
 

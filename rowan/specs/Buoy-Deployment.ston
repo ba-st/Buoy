@@ -6,12 +6,5 @@ RwLoadSpecificationV2 {
   #componentNames : [
     'Deployment'
   ],
-  #platformProperties : {
-    'gemstone' : {
-      'allusers' : {
-        #defaultSymbolDictName : 'Buoy'
-      }
-    }
-  },
   #comment : 'Loading spec for Deployment'
 }
