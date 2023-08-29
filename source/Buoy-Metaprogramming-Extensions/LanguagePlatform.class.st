@@ -10,8 +10,8 @@ Class {
 { #category : #accessing }
 LanguagePlatform class >> current [
 
-	Current ifNil: [ Error signal: 'The language platform was not set' ].
-	^Current
+	Current ifNil: [ self setCurrentTo: self allLeafSubclasses any new ].
+	^ Current
 ]
 
 { #category : #accessing }
