@@ -24,22 +24,20 @@ BinaryFloat class >> infinity [
 
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
 BinaryFloat >> isFinite [
-	"simple, byte-order independent test for rejecting Not-a-Number and (Negative)Infinity"
 
-	^(self - self) = 0.0
+	^ #( #normal #subnormal #zero ) includes: self kind
 ]
 
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
 BinaryFloat >> isInfinite [
 
-	^ self isFinite not
+	^ self kind = #infinity
 ]
 
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
 BinaryFloat >> isNaN [
-	"simple, byte-order independent test for Not-a-Number"
 
-	^ self ~= self
+	^ #( #quiteNan #signalingNan ) includes: self kind
 ]
 
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
