@@ -20,6 +20,11 @@ Number >> isInteger [
 ]
 
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
+Number >> isNaN [
+	^ false
+]
+
+{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
 Number >> isZero [
 
 	^ self = 0

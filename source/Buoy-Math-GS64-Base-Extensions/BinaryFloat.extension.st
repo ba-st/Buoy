@@ -17,7 +17,44 @@ BinaryFloat >> closeTo: num precision: aPrecision [
 ]
 
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
+BinaryFloat class >> infinity [
+
+	^ PlusInfinity
+]
+
+{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
+BinaryFloat >> isFinite [
+	"simple, byte-order independent test for rejecting Not-a-Number and (Negative)Infinity"
+
+	^(self - self) = 0.0
+]
+
+{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
 BinaryFloat >> isInfinite [
 
-	^ self kind = #infinity
+	^ self isFinite not
+]
+
+{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
+BinaryFloat >> isNaN [
+	"simple, byte-order independent test for Not-a-Number"
+
+	^ self ~= self
+]
+
+{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
+BinaryFloat class >> nan [
+
+	^ MinusQuietNaN
+]
+
+{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
+BinaryFloat class >> negativeInfinity [
+
+	^ MinusInfinity
+]
+
+{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
+BinaryFloat class >> zero [
+	^ 0.0
 ]
