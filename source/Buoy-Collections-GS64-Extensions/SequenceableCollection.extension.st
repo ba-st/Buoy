@@ -1,6 +1,13 @@
 Extension { #name : #SequenceableCollection }
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+SequenceableCollection >> allButLastDo: block [
+
+	1 to: self size - 1 do:
+		[:index | block value: (self at: index)]
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 SequenceableCollection >> anyOne [
 
 	^ self first

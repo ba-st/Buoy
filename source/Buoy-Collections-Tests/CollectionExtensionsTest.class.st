@@ -7,6 +7,18 @@ Class {
 	#category : #'Buoy-Collections-Tests'
 }
 
+{ #category : #tests }
+CollectionExtensionsTest >> testAllButLastDo [
+
+	| total |
+	total := 0.
+	#( 1 2 3 4 ) allButLastDo: [ :n | total := total + n ].
+	self assert: total equals: 6.
+	total := 0.
+	#( 1 ) allButLastDo: [ :n | total := total + n ].
+	self assert: total equals: 0
+]
+
 { #category : #'tests - copying' }
 CollectionExtensionsTest >> testComma [
 
