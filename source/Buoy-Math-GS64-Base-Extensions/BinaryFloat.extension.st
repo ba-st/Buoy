@@ -37,7 +37,7 @@ BinaryFloat >> isInfinite [
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
 BinaryFloat >> isNaN [
 
-	^ #( #quiteNan #signalingNan ) includes: self kind
+	^ #( #quietNaN #signalingNaN ) includes: self kind
 ]
 
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
