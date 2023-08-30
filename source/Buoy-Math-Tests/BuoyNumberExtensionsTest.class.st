@@ -78,6 +78,36 @@ BuoyNumberExtensionsTest >> testIntegerReadFromIfFail [
 ]
 
 { #category : #tests }
+BuoyNumberExtensionsTest >> testIsFinite [
+
+	self assert: 1.1 isFinite.
+	self assert: Float zero isFinite.
+	self deny: Float nan isFinite.
+	self deny: Float infinity isFinite.
+	self deny: Float negativeInfinity isFinite
+]
+
+{ #category : #tests }
+BuoyNumberExtensionsTest >> testIsInfinite [
+
+	self deny: 1.1 isInfinite.
+	self deny: Float zero isInfinite.
+	self deny: Float nan isInfinite.
+	self assert: Float infinity isInfinite.
+	self assert: Float negativeInfinity isInfinite
+]
+
+{ #category : #tests }
+BuoyNumberExtensionsTest >> testIsNaN [
+
+	self deny: 1.1 isNaN.
+	self deny: Float zero isNaN.
+	self assert: Float nan isNaN.
+	self deny: Float infinity isNaN.
+	self deny: Float negativeInfinity isNaN
+]
+
+{ #category : #tests }
 BuoyNumberExtensionsTest >> testIsPercentage [
 
 	self
