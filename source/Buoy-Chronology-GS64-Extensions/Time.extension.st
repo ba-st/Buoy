@@ -21,6 +21,12 @@ Time class >> millisecondsSince: lastTime [
 ]
 
 { #category : #'*Buoy-Chronology-GS64-Extensions' }
+Time class >> millisecondsToRun: timedBlock [
+
+	^ self millisecondsElapsedTime: timedBlock
+]
+
+{ #category : #'*Buoy-Chronology-GS64-Extensions' }
 Time class >> totalSeconds [
 	"Answer the total seconds ellapsed since the epoch: 1 January 1901 00:00 UTC"
 

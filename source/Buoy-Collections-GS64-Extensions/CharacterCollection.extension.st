@@ -1,6 +1,16 @@
 Extension { #name : #CharacterCollection }
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+CharacterCollection >> capitalized [
+
+	self ifEmpty: [ ^ self ].
+
+	^ '<1s><2s>'
+		  expandMacrosWith: self first asUppercase asString
+		  with: self withoutFirst
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 CharacterCollection class >> cr [
 
 	^ self with: Character cr
@@ -117,6 +127,12 @@ CharacterCollection >> isAllDigits [
 
 	self ifEmpty: [ ^ false ].
 	^ self allSatisfy: #isDigit
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+CharacterCollection >> isAsciiString [
+
+	^ self allSatisfy: [ :each | each codePoint <= 127 ]
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
