@@ -21,6 +21,14 @@ NumberChronologyExtensionsTest >> testHours [
 ]
 
 { #category : #tests }
+NumberChronologyExtensionsTest >> testMilliSeconds [
+
+	self
+		assert: 1000 milliSeconds equals: 1 second;
+		assert: 2000 milliSeconds equals: 2 seconds
+]
+
+{ #category : #tests }
 NumberChronologyExtensionsTest >> testSeconds [
 
 	self
