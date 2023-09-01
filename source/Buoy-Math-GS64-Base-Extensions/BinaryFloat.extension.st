@@ -53,6 +53,14 @@ BinaryFloat class >> negativeInfinity [
 ]
 
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
+BinaryFloat class >> readFrom: aStringOrStream [
+
+	^ aStringOrStream isString
+		  ifTrue: [ self fromString: aStringOrStream ]
+		  ifFalse: [ self fromStream: aStringOrStream ]
+]
+
+{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
 BinaryFloat class >> zero [
 	^ 0.0
 ]
