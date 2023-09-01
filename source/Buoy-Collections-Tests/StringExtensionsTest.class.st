@@ -5,6 +5,14 @@ Class {
 }
 
 { #category : #tests }
+StringExtensionsTest >> testCapitalized [ 
+
+	self
+		assert: 'mElViN' capitalized
+		equals: 'MElViN'
+]
+
+{ #category : #tests }
 StringExtensionsTest >> testCr [
 
 	self
@@ -98,6 +106,15 @@ StringExtensionsTest >> testIsAllDigits [
 		assert: '0002345' isAllDigits;
 		deny: '2345.88' isAllDigits;
 		deny: '' isAllDigits
+]
+
+{ #category : #tests }
+StringExtensionsTest >> testIsAsciiString [
+
+	self
+		assert: '' isAsciiString;
+		assert: 'abcdefGHIJKL 98765,./@#%$' isAsciiString;
+		deny: 'éÀ' isAsciiString
 ]
 
 { #category : #tests }

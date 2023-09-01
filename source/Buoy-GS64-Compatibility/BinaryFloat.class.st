@@ -7,5 +7,10 @@ packages.
 Class {
 	#name : #BinaryFloat,
 	#superclass : #Number,
+	#classInstVars : [
+		'MinusInfinity',
+		'MinusQuietNaN',
+		'PlusInfinity'
+	],
 	#category : #'Buoy-GS64-Compatibility'
 }
