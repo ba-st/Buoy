@@ -12,3 +12,9 @@ Class {
 	#superclass : #Object,
 	#category : #'Buoy-GS64-Compatibility'
 }
+
+{ #category : #accessing }
+System class >> timeGmt [
+
+	^ Time millisecondClockValue
+]

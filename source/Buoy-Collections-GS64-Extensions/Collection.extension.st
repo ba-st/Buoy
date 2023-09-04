@@ -104,6 +104,13 @@ Collection >> ifEmpty: emptyBlock ifNotEmpty: notEmptyBlock [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> isNotEmpty [
+	"Answer whether the receiver contains any elements."
+
+	^ self isEmpty not
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 Collection >> isSequenceable [
 
 	^ false
