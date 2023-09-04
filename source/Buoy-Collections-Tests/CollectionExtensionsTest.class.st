@@ -169,6 +169,14 @@ CollectionExtensionsTest >> testIfEmptyIfNotEmptyWhenNotEmptyUsingNotEmptyValue 
 ]
 
 { #category : #tests }
+CollectionExtensionsTest >> testIsNotEmpty [
+
+	self
+		assert: #( 1 ) isNotEmpty;
+		deny: #(  ) isNotEmpty
+]
+
+{ #category : #tests }
 CollectionExtensionsTest >> testMaxUsing [
 
 	self assert: ( #(#(1) #(3 1) #(2)) maxUsing: [ :anArray | anArray first ] ) equals: 3.
