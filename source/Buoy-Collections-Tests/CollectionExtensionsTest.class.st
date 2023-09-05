@@ -203,6 +203,17 @@ CollectionExtensionsTest >> testNoneSatisfy [
 ]
 
 { #category : #tests }
+CollectionExtensionsTest >> testOrderedCollectionNewWithAll [
+
+	| collection |
+
+	collection := OrderedCollection new: 6 withAll: true.
+	self
+		assert: collection size equals: 6;
+		assert: ( collection allSatisfy: [ :each | each ] )
+]
+
+{ #category : #tests }
 CollectionExtensionsTest >> testPairsDo [
 
 	| result |
