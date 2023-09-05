@@ -37,6 +37,21 @@ Number >> nthRoot: aPositiveInteger [
 ]
 
 { #category : #'*Buoy-Math-GS64-Base-Extensions' }
+Number class >> readFrom: aStringOrStream ifFail: aBlock [
+
+	^ [
+	  | stream |
+
+	  stream := aStringOrStream isString
+		            ifTrue: [ aStringOrStream readStream ]
+		            ifFalse: [ aStringOrStream ].
+	  self fromStream: stream
+	  ]
+		  on: ImproperOperation
+		  do: [ :error | error return: aBlock value ]
+]
+
+{ #category : #'*Buoy-Math-GS64-Base-Extensions' }
 Number >> round: numberOfWishedDecimal [
 
 	^ self roundTo: (10 raisedTo: numberOfWishedDecimal negated)
