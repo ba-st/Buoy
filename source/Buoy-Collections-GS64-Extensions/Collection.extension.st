@@ -104,6 +104,13 @@ Collection >> ifEmpty: emptyBlock ifNotEmpty: notEmptyBlock [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> includesAll: aCollection [
+	"Answer whether all the elements of aCollection are in the receiver."
+
+	^ aCollection allSatisfy: [ :elem | self includes: elem ]
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 Collection >> isNotEmpty [
 	"Answer whether the receiver contains any elements."
 
@@ -164,4 +171,10 @@ Collection >> select: selectBlock thenCollect: collectBlock [
 Collection >> sorted [
 
 	^self sortAscending
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
+Collection >> sorted: block [
+
+	^ self sortWithBlock: block
 ]

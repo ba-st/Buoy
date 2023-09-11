@@ -34,6 +34,14 @@ BuoyMetaprogrammingExtensionsTest >> testBehaviorAllSubclassesDo [
 		assert: collectorSubclasses includes: UnaryMessageSendingCollector
 ]
 
+{ #category : #tests }
+BuoyMetaprogrammingExtensionsTest >> testBehaviorCompiledMethodAccess [
+
+	self
+		assert: (self class >> testSelector) selector
+		equals: testSelector
+]
+
 { #category : #test }
 BuoyMetaprogrammingExtensionsTest >> testIsA [
 
@@ -44,4 +52,12 @@ BuoyMetaprogrammingExtensionsTest >> testIsA [
 		deny: (self isA: Number);
 		deny: (self isAn: Integer);
 		deny: (self isA: Collection)
+]
+
+{ #category : #test }
+BuoyMetaprogrammingExtensionsTest >> testIsNotNil [
+
+	self
+		assert: self isNotNil;
+		deny: nil isNotNil
 ]

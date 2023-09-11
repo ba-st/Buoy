@@ -169,6 +169,24 @@ CollectionExtensionsTest >> testIfEmptyIfNotEmptyWhenNotEmptyUsingNotEmptyValue 
 ]
 
 { #category : #tests }
+CollectionExtensionsTest >> testIncludesAll [
+
+	self
+		assert: (#( 10 20 30 ) includesAll: #( 30 20 ));
+		deny: (#( 10 20 30 ) includesAll: #( 30 40 ));
+		assert: (#( 10 20 30 ) includesAll: #(  ))
+]
+
+{ #category : #tests }
+CollectionExtensionsTest >> testIsDictionary [
+
+	self
+		deny: #( 3 1 2 ) isDictionary;
+		assert: Dictionary new isDictionary;
+		deny: 1 isDictionary
+]
+
+{ #category : #tests }
 CollectionExtensionsTest >> testIsNotEmpty [
 
 	self

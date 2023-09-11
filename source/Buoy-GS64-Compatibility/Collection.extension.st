@@ -14,3 +14,9 @@ Collection >> sortAscending [
 
 	^self asArray sorted
 ]
+
+{ #category : #'*Buoy-GS64-Compatibility' }
+Collection >> sortWithBlock: block [
+
+	^self asArray sorted: block
+]
