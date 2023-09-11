@@ -33,6 +33,12 @@ AbstractDictionary >> at: key ifPresent: aBlock ifAbsentPut: anAbsentBlock [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+AbstractDictionary >> isDictionary [
+
+	^ true
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 AbstractDictionary class >> newFromPairs: anArray [
 	"Answer an instance of me associating (anArray at: i) to (anArray at: i+1)
 	 for each odd i.  anArray must have an even number of entries."
