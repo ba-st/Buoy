@@ -1,6 +1,8 @@
 name: 'GS64 Components Loading'
-
-on: [push,pull_request,workflow_dispatch]
+on:
+  - push
+  - pull_request
+  - workflow_dispatch
 
 jobs:
    component-loading:
@@ -8,12 +10,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        load-spec: [ Deployment, Dependent-SUnit-Extensions ]
+        load-spec:
+          - Dependent-SUnit-Extensions
+          - Deployment
     name: GS64 + ${{ matrix.load-spec }}
     steps:
       - uses: actions/checkout@v3
       - name: Load component in image
-        uses: ba-st-actions/gs64-ci@v1
+        uses: ba-st-actions/gs64-ci@v2
         with:
           project_name: 'Buoy'
           load_spec: 'Buoy-${{ matrix.load-spec }}'

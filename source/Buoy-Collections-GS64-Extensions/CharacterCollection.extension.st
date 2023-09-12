@@ -17,6 +17,12 @@ CharacterCollection class >> cr [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+CharacterCollection class >> crlf [
+
+	^ self with: Character cr with: Character lf
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> expandMacros [
 
 	^ self expandMacrosWithArguments: #(  )
