@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Load component in image
-        uses: ba-st-actions/gs64-ci@v1
+        uses: ba-st-actions/gs64-ci@v2
         with:
           project_name: 'Buoy'
           load_spec: 'Buoy-${{ matrix.load-spec }}'
