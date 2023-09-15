@@ -140,6 +140,17 @@ CollectionExtensionsTest >> testDetectIfFoundWhenSomethingIsFoundIgnoringTheFoun
 ]
 
 { #category : #tests }
+CollectionExtensionsTest >> testGroupedBy [
+
+	| grouped |
+	grouped := #( 1 2 3 4 5 ) groupedBy: [ :v | v odd ].
+	self
+		assert: grouped size equals: 2;
+		assert: (grouped at: true) equals: #( 1 3 5 );
+		assert: (grouped at: false) equals: #( 2 4 )
+]
+
+{ #category : #tests }
 CollectionExtensionsTest >> testIfEmptyIfNotEmptyWhenEmpty [
 
 	| isEmpty |
