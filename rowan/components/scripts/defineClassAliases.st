@@ -11,5 +11,6 @@ symbolDictionary at: #KeyNotFound put: LookupError.
 symbolDictionary at: #NotFound put: LookupError.
 symbolDictionary at: #SubscriptOutOfBounds put: OffsetError.
 symbolDictionary at: #SmallDictionary put: Dictionary.
+symbolDictionary at: #Exit put: ExitClientError.
 "Temporary, it will be fixed in a post load script"
 symbolDictionary at: #AssertionFailure put: nil.
