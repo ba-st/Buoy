@@ -14,6 +14,17 @@ Class {
 }
 
 { #category : #accessing }
+System class >> commandLineArguments [
+
+	| arguments documentPath |
+	arguments := OrderedCollection withAll: Smalltalk arguments.
+	documentPath := Smalltalk vm documentPath.
+	documentPath isEmptyOrNil ifFalse: [
+		arguments addFirst: documentPath ].
+	^ arguments
+]
+
+{ #category : #accessing }
 System class >> timeGmt [
 
 	^ Time millisecondClockValue
