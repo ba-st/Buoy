@@ -135,6 +135,14 @@ StringExtensionsTest >> testLines [
 ]
 
 { #category : #tests }
+StringExtensionsTest >> testSubstrings [
+
+	self
+		assert: '2345' substrings equals: #( '2345' );
+		assert: '000 234 5' substrings equals: #( '000' '234' '5' )
+]
+
+{ #category : #tests }
 StringExtensionsTest >> testTab [
 
 	self
