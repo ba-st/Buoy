@@ -179,6 +179,12 @@ CharacterCollection >> species [
 ]
 
 { #category : #'*Buoy-Collections-GS64-Extensions' }
+CharacterCollection >> substrings [
+
+	^self subStrings
+]
+
+{ #category : #'*Buoy-Collections-GS64-Extensions' }
 CharacterCollection class >> tab [
 
 	^ self with: Character tab

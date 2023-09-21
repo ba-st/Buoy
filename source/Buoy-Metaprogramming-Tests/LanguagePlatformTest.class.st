@@ -73,6 +73,34 @@ LanguagePlatformTest >> testIncludesGlobalNamed [
 ]
 
 { #category : #tests }
+LanguagePlatformTest >> testOSEnvironment [
+
+	| os variableName isAbsent |
+	os := LanguagePlatform current os.
+	variableName := 'ZZZ_PHARO_TEST_ENV'.
+	os environmentAt: variableName put: 'good'.
+
+	isAbsent := true.
+	os
+		environmentAt: variableName
+		ifPresent: [ :value |
+			isAbsent := false.
+			self assert: value equals: 'good' ]
+		ifAbsent: [ self fail ].
+	self deny: isAbsent.
+
+	os removeEnvironmentKey: variableName.
+
+	isAbsent := false.
+	self assert: (os
+			 environmentAt: variableName
+			 ifPresent: [ :value | self fail ]
+			 ifAbsent: [ isAbsent := true ]).
+
+	self assert: isAbsent
+]
+
+{ #category : #tests }
 LanguagePlatformTest >> testOSLineEnding [
 
 	self

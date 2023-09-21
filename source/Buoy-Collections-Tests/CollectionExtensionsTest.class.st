@@ -8,6 +8,18 @@ Class {
 }
 
 { #category : #tests }
+CollectionExtensionsTest >> testAllButFirstDo [
+
+	| total |
+	total := 0.
+	#( 1 2 3 4 ) allButFirstDo: [ :n | total := total + n ].
+	self assert: total equals: 9.
+	total := 0.
+	#( 1 ) allButFirstDo: [ :n | total := total + n ].
+	self assert: total equals: 0
+]
+
+{ #category : #tests }
 CollectionExtensionsTest >> testAllButLastDo [
 
 	| total |
