@@ -20,6 +20,18 @@ ExitTest >> testFailure [
 ]
 
 { #category : #tests }
+ExitTest >> testResume [
+
+	| returnValue |
+
+	returnValue := [ Exit signalSuccess + 1 ]
+		               on: Exit
+		               do: [ :exit | exit resume: 1 ].
+
+	self assert: returnValue equals: 2
+]
+
+{ #category : #tests }
 ExitTest >> testSuccess [
 
 	self
