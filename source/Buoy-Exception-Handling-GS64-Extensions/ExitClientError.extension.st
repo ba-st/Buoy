@@ -13,7 +13,19 @@ ExitClientError class >> signalFailure [
 ]
 
 { #category : #'*Buoy-Exception-Handling-GS64-Extensions' }
+ExitClientError class >> signalFailure: aMessage [
+
+	^ self signal: aMessage status: 1
+]
+
+{ #category : #'*Buoy-Exception-Handling-GS64-Extensions' }
 ExitClientError class >> signalSuccess [ 
 
 	^ self signal: '' status: 0
+]
+
+{ #category : #'*Buoy-Exception-Handling-GS64-Extensions' }
+ExitClientError class >> signalSuccess: aMessage [
+
+	^ self signal: aMessage status: 0
 ]
