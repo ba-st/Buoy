@@ -1,6 +1,12 @@
 Extension { #name : #Duration }
 
 { #category : #'*Buoy-Chronology-GS64-Extensions' }
+Duration >> asMilliSeconds [
+
+	^ self asSeconds * 1000
+]
+
+{ #category : #'*Buoy-Chronology-GS64-Extensions' }
 Duration class >> days: aNumber [
 
 	^ self seconds: aNumber * 86400
