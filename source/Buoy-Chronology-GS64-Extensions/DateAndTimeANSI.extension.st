@@ -9,11 +9,17 @@ DateAndTimeANSI >> monthIndex [
 { #category : #'*Buoy-Chronology-GS64-Extensions' }
 DateAndTimeANSI >> printHMSOn: aStream [
 
+	self printHMSOn:  aStream separatedBy: $:
+]
+
+{ #category : #'*Buoy-Chronology-GS64-Extensions' }
+DateAndTimeANSI >> printHMSOn: aStream separatedBy: separator [
+
 	aStream
 		nextPutAll: (self hour printStringLength: 2 padded: true);
-		nextPut: $:;
+		nextPut: separator;
 		nextPutAll: (self minute printStringLength: 2 padded: true);
-		nextPut: $:;
+		nextPut: separator;
 		nextPutAll: (self second asInteger printStringLength: 2 padded: true)
 ]
 
