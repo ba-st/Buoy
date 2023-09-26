@@ -25,6 +25,12 @@ Duration class >> milliSeconds: aNumber [
 ]
 
 { #category : #'*Buoy-Chronology-GS64-Extensions' }
+Duration class >> minutes: aNumber [
+
+	^ self seconds: aNumber * 60
+]
+
+{ #category : #'*Buoy-Chronology-GS64-Extensions' }
 Duration >> wait [
 
 	^ Delay waitForMilliseconds: self seconds * 1000
