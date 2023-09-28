@@ -9,11 +9,17 @@ DateAndTimeANSI >> monthIndex [
 { #category : #'*Buoy-Chronology-GS64-Extensions' }
 DateAndTimeANSI >> printHMSOn: aStream [
 
+	self printHMSOn:  aStream separatedBy: $:
+]
+
+{ #category : #'*Buoy-Chronology-GS64-Extensions' }
+DateAndTimeANSI >> printHMSOn: aStream separatedBy: separator [
+
 	aStream
 		nextPutAll: (self hour printStringLength: 2 padded: true);
-		nextPut: $:;
+		nextPut: separator;
 		nextPutAll: (self minute printStringLength: 2 padded: true);
-		nextPut: $:;
+		nextPut: separator;
 		nextPutAll: (self second asInteger printStringLength: 2 padded: true)
 ]
 
@@ -26,6 +32,12 @@ DateAndTimeANSI >> printYMDOn: aStream [
 		nextPutAll: (self monthIndex printStringLength: 2 padded: true);
 		nextPut: $-;
 		nextPutAll: (self dayOfMonth printStringLength: 2 padded: true)
+]
+
+{ #category : #'*Buoy-Chronology-GS64-Extensions' }
+DateAndTimeANSI class >> unixEpoch [
+
+	^ self posixSeconds: 0 offset: Duration zero
 ]
 
 { #category : #'*Buoy-Chronology-GS64-Extensions' }

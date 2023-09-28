@@ -22,6 +22,12 @@ LanguagePlatform class >> setCurrentTo: aLanguagePlatform [
 	^ Current
 ]
 
+{ #category : #reflection }
+LanguagePlatform >> atInstanceVariableNamed: name on: object put: value [
+
+	self subclassResponsibility
+]
+
 { #category : #'process scheduling' }
 LanguagePlatform >> fork: block named: processName at: priority [
 

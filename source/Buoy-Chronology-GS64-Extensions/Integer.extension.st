@@ -35,3 +35,15 @@ Integer >> milliSeconds [
 
  	^ Duration milliSeconds: self
 ]
+
+{ #category : #'*Buoy-Chronology-GS64-Extensions' }
+Integer >> minute [
+
+ 	^ self minutes
+]
+
+{ #category : #'*Buoy-Chronology-GS64-Extensions' }
+Integer >> minutes [
+
+ 	^ Duration minutes: self
+]

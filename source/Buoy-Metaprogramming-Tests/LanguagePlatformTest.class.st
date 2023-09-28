@@ -1,8 +1,21 @@
 Class {
 	#name : #LanguagePlatformTest,
 	#superclass : #TestCase,
+	#instVars : [
+		'variableForTesting'
+	],
 	#category : #'Buoy-Metaprogramming-Tests'
 }
+
+{ #category : #tests }
+LanguagePlatformTest >> testAtInstanceVariableNamedOnPut [
+
+	self assert: variableForTesting isNil.
+
+	LanguagePlatform current atInstanceVariableNamed: 'variableForTesting' on: self put: 8.
+
+	self assert: variableForTesting equals: 8
+]
 
 { #category : #tests }
 LanguagePlatformTest >> testForkNamedAt [

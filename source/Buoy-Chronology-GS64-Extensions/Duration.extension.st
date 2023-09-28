@@ -1,6 +1,12 @@
 Extension { #name : #Duration }
 
 { #category : #'*Buoy-Chronology-GS64-Extensions' }
+Duration >> asMilliSeconds [
+
+	^ self asSeconds * 1000
+]
+
+{ #category : #'*Buoy-Chronology-GS64-Extensions' }
 Duration class >> days: aNumber [
 
 	^ self seconds: aNumber * 86400
@@ -16,6 +22,12 @@ Duration class >> hours: aNumber [
 Duration class >> milliSeconds: aNumber [
 
 	^ self seconds: aNumber / 1000
+]
+
+{ #category : #'*Buoy-Chronology-GS64-Extensions' }
+Duration class >> minutes: aNumber [
+
+	^ self seconds: aNumber * 60
 ]
 
 { #category : #'*Buoy-Chronology-GS64-Extensions' }

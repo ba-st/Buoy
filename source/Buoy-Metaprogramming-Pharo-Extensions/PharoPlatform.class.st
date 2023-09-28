@@ -11,6 +11,12 @@ PharoPlatform class >> initialize [
 	LanguagePlatform setCurrentTo: self new
 ]
 
+{ #category : #reflection }
+PharoPlatform >> atInstanceVariableNamed: name on: object put: value [
+
+	object instVarNamed: name put: value
+]
+
 { #category : #'process scheduling' }
 PharoPlatform >> fork: block named: processName at: priority [
 
