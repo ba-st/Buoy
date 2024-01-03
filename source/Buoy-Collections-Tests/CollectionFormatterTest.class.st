@@ -2,12 +2,13 @@
 I'm a CollectionFormatterTest,  a test class for testing the behavior of CollectionFormatter
 "
 Class {
-	#name : #CollectionFormatterTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Collections-Tests'
+	#name : 'CollectionFormatterTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Collections-Tests',
+	#package : 'Buoy-Collections-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionFormatterTest >> testFormat [
 
 	| formatter |
@@ -15,7 +16,7 @@ CollectionFormatterTest >> testFormat [
 	self assert: (formatter format: #(1 2 3)) equals: '1, 2, 3'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionFormatterTest >> testFormatEmptyCollection [
 
 	| formatter |
@@ -23,7 +24,7 @@ CollectionFormatterTest >> testFormatEmptyCollection [
 	self assert: (formatter format: #()) equals: String new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionFormatterTest >> testFormatOn [
 
 	| formatter stream |
@@ -34,7 +35,7 @@ CollectionFormatterTest >> testFormatOn [
 	self assert: stream contents equals: '1, 2, 3'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionFormatterTest >> testFormatOneElementCollection [
 
 	| formatter |
@@ -43,7 +44,7 @@ CollectionFormatterTest >> testFormatOneElementCollection [
 	self assert: (formatter format: #(1)) equals: '1'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionFormatterTest >> testFormatTwoElementCollectionWithLastSeparator [
 
 	| formatter |
@@ -52,7 +53,7 @@ CollectionFormatterTest >> testFormatTwoElementCollectionWithLastSeparator [
 	self assert: (formatter format: #(1 2)) equals: '1 and 2'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionFormatterTest >> testFormatWithElementFormatter [
 
 	| formatter |
@@ -63,7 +64,7 @@ CollectionFormatterTest >> testFormatWithElementFormatter [
 	self assert: (formatter format: #(1 2 3)) equals: '/1/,/2/,/3/'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionFormatterTest >> testFormatWithLastSeparator [
 
 	| formatter |

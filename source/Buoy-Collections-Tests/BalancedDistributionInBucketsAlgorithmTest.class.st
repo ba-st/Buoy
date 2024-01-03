@@ -1,10 +1,11 @@
 Class {
-	#name : #BalancedDistributionInBucketsAlgorithmTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Collections-Tests'
+	#name : 'BalancedDistributionInBucketsAlgorithmTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Collections-Tests',
+	#package : 'Buoy-Collections-Tests'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 BalancedDistributionInBucketsAlgorithmTest >> assertDistributionInFourBuckets [
 
 	| buckets |
@@ -53,7 +54,7 @@ BalancedDistributionInBucketsAlgorithmTest >> assertDistributionInFourBuckets [
 		assert: buckets last equals: #(22 23 24 25 26 27)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 BalancedDistributionInBucketsAlgorithmTest >> assertDistributionInOneBucket [
 
 	| buckets |
@@ -76,7 +77,7 @@ BalancedDistributionInBucketsAlgorithmTest >> assertDistributionInOneBucket [
 		assert: buckets first equals: #(1 2 3 4 5 6)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 BalancedDistributionInBucketsAlgorithmTest >> assertDistributionInThreeBuckets [
 
 	| buckets |
@@ -119,7 +120,7 @@ BalancedDistributionInBucketsAlgorithmTest >> assertDistributionInThreeBuckets [
 		assert: buckets last equals: #(15 16 17 18 19 20)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 BalancedDistributionInBucketsAlgorithmTest >> assertDistributionInTwoBuckets [
 
 	| buckets |
@@ -156,7 +157,7 @@ BalancedDistributionInBucketsAlgorithmTest >> assertDistributionInTwoBuckets [
 		assert: buckets last equals: #(8 9 10 11 12 13)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BalancedDistributionInBucketsAlgorithmTest >> testComplexDistribution [
 
 	self assertDistributionInOneBucket.
@@ -165,7 +166,7 @@ BalancedDistributionInBucketsAlgorithmTest >> testComplexDistribution [
 	self assertDistributionInFourBuckets
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BalancedDistributionInBucketsAlgorithmTest >> testDistributingEmptyCollection [
 
 	| buckets |
@@ -175,7 +176,7 @@ BalancedDistributionInBucketsAlgorithmTest >> testDistributingEmptyCollection [
 	self assert: buckets isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BalancedDistributionInBucketsAlgorithmTest >> testSimpleDistribution [
 
 	| buckets |
