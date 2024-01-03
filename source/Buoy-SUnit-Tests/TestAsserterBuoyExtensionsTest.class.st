@@ -2,12 +2,13 @@
 Unit test for Test Asserter
 "
 Class {
-	#name : #TestAsserterBuoyExtensionsTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-SUnit-Tests'
+	#name : 'TestAsserterBuoyExtensionsTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-SUnit-Tests',
+	#package : 'Buoy-SUnit-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 TestAsserterBuoyExtensionsTest >> testAssertIncludes [
 
 	| asserter |
@@ -18,7 +19,7 @@ TestAsserterBuoyExtensionsTest >> testAssertIncludes [
 	self should: [ asserter assert: #(1 2) includes: 3 ] raise: TestFailure
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TestAsserterBuoyExtensionsTest >> testAssertionFailedInRaiseWithExceptionDo [
 
 	| asserter |
@@ -27,7 +28,7 @@ TestAsserterBuoyExtensionsTest >> testAssertionFailedInRaiseWithExceptionDo [
 	self should: [ asserter should: [ Error signal ] raise: Error withExceptionDo: [ :aSignal | asserter fail ] ] raise: TestFailure
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TestAsserterBuoyExtensionsTest >> testDenyIncludes [
 
 	| asserter |
@@ -38,7 +39,7 @@ TestAsserterBuoyExtensionsTest >> testDenyIncludes [
 	self shouldnt: [ asserter deny: #(1 2) includes: 3 ] raise: TestFailure
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TestAsserterBuoyExtensionsTest >> testDifferentExceptionInShouldRaiseWithExceptionDo [
 
 	| asserter |
@@ -47,7 +48,7 @@ TestAsserterBuoyExtensionsTest >> testDifferentExceptionInShouldRaiseWithExcepti
 	self should: [ asserter should: [ Exception signal ] raise: Error withExceptionDo: [ :aSignal | asserter fail ] ] raise: Exception
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TestAsserterBuoyExtensionsTest >> testErrorInRaiseWithExceptionDo [
 
 	| asserter |
@@ -61,7 +62,7 @@ TestAsserterBuoyExtensionsTest >> testErrorInRaiseWithExceptionDo [
 		raise: Error
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TestAsserterBuoyExtensionsTest >> testFail [
 
 	| asserter |
@@ -71,7 +72,7 @@ TestAsserterBuoyExtensionsTest >> testFail [
 		raise: TestFailure
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TestAsserterBuoyExtensionsTest >> testNoExceptionInShouldRaiseWithExceptionDo [
 
 	| asserter |
@@ -85,7 +86,19 @@ TestAsserterBuoyExtensionsTest >> testNoExceptionInShouldRaiseWithExceptionDo [
 		raise: TestFailure
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
+TestAsserterBuoyExtensionsTest >> testShouldNotTakeMoreThanMilliseconds [
+
+	| asserter |
+
+	asserter := TestAsserter new.
+	self shouldnt: [ asserter should: [  ] notTakeMoreThanMilliseconds: 500 ] raise: TestFailure.
+	self
+		should: [ asserter should: [ ( Delay forMilliseconds: 51 ) wait ] notTakeMoreThanMilliseconds: 50 ]
+		raise: TestFailure
+]
+
+{ #category : 'tests' }
 TestAsserterBuoyExtensionsTest >> testShouldRaiseWithExceptionDoTest [
 
 	| asserter |
@@ -99,7 +112,7 @@ TestAsserterBuoyExtensionsTest >> testShouldRaiseWithExceptionDoTest [
 		withExceptionDo: [:error | asserter assert: error tag = 1]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TestAsserterBuoyExtensionsTest >> testShouldRaiseWithMessageText [
 
 	| asserter |
@@ -120,7 +133,7 @@ TestAsserterBuoyExtensionsTest >> testShouldRaiseWithMessageText [
 		raise: TestFailure
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TestAsserterBuoyExtensionsTest >> testWithTheOnlyOneInDo [
 
 	| asserter |

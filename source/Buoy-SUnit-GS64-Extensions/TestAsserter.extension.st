@@ -1,12 +1,12 @@
-Extension { #name : #TestAsserter }
+Extension { #name : 'TestAsserter' }
 
-{ #category : #'*Buoy-SUnit-GS64-Extensions' }
+{ #category : '*Buoy-SUnit-GS64-Extensions' }
 TestAsserter >> assert: actual identicalTo: expected [
 
 	self assert: expected == actual
 ]
 
-{ #category : #'*Buoy-SUnit-GS64-Extensions' }
+{ #category : '*Buoy-SUnit-GS64-Extensions' }
 TestAsserter >> assertCollection: actual hasSameElements: expected [
 	"Assert that a collection contains the same elements as the given collection. Order is not checked, only the presence/absence of elements. Occurences of elements mater."
 
@@ -33,20 +33,29 @@ TestAsserter >> assertCollection: actual hasSameElements: expected [
 				 lf ])
 ]
 
-{ #category : #'*Buoy-SUnit-GS64-Extensions' }
+{ #category : '*Buoy-SUnit-GS64-Extensions' }
 TestAsserter >> deny: actual identicalTo: expected [
 
 	self deny: expected == actual
 ]
 
-{ #category : #'*Buoy-SUnit-GS64-Extensions' }
+{ #category : '*Buoy-SUnit-GS64-Extensions' }
 TestAsserter >> fail [
 	"I make my receiver fail with TestFailure"
 
 	^ self assert: false
 ]
 
-{ #category : #'*Buoy-SUnit-GS64-Extensions' }
+{ #category : '*Buoy-SUnit-GS64-Extensions' }
+TestAsserter >> should: aBlock notTakeMoreThanMilliseconds: anInteger [
+
+	| runtime |
+
+	runtime := Time millisecondsToRun: aBlock.
+	self assert: runtime <= anInteger
+]
+
+{ #category : '*Buoy-SUnit-GS64-Extensions' }
 TestAsserter >> should: aBlock raise: anException withExceptionDo: anotherBlock [
 
 	| exceptionWasRaised |
