@@ -1,1 +1,1 @@
-Package { #name : #'Buoy-Collections-GS64-Extensions' }
+Package { #name : 'Buoy-Collections-GS64-Extensions' }

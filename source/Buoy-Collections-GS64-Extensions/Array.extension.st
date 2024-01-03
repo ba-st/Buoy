@@ -1,6 +1,6 @@
-Extension { #name : #Array }
+Extension { #name : 'Array' }
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Array >> fillFrom: aCollection with: aBlock [
 
 	| index |
@@ -9,13 +9,13 @@ Array >> fillFrom: aCollection with: aBlock [
 		self at: (index := index + 1) put: (aBlock value: each) ]
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Array >> isArray [
 
 	^ true
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Array class >> newFrom: aCollection [
 	"Answer an instance of me containing the same elements as aCollection."
 

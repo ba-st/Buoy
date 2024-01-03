@@ -1,6 +1,6 @@
-Extension { #name : #Collection }
+Extension { #name : 'Collection' }
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> , aCollection [
 	"Concatenate the receiver with the argument."
 
@@ -9,13 +9,13 @@ Collection >> , aCollection [
 		  yourself
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> anyOne [
 
 	^ self any
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> as: aSimilarClass [
 	"Create an object of class aSimilarClass that has similar contents to the receiver if the object is not already an instance of this class."
 
@@ -24,13 +24,13 @@ Collection >> as: aSimilarClass [
 	^ aSimilarClass newFrom: self
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> asOrderedDictionary [
 
 	^ self as: OrderedDictionary
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> associationsDo: aBlock [
 	"Evaluate aBlock for each of the receiver's elements (key/value
 	associations).  If any non-association is within, the error is not caught now,
@@ -40,13 +40,13 @@ Collection >> associationsDo: aBlock [
 	self do: aBlock
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> capacity [
 
 	^ self size
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> collect: aBlock as: aClass [
 	"Evaluate aBlock with each of the receiver's elements as the argument.
 	Collect the resulting values into an instance of aClass. Answer the resulting collection."
@@ -54,7 +54,7 @@ Collection >> collect: aBlock as: aClass [
 	^(aClass new: self size) fillFrom: self with: aBlock
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> count: aBlock [
 	"Evaluate aBlock with each of the receiver's elements as the argument.
 	Answer the number of elements that answered true."
@@ -65,7 +65,7 @@ Collection >> count: aBlock [
 	^ sum
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> detect: aBlock ifFound: foundBlock [
 	"Evaluate aBlock with each of the receiver's elements as the argument.
 	If some element evaluates aBlock to true, then cull this element into
@@ -79,7 +79,7 @@ Collection >> detect: aBlock ifFound: foundBlock [
 		ifNone: [ "Do nothing on purpose" ]
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> detect: aBlock ifFound: foundBlock ifNone: exceptionBlock [
 	"Evaluate aBlock with each of the receiver's elements as the argument.
 	If some element evaluates aBlock to true, then cull this element into
@@ -91,7 +91,7 @@ Collection >> detect: aBlock ifFound: foundBlock ifNone: exceptionBlock [
 	^ exceptionBlock value
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> fillFrom: aCollection with: aBlock [
 	"Private.
 	Evaluate aBlock with each of aCollections's elements as the argument.
@@ -101,7 +101,7 @@ Collection >> fillFrom: aCollection with: aBlock [
 		self add: (aBlock value: each) ]
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> groupedBy: aBlock [
 	"Answer a dictionary whose keys are the result of evaluating aBlock for all my elements, and the value for each key is the selection of my elements that evaluated to that key. Uses species."
 
@@ -115,7 +115,7 @@ Collection >> groupedBy: aBlock [
 	^ groups
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> ifEmpty: emptyBlock ifNotEmpty: notEmptyBlock [
 
 	^ self isEmpty
@@ -123,27 +123,27 @@ Collection >> ifEmpty: emptyBlock ifNotEmpty: notEmptyBlock [
 		  ifFalse: [ notEmptyBlock cull: self ]
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> includesAll: aCollection [
 	"Answer whether all the elements of aCollection are in the receiver."
 
 	^ aCollection allSatisfy: [ :elem | self includes: elem ]
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> isNotEmpty [
 	"Answer whether the receiver contains any elements."
 
 	^ self isEmpty not
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> isSequenceable [
 
 	^ false
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection class >> newFrom: aCollection [
 	"Answer an instance of me containing the same elements as aCollection."
 
@@ -153,7 +153,7 @@ Collection class >> newFrom: aCollection [
 	^ newCollection
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> noneSatisfy: aBlock [
 	"Evaluate aBlock with the elements of the receiver. If aBlock returns false for all elements return true. Otherwise return false"
 
@@ -161,7 +161,7 @@ Collection >> noneSatisfy: aBlock [
 	^ true
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> printElementsOn: aStream [
 	"List elements betwen () and separated by spaces.
 	Is used by printOn: and other related printing methods."
@@ -171,7 +171,7 @@ Collection >> printElementsOn: aStream [
 	aStream nextPut: $)
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> removeAll [
 	"Remove each element from the receiver and leave it empty.
 	There are two good reasons why a subclass should override this message:
@@ -181,19 +181,19 @@ Collection >> removeAll [
 	self do: [ :each | self remove: each ]
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> select: selectBlock thenCollect: collectBlock [
 
 	^ (self select: selectBlock) collect: collectBlock
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> sorted [
 
 	^self sortAscending
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> sorted: block [
 
 	^ self sortWithBlock: block
