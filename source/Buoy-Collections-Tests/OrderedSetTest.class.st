@@ -2,36 +2,37 @@
 An OrderedSetTest is a test class for testing the behavior of OrderedSet
 "
 Class {
-	#name : #OrderedSetTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Collections-Tests'
+	#name : 'OrderedSetTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Collections-Tests',
+	#package : 'Buoy-Collections-Tests'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 OrderedSetTest >> abcSet [
 
 	^ OrderedSet with: $a with: $b with: $c
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OrderedSetTest >> cdeSet [
 
 	^ OrderedSet with: $c with: $d with: $e
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OrderedSetTest >> newEmptySet [
 
 	^ OrderedSet new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 OrderedSetTest >> newOrderedSetWithTwoElements [
 
 	^ OrderedSet with: 1 with: 2 with: 2
 ]
 
-{ #category : #'tests - adding' }
+{ #category : 'tests - adding' }
 OrderedSetTest >> testAdd [
 
 	| set |
@@ -54,7 +55,7 @@ OrderedSetTest >> testAdd [
 	self should: [ set at: 3 ] raise: SubscriptOutOfBounds
 ]
 
-{ #category : #'tests - adding' }
+{ #category : 'tests - adding' }
 OrderedSetTest >> testAddAll [
 
 	| set |
@@ -68,7 +69,7 @@ OrderedSetTest >> testAddAll [
 		assert: set hasTheSameElementsInTheSameOrderThat: #( 1 2 4 3 )
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 OrderedSetTest >> testAllSatisfy [
 
 	| set |
@@ -80,7 +81,7 @@ OrderedSetTest >> testAllSatisfy [
 		deny: ( set allSatisfy: [ :element | element = set first ] )
 ]
 
-{ #category : #'tests - adding' }
+{ #category : 'tests - adding' }
 OrderedSetTest >> testAllowsNil [
 
 	| set |
@@ -103,7 +104,7 @@ OrderedSetTest >> testAllowsNil [
 	self should: [ set at: 2 put: nil ] raise: ConflictingObjectFound
 ]
 
-{ #category : #'tests - adding' }
+{ #category : 'tests - adding' }
 OrderedSetTest >> testAnyOne [
 
 	| set |
@@ -121,7 +122,7 @@ OrderedSetTest >> testAnyOne [
 	self assert: set anyOne equals: $b
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 OrderedSetTest >> testAnySatisfy [
 
 	| set |
@@ -134,7 +135,7 @@ OrderedSetTest >> testAnySatisfy [
 		deny: ( set anySatisfy: #isNil )
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 OrderedSetTest >> testAsArray [
 
 	| collection |
@@ -147,7 +148,7 @@ OrderedSetTest >> testAsArray [
 		assert: collection second equals: 2
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 OrderedSetTest >> testAsOrderedCollection [
 
 	| collection |
@@ -166,7 +167,7 @@ OrderedSetTest >> testAsOrderedCollection [
 		assert: collection last equals: 2
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 OrderedSetTest >> testAsOrderedSet [
 
 	| orderedSet |
@@ -186,7 +187,7 @@ OrderedSetTest >> testAsOrderedSet [
 		]
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 OrderedSetTest >> testAsSet [
 
 	| collection |
@@ -203,7 +204,7 @@ OrderedSetTest >> testAsSet [
 	self assert: collection size equals: 2
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 OrderedSetTest >> testAsSortedCollection [
 
 	| collection |
@@ -217,7 +218,7 @@ OrderedSetTest >> testAsSortedCollection [
 		assert: collection third equals: 2
 ]
 
-{ #category : #'tests - accessing' }
+{ #category : 'tests - accessing' }
 OrderedSetTest >> testAt [
 
 	| set |
@@ -231,7 +232,7 @@ OrderedSetTest >> testAt [
 	self should: [ set at: 2 ] raise: SubscriptOutOfBounds
 ]
 
-{ #category : #'tests - accessing' }
+{ #category : 'tests - accessing' }
 OrderedSetTest >> testAtPut [
 
 	| set |
@@ -242,7 +243,7 @@ OrderedSetTest >> testAtPut [
 	self should: [ set at: 1 put: 3 ] raise: ConflictingObjectFound
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 OrderedSetTest >> testBeginsWith [
 
 	self
@@ -250,7 +251,7 @@ OrderedSetTest >> testBeginsWith [
 		deny: ( self abcSet beginsWith: 'ac' )
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testCollect [
 
 	| set |
@@ -260,7 +261,7 @@ OrderedSetTest >> testCollect [
 	self assert: ( set collect: #isVowel ) equals: ( OrderedSet with: true with: false )
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testCollectAs [
 
 	| set |
@@ -270,7 +271,7 @@ OrderedSetTest >> testCollectAs [
 	self assert: ( set collect: #isVowel as: Array ) equals: #( true false false )
 ]
 
-{ #category : #'tests - comparing' }
+{ #category : 'tests - comparing' }
 OrderedSetTest >> testComparing [
 
 	| set1 set2 |
@@ -290,7 +291,7 @@ OrderedSetTest >> testComparing [
 	self deny: set1 equals: 8
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testConcatenation [
 
 	| set secondSet thirdSet concatenation concatenationWithRepetitions |
@@ -311,7 +312,7 @@ OrderedSetTest >> testConcatenation [
 		assert: set size equals: 2
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyAfter [
 
 	| original copy |
@@ -325,7 +326,7 @@ OrderedSetTest >> testCopyAfter [
 		assert: copy last equals: $c
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyAfterLast [
 
 	| original copy |
@@ -339,7 +340,7 @@ OrderedSetTest >> testCopyAfterLast [
 		assert: copy last equals: $c
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyFirst [
 
 	| original copy |
@@ -354,7 +355,7 @@ OrderedSetTest >> testCopyFirst [
 		assert: copy last equals: $b
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyFromTo [
 
 	| original copy |
@@ -370,7 +371,7 @@ OrderedSetTest >> testCopyFromTo [
 	self should: [ copy copyFrom: 2 to: 3 ] raise: SubscriptOutOfBounds
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyLast [
 
 	| original copy |
@@ -385,7 +386,7 @@ OrderedSetTest >> testCopyLast [
 		assert: copy last equals: $c
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyNoMoreThanFirst [
 
 	| original copy |
@@ -402,7 +403,7 @@ OrderedSetTest >> testCopyNoMoreThanFirst [
 	self assert: ( original copyNoMoreThanFirst: 8 ) equals: original
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyNoMoreThanLast [
 
 	| original copy |
@@ -419,7 +420,7 @@ OrderedSetTest >> testCopyNoMoreThanLast [
 	self assert: ( original copyNoMoreThanLast: 8 ) equals: original
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyReplaceAllWith [
 
 	| original copy |
@@ -439,7 +440,7 @@ OrderedSetTest >> testCopyReplaceAllWith [
 	self withTheOnlyOneIn: copy do: [ :letter | self assert: letter equals: $c ]
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyReplaceFromToWith [
 
 	| original copy |
@@ -459,7 +460,7 @@ OrderedSetTest >> testCopyReplaceFromToWith [
 	self withTheOnlyOneIn: copy do: [ :letter | self assert: letter equals: $c ]
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyReplaceFromToWithInsertingAtEnd [
 
 	| original copy |
@@ -476,7 +477,7 @@ OrderedSetTest >> testCopyReplaceFromToWithInsertingAtEnd [
 		assert: copy last equals: $f
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyReplaceFromToWithInsertingAtFront [
 
 	| original copy |
@@ -493,13 +494,13 @@ OrderedSetTest >> testCopyReplaceFromToWithInsertingAtFront [
 		assert: copy last equals: $c
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyReplaceFromToWithOutOfBounds [
 
 	self should: [ self abcSet copyReplaceFrom: 1 to: 8 with: 'de' ] raise: SubscriptOutOfBounds
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testCopyWith [
 
 	| original copy copyWithRepetitions |
@@ -519,7 +520,7 @@ OrderedSetTest >> testCopyWith [
 		assert: copyWithRepetitions last equals: $b
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testCount [
 
 	| set |
@@ -529,7 +530,7 @@ OrderedSetTest >> testCount [
 	self assert: ( set count: #isVowel ) equals: 1
 ]
 
-{ #category : #'tests - instance creation' }
+{ #category : 'tests - instance creation' }
 OrderedSetTest >> testCreation [
 
 	| set |
@@ -540,7 +541,7 @@ OrderedSetTest >> testCreation [
 	self assert: set size equals: 0
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testDeepCopy [
 
 	| original copy |
@@ -556,7 +557,7 @@ OrderedSetTest >> testDeepCopy [
 		]
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testDetect [
 
 	| set |
@@ -568,7 +569,7 @@ OrderedSetTest >> testDetect [
 		should: [ set detect: #isDigit ] raise: NotFound
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testDetectIfFound [
 
 	| set wasFound |
@@ -585,7 +586,7 @@ OrderedSetTest >> testDetectIfFound [
 	set detect: #isDigit ifFound: [ self fail ]
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testDetectIfFoundIfNone [
 
 	| set |
@@ -596,7 +597,7 @@ OrderedSetTest >> testDetectIfFoundIfNone [
 	self assert: ( set detect: #isDigit ifFound: [ self fail ] ifNone: [ $x ] ) equals: $x
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testDetectIfNone [
 
 	| set notFound |
@@ -611,7 +612,7 @@ OrderedSetTest >> testDetectIfNone [
 	self assert: notFound
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testDifference [
 
 	| difference |
@@ -629,7 +630,7 @@ OrderedSetTest >> testDifference [
 	self withTheOnlyOneIn: difference do: [ :letter | self assert: letter equals: $a ]
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testDo [
 
 	self assert:
@@ -637,7 +638,7 @@ OrderedSetTest >> testDo [
 		equals: 'abc'
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testDoSeparatedBy [
 
 	self
@@ -646,7 +647,7 @@ OrderedSetTest >> testDoSeparatedBy [
 		equals: 'a b c'
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testDoWithIndex [
 
 	self
@@ -660,7 +661,7 @@ OrderedSetTest >> testDoWithIndex [
 		equals: '1a2b3c'
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 OrderedSetTest >> testEndsWith [
 
 	self
@@ -668,7 +669,7 @@ OrderedSetTest >> testEndsWith [
 		deny: ( self abcSet endsWith: 'ac' )
 ]
 
-{ #category : #'tests - accessing' }
+{ #category : 'tests - accessing' }
 OrderedSetTest >> testFirst [
 
 	| set |
@@ -681,7 +682,7 @@ OrderedSetTest >> testFirst [
 	self assert: set first equals: $a
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 OrderedSetTest >> testIfEmpty [
 
 	| isEmpty |
@@ -692,7 +693,7 @@ OrderedSetTest >> testIfEmpty [
 	self assert: isEmpty
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 OrderedSetTest >> testIfEmptyIfNotEmpty [
 
 	| isEmpty notEmpty |
@@ -709,7 +710,7 @@ OrderedSetTest >> testIfEmptyIfNotEmpty [
 	self assert: isEmpty
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 OrderedSetTest >> testIfNotEmpty [
 
 	| notEmpty |
@@ -720,7 +721,7 @@ OrderedSetTest >> testIfNotEmpty [
 	self assert: notEmpty
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 OrderedSetTest >> testIncludes [
 
 	| set |
@@ -732,7 +733,7 @@ OrderedSetTest >> testIncludes [
 	self deny: ( set includes: $b )
 ]
 
-{ #category : #'tests - adding' }
+{ #category : 'tests - adding' }
 OrderedSetTest >> testIndexOf [
 
 	| set |
@@ -752,14 +753,14 @@ OrderedSetTest >> testIndexOf [
 		assert: ( set indexOf: $c ) equals: 0
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testInjectInto [
 
 	self assert: ( self abcSet inject: 0 into: [ :sum :current | sum + current codePoint ] )
 		equals: 294
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testIntersection [
 
 	| intersection |
@@ -780,13 +781,13 @@ OrderedSetTest >> testIntersection [
 		assert: intersection last equals: $c
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 OrderedSetTest >> testIsCollection [
 
 	self assert: self newEmptySet isCollection
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 OrderedSetTest >> testIsEmpty [
 
 	self
@@ -794,13 +795,13 @@ OrderedSetTest >> testIsEmpty [
 		deny: self abcSet isEmpty
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 OrderedSetTest >> testIsSequenceable [
 
 	self assert: self newEmptySet isSequenceable
 ]
 
-{ #category : #'tests - accessing' }
+{ #category : 'tests - accessing' }
 OrderedSetTest >> testLast [
 
 	| set |
@@ -813,7 +814,7 @@ OrderedSetTest >> testLast [
 	self assert: set last equals: $b
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 OrderedSetTest >> testNotEmpty [
 
 	self
@@ -821,7 +822,7 @@ OrderedSetTest >> testNotEmpty [
 		assert: self abcSet notEmpty
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testOccurrencesOf [
 
 	self
@@ -830,7 +831,7 @@ OrderedSetTest >> testOccurrencesOf [
 		assert: ( self abcSet occurrencesOf: $d ) equals: 0
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 OrderedSetTest >> testReadStream [
 
 	| set stream |
@@ -846,7 +847,7 @@ OrderedSetTest >> testReadStream [
 		assert: stream atEnd
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testReject [
 
 	| set |
@@ -859,7 +860,7 @@ OrderedSetTest >> testReject [
 		hasTheSameElementsInTheSameOrderThat: ( OrderedSet with: $a with: $c )
 ]
 
-{ #category : #'tests - removing' }
+{ #category : 'tests - removing' }
 OrderedSetTest >> testRemove [
 
 	| set acSet |
@@ -873,7 +874,7 @@ OrderedSetTest >> testRemove [
 	self should: [ set remove: $b ] raise: NotFound
 ]
 
-{ #category : #'tests - removing' }
+{ #category : 'tests - removing' }
 OrderedSetTest >> testRemoveAll [
 
 	| set |
@@ -884,7 +885,7 @@ OrderedSetTest >> testRemoveAll [
 	self assert: set isEmpty
 ]
 
-{ #category : #'tests - removing' }
+{ #category : 'tests - removing' }
 OrderedSetTest >> testRemoveAllInOtherCollection [
 
 	| set |
@@ -895,7 +896,7 @@ OrderedSetTest >> testRemoveAllInOtherCollection [
 	self withTheOnlyOneIn: set do: [ :theOne | self assert: theOne equals: $b ]
 ]
 
-{ #category : #'tests - removing' }
+{ #category : 'tests - removing' }
 OrderedSetTest >> testRemoveIfAbsent [
 
 	| set acSet |
@@ -910,7 +911,7 @@ OrderedSetTest >> testRemoveIfAbsent [
 		withMessageText: '$b not found.'
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 OrderedSetTest >> testReverse [
 
 	| set reverseSet |
@@ -920,7 +921,7 @@ OrderedSetTest >> testReverse [
 	self assert: set reverse equals: reverseSet
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testReverseDo [
 
 	self
@@ -933,7 +934,7 @@ OrderedSetTest >> testReverseDo [
 		equals: 'cba'
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 OrderedSetTest >> testReversed [
 
 	| set reverseSet |
@@ -943,7 +944,7 @@ OrderedSetTest >> testReversed [
 	self assert: set reversed equals: reverseSet
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testSelect [
 
 	| set |
@@ -955,7 +956,7 @@ OrderedSetTest >> testSelect [
 		assert: ( set select: [ :each | each = $b ] ) equals: ( OrderedSet with: $b )
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testSelectThenCollect [
 
 	| numbers evenDoubles |
@@ -967,7 +968,7 @@ OrderedSetTest >> testSelectThenCollect [
 	self assert: evenDoubles equals: ( OrderedSet withAll: #( 4 24 32 ) )
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testShallowCopy [
 
 	| original copy |
@@ -986,7 +987,7 @@ OrderedSetTest >> testShallowCopy [
 		]
 ]
 
-{ #category : #'tests - accessing' }
+{ #category : 'tests - accessing' }
 OrderedSetTest >> testSize [
 
 	| set |
@@ -1001,13 +1002,13 @@ OrderedSetTest >> testSize [
 	self assert: set size equals: 1
 ]
 
-{ #category : #'tests - accessing' }
+{ #category : 'tests - accessing' }
 OrderedSetTest >> testSpecies [
 
 	self assert: self newEmptySet species equals: OrderedSet
 ]
 
-{ #category : #'tests - adding' }
+{ #category : 'tests - adding' }
 OrderedSetTest >> testSwapWith [
 
 	| set |
@@ -1025,7 +1026,7 @@ OrderedSetTest >> testSwapWith [
 		assert: set last equals: $a
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testUnion [
 
 	| union |
@@ -1045,7 +1046,7 @@ OrderedSetTest >> testUnion [
 		assert: union equals: 'abcde' asOrderedSet
 ]
 
-{ #category : #'tests - instance creation' }
+{ #category : 'tests - instance creation' }
 OrderedSetTest >> testWithAll [
 
 	| set |
@@ -1059,7 +1060,7 @@ OrderedSetTest >> testWithAll [
 	self assert: set hasTheSameElementsInTheSameOrderThat: #( a nil b )
 ]
 
-{ #category : #'tests - enumerating' }
+{ #category : 'tests - enumerating' }
 OrderedSetTest >> testWithDo [
 
 	| count |
@@ -1073,7 +1074,7 @@ OrderedSetTest >> testWithDo [
 	self assert: count equals: 3
 ]
 
-{ #category : #'tests - instance creation' }
+{ #category : 'tests - instance creation' }
 OrderedSetTest >> testWithWithWithWith [
 
 	| set |
@@ -1084,7 +1085,7 @@ OrderedSetTest >> testWithWithWithWith [
 	
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 OrderedSetTest >> testWithoutFirst [
 
 	| original copy |
@@ -1105,7 +1106,7 @@ OrderedSetTest >> testWithoutFirst [
 		assert: copy first equals: $c
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 OrderedSetTest >> testWriteStream [
 
 	| set stream |

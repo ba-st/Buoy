@@ -2,18 +2,19 @@
 I'm a test case for BinarySearchAlgorithm
 "
 Class {
-	#name : #BinarySearchAlgorithmTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Collections-Tests'
+	#name : 'BinarySearchAlgorithmTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Collections-Tests',
+	#package : 'Buoy-Collections-Tests'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 BinarySearchAlgorithmTest >> assertExpectedInsertionIndexFor: key in: collection is: expectedIndex [
 
 	self assert: ( BinarySearchAlgorithm searchFor: key in: collection using: [ :number | number ] ) execute equals: expectedIndex
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchAlgorithmTest >> testExecute [
 
 	self assertExpectedInsertionIndexFor: 1 in: #(1 2 3) is: 2.
@@ -27,7 +28,7 @@ BinarySearchAlgorithmTest >> testExecute [
 	self assertExpectedInsertionIndexFor: 6 in: #(1 5) is: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BinarySearchAlgorithmTest >> testExecuteWithSymbol [
 
 	self assert: ( BinarySearchAlgorithm searchFor: 1 in: #(#(1) #(2 1) #(3)) using: #first ) execute equals: 2

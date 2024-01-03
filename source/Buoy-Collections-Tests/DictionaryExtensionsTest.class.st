@@ -1,10 +1,11 @@
 Class {
-	#name : #DictionaryExtensionsTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Collections-Tests'
+	#name : 'DictionaryExtensionsTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Collections-Tests',
+	#package : 'Buoy-Collections-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 DictionaryExtensionsTest >> testAtIfPresentIfAbsentPut [
 
 	| dictionary wasPresent |
@@ -21,7 +22,7 @@ DictionaryExtensionsTest >> testAtIfPresentIfAbsentPut [
 	self assert: wasPresent
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DictionaryExtensionsTest >> testNewFromPairs [
 
 	| dictionary |
@@ -33,7 +34,7 @@ DictionaryExtensionsTest >> testNewFromPairs [
 		assert: (dictionary at: #two) equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DictionaryExtensionsTest >> testRemoveAll [
 
 	| dictionary |

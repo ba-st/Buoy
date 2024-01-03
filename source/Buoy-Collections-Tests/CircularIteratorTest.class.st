@@ -2,12 +2,13 @@
 A CircularIteratorTest is a test class for testing the behavior of CircularIterator
 "
 Class {
-	#name : #CircularIteratorTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Collections-Tests'
+	#name : 'CircularIteratorTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Collections-Tests',
+	#package : 'Buoy-Collections-Tests'
 }
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 CircularIteratorTest >> testCantCreateWithEmptyCollection [
 
 	self
@@ -16,7 +17,7 @@ CircularIteratorTest >> testCantCreateWithEmptyCollection [
 		withMessageText: 'It makes no sense to iterate in a cyclic way an empty collection'
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 CircularIteratorTest >> testCurrent [
 
 	| iterator |
@@ -34,7 +35,7 @@ CircularIteratorTest >> testCurrent [
 	self assert: iterator current equals: 2
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 CircularIteratorTest >> testIncludes [
 
 	| iterator |
@@ -47,7 +48,7 @@ CircularIteratorTest >> testIncludes [
 		deny: iterator includes: 4
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 CircularIteratorTest >> testReset [
 
 	| iterator |

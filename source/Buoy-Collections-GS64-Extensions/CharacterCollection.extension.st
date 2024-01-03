@@ -1,6 +1,6 @@
-Extension { #name : #CharacterCollection }
+Extension { #name : 'CharacterCollection' }
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> capitalized [
 
 	self ifEmpty: [ ^ self ].
@@ -10,45 +10,45 @@ CharacterCollection >> capitalized [
 		  with: self withoutFirst
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection class >> cr [
 
 	^ self with: Character cr
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection class >> crlf [
 
 	^ self with: Character cr with: Character lf
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> expandMacros [
 
 	^ self expandMacrosWithArguments: #(  )
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> expandMacrosWith: anObject [
 
 	^ self expandMacrosWithArguments: { anObject }
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> expandMacrosWith: anObject with: anotherObject [
 
 	^ self expandMacrosWithArguments:
 		  (Array with: anObject with: anotherObject)
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> expandMacrosWith: anObject with: anotherObject with: thirdObject [
 
 	^ self expandMacrosWithArguments:
 		  (Array with: anObject with: anotherObject with: thirdObject)
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> expandMacrosWith: anObject with: anotherObject with: thirdObject with: fourthObject [
 
 	^ self expandMacrosWithArguments: (Array
@@ -58,7 +58,7 @@ CharacterCollection >> expandMacrosWith: anObject with: anotherObject with: thir
 			   with: fourthObject)
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> expandMacrosWithArguments: anArray [
 
 	| readStream char index |
@@ -110,7 +110,7 @@ CharacterCollection >> expandMacrosWithArguments: anArray [
 										ifFalse: [ char ]) ] ] ]
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> findTokens: delimiters [
 
 	| separators |
@@ -120,14 +120,14 @@ CharacterCollection >> findTokens: delimiters [
 	^ self substrings: separators
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> includesSubstring: substring [
 
 	^ substring isEmpty or: [
 		  (self _findString: substring startingAt: 1 ignoreCase: false) ~~ 0 ]
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> isAllDigits [
 	"Return whether the receiver is composed entirely of digits and has at least one digit"
 
@@ -135,19 +135,19 @@ CharacterCollection >> isAllDigits [
 	^ self allSatisfy: #isDigit
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> isAsciiString [
 
 	^ self allSatisfy: [ :each | each codePoint <= 127 ]
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection class >> lf [
 
 	^ self with: Character lf
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> lines [
 	"Answer an array of lines composing this receiver without the line ending delimiters"
 
@@ -157,7 +157,7 @@ CharacterCollection >> lines [
 		  self linesDo: [ :aLine | lines nextPut: aLine ] ]
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> linesDo: aBlock [
 	"Execute aBlock with each line in this string. The terminating line delimiters CR, LF or CRLF
 	pairs are not included in what is passed to aBlock"
@@ -166,31 +166,31 @@ CharacterCollection >> linesDo: aBlock [
 		aBlock value: (self copyFrom: start to: endWithoutDelimiters) ]
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> sorted [
 
 	^ self class withAll: super sorted
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> species [
 
 	^ self speciesForConversion
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> substrings [
 
 	^self subStrings
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection class >> tab [
 
 	^ self with: Character tab
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> withoutQuoting [
 	"Remove the initial and final quote marks (single quote for string, or double quotes for comments),
 	if present (and if matches nesting quotes). Have a look at testWithoutQuoting."

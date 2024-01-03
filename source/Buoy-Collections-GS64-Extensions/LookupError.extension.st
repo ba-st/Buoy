@@ -1,6 +1,6 @@
-Extension { #name : #LookupError }
+Extension { #name : 'LookupError' }
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 LookupError class >> signalFor: key [
 
 	^ self new
@@ -8,7 +8,7 @@ LookupError class >> signalFor: key [
 		  signal: ('Key <1p> not found.' expandMacrosWith: key)
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 LookupError class >> signalFor: key in: collection [
 
 	^ self new

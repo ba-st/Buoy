@@ -1,10 +1,11 @@
 Class {
-	#name : #StringExtensionsTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Collections-Tests'
+	#name : 'StringExtensionsTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Collections-Tests',
+	#package : 'Buoy-Collections-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testCapitalized [ 
 
 	self
@@ -12,7 +13,7 @@ StringExtensionsTest >> testCapitalized [
 		equals: 'MElViN'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testCr [
 
 	self
@@ -20,7 +21,7 @@ StringExtensionsTest >> testCr [
 		equals: (String streamContents: [ :stream | stream cr ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testCrlf [
 
 	self assert: String crlf equals: (String streamContents: [ :stream |
@@ -29,7 +30,7 @@ StringExtensionsTest >> testCrlf [
 				 lf ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testExpandMacros [
 
 	self
@@ -41,13 +42,13 @@ StringExtensionsTest >> testExpandMacros [
 					 lf ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testExpandMacrosSkip [
 
 	self assert: '%<' expandMacros equals: '<'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testExpandMacrosTernary [
 
 	self
@@ -57,7 +58,7 @@ StringExtensionsTest >> testExpandMacrosTernary [
 		equals: 'error'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testExpandMacrosWithArguments [
 
 	self
@@ -69,7 +70,7 @@ StringExtensionsTest >> testExpandMacrosWithArguments [
 		equals: '''Number'': 5'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testFindTokens [
 
 	self
@@ -86,7 +87,7 @@ StringExtensionsTest >> testFindTokens [
 		hasTheSameElementsInTheSameOrderThat: #( 'es' ' ' 'his' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testIncludesSubstring [
 
 	self
@@ -98,7 +99,7 @@ StringExtensionsTest >> testIncludesSubstring [
 		deny: ('kjdsnlksjdf' includesSubstring: 'K')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testIsAllDigits [
 
 	self
@@ -108,7 +109,7 @@ StringExtensionsTest >> testIsAllDigits [
 		deny: '' isAllDigits
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testIsAsciiString [
 
 	self
@@ -117,7 +118,7 @@ StringExtensionsTest >> testIsAsciiString [
 		deny: 'éÀ' isAsciiString
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testLf [
 
 	self
@@ -125,7 +126,7 @@ StringExtensionsTest >> testLf [
 		equals: (String streamContents: [ :stream | stream lf ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testLines [
 
 	| string |
@@ -134,7 +135,7 @@ StringExtensionsTest >> testLines [
 	self assert: string lines equals: #( '1' '2' '3' '4' '5' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testSubstrings [
 
 	self
@@ -142,7 +143,7 @@ StringExtensionsTest >> testSubstrings [
 		assert: '000 234 5' substrings equals: #( '000' '234' '5' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testTab [
 
 	self
@@ -150,7 +151,7 @@ StringExtensionsTest >> testTab [
 		equals: (String streamContents: [ :stream | stream tab ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 StringExtensionsTest >> testWithoutQuoting [
 
 	#( '"foo"' 'foo' '''foo''' 'foo' '"foo''' '"foo''' '''foo"' '''foo"'

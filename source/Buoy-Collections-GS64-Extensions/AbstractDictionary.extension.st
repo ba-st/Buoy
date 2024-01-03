@@ -1,18 +1,18 @@
-Extension { #name : #AbstractDictionary }
+Extension { #name : 'AbstractDictionary' }
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 AbstractDictionary >> associations [
 
 	^ self associationsAsArray
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 AbstractDictionary >> associationsSelect: aBlock [
 
 	^ self selectAssociations: aBlock
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 AbstractDictionary >> at: key ifPresent: aPresentBlock ifAbsent: anAbsentBlock [
 
 	| presentValue |
@@ -20,7 +20,7 @@ AbstractDictionary >> at: key ifPresent: aPresentBlock ifAbsent: anAbsentBlock [
 	^ aPresentBlock cull: presentValue
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 AbstractDictionary >> at: key ifPresent: aBlock ifAbsentPut: anAbsentBlock [
 
 	| presentValue |
@@ -32,13 +32,13 @@ AbstractDictionary >> at: key ifPresent: aBlock ifAbsentPut: anAbsentBlock [
 	^ aBlock cull: presentValue
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 AbstractDictionary >> isDictionary [
 
 	^ true
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 AbstractDictionary class >> newFromPairs: anArray [
 	"Answer an instance of me associating (anArray at: i) to (anArray at: i+1)
 	 for each odd i.  anArray must have an even number of entries."
@@ -49,7 +49,7 @@ AbstractDictionary class >> newFromPairs: anArray [
 	^ newDictionary
 ]
 
-{ #category : #'*Buoy-Collections-GS64-Extensions' }
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 AbstractDictionary >> removeAll [
 
 	^ self removeAllKeys: self keys

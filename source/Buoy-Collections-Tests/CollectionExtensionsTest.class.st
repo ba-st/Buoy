@@ -2,12 +2,13 @@
 I'm a test case for extensions to the collection hierarchy
 "
 Class {
-	#name : #CollectionExtensionsTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Collections-Tests'
+	#name : 'CollectionExtensionsTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Collections-Tests',
+	#package : 'Buoy-Collections-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testAllButFirstDo [
 
 	| total |
@@ -19,7 +20,7 @@ CollectionExtensionsTest >> testAllButFirstDo [
 	self assert: total equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testAllButLastDo [
 
 	| total |
@@ -31,7 +32,7 @@ CollectionExtensionsTest >> testAllButLastDo [
 	self assert: total equals: 0
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 CollectionExtensionsTest >> testComma [
 
 	self
@@ -39,7 +40,7 @@ CollectionExtensionsTest >> testComma [
 		assert: #( 1 2 3 4 ) asSet , #( 2 5 ) equals: #( 1 2 3 4 5 ) asSet
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 CollectionExtensionsTest >> testCopyFirst [
 
 	self
@@ -50,7 +51,7 @@ CollectionExtensionsTest >> testCopyFirst [
 	self should: [ #(a b c d e f) copyFirst: 7 ] raise: Error
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 CollectionExtensionsTest >> testCopyLast [
 
 	self
@@ -61,7 +62,7 @@ CollectionExtensionsTest >> testCopyLast [
 	self should: [ #(a b c d e f) copyLast: 7 ] raise: Error
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 CollectionExtensionsTest >> testCopyNoMoreThanFirst [
 
 	self
@@ -71,7 +72,7 @@ CollectionExtensionsTest >> testCopyNoMoreThanFirst [
 		assert: ( #(a b c d e f) copyNoMoreThanFirst: 20 ) equals: #(a b c d e f)
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 CollectionExtensionsTest >> testCopyNoMoreThanLast [
 
 	self
@@ -82,7 +83,7 @@ CollectionExtensionsTest >> testCopyNoMoreThanLast [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testDetectIfFoundIfNoneWhenNobodyIsFound [
 
 	| wasFound |
@@ -93,7 +94,7 @@ CollectionExtensionsTest >> testDetectIfFoundIfNoneWhenNobodyIsFound [
 	self deny: wasFound
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testDetectIfFoundIfNoneWhenSomethingIsFound [
 
 	| wasFound |
@@ -106,7 +107,7 @@ CollectionExtensionsTest >> testDetectIfFoundIfNoneWhenSomethingIsFound [
 	self assert: wasFound
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testDetectIfFoundIfNoneWhenSomethingIsFoundIgnoringTheFoundObject [
 
 	| wasFound |
@@ -117,7 +118,7 @@ CollectionExtensionsTest >> testDetectIfFoundIfNoneWhenSomethingIsFoundIgnoringT
 	self assert: wasFound
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testDetectIfFoundWhenNobodyIsFound [
 
 	| collection result |
@@ -126,7 +127,7 @@ CollectionExtensionsTest >> testDetectIfFoundWhenNobodyIsFound [
 	self assert: result identicalTo: collection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testDetectIfFoundWhenSomethingIsFound [
 
 	| collection result wasFound |
@@ -140,7 +141,7 @@ CollectionExtensionsTest >> testDetectIfFoundWhenSomethingIsFound [
 		assert: result identicalTo: collection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testDetectIfFoundWhenSomethingIsFoundIgnoringTheFoundObject [
 
 	| wasFound |
@@ -151,7 +152,7 @@ CollectionExtensionsTest >> testDetectIfFoundWhenSomethingIsFoundIgnoringTheFoun
 	self assert: wasFound
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testGroupedBy [
 
 	| grouped |
@@ -162,7 +163,7 @@ CollectionExtensionsTest >> testGroupedBy [
 		assert: (grouped at: false) equals: #( 2 4 )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testIfEmptyIfNotEmptyWhenEmpty [
 
 	| isEmpty |
@@ -171,7 +172,7 @@ CollectionExtensionsTest >> testIfEmptyIfNotEmptyWhenEmpty [
 	self assert: isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testIfEmptyIfNotEmptyWhenNotEmpty [
 
 	| isNotEmpty |
@@ -180,7 +181,7 @@ CollectionExtensionsTest >> testIfEmptyIfNotEmptyWhenNotEmpty [
 	self assert: isNotEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testIfEmptyIfNotEmptyWhenNotEmptyUsingNotEmptyValue [
 
 	| isNotEmpty |
@@ -191,7 +192,7 @@ CollectionExtensionsTest >> testIfEmptyIfNotEmptyWhenNotEmptyUsingNotEmptyValue 
 	self assert: isNotEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testIncludesAll [
 
 	self
@@ -200,7 +201,7 @@ CollectionExtensionsTest >> testIncludesAll [
 		assert: (#( 10 20 30 ) includesAll: #(  ))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testIsDictionary [
 
 	self
@@ -209,7 +210,7 @@ CollectionExtensionsTest >> testIsDictionary [
 		deny: 1 isDictionary
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testIsNotEmpty [
 
 	self
@@ -217,7 +218,7 @@ CollectionExtensionsTest >> testIsNotEmpty [
 		deny: #(  ) isNotEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testMaxUsing [
 
 	self assert: ( #(#(1) #(3 1) #(2)) maxUsing: [ :anArray | anArray first ] ) equals: 3.
@@ -225,14 +226,14 @@ CollectionExtensionsTest >> testMaxUsing [
 	self should: [ #() maxUsing: [ :anArray | anArray first ] ] raise: Error
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testMinUsing [
 
 	self assert: ( #(#(3 1) #(1) #(2)) minUsing: [ :anArray | anArray first ] ) equals: 1.
 	self should: [ #() minUsing: [ :anArray | anArray first ] ] raise: Error
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testNoneSatisfy [
 
 	self
@@ -243,7 +244,7 @@ CollectionExtensionsTest >> testNoneSatisfy [
 		assert: (#(  ) noneSatisfy: [ :x | self fail ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testOrderedCollectionNewWithAll [
 
 	| collection |
@@ -254,7 +255,7 @@ CollectionExtensionsTest >> testOrderedCollectionNewWithAll [
 		assert: ( collection allSatisfy: [ :each | each ] )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testPairsDo [
 
 	| result |
@@ -269,7 +270,7 @@ CollectionExtensionsTest >> testPairsDo [
 		#( '1-fred' '2-charlie' '3-elmer' )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testPrintElementsOn [
 
 	self
@@ -278,10 +279,10 @@ CollectionExtensionsTest >> testPrintElementsOn [
 		equals: '(10 ''hello'')'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testRemoveAll [
 
-	{ Set. OrderedCollection. Bag } do: [ :collectionClass |
+	{ Set. OrderedCollection. Bag . IdentityBag . IdentitySet } do: [ :collectionClass |
 		| collection |
 		collection := collectionClass withAll: #( 1 2 3 1 ).
 		self assert: collection notEmpty.
@@ -289,7 +290,7 @@ CollectionExtensionsTest >> testRemoveAll [
 		self assert: collection isEmpty ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testSelectThenCollectOnBag [
 
 	| numbers evenDoubles |
@@ -300,7 +301,7 @@ CollectionExtensionsTest >> testSelectThenCollectOnBag [
 	self assert: evenDoubles equals: (Bag withAll: #( 4 4 24 32 ))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testSelectThenCollectOnOrderedCollection [
 
 	| numbers evenDoubles |
@@ -313,7 +314,7 @@ CollectionExtensionsTest >> testSelectThenCollectOnOrderedCollection [
 		equals: (OrderedCollection withAll: #( 4 24 4 32 ))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testSelectThenCollectOnSet [
 
 	| numbers evenDoubles |
@@ -324,7 +325,7 @@ CollectionExtensionsTest >> testSelectThenCollectOnSet [
 	self assert: evenDoubles equals: (Set withAll: #( 4 24 32 ))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testSetIntersection [
 
 	self
@@ -334,7 +335,7 @@ CollectionExtensionsTest >> testSetIntersection [
 		assert: (Set new intersection: #( 1 2 3 4 ) asSet) isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testSorted [
 
 	self
@@ -343,7 +344,7 @@ CollectionExtensionsTest >> testSorted [
 		assert: (10 to: 1 by: -2) sorted equals: (2 to: 10 by: 2)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testSplitIndicesDo [
 
 	self
@@ -354,7 +355,7 @@ CollectionExtensionsTest >> testSplitIndicesDo [
 		equals: 's:1 e:3 s:6 e:8 s:11 e:11 '
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CollectionExtensionsTest >> testWithIndexCollect [
 
 	| numbers scaledNumbers |
@@ -366,7 +367,7 @@ CollectionExtensionsTest >> testWithIndexCollect [
 		hasTheSameElementsInTheSameOrderThat: #( 3 4 36 8 80 )
 ]
 
-{ #category : #'tests - copying' }
+{ #category : 'tests - copying' }
 CollectionExtensionsTest >> testWithoutFirst [
 
 	self

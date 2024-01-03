@@ -1,10 +1,11 @@
 Class {
-	#name : #StreamExtensionsTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Collections-Tests'
+	#name : 'StreamExtensionsTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Collections-Tests',
+	#package : 'Buoy-Collections-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 StreamExtensionsTest >> testIsBinary [
 
 	self
