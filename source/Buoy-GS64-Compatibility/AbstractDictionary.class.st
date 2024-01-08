@@ -4,7 +4,8 @@ This version is just a placeholder so we can easily create extension methods to 
 packages.
 "
 Class {
-	#name : #AbstractDictionary,
-	#superclass : #Collection,
-	#category : #'Buoy-GS64-Compatibility'
+	#name : 'AbstractDictionary',
+	#superclass : 'Collection',
+	#category : 'Buoy-GS64-Compatibility',
+	#package : 'Buoy-GS64-Compatibility'
 }

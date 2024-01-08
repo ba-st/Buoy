@@ -5,7 +5,8 @@ This version is just a placeholder so we can easily create extensions methods to
 packages.
 "
 Class {
-	#name : #GsNMethod,
-	#superclass : #Object,
-	#category : #'Buoy-GS64-Compatibility'
+	#name : 'GsNMethod',
+	#superclass : 'Object',
+	#category : 'Buoy-GS64-Compatibility',
+	#package : 'Buoy-GS64-Compatibility'
 }
