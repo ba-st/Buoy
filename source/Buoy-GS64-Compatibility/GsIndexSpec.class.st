@@ -20,7 +20,13 @@ GsIndexSpec >> createIndexesOn: anUnorderedCollection [
 ]
 
 { #category : 'indexing' }
-GsIndexSpec >> equalityIndex: aPath lastElementClass: aType [
+GsIndexSpec >> equalityIndex: aPath lastElementClass: aType options: anIndexOption [
+
+	
+]
+
+{ #category : 'indexing' }
+GsIndexSpec >> identityIndex: aPath options: anIndexOption [
 
 	
 ]
