@@ -8,6 +8,9 @@ packages.
 Class {
 	#name : 'GsQuery',
 	#superclass : 'Object',
+	#instVars : [
+		'results'
+	],
 	#category : 'Buoy-GS64-Compatibility',
 	#package : 'Buoy-GS64-Compatibility'
 }
@@ -18,14 +21,32 @@ GsQuery class >> fromString: aString [
 	^ self new
 ]
 
+{ #category : 'accessing' }
+GsQuery >> do: aBlock [
+
+	^ self queryResult do: aBlock
+]
+
 { #category : 'configuring' }
 GsQuery >> on: anUnorderedCollection [
 
-	
+	results := anUnorderedCollection select: [ :each | each firstName = 'Silvester' ]
 ]
 
 { #category : 'accessing' }
 GsQuery >> queryResult [
 
-	^ { 'Stallone'. 'Stallone'. 'Stallone'. 'Stallone' }
+	^ results
+]
+
+{ #category : 'accessing' }
+GsQuery >> readStream [
+
+	^ self queryResult asArray readStream
+]
+
+{ #category : 'accessing' }
+GsQuery >> size [
+
+	^ self queryResult size
 ]
