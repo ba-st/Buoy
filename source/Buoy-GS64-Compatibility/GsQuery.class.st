@@ -57,8 +57,11 @@ GsQuery >> on: anUnorderedCollection [
 			             each name = 'SDF-1' and: ( each fleet anySatisfy: [ :ship | ship name = 'VF-1D' ] ) ]
 		].
 
-	( queryString includesSubstring: 'firepower' ) ifTrue: [
-		^ results := anUnorderedCollection select: [ :each | each firepower between: 2117 + 1 and: 8000 ] ]
+	( queryString includesSubstring: '2117' ) ifTrue: [
+		^ results := anUnorderedCollection select: [ :each | each firepower between: 2117 + 1 and: 8000 ] ].
+
+	( queryString includesSubstring: '2001' ) ifTrue: [
+		^ results := anUnorderedCollection select: [ :each | each firepower between: 2001 and: 6000 - 1 ] ]
 ]
 
 { #category : 'accessing' }
