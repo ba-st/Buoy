@@ -9,16 +9,29 @@ Class {
 	#name : 'GsQuery',
 	#superclass : 'Object',
 	#instVars : [
-		'results'
+		'results',
+		'queryString'
 	],
 	#category : 'Buoy-GS64-Compatibility',
 	#package : 'Buoy-GS64-Compatibility'
 }
 
 { #category : 'instance creation' }
-GsQuery class >> fromString: aString [
+GsQuery class >> fromString: aString options: anOption [
 
-	^ self new
+	^ self new initializeFromString: aString
+]
+
+{ #category : 'accessing' }
+GsQuery >> asArray [
+
+	^ self queryResult asArray
+]
+
+{ #category : 'accessing' }
+GsQuery >> asSet [
+
+	^ self queryResult asSet
 ]
 
 { #category : 'accessing' }
@@ -27,10 +40,25 @@ GsQuery >> do: aBlock [
 	^ self queryResult do: aBlock
 ]
 
+{ #category : 'initialization' }
+GsQuery >> initializeFromString: aString [
+
+	queryString := aString
+]
+
 { #category : 'configuring' }
 GsQuery >> on: anUnorderedCollection [
 
-	results := anUnorderedCollection select: [ :each | each firstName = 'Silvester' ]
+	( queryString includesSubstring: 'Silvester' ) ifTrue: [
+		^ results := anUnorderedCollection select: [ :each | each firstName = 'Silvester' ] ].
+
+	( queryString includesSubstring: 'SDF-1' ) ifTrue: [
+		^ results := anUnorderedCollection select: [ :each |
+			             each name = 'SDF-1' and: ( each fleet anySatisfy: [ :ship | ship name = 'VF-1D' ] ) ]
+		].
+
+	( queryString includesSubstring: 'firepower' ) ifTrue: [
+		^ results := anUnorderedCollection select: [ :each | each firepower between: 2117 + 1 and: 8000 ] ]
 ]
 
 { #category : 'accessing' }
