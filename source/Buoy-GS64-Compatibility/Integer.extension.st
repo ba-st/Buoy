@@ -1,12 +1,12 @@
-Extension { #name : #Integer }
+Extension { #name : 'Integer' }
 
-{ #category : #'*Buoy-GS64-Compatibility' }
+{ #category : '*Buoy-GS64-Compatibility' }
 Integer >> asHexString [ 
 
 	^ self printStringBase: 16
 ]
 
-{ #category : #'*Buoy-GS64-Compatibility' }
+{ #category : '*Buoy-GS64-Compatibility' }
 Integer >> asHexStringWithLength: minimum [
 
 	^ String streamContents: [ :s |
@@ -17,7 +17,7 @@ Integer >> asHexStringWithLength: minimum [
 			  padded: true ]
 ]
 
-{ #category : #'*Buoy-GS64-Compatibility' }
+{ #category : '*Buoy-GS64-Compatibility' }
 Integer class >> fromStream: aStream [
 
 	^ (NumberParser on: aStream)
@@ -25,7 +25,7 @@ Integer class >> fromStream: aStream [
 		  ifFail: [ ImproperOperation signal ]
 ]
 
-{ #category : #'*Buoy-GS64-Compatibility' }
+{ #category : '*Buoy-GS64-Compatibility' }
 Integer class >> fromString: aString [
 
 	^ (NumberParser on: aString)

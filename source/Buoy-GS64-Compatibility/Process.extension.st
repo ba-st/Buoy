@@ -1,6 +1,6 @@
-Extension { #name : #Process }
+Extension { #name : 'Process' }
 
-{ #category : #'*Buoy-GS64-Compatibility' }
+{ #category : '*Buoy-GS64-Compatibility' }
 Process >> environmentAt: object ifAbsent: block [
 
 	| index |
@@ -8,7 +8,7 @@ Process >> environmentAt: object ifAbsent: block [
 	^ (self psValueAt: index) ifNil: block
 ]
 
-{ #category : #'*Buoy-GS64-Compatibility' }
+{ #category : '*Buoy-GS64-Compatibility' }
 Process >> environmentAt: object put: anotherObject [
 
 	| index |

@@ -8,12 +8,13 @@ This version is just a placeholder so we can easily create extensions methods to
 packages.
 "
 Class {
-	#name : #System,
-	#superclass : #Object,
-	#category : #'Buoy-GS64-Compatibility'
+	#name : 'System',
+	#superclass : 'Object',
+	#category : 'Buoy-GS64-Compatibility',
+	#package : 'Buoy-GS64-Compatibility'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 System class >> commandLineArguments [
 
 	| arguments documentPath |
@@ -24,7 +25,7 @@ System class >> commandLineArguments [
 	^ arguments
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 System class >> timeGmt [
 
 	^ Time millisecondClockValue

@@ -6,7 +6,8 @@ This version is just a placeholder so we can easily create extension methods ref
 in GS64 specific packages.
 "
 Class {
-	#name : #ClassOrganizer,
-	#superclass : #Object,
-	#category : #'Buoy-GS64-Compatibility'
+	#name : 'ClassOrganizer',
+	#superclass : 'Object',
+	#category : 'Buoy-GS64-Compatibility',
+	#package : 'Buoy-GS64-Compatibility'
 }

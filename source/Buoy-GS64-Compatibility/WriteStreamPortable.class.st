@@ -7,11 +7,12 @@ This version is just a placeholder so we can easily create extensions methods to
 packages.
 "
 Class {
-	#name : #WriteStreamPortable,
-	#superclass : #Stream,
+	#name : 'WriteStreamPortable',
+	#superclass : 'Stream',
 	#instVars : [
 		'position',
 		'readLimit'
 	],
-	#category : #'Buoy-GS64-Compatibility'
+	#category : 'Buoy-GS64-Compatibility',
+	#package : 'Buoy-GS64-Compatibility'
 }
