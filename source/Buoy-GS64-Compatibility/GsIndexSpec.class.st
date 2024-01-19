@@ -12,21 +12,3 @@ Class {
 	#category : 'Buoy-GS64-Compatibility',
 	#package : 'Buoy-GS64-Compatibility'
 }
-
-{ #category : 'indexing' }
-GsIndexSpec >> createIndexesOn: anUnorderedCollection [
-
-	
-]
-
-{ #category : 'indexing' }
-GsIndexSpec >> equalityIndex: aPath lastElementClass: aType options: anIndexOption [
-
-	
-]
-
-{ #category : 'indexing' }
-GsIndexSpec >> identityIndex: aPath options: anIndexOption [
-
-	
-]

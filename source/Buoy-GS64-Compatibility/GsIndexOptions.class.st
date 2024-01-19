@@ -11,27 +11,3 @@ Class {
 	#category : 'Buoy-GS64-Compatibility',
 	#package : 'Buoy-GS64-Compatibility'
 }
-
-{ #category : 'options' }
-GsIndexOptions class >> btreePlusIndex [
-
-	^ self new
-]
-
-{ #category : 'options' }
-GsIndexOptions class >> optimizedComparison [
-
-	^ self new
-]
-
-{ #category : 'options' }
-GsIndexOptions class >> reducedConflict [
-
-	^ self new
-]
-
-{ #category : 'combining' }
-GsIndexOptions >> + anOption [
-
-	^ self
-]

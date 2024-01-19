@@ -10,21 +10,3 @@ Class {
 	#category : 'Buoy-GS64-Compatibility',
 	#package : 'Buoy-GS64-Compatibility'
 }
-
-{ #category : 'accessing' }
-GsQueryOptions class >> cacheQueryResult [
-
-	^ self new
-]
-
-{ #category : 'accessing' }
-GsQueryOptions class >> default [
-
-	^ self new
-]
-
-{ #category : 'combining' }
-GsQueryOptions >> + anOption [
-
-	^ self
-]
