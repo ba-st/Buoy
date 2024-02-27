@@ -223,14 +223,14 @@ CollectionExtensionsTest >> testMaxUsing [
 
 	self assert: ( #(#(1) #(3 1) #(2)) maxUsing: [ :anArray | anArray first ] ) equals: 3.
 	
-	self should: [ #() maxUsing: [ :anArray | anArray first ] ] raise: Error
+	self should: [ #() maxUsing: [ :anArray | anArray first ] ] raise: CollectionIsEmpty
 ]
 
 { #category : 'tests' }
 CollectionExtensionsTest >> testMinUsing [
 
 	self assert: ( #(#(3 1) #(1) #(2)) minUsing: [ :anArray | anArray first ] ) equals: 1.
-	self should: [ #() minUsing: [ :anArray | anArray first ] ] raise: Error
+	self should: [ #() minUsing: [ :anArray | anArray first ] ] raise: CollectionIsEmpty
 ]
 
 { #category : 'tests' }

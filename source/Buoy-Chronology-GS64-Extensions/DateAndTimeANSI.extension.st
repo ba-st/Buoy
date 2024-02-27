@@ -1,18 +1,18 @@
-Extension { #name : #DateAndTimeANSI }
+Extension { #name : 'DateAndTimeANSI' }
 
-{ #category : #'*Buoy-Chronology-GS64-Extensions' }
+{ #category : '*Buoy-Chronology-GS64-Extensions' }
 DateAndTimeANSI >> monthIndex [
 
 	^ self month
 ]
 
-{ #category : #'*Buoy-Chronology-GS64-Extensions' }
+{ #category : '*Buoy-Chronology-GS64-Extensions' }
 DateAndTimeANSI >> printHMSOn: aStream [
 
 	self printHMSOn:  aStream separatedBy: $:
 ]
 
-{ #category : #'*Buoy-Chronology-GS64-Extensions' }
+{ #category : '*Buoy-Chronology-GS64-Extensions' }
 DateAndTimeANSI >> printHMSOn: aStream separatedBy: separator [
 
 	aStream
@@ -23,7 +23,7 @@ DateAndTimeANSI >> printHMSOn: aStream separatedBy: separator [
 		nextPutAll: (self second asInteger printStringLength: 2 padded: true)
 ]
 
-{ #category : #'*Buoy-Chronology-GS64-Extensions' }
+{ #category : '*Buoy-Chronology-GS64-Extensions' }
 DateAndTimeANSI >> printYMDOn: aStream [
 
 	aStream
@@ -34,13 +34,13 @@ DateAndTimeANSI >> printYMDOn: aStream [
 		nextPutAll: (self dayOfMonth printStringLength: 2 padded: true)
 ]
 
-{ #category : #'*Buoy-Chronology-GS64-Extensions' }
+{ #category : '*Buoy-Chronology-GS64-Extensions' }
 DateAndTimeANSI class >> unixEpoch [
 
 	^ self posixSeconds: 0 offset: Duration zero
 ]
 
-{ #category : #'*Buoy-Chronology-GS64-Extensions' }
+{ #category : '*Buoy-Chronology-GS64-Extensions' }
 DateAndTimeANSI class >> year: year month: month day: day [
 	"Return a DateAndTime, midnight local time"
 
