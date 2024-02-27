@@ -1,10 +1,11 @@
 Class {
-	#name : #DateAndTimeExtensionsTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Chronology-Tests'
+	#name : 'DateAndTimeExtensionsTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Chronology-Tests',
+	#package : 'Buoy-Chronology-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 DateAndTimeExtensionsTest >> testPrintHMS [
 
 	| dateAndTime |
@@ -21,7 +22,7 @@ DateAndTimeExtensionsTest >> testPrintHMS [
 		equals: '04:06:01'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DateAndTimeExtensionsTest >> testPrintYMD [
 
 	| dateAndTime |

@@ -92,6 +92,12 @@ Collection >> detect: aBlock ifFound: foundBlock ifNone: exceptionBlock [
 ]
 
 { #category : '*Buoy-Collections-GS64-Extensions' }
+Collection >> errorEmptyCollection [
+
+	CollectionIsEmpty signal: 'Collection is empty'
+]
+
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 Collection >> fillFrom: aCollection with: aBlock [
 	"Private.
 	Evaluate aBlock with each of aCollections's elements as the argument.
