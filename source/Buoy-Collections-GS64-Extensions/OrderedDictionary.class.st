@@ -83,6 +83,16 @@ OrderedDictionary class >> newFromPairs: aSequenceableCollection [
 	^ newDictionary
 ]
 
+{ #category : 'STON' }
+OrderedDictionary class >> fromSton: stonReader [
+
+	| dictionary |
+	dictionary := self new.
+	stonReader parseMapDo: [ :key :value |
+		dictionary at: key put: value ].
+	^ dictionary
+]
+
 { #category : 'comparing' }
 OrderedDictionary >> = anObject [
 	self == anObject
@@ -556,6 +566,13 @@ OrderedDictionary >> select: aBlock [
 { #category : 'accessing' }
 OrderedDictionary >> size [
 	^ dictionary size
+]
+
+{ #category : 'STON' }
+OrderedDictionary >> stonOn: stonWriter [
+	stonWriter
+		writeObject: self 
+		do: [ stonWriter encodeMap: self ]
 ]
 
 { #category : 'printing' }

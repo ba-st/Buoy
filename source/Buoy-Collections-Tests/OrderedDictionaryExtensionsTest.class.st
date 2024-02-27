@@ -1082,3 +1082,12 @@ OrderedDictionaryExtensionsTest >> testValuesDo [
 			should: [:block | dictionary valuesDo: block]
 			enumerate: (self orderedValuesFirst: i)]
 ]
+
+{ #category : 'tests - STON' }
+OrderedDictionaryExtensionsTest >> testSTONSerializationAndMaterialization [
+	| dictionary string |
+
+	dictionary := self dictionaryWithOrderedAssociations.
+	string := STON toString: dictionary.
+	self assertDictionary: dictionary equals: (STON fromString: string)
+]
