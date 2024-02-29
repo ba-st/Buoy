@@ -1,11 +1,10 @@
 Class {
-	#name : 'DateExtensionsTest',
-	#superclass : 'TestCase',
-	#category : 'Buoy-Chronology-Tests',
-	#package : 'Buoy-Chronology-Tests'
+	#name : #DateExtensionsTest,
+	#superclass : #TestCase,
+	#category : 'Buoy-Chronology-Tests'
 }
 
-{ #category : 'tests' }
+{ #category : #tests }
 DateExtensionsTest >> testAsDateAndTime [
 
 	| date dateAndTime |
@@ -21,7 +20,7 @@ DateExtensionsTest >> testAsDateAndTime [
 		assert: dateAndTime second isZero
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 DateExtensionsTest >> testCreation [
 
 	| date |

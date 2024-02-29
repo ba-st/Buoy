@@ -1,11 +1,10 @@
 Class {
-	#name : 'NumberChronologyExtensionsTest',
-	#superclass : 'TestCase',
-	#category : 'Buoy-Chronology-Tests',
-	#package : 'Buoy-Chronology-Tests'
+	#name : #NumberChronologyExtensionsTest,
+	#superclass : #TestCase,
+	#category : 'Buoy-Chronology-Tests'
 }
 
-{ #category : 'tests' }
+{ #category : #tests }
 NumberChronologyExtensionsTest >> testDays [
 
 	self
@@ -13,7 +12,7 @@ NumberChronologyExtensionsTest >> testDays [
 		assert: 2 days equals: (Duration days: 2)
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 NumberChronologyExtensionsTest >> testHours [
 
 	self
@@ -21,7 +20,7 @@ NumberChronologyExtensionsTest >> testHours [
 		assert: 2 hours equals: (Duration hours: 2)
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 NumberChronologyExtensionsTest >> testMilliSeconds [
 
 	self
@@ -29,7 +28,7 @@ NumberChronologyExtensionsTest >> testMilliSeconds [
 		assert: 2000 milliSeconds equals: 2 seconds
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 NumberChronologyExtensionsTest >> testSeconds [
 
 	self

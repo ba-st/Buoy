@@ -1,6 +1,6 @@
-Extension { #name : 'DateAndTime' }
+Extension { #name : #DateAndTime }
 
-{ #category : '*Buoy-Chronology-GS64-Extensions' }
+{ #category : #'*Buoy-Chronology-GS64-Extensions' }
 DateAndTime >> asDateAndTime [
 
 	^ self

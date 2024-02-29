@@ -1,11 +1,18 @@
 Class {
-	#name : 'DurationChronologyExtensionsTest',
-	#superclass : 'TestCase',
-	#category : 'Buoy-Chronology-Tests',
-	#package : 'Buoy-Chronology-Tests'
+	#name : #DurationChronologyExtensionsTest,
+	#superclass : #TestCase,
+	#category : #'Buoy-Chronology-Tests'
 }
 
-{ #category : 'tests' }
+{ #category : #tests }
+DurationChronologyExtensionsTest >> testIsZero [
+
+	self
+		assert: 0 seconds isZero;
+		deny: 1 second isZero
+]
+
+{ #category : #tests }
 DurationChronologyExtensionsTest >> testTotalSeconds [
 
 	self assert: 0 seconds totalSeconds equals: 0.
@@ -17,11 +24,20 @@ DurationChronologyExtensionsTest >> testTotalSeconds [
 	self assert: 1 second negated totalSeconds equals: -1
 ]
 
-{ #category : 'tests' }
+{ #category : #tests }
 DurationChronologyExtensionsTest >> testWait [
 
 	| ms |
 
 	ms := Time millisecondsToRun: [ 2.1 seconds wait ].
 	self assert: ms >= 2100
+]
+
+{ #category : #tests }
+DurationChronologyExtensionsTest >> testWholeSeconds [
+
+	self
+		assert: 1.002003004 seconds wholeMilliseconds equals: 2;
+		assert: 1.002003004 seconds wholeMicroseconds equals: 3;
+		assert: 1.002003004 seconds wholeNanoseconds equals: 4
 ]
