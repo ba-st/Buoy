@@ -6,6 +6,14 @@ Class {
 }
 
 { #category : 'tests' }
+DurationChronologyExtensionsTest >> testIsZero [
+
+	self
+		assert: 0 seconds isZero;
+		deny: 1 second isZero
+]
+
+{ #category : 'tests' }
 DurationChronologyExtensionsTest >> testTotalSeconds [
 
 	self assert: 0 seconds totalSeconds equals: 0.
@@ -24,4 +32,13 @@ DurationChronologyExtensionsTest >> testWait [
 
 	ms := Time millisecondsToRun: [ 2.1 seconds wait ].
 	self assert: ms >= 2100
+]
+
+{ #category : 'tests' }
+DurationChronologyExtensionsTest >> testWholeSeconds [
+
+	self
+		assert: 1.002003004 seconds wholeMilliseconds equals: 2;
+		assert: 1.002003004 seconds wholeMicroseconds equals: 3;
+		assert: 1.002003004 seconds wholeNanoseconds equals: 4
 ]

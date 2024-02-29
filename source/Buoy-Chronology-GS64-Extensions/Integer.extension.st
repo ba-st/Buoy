@@ -13,18 +13,6 @@ Integer >> days [
 ]
 
 { #category : '*Buoy-Chronology-GS64-Extensions' }
-Integer >> hour [
-
- 	^ self hours
-]
-
-{ #category : '*Buoy-Chronology-GS64-Extensions' }
-Integer >> hours [
-
- 	^ Duration hours: self
-]
-
-{ #category : '*Buoy-Chronology-GS64-Extensions' }
 Integer >> milliSecond [
 
 	^ self milliSeconds
@@ -34,16 +22,4 @@ Integer >> milliSecond [
 Integer >> milliSeconds [
 
  	^ Duration milliSeconds: self
-]
-
-{ #category : '*Buoy-Chronology-GS64-Extensions' }
-Integer >> minute [
-
- 	^ self minutes
-]
-
-{ #category : '*Buoy-Chronology-GS64-Extensions' }
-Integer >> minutes [
-
- 	^ Duration minutes: self
 ]
