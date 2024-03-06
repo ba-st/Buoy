@@ -23,6 +23,7 @@ Some examples
 ### `Collection` extensions for GS64
 
 - `anyOne` is just an alias of `any`
+- `asOrderedDictionary` creates an `OrderedDictionary` from the receiver.
 - `collect:as:` evaluates a block with each of the receiver's elements as the
   argument collecting the result into an instance of the argument class.
 - `count:` counts the number of elements evaluating true for the argument block.
@@ -30,13 +31,20 @@ Some examples
   condition block. If no elements match does nothing.
 - `detect:ifFound:ifNone:` evaluates an action block if any of the elements match
   the condition block. If no elements match evaluates the fail block.
+- `groupedBy:` returns a dictionary using as grouping key the result of
+  evaluating the argument block.
 - `ifEmpty:ifNotEmpty:` evaluates one of two blocks depending on the collection emptiness.
+- `includesAll:` evaluates to true if the receiver includes all the objects in
+  the argument.
+- `isNotEmpty` is just an alias of `notEmpty`
+- `isSequenceable` evaluates to true if the collection is sequenceable
 - `noneSatisfy:` evaluates to true if no one in the collection satisfies the condition.
 - `printElementsOn:` prints the elements in the collection to a string.
 - `removeAll` removes all elements of the receiver.
 - `select:thenCollect:` filters the elements in the receiver using the condition
   block, collecting after the results evaluating the action block.
 - `sorted` returns a copy of the collection sorted.
+- `sorted:` returns a copy of the collection sorted according to the block.
 
 ## `SequenceableCollection` extensions
 
@@ -87,10 +95,15 @@ Some examples
 
 ### `SequenceableCollection` extensions for GS64
 
+- `allButFirstDo:` evaluates the block over all the elements except the first one.
+- `allButLastDo:` evaluates the block over all the elements except the last one.
+- `atRandom` returns an element of the receiver at a random position
 - `copyAfter:` returns a copy of the receiver after the first occurrence
   of the argument up to the end, or empty if no element matches.
 - `endsWith:` returns true if the argument is a suffix of the receiver.
 - `pairsDo:` evaluates the block for each pair of elements in the receiver.
+- `withIndexCollect:` collects the result of evaluating the block with both each
+  element and its index.
 - `writeStream` returns a write stream over the receiver.
 
 ## `Dictionary` extensions for GS64
@@ -120,13 +133,19 @@ These methods interpolate the receiver pattern using the provided arguments:
 - `<N?trueString:falseString>` is replaced by `trueString` or `falseString`
   depending on the boolean provided in the nth argument.
 
+- `capitalized` returns a copy of the receiver with the first letter in uppercase.
 - `findTokens:` returns a collection of the substrings between the delimiters
   passed as argument.
 - `includesSubstring:` returns true if the receiver includes the argument.
 - `isAllDigits` returns true if all the characters are digits.
 - `lines` returns a collection of the lines in the receiver.
 - `linesDo:` iterates over the lines in the receiver.
+- `substrings` is just an alias of `subStrings`
 - `withoutQuoting` returns a copy of the receiver trimming any possible quotes.
+
+## Set extensions for GS64
+
+- `intersection:` returns the intersection between the receiver and the argument.
 
 ## Circular Iterator
 

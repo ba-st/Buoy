@@ -1,6 +1,6 @@
 # Namespaces
 
-A namespace is responsible of binding a set of symbols to objects of various
+A namespace is responsible for binding a set of symbols to objects of various
 kinds, so that these objects may be referred to by name.
 
 You can instantiate a namespace and start binding names to any kind of object:
