@@ -13,5 +13,5 @@ and send in the class `initialize` message one of the following messages:
 - `makeInstancesInvariant`
 - `makeInstancesNonPersistent`
 
-This will configure the options as class properties in Pharo, which will then be used by the 
-Tonel Writer to set these options to the metadata.
+This will configure the options as class properties in Pharo, which will then be
+used by the Tonel Writer to set these options to the metadata.
