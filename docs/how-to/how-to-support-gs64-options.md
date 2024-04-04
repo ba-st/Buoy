@@ -7,7 +7,7 @@ Rowan has support to specify these options using the Tonel format
 by filling the `gs_options` metadata in the class creation section. However,
 Pharo will be default remove this metadata when committing code, which loses these
 options. To avoid this behavior and retain the options, load the `Tool` group
-and send in the class `initialize` message one of the following messages:
+and send in a post load script one of the following messages to the class:
 
 - `makeInstancesDbTransient`
 - `makeInstancesInvariant`
