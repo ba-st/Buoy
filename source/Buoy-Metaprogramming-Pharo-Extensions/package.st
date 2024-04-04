@@ -1,1 +1,1 @@
-Package { #name : #'Buoy-Metaprogramming-Pharo-Extensions' }
+Package { #name : 'Buoy-Metaprogramming-Pharo-Extensions' }
