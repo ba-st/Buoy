@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Load Image and Run Tests
-        uses: 'ba-st-actions/gs64-ci@v2
+        uses: ba-st-actions/gs64-ci@v2
         with:
           project_name: 'Buoy'
           run_tests: 'true'
@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Load Image and Run Tests
-        uses: 'ba-st-actions/gs64-ci@v3
+        uses: ba-st-actions/gs64-ci@v3
         with:
           project_name: 'Buoy'
           run_tests: 'true'
