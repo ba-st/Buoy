@@ -5,19 +5,23 @@ on:
   - workflow_dispatch
 
 jobs:
-  unit-tests:
+  unit-tests-3.7.0:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        gs64-ci:
-          - v2 #GS64 3.7.0
-          - v3 #GS64 3.7.1
-    name: GS64 Unit Tests
+    name: GS64 3.7.0 Unit Tests
     steps:
       - uses: actions/checkout@v4
       - name: Load Image and Run Tests
-        uses: 'ba-st-actions/gs64-ci@${{ matrix.gs64-ci }}'
+        uses: 'ba-st-actions/gs64-ci@v2
+        with:
+          project_name: 'Buoy'
+          run_tests: 'true'
+  unit-tests-3.7.1:
+    runs-on: ubuntu-latest
+    name: GS64 3.7.1 Unit Tests
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load Image and Run Tests
+        uses: 'ba-st-actions/gs64-ci@v3
         with:
           project_name: 'Buoy'
           run_tests: 'true'
