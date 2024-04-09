@@ -7,11 +7,17 @@ on:
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        gs64-ci:
+          - v2 #GS64 3.7.0
+          - v3 #GS64 3.7.1
     name: GS64 Unit Tests
     steps:
       - uses: actions/checkout@v4
       - name: Load Image and Run Tests
-        uses: ba-st-actions/gs64-ci@v2
+        uses: ba-st-actions/gs64-ci@${{ matrix.gs64-ci }}
         with:
           project_name: 'Buoy'
           run_tests: 'true'
