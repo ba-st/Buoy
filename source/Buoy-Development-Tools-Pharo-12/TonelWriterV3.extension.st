@@ -1,6 +1,6 @@
 Extension { #name : 'TonelWriterV3' }
 
-{ #category : '*Buoy-Development-Tools' }
+{ #category : '*Buoy-Development-Tools-Pharo-12' }
 TonelWriterV3 >> typeClassDefinitionOf: aClassDefinition [
 
 	| definition |
