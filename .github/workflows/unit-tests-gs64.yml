@@ -5,7 +5,7 @@ on:
   - workflow_dispatch
 
 jobs:
-  unit-tests-3.7.0:
+  unit-tests-3_7_0:
     runs-on: ubuntu-latest
     name: GS64 3.7.0 Unit Tests
     steps:
@@ -15,7 +15,7 @@ jobs:
         with:
           project_name: 'Buoy'
           run_tests: 'true'
-  unit-tests-3.7.1:
+  unit-tests-3_7_1:
     runs-on: ubuntu-latest
     name: GS64 3.7.1 Unit Tests
     steps:

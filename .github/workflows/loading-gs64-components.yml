@@ -5,7 +5,7 @@ on:
   - workflow_dispatch
 
 jobs:
-   component-loading-3.7.0:
+   component-loading-3_7_0:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -21,7 +21,7 @@ jobs:
         with:
           project_name: 'Buoy'
           load_spec: 'Buoy-${{ matrix.load-spec }}'
-   component-loading-3.7.1:
+   component-loading-3_7_1:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
