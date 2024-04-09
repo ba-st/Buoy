@@ -11,8 +11,8 @@ jobs:
       fail-fast: false
       matrix:
         gs64-ci:
-          - v2 #GS64 3.7.0
-          - v3 #GS64 3.7.1
+          - ba-st-actions/gs64-ci@v2 #GS64 3.7.0
+          - ba-st-actions/gs64-ci@v3 #GS64 3.7.1
         load-spec:
           - Dependent-SUnit-Extensions
           - Deployment
@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Load component in image
-        uses: ba-st-actions/gs64-ci@${{ matrix.gs64-ci }}
+        uses: ${{ matrix.gs64-ci }}
         with:
           project_name: 'Buoy'
           load_spec: 'Buoy-${{ matrix.load-spec }}'

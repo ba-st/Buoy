@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Load Image and Run Tests
-        uses: ba-st-actions/gs64-ci@${{ matrix.gs64-ci }}
+        uses: 'ba-st-actions/gs64-ci@${{ matrix.gs64-ci }}'
         with:
           project_name: 'Buoy'
           run_tests: 'true'
