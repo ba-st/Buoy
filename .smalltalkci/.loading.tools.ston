@@ -4,7 +4,8 @@ SmalltalkCISpec {
       #baseline : 'Buoy',
       #directory : '../source',
       #load : [ 'Tools' ],
-      #platforms : [  #pharo ]
+      #platforms : [  #pharo ],
+      #failOn : [ #Warning ]
     }
   ],
   #testing : {

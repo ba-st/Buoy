@@ -30,7 +30,14 @@ BaselineOfBuoy >> baseline: spec [
 				group: 'CI' with: 'Tests';
 				group: 'Development' with: #('Tools' 'Tests');
 				group: 'default' with: 'Development'
-			]
+			].
+	spec for: #'pharo12.x' do: [
+		spec
+			package: 'Buoy-Development-Tools-Pharo-12'
+				with: [ spec requires: 'Buoy-Development-Tools' ];
+			group: 'Tools' with: 'Buoy-Development-Tools-Pharo-12'
+	]
+			
 ]
 
 { #category : #baselines }
