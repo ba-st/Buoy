@@ -12,8 +12,8 @@ Instance Variables
 
 "
 Class {
-	#name : #BinarySearchAlgorithm,
-	#superclass : #Object,
+	#name : 'BinarySearchAlgorithm',
+	#superclass : 'Object',
 	#instVars : [
 		'start',
 		'stop',
@@ -21,16 +21,17 @@ Class {
 		'collection',
 		'searchKey'
 	],
-	#category : #'Buoy-Collections'
+	#category : 'Buoy-Collections',
+	#package : 'Buoy-Collections'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 BinarySearchAlgorithm class >> defaultStartIndex [
 
 	^ 1
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 BinarySearchAlgorithm class >> searchFor: aKey in: aCollection from: theStart to: theEnd using: aMonadycBlock [
 
 	^ self new
@@ -41,7 +42,7 @@ BinarySearchAlgorithm class >> searchFor: aKey in: aCollection from: theStart to
 		using: aMonadycBlock
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 BinarySearchAlgorithm class >> searchFor: aKey in: aCollection from: startIndex using: aMonadycBlock [
 
 	^ self
@@ -52,7 +53,7 @@ BinarySearchAlgorithm class >> searchFor: aKey in: aCollection from: startIndex 
 		using: aMonadycBlock
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 BinarySearchAlgorithm class >> searchFor: aKey in: aCollection using: aMonadycBlock [
 
 	^ self
@@ -62,7 +63,7 @@ BinarySearchAlgorithm class >> searchFor: aKey in: aCollection using: aMonadycBl
 		using: aMonadycBlock
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 BinarySearchAlgorithm >> execute [
 
 	| middleIndex lowIndex highIndex |
@@ -78,7 +79,7 @@ BinarySearchAlgorithm >> execute [
 	^ lowIndex
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BinarySearchAlgorithm >> initializeSearchFor: aKey in: aCollection from: theStart to: theEnd using: aMonadycBlock [
 
 	start := theStart.

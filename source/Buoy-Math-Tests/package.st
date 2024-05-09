@@ -1,1 +1,1 @@
-Package { #name : #'Buoy-Math-Tests' }
+Package { #name : 'Buoy-Math-Tests' }

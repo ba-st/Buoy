@@ -2,22 +2,23 @@
 I'm a HashCombinator that uses bitXor: as the operation combinator.
 "
 Class {
-	#name : #BitwiseExclusiveDisjunctionHashCombinator,
-	#superclass : #HashCombinator,
+	#name : 'BitwiseExclusiveDisjunctionHashCombinator',
+	#superclass : 'HashCombinator',
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : #'Buoy-Comparison'
+	#category : 'Buoy-Comparison',
+	#package : 'Buoy-Comparison'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 BitwiseExclusiveDisjunctionHashCombinator class >> new [
 
 	uniqueInstance ifNil: [ uniqueInstance := super new ].
 	^ uniqueInstance
 ]
 
-{ #category : #combining }
+{ #category : 'combining' }
 BitwiseExclusiveDisjunctionHashCombinator >> combine: acumulatedHashValue with: hashValue [
 
 	^ acumulatedHashValue bitXor: hashValue

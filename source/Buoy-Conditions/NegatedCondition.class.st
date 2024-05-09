@@ -12,27 +12,28 @@ Behaves like:
 
 "
 Class {
-	#name : #NegatedCondition,
-	#superclass : #Condition,
+	#name : 'NegatedCondition',
+	#superclass : 'Condition',
 	#instVars : [
 		'condition'
 	],
-	#category : 'Buoy-Conditions'
+	#category : 'Buoy-Conditions',
+	#package : 'Buoy-Conditions'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 NegatedCondition class >> with: aCondition [
 
 	^ self new initializeWith: aCondition 
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 NegatedCondition >> initializeWith: aCondition [
 
 	condition := aCondition
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 NegatedCondition >> isSatisfiedBy: aValue [
 	
 	^ (condition isSatisfiedBy: aValue) not

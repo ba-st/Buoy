@@ -1,6 +1,6 @@
-Extension { #name : #Integer }
+Extension { #name : 'Integer' }
 
-{ #category : #'*Buoy-Math-Extensions' }
+{ #category : '*Buoy-Math-Extensions' }
 Integer >> adaptToInteger: anInteger andSend: selector [
 
 	^ self perform: selector with: anInteger

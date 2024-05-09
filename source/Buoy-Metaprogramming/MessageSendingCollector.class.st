@@ -1,16 +1,17 @@
 Class {
-	#name : #MessageSendingCollector,
-	#superclass : #Object,
-	#category : 'Buoy-Metaprogramming'
+	#name : 'MessageSendingCollector',
+	#superclass : 'Object',
+	#category : 'Buoy-Metaprogramming',
+	#package : 'Buoy-Metaprogramming'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 MessageSendingCollector >> filterBlock [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MessageSendingCollector >> matchingSelectorsCollect: aTransformationBlock [
 
 	^ self receiver class allSelectors asSortedCollection
@@ -18,13 +19,13 @@ MessageSendingCollector >> matchingSelectorsCollect: aTransformationBlock [
 		thenCollect: aTransformationBlock
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 MessageSendingCollector >> receiver [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 MessageSendingCollector >> value [
 
 	^ self subclassResponsibility

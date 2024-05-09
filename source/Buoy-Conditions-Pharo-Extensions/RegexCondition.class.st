@@ -10,27 +10,28 @@ RegexCondition matching: 'I...'
 For more examples, besides the provided test, check Regular expressions framework documentation on Pharo help.
 "
 Class {
-	#name : #RegexCondition,
-	#superclass : #Condition,
+	#name : 'RegexCondition',
+	#superclass : 'Condition',
 	#instVars : [
 		'pattern'
 	],
-	#category : #'Buoy-Conditions-Pharo-Extensions'
+	#category : 'Buoy-Conditions-Pharo-Extensions',
+	#package : 'Buoy-Conditions-Pharo-Extensions'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 RegexCondition class >> matching: aPattern [
 
 	^ self new initializeMatching: aPattern
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 RegexCondition >> initializeMatching: aPattern [
 
 	pattern := aPattern asRegex
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 RegexCondition >> isSatisfiedBy: aString [
 
 	^ pattern matches: aString

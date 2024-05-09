@@ -1,13 +1,14 @@
 Class {
-	#name : #LanguagePlatformTest,
-	#superclass : #TestCase,
+	#name : 'LanguagePlatformTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'variableForTesting'
 	],
-	#category : #'Buoy-Metaprogramming-Tests'
+	#category : 'Buoy-Metaprogramming-Tests',
+	#package : 'Buoy-Metaprogramming-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 LanguagePlatformTest >> testAtInstanceVariableNamedOnPut [
 
 	self assert: variableForTesting isNil.
@@ -17,7 +18,7 @@ LanguagePlatformTest >> testAtInstanceVariableNamedOnPut [
 	self assert: variableForTesting equals: 8
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LanguagePlatformTest >> testForkNamedAt [
 
 	| wasEvaluated semaphore |
@@ -35,7 +36,7 @@ LanguagePlatformTest >> testForkNamedAt [
 	self assert: wasEvaluated
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LanguagePlatformTest >> testGlobalNamedIfAbsent [
 
 	| sentinel |
@@ -53,7 +54,7 @@ LanguagePlatformTest >> testGlobalNamedIfAbsent [
 		identicalTo: sentinel
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LanguagePlatformTest >> testGlobalNamedIfPresentIfAbsent [
 
 	| sentinel |
@@ -75,7 +76,7 @@ LanguagePlatformTest >> testGlobalNamedIfPresentIfAbsent [
 		identicalTo: sentinel
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LanguagePlatformTest >> testIncludesGlobalNamed [
 
 	self
@@ -85,7 +86,7 @@ LanguagePlatformTest >> testIncludesGlobalNamed [
 					 #AnImplausibleGlobalName)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LanguagePlatformTest >> testOSEnvironment [
 
 	| os variableName isAbsent |
@@ -113,7 +114,7 @@ LanguagePlatformTest >> testOSEnvironment [
 	self assert: isAbsent
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LanguagePlatformTest >> testOSLineEnding [
 
 	self

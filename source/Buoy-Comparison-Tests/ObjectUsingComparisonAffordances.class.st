@@ -2,22 +2,23 @@
 I'm an example used for testing purposes
 "
 Class {
-	#name : #ObjectUsingComparisonAffordances,
-	#superclass : #Object,
+	#name : 'ObjectUsingComparisonAffordances',
+	#superclass : 'Object',
 	#instVars : [
 		'first',
 		'second'
 	],
-	#category : #'Buoy-Comparison-Tests'
+	#category : 'Buoy-Comparison-Tests',
+	#package : 'Buoy-Comparison-Tests'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 ObjectUsingComparisonAffordances class >> with: anInteger and: anInteger2 [
 
 	^ self new initializeWith: anInteger and: anInteger2
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 ObjectUsingComparisonAffordances >> = anObject [
 
 	^ self equalityChecker
@@ -25,25 +26,25 @@ ObjectUsingComparisonAffordances >> = anObject [
 		checkAgainst: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ObjectUsingComparisonAffordances >> first [
 	^ first
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 ObjectUsingComparisonAffordances >> hash [
 
 	^ self equalityHashCombinator combineHashOf: first with: second
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ObjectUsingComparisonAffordances >> initializeWith: anInteger and: anInteger2 [
 
 	first := anInteger.
 	second := anInteger2
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ObjectUsingComparisonAffordances >> second [
 	^ second
 ]

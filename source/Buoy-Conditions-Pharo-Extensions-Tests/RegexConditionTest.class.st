@@ -1,10 +1,11 @@
 Class {
-	#name : #RegexConditionTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Conditions-Pharo-Extensions-Tests'
+	#name : 'RegexConditionTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Conditions-Pharo-Extensions-Tests',
+	#package : 'Buoy-Conditions-Pharo-Extensions-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 RegexConditionTest >> testIsSatisfied [
 
 	| condition |

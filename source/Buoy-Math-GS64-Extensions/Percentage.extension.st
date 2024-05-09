@@ -1,6 +1,6 @@
-Extension { #name : #Percentage }
+Extension { #name : 'Percentage' }
 
-{ #category : #'*Buoy-Math-GS64-Extensions' }
+{ #category : '*Buoy-Math-GS64-Extensions' }
 Percentage >> printOn: stream [
 
 	super printOn: stream.

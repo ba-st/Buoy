@@ -1,1 +1,1 @@
-Package { #name : #'Buoy-Conditions-Pharo-Extensions-Tests' }
+Package { #name : 'Buoy-Conditions-Pharo-Extensions-Tests' }

@@ -1,1 +1,1 @@
-Package { #name : #'Buoy-Dynamic-Binding-Tests' }
+Package { #name : 'Buoy-Dynamic-Binding-Tests' }

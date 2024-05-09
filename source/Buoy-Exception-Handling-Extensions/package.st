@@ -1,1 +1,1 @@
-Package { #name : #'Buoy-Exception-Handling-Extensions' }
+Package { #name : 'Buoy-Exception-Handling-Extensions' }

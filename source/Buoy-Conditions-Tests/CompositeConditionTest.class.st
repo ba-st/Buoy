@@ -1,10 +1,11 @@
 Class {
-	#name : #CompositeConditionTest,
-	#superclass : #TestCase,
-	#category : 'Buoy-Conditions-Tests'
+	#name : 'CompositeConditionTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Conditions-Tests',
+	#package : 'Buoy-Conditions-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeConditionTest >> testAndCompositionShortcut [
 
 	| betweenZeroAndTwo |
@@ -17,7 +18,7 @@ CompositeConditionTest >> testAndCompositionShortcut [
 		deny: (betweenZeroAndTwo isSatisfiedBy: 2)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeConditionTest >> testOrCompositionShortcut [
 
 	| oneOrTwo |
@@ -30,7 +31,7 @@ CompositeConditionTest >> testOrCompositionShortcut [
 		deny: (oneOrTwo isSatisfiedBy: 3)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeConditionTest >> testSatisfyingAnyOfManyConditions [
 
 	| condition |
@@ -50,7 +51,7 @@ CompositeConditionTest >> testSatisfyingAnyOfManyConditions [
 		deny: (condition isSatisfiedBy: 9)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeConditionTest >> testSatisfyingAnyOfTwoConditions [
 
 	| condition |
@@ -65,7 +66,7 @@ CompositeConditionTest >> testSatisfyingAnyOfTwoConditions [
 		deny: (condition isSatisfiedBy: 0)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeConditionTest >> testSatisfyingManyConditions [
 
 	| condition |
@@ -83,7 +84,7 @@ CompositeConditionTest >> testSatisfyingManyConditions [
 		deny: (condition isSatisfiedBy: 11)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CompositeConditionTest >> testSatisfyingTwoConditions [
 
 	| condition |

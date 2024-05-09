@@ -2,12 +2,13 @@
 I'm a test case for Namespace
 "
 Class {
-	#name : #NamespaceTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Metaprogramming-Tests'
+	#name : 'NamespaceTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Metaprogramming-Tests',
+	#package : 'Buoy-Metaprogramming-Tests'
 }
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 NamespaceTest >> testAccessing [
 
 	| namespace |
@@ -22,7 +23,7 @@ NamespaceTest >> testAccessing [
 		assert: namespace >> #One equals: 1
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 NamespaceTest >> testAccessingUnboundName [
 
 	| namespace |
@@ -38,7 +39,7 @@ NamespaceTest >> testAccessingUnboundName [
 		withMessageText: 'There''s no object bound to MinusOne'  
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 NamespaceTest >> testAtIfAbsent [
 
 	| namespace notFound |
@@ -54,7 +55,7 @@ NamespaceTest >> testAtIfAbsent [
 	self assert: (namespace at: #Zero ifAbsent: [ self fail ]) equals: 0
 ]
 
-{ #category : #'tests-binding' }
+{ #category : 'tests-binding' }
 NamespaceTest >> testBindTo [
 
 	| namespace |
@@ -70,7 +71,7 @@ NamespaceTest >> testBindTo [
 		assert: namespace >> #Zero equals: 0
 ]
 
-{ #category : #'tests-binding' }
+{ #category : 'tests-binding' }
 NamespaceTest >> testBindToOnlyWorksForSymbols [
 
 	| namespace |
@@ -85,7 +86,7 @@ NamespaceTest >> testBindToOnlyWorksForSymbols [
 	self assert: namespace names isEmpty
 ]
 
-{ #category : #'tests-binding' }
+{ #category : 'tests-binding' }
 NamespaceTest >> testCantBindToAlreadyUsedName [
 
 	| namespace |
@@ -100,7 +101,7 @@ NamespaceTest >> testCantBindToAlreadyUsedName [
 		withMessageText: 'Zero is already bound to some object.'
 ]
 
-{ #category : #'tests-accessing' }
+{ #category : 'tests-accessing' }
 NamespaceTest >> testEmptyNamespace [
 
 	| emptyNamespace |
@@ -110,7 +111,7 @@ NamespaceTest >> testEmptyNamespace [
 	self assert: emptyNamespace names isEmpty
 ]
 
-{ #category : #'tests-binding' }
+{ #category : 'tests-binding' }
 NamespaceTest >> testRebindTo [
 
 	| namespace |
@@ -127,7 +128,7 @@ NamespaceTest >> testRebindTo [
 	self assert: namespace >> #One equals: 1
 ]
 
-{ #category : #'tests-binding' }
+{ #category : 'tests-binding' }
 NamespaceTest >> testRebindToOnlyWorksForSymbols [
 
 	| namespace |
@@ -142,7 +143,7 @@ NamespaceTest >> testRebindToOnlyWorksForSymbols [
 	self assert: namespace names isEmpty
 ]
 
-{ #category : #'tests-binding' }
+{ #category : 'tests-binding' }
 NamespaceTest >> testRemoveBinding [
 
 	| namespace removed |
@@ -158,7 +159,7 @@ NamespaceTest >> testRemoveBinding [
 	self should: [ namespace >> #Zero ] raise: ObjectNotFound 
 ]
 
-{ #category : #'tests-binding' }
+{ #category : 'tests-binding' }
 NamespaceTest >> testRemoveBindingForUnknownName [
 
 	| namespace |

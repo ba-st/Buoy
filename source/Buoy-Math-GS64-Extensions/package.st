@@ -1,1 +1,1 @@
-Package { #name : #'Buoy-Math-GS64-Extensions' }
+Package { #name : 'Buoy-Math-GS64-Extensions' }

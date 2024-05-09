@@ -11,13 +11,13 @@ CharacterCollection >> capitalized [
 ]
 
 { #category : '*Buoy-Collections-GS64-Extensions' }
-CharacterCollection class >> cr [
+CharacterCollection classSide >> cr [
 
 	^ self with: Character cr
 ]
 
 { #category : '*Buoy-Collections-GS64-Extensions' }
-CharacterCollection class >> crlf [
+CharacterCollection classSide >> crlf [
 
 	^ self with: Character cr with: Character lf
 ]
@@ -142,7 +142,7 @@ CharacterCollection >> isAsciiString [
 ]
 
 { #category : '*Buoy-Collections-GS64-Extensions' }
-CharacterCollection class >> lf [
+CharacterCollection classSide >> lf [
 
 	^ self with: Character lf
 ]
@@ -185,7 +185,7 @@ CharacterCollection >> substrings [
 ]
 
 { #category : '*Buoy-Collections-GS64-Extensions' }
-CharacterCollection class >> tab [
+CharacterCollection classSide >> tab [
 
 	^ self with: Character tab
 ]

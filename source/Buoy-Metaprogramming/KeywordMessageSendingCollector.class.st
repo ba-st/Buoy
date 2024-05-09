@@ -1,15 +1,16 @@
 Class {
-	#name : #KeywordMessageSendingCollector,
-	#superclass : #MessageSendingCollector,
+	#name : 'KeywordMessageSendingCollector',
+	#superclass : 'MessageSendingCollector',
 	#instVars : [
 		'receiver',
 		'filterBlock',
 		'arguments'
 	],
-	#category : 'Buoy-Metaprogramming'
+	#category : 'Buoy-Metaprogramming',
+	#package : 'Buoy-Metaprogramming'
 }
 
-{ #category : #'Instance Creation' }
+{ #category : 'Instance Creation' }
 KeywordMessageSendingCollector class >> sendingAllMessagesBeginningWith: aPrefix andEndingWith: aSuffix to: aReceiver with: anArgument [
 
 	^ self
@@ -18,7 +19,7 @@ KeywordMessageSendingCollector class >> sendingAllMessagesBeginningWith: aPrefix
 		withAll: {anArgument}
 ]
 
-{ #category : #'Instance Creation' }
+{ #category : 'Instance Creation' }
 KeywordMessageSendingCollector class >> sendingAllMessagesMatching: aFilterBlock to: aReceiver withAll: anArgumentCollection [
 
 	^ self new
@@ -27,13 +28,13 @@ KeywordMessageSendingCollector class >> sendingAllMessagesMatching: aFilterBlock
 		withAll: anArgumentCollection asArray
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 KeywordMessageSendingCollector >> filterBlock [
 
 	^ filterBlock
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 KeywordMessageSendingCollector >> initializeSendingAllMessagesMatching: aFilterBlock to: aReceiver withAll: anArgumentCollection [
 
 	filterBlock := aFilterBlock.
@@ -41,13 +42,13 @@ KeywordMessageSendingCollector >> initializeSendingAllMessagesMatching: aFilterB
 	arguments := anArgumentCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 KeywordMessageSendingCollector >> receiver [
 
 	^ receiver
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 KeywordMessageSendingCollector >> value [
 
 	^ self matchingSelectorsCollect: [ :selector | receiver perform: selector withArguments: arguments ]

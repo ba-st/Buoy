@@ -41,7 +41,6 @@ TestAsserter >> deny: actual identicalTo: expected [
 
 { #category : '*Buoy-SUnit-GS64-Extensions' }
 TestAsserter >> fail [
-	"I make my receiver fail with TestFailure"
 
 	^ self assert: false
 ]

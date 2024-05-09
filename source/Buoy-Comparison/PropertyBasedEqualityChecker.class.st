@@ -3,22 +3,23 @@ I'm a checker that can be configured to check for certain properties to determin
 I'm the default checker available to any object by sending equalityChecker to itself.
 "
 Class {
-	#name : #PropertyBasedEqualityChecker,
-	#superclass : #EqualityChecker,
+	#name : 'PropertyBasedEqualityChecker',
+	#superclass : 'EqualityChecker',
 	#instVars : [
 		'base',
 		'comparisonRules'
 	],
-	#category : #'Buoy-Comparison'
+	#category : 'Buoy-Comparison',
+	#package : 'Buoy-Comparison'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PropertyBasedEqualityChecker class >> on: aBaseObject [
 
 	^ self new initializeOn: aBaseObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PropertyBasedEqualityChecker >> check: aBaseObject against: aTargetObject [
 
 	^ ( self is: aBaseObject identicalTo: aTargetObject )
@@ -27,13 +28,13 @@ PropertyBasedEqualityChecker >> check: aBaseObject against: aTargetObject [
 			]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PropertyBasedEqualityChecker >> checkAgainst: aTargetObject [
 
 	^ self check: base against: aTargetObject
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 PropertyBasedEqualityChecker >> compare: aPropertyOrMonadycBlock [
 
 	self
@@ -41,26 +42,26 @@ PropertyBasedEqualityChecker >> compare: aPropertyOrMonadycBlock [
 			[ :first :second | ( aPropertyOrMonadycBlock value: first ) = ( aPropertyOrMonadycBlock value: second ) ]
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 PropertyBasedEqualityChecker >> compareAll: aPropertyCollection [
 
 	aPropertyCollection do: [ :property | self compare: property ]
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 PropertyBasedEqualityChecker >> compareWith: aDyadicBlock [
 
 	comparisonRules add: aDyadicBlock
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PropertyBasedEqualityChecker >> initialize [ 
 
 	super initialize.
 	comparisonRules := OrderedCollection new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PropertyBasedEqualityChecker >> initializeOn: aBaseObject [
 
 	base := aBaseObject

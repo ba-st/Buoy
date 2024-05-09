@@ -2,22 +2,23 @@
 A KeywordMessageSendingCollectorTest is a test class for testing the behavior of KeywordMessageSendingCollector
 "
 Class {
-	#name : #KeywordMessageSendingCollectorTest,
-	#superclass : #TestCase,
+	#name : 'KeywordMessageSendingCollectorTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'arguments'
 	],
-	#category : #'Buoy-Metaprogramming-Tests'
+	#category : 'Buoy-Metaprogramming-Tests',
+	#package : 'Buoy-Metaprogramming-Tests'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 KeywordMessageSendingCollectorTest >> setUp [
 
 	super setUp.
 	arguments := OrderedCollection new
 ]
 
-{ #category : #'tests-evaluating' }
+{ #category : 'tests-evaluating' }
 KeywordMessageSendingCollectorTest >> testValue [
 
 	(KeywordMessageSendingCollector sendingAllMessagesBeginningWith: 'zzzTest' andEndingWith: 'Add:' to: self with: 1) value.
@@ -27,13 +28,13 @@ KeywordMessageSendingCollectorTest >> testValue [
 		assert: arguments includes: 1
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 KeywordMessageSendingCollectorTest >> zzzTestAdd: anArgument [
 
 	arguments add: anArgument
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 KeywordMessageSendingCollectorTest >> zzzTestAdd: anArgument testAdd: aSecondArgument [
 
 	<ignoreForCoverage>

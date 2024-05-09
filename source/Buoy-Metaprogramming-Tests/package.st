@@ -1,1 +1,1 @@
-Package { #name : #'Buoy-Metaprogramming-Tests' }
+Package { #name : 'Buoy-Metaprogramming-Tests' }

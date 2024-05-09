@@ -1,1 +1,1 @@
-Package { #name : #'Buoy-Chronology-Pharo-Extensions' }
+Package { #name : 'Buoy-Chronology-Pharo-Extensions' }

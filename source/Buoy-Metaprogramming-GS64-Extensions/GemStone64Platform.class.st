@@ -1,16 +1,17 @@
 Class {
-	#name : #GemStone64Platform,
-	#superclass : #LanguagePlatform,
-	#category : #'Buoy-Metaprogramming-GS64-Extensions'
+	#name : 'GemStone64Platform',
+	#superclass : 'LanguagePlatform',
+	#category : 'Buoy-Metaprogramming-GS64-Extensions',
+	#package : 'Buoy-Metaprogramming-GS64-Extensions'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 GemStone64Platform class >> initialize [
 
 	LanguagePlatform setCurrentTo: self new
 ]
 
-{ #category : #reflection }
+{ #category : 'reflection' }
 GemStone64Platform >> atInstanceVariableNamed: name on: object put: value [
 
 	| index |
@@ -21,7 +22,7 @@ GemStone64Platform >> atInstanceVariableNamed: name on: object put: value [
 
 ]
 
-{ #category : #'process scheduling' }
+{ #category : 'process scheduling' }
 GemStone64Platform >> fork: block named: processName at: priority [
 
 	| process |
@@ -35,21 +36,21 @@ GemStone64Platform >> fork: block named: processName at: priority [
 	^process
 ]
 
-{ #category : #reflection }
+{ #category : 'reflection' }
 GemStone64Platform >> globalNamed: aSymbol ifAbsent: absentBlock [
 
 	^ (GsCurrentSession currentSession symbolList objectNamed: aSymbol)
 		  ifNil: absentBlock
 ]
 
-{ #category : #reflection }
+{ #category : 'reflection' }
 GemStone64Platform >> includesGlobalNamed: aSymbol [
 
 	^ (GsCurrentSession currentSession symbolList objectNamed: aSymbol)
 		  notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GemStone64Platform >> os [
 
 	^ GemStone64UnixPlatform current

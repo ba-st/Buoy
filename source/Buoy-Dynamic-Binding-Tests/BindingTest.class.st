@@ -2,12 +2,13 @@
 I'm an unit test for the Behavior of Binding
 "
 Class {
-	#name : #BindingTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Dynamic-Binding-Tests'
+	#name : 'BindingTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Dynamic-Binding-Tests',
+	#package : 'Buoy-Dynamic-Binding-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 BindingTest >> testIsDefined [
 
 	self
@@ -15,7 +16,7 @@ BindingTest >> testIsDefined [
 		deny: (Binding undefinedExplainedBy: '') isDefined
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BindingTest >> testTo [
 
 	| binding |
@@ -25,7 +26,7 @@ BindingTest >> testTo [
 	self assert: binding content equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BindingTest >> testUndefinedExplainedBy [
 
 	| binding explanation |
@@ -36,7 +37,7 @@ BindingTest >> testUndefinedExplainedBy [
 	self should: [ binding content ] raise: AssertionFailed withMessageText: explanation
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BindingTest >> testUndefinedExplainedByAllRaising [
 
 	| binding explanations |
@@ -50,7 +51,7 @@ BindingTest >> testUndefinedExplainedByAllRaising [
 		withMessageText: 'Parameter not yet configured. Parameter seems wrong'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BindingTest >> testUndefinedExplainedByRaising [
 
 	| binding explanation |

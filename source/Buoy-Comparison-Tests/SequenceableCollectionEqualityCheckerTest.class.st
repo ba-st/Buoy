@@ -2,12 +2,13 @@
 A SequenceableCollectionEqualityCheckerTest is a test class for testing the behavior of SequenceableCollectionEqualityChecker
 "
 Class {
-	#name : #SequenceableCollectionEqualityCheckerTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Comparison-Tests'
+	#name : 'SequenceableCollectionEqualityCheckerTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Comparison-Tests',
+	#package : 'Buoy-Comparison-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 SequenceableCollectionEqualityCheckerTest >> testCheckAgainst [
 
 	| checker base |

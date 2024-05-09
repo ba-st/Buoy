@@ -2,12 +2,13 @@
 I'm a test case for extensions related to meta programming
 "
 Class {
-	#name : #BuoyMetaprogrammingExtensionsTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Metaprogramming-Tests'
+	#name : 'BuoyMetaprogrammingExtensionsTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Metaprogramming-Tests',
+	#package : 'Buoy-Metaprogramming-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyMetaprogrammingExtensionsTest >> testBehaviorAllLeafSubclasses [
 
 	self assert: self class allLeafSubclasses isEmpty.
@@ -18,7 +19,7 @@ BuoyMetaprogrammingExtensionsTest >> testBehaviorAllLeafSubclasses [
 		assert: MessageSendingCollector allLeafSubclasses includes: UnaryMessageSendingCollector
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyMetaprogrammingExtensionsTest >> testBehaviorAllSubclassesDo [
 
 	| collectorSubclasses |
@@ -34,7 +35,7 @@ BuoyMetaprogrammingExtensionsTest >> testBehaviorAllSubclassesDo [
 		assert: collectorSubclasses includes: UnaryMessageSendingCollector
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyMetaprogrammingExtensionsTest >> testBehaviorCompiledMethodAccess [
 
 	self
@@ -42,7 +43,7 @@ BuoyMetaprogrammingExtensionsTest >> testBehaviorCompiledMethodAccess [
 		equals: testSelector
 ]
 
-{ #category : #test }
+{ #category : 'test' }
 BuoyMetaprogrammingExtensionsTest >> testIsA [
 
 	self
@@ -54,7 +55,7 @@ BuoyMetaprogrammingExtensionsTest >> testIsA [
 		deny: (self isA: Collection)
 ]
 
-{ #category : #test }
+{ #category : 'test' }
 BuoyMetaprogrammingExtensionsTest >> testIsNotNil [
 
 	self

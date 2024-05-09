@@ -1,1 +1,1 @@
-Package { #name : #'Buoy-Math-Pharo-Extensions' }
+Package { #name : 'Buoy-Math-Pharo-Extensions' }

@@ -7,22 +7,23 @@ Instance Variables
 	maximumBucketSize:		<Integer>
 "
 Class {
-	#name : #BalancedDistributionInBucketsAlgorithm,
-	#superclass : #Object,
+	#name : 'BalancedDistributionInBucketsAlgorithm',
+	#superclass : 'Object',
 	#instVars : [
 		'collection',
 		'maximumBucketSize'
 	],
-	#category : #'Buoy-Collections'
+	#category : 'Buoy-Collections',
+	#package : 'Buoy-Collections'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 BalancedDistributionInBucketsAlgorithm class >> distributing: aCollection maxPerBucket: aSmallInteger [
 
 	^ self new initializeDistributing: aCollection maxPerBucket: aSmallInteger
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 BalancedDistributionInBucketsAlgorithm >> countWithAtLeast: minimumCountPerBacket for: numberOfBuckets [
 
 	| remainderToDistribute countPerBucket |
@@ -38,7 +39,7 @@ BalancedDistributionInBucketsAlgorithm >> countWithAtLeast: minimumCountPerBacke
 	^ countPerBucket
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 BalancedDistributionInBucketsAlgorithm >> distributeBalancedIn: numberOfBuckets bucketsAroundOfSize: numberOfObjectsPerBucket [
 
 	| startIndex countPerBucket |
@@ -57,7 +58,7 @@ BalancedDistributionInBucketsAlgorithm >> distributeBalancedIn: numberOfBuckets 
 			]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 BalancedDistributionInBucketsAlgorithm >> distributeIn: bucketCount bucketsOfSize: numberOfObjectsPerBucket [
 
 	| buckets |
@@ -74,7 +75,7 @@ BalancedDistributionInBucketsAlgorithm >> distributeIn: bucketCount bucketsOfSiz
 	^ buckets
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 BalancedDistributionInBucketsAlgorithm >> execute [
 
 	| numberOfObjectsPerBucket |
@@ -89,20 +90,20 @@ BalancedDistributionInBucketsAlgorithm >> execute [
 		inWhichCase: [ self distributeIn: self numberOfBuckets bucketsOfSize: numberOfObjectsPerBucket ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BalancedDistributionInBucketsAlgorithm >> initializeDistributing: aCollection maxPerBucket: aSmallInteger [
 
 	collection := aCollection.
 	maximumBucketSize := aSmallInteger
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 BalancedDistributionInBucketsAlgorithm >> numberOfBuckets [
 
 	^((self numberOfObjectsToDistribute + maximumBucketSize - 1) / maximumBucketSize) floor
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 BalancedDistributionInBucketsAlgorithm >> numberOfObjectsToDistribute [
 
 	^collection size

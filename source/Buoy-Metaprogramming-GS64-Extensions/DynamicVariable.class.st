@@ -1,29 +1,30 @@
 Class {
-	#name : #DynamicVariable,
-	#superclass : #Object,
-	#category : #'Buoy-Metaprogramming-GS64-Extensions'
+	#name : 'DynamicVariable',
+	#superclass : 'Object',
+	#category : 'Buoy-Metaprogramming-GS64-Extensions',
+	#package : 'Buoy-Metaprogramming-GS64-Extensions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DynamicVariable class >> default [
 	"Answer the default value for the variable. The default for the default value is nil."
 
 	^ nil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 DynamicVariable class >> isInheritable [
 
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DynamicVariable class >> soleInstance [
 
 	^ self
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 DynamicVariable class >> value [
 	"Answer the current value for this variable in the current context."
 
@@ -32,7 +33,7 @@ DynamicVariable class >> value [
 		  ifAbsent: [ self soleInstance default ]
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 DynamicVariable class >> value: anObject during: aBlock [
 
 	| activeProcess oldValue |

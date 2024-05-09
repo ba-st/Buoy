@@ -2,18 +2,19 @@
 An InterfaceTest is a test class for testing the behavior of Interface
 "
 Class {
-	#name : #InterfaceTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Metaprogramming-Tests'
+	#name : 'InterfaceTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Metaprogramming-Tests',
+	#package : 'Buoy-Metaprogramming-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 InterfaceTest >> testCantDeclareAnEmptyInterface [
 
 	self should: [ Interface named: 'Empty' declaring: #() ] raise: InstanceCreationFailed withMessageText: 'An interface must declare at least one message.'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 InterfaceTest >> testIsImplementedBy [
 
 	| assertable |
@@ -25,7 +26,7 @@ InterfaceTest >> testIsImplementedBy [
 		deny: (assertable isImplementedBy: assertable)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 InterfaceTest >> testIsImplementedByInstancesOf [
 
 	| assertable |
@@ -39,7 +40,7 @@ InterfaceTest >> testIsImplementedByInstancesOf [
 		deny: (assertable isImplementedByInstancesOf: Object)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 InterfaceTest >> testPrintOn [
 
 	| assertable |
