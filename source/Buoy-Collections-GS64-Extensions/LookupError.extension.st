@@ -1,7 +1,7 @@
 Extension { #name : 'LookupError' }
 
 { #category : '*Buoy-Collections-GS64-Extensions' }
-LookupError classSide >> signalFor: key [
+LookupError class >> signalFor: key [
 
 	^ self new
 		  key: key;
@@ -9,7 +9,7 @@ LookupError classSide >> signalFor: key [
 ]
 
 { #category : '*Buoy-Collections-GS64-Extensions' }
-LookupError classSide >> signalFor: key in: collection [
+LookupError class >> signalFor: key in: collection [
 
 	^ self new
 		  key: key;

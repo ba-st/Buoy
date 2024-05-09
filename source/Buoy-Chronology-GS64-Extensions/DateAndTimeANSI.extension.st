@@ -35,13 +35,13 @@ DateAndTimeANSI >> printYMDOn: aStream [
 ]
 
 { #category : '*Buoy-Chronology-GS64-Extensions' }
-DateAndTimeANSI classSide >> unixEpoch [
+DateAndTimeANSI class >> unixEpoch [
 
 	^ self posixSeconds: 0 offset: Duration zero
 ]
 
 { #category : '*Buoy-Chronology-GS64-Extensions' }
-DateAndTimeANSI classSide >> year: year month: month day: day [
+DateAndTimeANSI class >> year: year month: month day: day [
 	"Return a DateAndTime, midnight local time"
 
 	^ self

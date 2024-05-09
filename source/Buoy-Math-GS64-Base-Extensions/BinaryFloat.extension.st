@@ -17,7 +17,7 @@ BinaryFloat >> closeTo: num precision: aPrecision [
 ]
 
 { #category : '*Buoy-Math-GS64-Base-Extensions' }
-BinaryFloat classSide >> infinity [
+BinaryFloat class >> infinity [
 
 	^ PlusInfinity
 ]
@@ -41,19 +41,19 @@ BinaryFloat >> isNaN [
 ]
 
 { #category : '*Buoy-Math-GS64-Base-Extensions' }
-BinaryFloat classSide >> nan [
+BinaryFloat class >> nan [
 
 	^ MinusQuietNaN
 ]
 
 { #category : '*Buoy-Math-GS64-Base-Extensions' }
-BinaryFloat classSide >> negativeInfinity [
+BinaryFloat class >> negativeInfinity [
 
 	^ MinusInfinity
 ]
 
 { #category : '*Buoy-Math-GS64-Base-Extensions' }
-BinaryFloat classSide >> readFrom: aStringOrStream [
+BinaryFloat class >> readFrom: aStringOrStream [
 
 	^ aStringOrStream isString
 		  ifTrue: [ self fromString: aStringOrStream ]
@@ -61,6 +61,6 @@ BinaryFloat classSide >> readFrom: aStringOrStream [
 ]
 
 { #category : '*Buoy-Math-GS64-Base-Extensions' }
-BinaryFloat classSide >> zero [
+BinaryFloat class >> zero [
 	^ 0.0
 ]

@@ -1,7 +1,7 @@
 Extension { #name : 'ExitClientError' }
 
 { #category : '*Buoy-Exception-Handling-GS64-Extensions' }
-ExitClientError classSide >> failure [
+ExitClientError class >> failure [
 
 	^ self status: 1
 ]
@@ -13,31 +13,31 @@ ExitClientError >> isSuccess [
 ]
 
 { #category : '*Buoy-Exception-Handling-GS64-Extensions' }
-ExitClientError classSide >> signalFailure [
+ExitClientError class >> signalFailure [
 
 	^ self failure signal
 ]
 
 { #category : '*Buoy-Exception-Handling-GS64-Extensions' }
-ExitClientError classSide >> signalFailure: aMessage [
+ExitClientError class >> signalFailure: aMessage [
 
 	^ self failure signal: aMessage
 ]
 
 { #category : '*Buoy-Exception-Handling-GS64-Extensions' }
-ExitClientError classSide >> signalSuccess [ 
+ExitClientError class >> signalSuccess [ 
 
 	^ self success signal
 ]
 
 { #category : '*Buoy-Exception-Handling-GS64-Extensions' }
-ExitClientError classSide >> signalSuccess: aMessage [
+ExitClientError class >> signalSuccess: aMessage [
 
 	^ self success signal: aMessage
 ]
 
 { #category : '*Buoy-Exception-Handling-GS64-Extensions' }
-ExitClientError classSide >> status: status [
+ExitClientError class >> status: status [
 
 	^ self new
 		  _resumable: true;
@@ -46,7 +46,7 @@ ExitClientError classSide >> status: status [
 ]
 
 { #category : '*Buoy-Exception-Handling-GS64-Extensions' }
-ExitClientError classSide >> success [ 
+ExitClientError class >> success [ 
 
 	^ self status: 0
 ]

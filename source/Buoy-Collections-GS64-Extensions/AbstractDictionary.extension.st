@@ -39,7 +39,7 @@ AbstractDictionary >> isDictionary [
 ]
 
 { #category : '*Buoy-Collections-GS64-Extensions' }
-AbstractDictionary classSide >> newFromPairs: anArray [
+AbstractDictionary class >> newFromPairs: anArray [
 	"Answer an instance of me associating (anArray at: i) to (anArray at: i+1)
 	 for each odd i.  anArray must have an even number of entries."
 
