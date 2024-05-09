@@ -2,35 +2,36 @@
 I represent  an unbound object and will raise an error when asked about my contents
 "
 Class {
-	#name : #UndefinedBinding,
-	#superclass : #Binding,
+	#name : 'UndefinedBinding',
+	#superclass : 'Binding',
 	#instVars : [
 		'errorClass',
 		'explanations'
 	],
-	#category : 'Buoy-Dynamic-Binding'
+	#category : 'Buoy-Dynamic-Binding',
+	#package : 'Buoy-Dynamic-Binding'
 }
 
-{ #category : #'Instance Creation' }
+{ #category : 'Instance Creation' }
 UndefinedBinding class >> explainedByAll: anExplanationCollection raising: anErrorClass [
 
 	^ self new initializeExplainedByAll: anExplanationCollection raising: anErrorClass
 ]
 
-{ #category : #Accessing }
+{ #category : 'Accessing' }
 UndefinedBinding >> content [
 
 		^errorClass signalAll: explanations 
 ]
 
-{ #category : #initialize }
+{ #category : 'initialize' }
 UndefinedBinding >> initializeExplainedByAll: anExplanationCollection raising: anErrorClass [
 
 	explanations := anExplanationCollection.
 	errorClass := anErrorClass
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 UndefinedBinding >> isDefined [
 
 	^ false 

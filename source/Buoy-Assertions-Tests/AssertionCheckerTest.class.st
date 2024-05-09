@@ -2,12 +2,13 @@
 I'm a test case for Assertion Checker  
 "
 Class {
-	#name : #AssertionCheckerTest,
-	#superclass : #TestCase,
-	#category : 'Buoy-Assertions-Tests'
+	#name : 'AssertionCheckerTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Assertions-Tests',
+	#package : 'Buoy-Assertions-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerTest >> testEnforceOneFactFailing [
 
 	| explanation |
@@ -16,7 +17,7 @@ AssertionCheckerTest >> testEnforceOneFactFailing [
 	self should: [ AssertionChecker enforce: [ false ] because: explanation ] raise: AssertionFailed withMessageText: explanation
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerTest >> testEnforceOneFactFailingRaisingError [
 
 	| explanation |
@@ -26,7 +27,7 @@ AssertionCheckerTest >> testEnforceOneFactFailingRaisingError [
 	self should: [ AssertionChecker enforce: [ false ] because: explanation raising: Error ] raise: Error withMessageText: explanation
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerTest >> testEnforceOneFactFailingRaisingNonDefaultException [
 
 	| explanation |
@@ -39,7 +40,7 @@ AssertionCheckerTest >> testEnforceOneFactFailingRaisingNonDefaultException [
 		withMessageText: explanation
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerTest >> testEnforceOneFactNotFailing [
 
 	self
@@ -47,7 +48,7 @@ AssertionCheckerTest >> testEnforceOneFactNotFailing [
 		shouldnt: [ AssertionChecker enforce: [ true ] because: [ self fail ] raising: InstanceCreationFailed ] raise: InstanceCreationFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerTest >> testRefuseOneFactFailing [
 
 	| explanation |
@@ -56,7 +57,7 @@ AssertionCheckerTest >> testRefuseOneFactFailing [
 	self should: [ AssertionChecker refuse: [ true ] because: explanation ] raise: AssertionFailed withMessageText: explanation
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerTest >> testRefuseOneFactNotFailing [
 
 	self

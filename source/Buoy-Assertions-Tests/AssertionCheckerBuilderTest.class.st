@@ -2,12 +2,13 @@
 I'm a test case for Assertion Checker Builder
 "
 Class {
-	#name : #AssertionCheckerBuilderTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Assertions-Tests'
+	#name : 'AssertionCheckerBuilderTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Assertions-Tests',
+	#package : 'Buoy-Assertions-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerBuilderTest >> testConditionalChecking [
 
 	| explanation rowCount |
@@ -33,7 +34,7 @@ AssertionCheckerBuilderTest >> testConditionalChecking [
 			]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerBuilderTest >> testConditionalCheckingWhenFirstConditionFails [
 
 	| explanation rowCount |
@@ -59,7 +60,7 @@ AssertionCheckerBuilderTest >> testConditionalCheckingWhenFirstConditionFails [
 			]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerBuilderTest >> testFailFast [
 
 	| mathFailureExplanation |
@@ -85,7 +86,7 @@ AssertionCheckerBuilderTest >> testFailFast [
 			]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerBuilderTest >> testFailFastConfiguringErrorToRaise [
 
 	| mathFailureExplanation |
@@ -115,7 +116,7 @@ AssertionCheckerBuilderTest >> testFailFastConfiguringErrorToRaise [
 			]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerBuilderTest >> testFailFastInConditional [
 
 	| mathFailureExplanation |
@@ -144,7 +145,7 @@ AssertionCheckerBuilderTest >> testFailFastInConditional [
 			]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerBuilderTest >> testFailFastPassingSomeConditions [
 
 	| failureExplanation |
@@ -170,7 +171,7 @@ AssertionCheckerBuilderTest >> testFailFastPassingSomeConditions [
 			]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerBuilderTest >> testSeveralConditionsButOnlyOneFailed [
 
 	| mathFailureExplanation |
@@ -193,7 +194,7 @@ AssertionCheckerBuilderTest >> testSeveralConditionsButOnlyOneFailed [
 			]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerBuilderTest >> testSeveralConditionsButOnlyOneFailedConfiguringErrorToRaise [
 
 	| mathFailureExplanation |
@@ -219,7 +220,7 @@ AssertionCheckerBuilderTest >> testSeveralConditionsButOnlyOneFailedConfiguringE
 			]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerBuilderTest >> testSeveralConditionsFailed [
 
 	| mathFailureExplanation collectionSizeFailureExplanation |
@@ -245,7 +246,7 @@ AssertionCheckerBuilderTest >> testSeveralConditionsFailed [
 			]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerBuilderTest >> testSingleConditionFailure [
 
 	| explanation |
@@ -262,13 +263,13 @@ AssertionCheckerBuilderTest >> testSingleConditionFailure [
 			]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerBuilderTest >> testWithoutChecks [
 
 	self shouldnt: [ AssertionChecker check: [ :asserter |  ] ] raise: AssertionFailed
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 AssertionCheckerBuilderTest >> testWithoutFailures [
 
 	self

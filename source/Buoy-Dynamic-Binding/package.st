@@ -1,1 +1,1 @@
-Package { #name : #'Buoy-Dynamic-Binding' }
+Package { #name : 'Buoy-Dynamic-Binding' }
