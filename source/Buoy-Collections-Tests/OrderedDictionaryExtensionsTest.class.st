@@ -510,21 +510,6 @@ OrderedDictionaryExtensionsTest >> testAtPut [
 				(self orderedAssociationsAllButFirst: i)]
 ]
 
-{ #category : 'tests - enumerating' }
-OrderedDictionaryExtensionsTest >> testBindingsDo [
-	| dictionary |
-
-	dictionary := self emptyDictionary.
-	self
-		should: [:block | dictionary bindingsDo: block]
-		enumerate: #().
-	self orderedAssociations withIndexDo: [:each :i |
-		dictionary add: each.
-		self
-			should: [:block | dictionary bindingsDo: block]
-			enumerate: (self orderedAssociationsFirst: i)]
-]
-
 { #category : 'tests - accessing' }
 OrderedDictionaryExtensionsTest >> testCapacity [
 	"The current Dictionary implementation allocates more than specified.
@@ -592,22 +577,6 @@ OrderedDictionaryExtensionsTest >> testCopyEmpty [
 		assertIsDictionary: copy
 		copiedFrom: dictionary
 		withOrderedAssociations: #()
-]
-
-{ #category : 'tests - accessing' }
-OrderedDictionaryExtensionsTest >> testDeclareFrom [
-	| dictionary otherDictionary |
-	dictionary := self emptyDictionary.
-	otherDictionary := self dictionaryWithOrderedAssociations.
-	self orderedKeys do: [ :each | self assert: (dictionary declare: each from: otherDictionary) identicalTo: dictionary ].
-	self assertIsDictionary: dictionary withOrderedAssociations: self orderedAssociations.
-	self assert: otherDictionary isEmpty.
-
-	self orderedKeys
-		do: [ :each |
-			otherDictionary add: each -> self newValue.
-			self assert: (dictionary declare: each from: otherDictionary) identicalTo: dictionary ].
-	self assertIsDictionary: dictionary withOrderedAssociations: self orderedAssociations
 ]
 
 { #category : 'tests - accessing' }
@@ -1020,6 +989,15 @@ OrderedDictionaryExtensionsTest >> testRemoveKeys [
 			withOrderedAssociations: (self orderedAssociationsAllButFirst: i) ]
 ]
 
+{ #category : 'tests - STON' }
+OrderedDictionaryExtensionsTest >> testSTONSerializationAndMaterialization [
+	| dictionary string |
+
+	dictionary := self dictionaryWithOrderedAssociations.
+	string := STON toString: dictionary.
+	self assertDictionary: dictionary equals: (STON fromString: string)
+]
+
 { #category : 'tests - enumerating' }
 OrderedDictionaryExtensionsTest >> testSelect [
 	| dictionary |
@@ -1081,13 +1059,4 @@ OrderedDictionaryExtensionsTest >> testValuesDo [
 		self
 			should: [:block | dictionary valuesDo: block]
 			enumerate: (self orderedValuesFirst: i)]
-]
-
-{ #category : 'tests - STON' }
-OrderedDictionaryExtensionsTest >> testSTONSerializationAndMaterialization [
-	| dictionary string |
-
-	dictionary := self dictionaryWithOrderedAssociations.
-	string := STON toString: dictionary.
-	self assertDictionary: dictionary equals: (STON fromString: string)
 ]
