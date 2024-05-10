@@ -1,10 +1,11 @@
 Class {
-	#name : #BuoyComparisonObjectExtensionsTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Comparison-Tests'
+	#name : 'BuoyComparisonObjectExtensionsTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Comparison-Tests',
+	#package : 'Buoy-Comparison-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyComparisonObjectExtensionsTest >> testEqual [
 
 	self
@@ -15,7 +16,7 @@ BuoyComparisonObjectExtensionsTest >> testEqual [
 		deny: ( ObjectUsingComparisonAffordances with: 1 and: 2 ) equals: self
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyComparisonObjectExtensionsTest >> testHash [
 
 	self

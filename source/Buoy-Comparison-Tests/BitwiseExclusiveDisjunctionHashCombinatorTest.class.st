@@ -2,22 +2,23 @@
 A BitwiseExclusiveDisjunctionHashCombinatorTest is a test class for testing the behavior of BitwiseExclusiveDisjunctionHashCombinator
 "
 Class {
-	#name : #BitwiseExclusiveDisjunctionHashCombinatorTest,
-	#superclass : #TestCase,
+	#name : 'BitwiseExclusiveDisjunctionHashCombinatorTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'hashCombinator'
 	],
-	#category : #'Buoy-Comparison-Tests'
+	#category : 'Buoy-Comparison-Tests',
+	#package : 'Buoy-Comparison-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 BitwiseExclusiveDisjunctionHashCombinatorTest >> setUp [
 
 	super setUp.
 	hashCombinator := BitwiseExclusiveDisjunctionHashCombinator new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BitwiseExclusiveDisjunctionHashCombinatorTest >> testCannotCombineAnEmptyCollection [
 
 	self
@@ -26,7 +27,7 @@ BitwiseExclusiveDisjunctionHashCombinatorTest >> testCannotCombineAnEmptyCollect
 		withMessageText: 'Cannot combine an empty collection of hashes'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BitwiseExclusiveDisjunctionHashCombinatorTest >> testCombineAll [
 
 	self
@@ -39,7 +40,7 @@ BitwiseExclusiveDisjunctionHashCombinatorTest >> testCombineAll [
 		assert: ( hashCombinator combineAll: #(100) ) equals: 100
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BitwiseExclusiveDisjunctionHashCombinatorTest >> testCombineHashOfWith [
 
 	self
@@ -47,7 +48,7 @@ BitwiseExclusiveDisjunctionHashCombinatorTest >> testCombineHashOfWith [
 		equals: ( 'alpha' hash bitXor: 'beta' hash )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BitwiseExclusiveDisjunctionHashCombinatorTest >> testCombineHashesOfAll [
 
 	self

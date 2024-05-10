@@ -2,12 +2,13 @@
 I'm a test case for the exception handling system.
 "
 Class {
-	#name : #ExceptionHandlingSystemTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Exception-Handling-Tests'
+	#name : 'ExceptionHandlingSystemTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Exception-Handling-Tests',
+	#package : 'Buoy-Exception-Handling-Tests'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 ExceptionHandlingSystemTest >> doANonLocalReturnAddingOneElementInTheIfCurtailedBlockTo: aCollection [
 
 	[ ^ 1 ]
@@ -15,7 +16,7 @@ ExceptionHandlingSystemTest >> doANonLocalReturnAddingOneElementInTheIfCurtailed
 	self fail
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 ExceptionHandlingSystemTest >> handleZeroDivideAndReturnWithCaret [
 
 	| result |
@@ -29,7 +30,7 @@ ExceptionHandlingSystemTest >> handleZeroDivideAndReturnWithCaret [
 	^ result + 1
 ]
 
-{ #category : #'tests - exception sets' }
+{ #category : 'tests - exception sets' }
 ExceptionHandlingSystemTest >> testCatchingSetsOfExceptions [
 
 	self assert: ([
@@ -45,7 +46,7 @@ ExceptionHandlingSystemTest >> testCatchingSetsOfExceptions [
 			 do: [ :ex | ex return: true ])
 ]
 
-{ #category : #'tests - exception sets' }
+{ #category : 'tests - exception sets' }
 ExceptionHandlingSystemTest >> testCatchingSetsOfExceptionsWithHierarchy [
 
 	self assert: ([
@@ -55,7 +56,7 @@ ExceptionHandlingSystemTest >> testCatchingSetsOfExceptionsWithHierarchy [
 			 do: [ :ex | ex return: true ])
 ]
 
-{ #category : #'tests - ensure' }
+{ #category : 'tests - ensure' }
 ExceptionHandlingSystemTest >> testEnsureSemanticsWhenExceptionRaised [
 
 	| ensureWasExecuted |
@@ -71,7 +72,7 @@ ExceptionHandlingSystemTest >> testEnsureSemanticsWhenExceptionRaised [
 	self assert: ensureWasExecuted
 ]
 
-{ #category : #'tests - ensure' }
+{ #category : 'tests - ensure' }
 ExceptionHandlingSystemTest >> testEnsureSemanticsWhenNoException [
 
 	| ensureWasExecuted |
@@ -84,7 +85,7 @@ ExceptionHandlingSystemTest >> testEnsureSemanticsWhenNoException [
 	self assert: ensureWasExecuted
 ]
 
-{ #category : #'tests - exception sets' }
+{ #category : 'tests - exception sets' }
 ExceptionHandlingSystemTest >> testExceptionSetsConcatenation [
 
 	self assert: ([ ZeroDivide signal ]
@@ -96,7 +97,7 @@ ExceptionHandlingSystemTest >> testExceptionSetsConcatenation [
 			 do: [ :ex | ex return: true ])
 ]
 
-{ #category : #'tests - exception sets' }
+{ #category : 'tests - exception sets' }
 ExceptionHandlingSystemTest >> testExceptionSetsConcatenationHandling [
 
 	| set |
@@ -109,7 +110,7 @@ ExceptionHandlingSystemTest >> testExceptionSetsConcatenationHandling [
 		assert: ( set handles: Error new )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExceptionHandlingSystemTest >> testHandles [
 
 	self
@@ -123,7 +124,7 @@ ExceptionHandlingSystemTest >> testHandles [
 		assert: ( Notification , Error , Warning handles: ZeroDivide new )
 ]
 
-{ #category : #'tests - ifCurtailed' }
+{ #category : 'tests - ifCurtailed' }
 ExceptionHandlingSystemTest >> testIfCurtailedSemanticsWhenExceptionRaised [
 
 	| ifCurtailedWasExecuted |
@@ -139,14 +140,14 @@ ExceptionHandlingSystemTest >> testIfCurtailedSemanticsWhenExceptionRaised [
 	self assert: ifCurtailedWasExecuted
 ]
 
-{ #category : #'tests - ifCurtailed' }
+{ #category : 'tests - ifCurtailed' }
 ExceptionHandlingSystemTest >> testIfCurtailedSemanticsWhenNoExceptionRaised [
 
 	[ 1 ]
 		ifCurtailed: [ self fail ]
 ]
 
-{ #category : #'tests - ifCurtailed' }
+{ #category : 'tests - ifCurtailed' }
 ExceptionHandlingSystemTest >> testIfCurtailedSemanticsWhenNonLocalReturn [
 
 	| result |
@@ -156,7 +157,7 @@ ExceptionHandlingSystemTest >> testIfCurtailedSemanticsWhenNonLocalReturn [
 	self assert: result size equals: 1
 ]
 
-{ #category : #'tests - nested handlers' }
+{ #category : 'tests - nested handlers' }
 ExceptionHandlingSystemTest >> testNestedHandlers [
 
 	| wasHandled wasHandledInTheSecondLevel |
@@ -182,7 +183,7 @@ ExceptionHandlingSystemTest >> testNestedHandlers [
 		assert: wasHandledInTheSecondLevel
 ]
 
-{ #category : #'tests - nested handlers' }
+{ #category : 'tests - nested handlers' }
 ExceptionHandlingSystemTest >> testNestedHandlersWhenFirstNotApplies [
 
 	| wasHandled wasHandledInTheSecondLevel |
@@ -208,7 +209,7 @@ ExceptionHandlingSystemTest >> testNestedHandlersWhenFirstNotApplies [
 		assert: wasHandledInTheSecondLevel
 ]
 
-{ #category : #'tests - on do' }
+{ #category : 'tests - on do' }
 ExceptionHandlingSystemTest >> testOnDoSemanticsWhenRaisingAnotherException [
 
 	| wasHandled |
@@ -228,7 +229,7 @@ ExceptionHandlingSystemTest >> testOnDoSemanticsWhenRaisingAnotherException [
 	self assert: wasHandled
 ]
 
-{ #category : #'tests - on do' }
+{ #category : 'tests - on do' }
 ExceptionHandlingSystemTest >> testOnDoSemanticsWhenRaisingAnotherExceptionAndReturn [
 
 	| wasHandled result |
@@ -248,7 +249,7 @@ ExceptionHandlingSystemTest >> testOnDoSemanticsWhenRaisingAnotherExceptionAndRe
 		assert: result equals: 3
 ]
 
-{ #category : #'tests - on do' }
+{ #category : 'tests - on do' }
 ExceptionHandlingSystemTest >> testOnDoSemanticsWithResume [
 
 	| wasHandled result |
@@ -267,7 +268,7 @@ ExceptionHandlingSystemTest >> testOnDoSemanticsWithResume [
 		assert: result equals: 2
 ]
 
-{ #category : #'tests - on do' }
+{ #category : 'tests - on do' }
 ExceptionHandlingSystemTest >> testOnDoSemanticsWithResumeValue [
 
 	| wasHandled result |
@@ -286,7 +287,7 @@ ExceptionHandlingSystemTest >> testOnDoSemanticsWithResumeValue [
 		assert: result equals: 2
 ]
 
-{ #category : #'tests - on do' }
+{ #category : 'tests - on do' }
 ExceptionHandlingSystemTest >> testOnDoSemanticsWithRetry [
 
 	| wasHandled result theMeaningOfLife |
@@ -305,7 +306,7 @@ ExceptionHandlingSystemTest >> testOnDoSemanticsWithRetry [
 		assert: result equals: 42
 ]
 
-{ #category : #'tests - on do' }
+{ #category : 'tests - on do' }
 ExceptionHandlingSystemTest >> testOnDoSemanticsWithReturn [
 
 	| wasHandled result |
@@ -326,7 +327,7 @@ ExceptionHandlingSystemTest >> testOnDoSemanticsWithReturn [
 		assert: result isNil
 ]
 
-{ #category : #'tests - on do' }
+{ #category : 'tests - on do' }
 ExceptionHandlingSystemTest >> testOnDoSemanticsWithReturnValue [
 
 	| wasHandled result |
@@ -345,13 +346,13 @@ ExceptionHandlingSystemTest >> testOnDoSemanticsWithReturnValue [
 		assert: result equals: 3
 ]
 
-{ #category : #'tests - on do' }
+{ #category : 'tests - on do' }
 ExceptionHandlingSystemTest >> testOnDoSemanticsWithReturnValueAndExit [
 
 	self assert: self handleZeroDivideAndReturnWithCaret equals: 3
 ]
 
-{ #category : #'tests - on do' }
+{ #category : 'tests - on do' }
 ExceptionHandlingSystemTest >> testOnDoSemanticsWithSignal [
 
 	| wasHandled |
@@ -371,7 +372,7 @@ ExceptionHandlingSystemTest >> testOnDoSemanticsWithSignal [
 	self assert: wasHandled
 ]
 
-{ #category : #'tests - on do' }
+{ #category : 'tests - on do' }
 ExceptionHandlingSystemTest >> testOnDoSemanticsWithoutReturn [
 
 	| wasHandled result |
@@ -390,7 +391,7 @@ ExceptionHandlingSystemTest >> testOnDoSemanticsWithoutReturn [
 		assert: result equals: 3
 ]
 
-{ #category : #'tests - on do' }
+{ #category : 'tests - on do' }
 ExceptionHandlingSystemTest >> testOnDoSemanticsWithoutReturnAndPass [
 
 	| wasHandled wasHandledAgain |
@@ -415,7 +416,7 @@ ExceptionHandlingSystemTest >> testOnDoSemanticsWithoutReturnAndPass [
 		assert: wasHandledAgain
 ]
 
-{ #category : #'tests - on do extensions' }
+{ #category : 'tests - on do extensions' }
 ExceptionHandlingSystemTest >> testOnExceptDo [
 
 	| wasHandled result |
@@ -440,7 +441,7 @@ ExceptionHandlingSystemTest >> testOnExceptDo [
 		assert: result equals: 2
 ]
 
-{ #category : #'tests - on do extensions' }
+{ #category : 'tests - on do extensions' }
 ExceptionHandlingSystemTest >> testOnExceptDoHandling [
 
 	| wasHandled result |
@@ -462,7 +463,7 @@ ExceptionHandlingSystemTest >> testOnExceptDoHandling [
 		assert: result isNil
 ]
 
-{ #category : #'tests - on do extensions' }
+{ #category : 'tests - on do extensions' }
 ExceptionHandlingSystemTest >> testOnExceptDoHandlingWithExceptionSets [
 
 	| wasHandled result |
@@ -484,7 +485,7 @@ ExceptionHandlingSystemTest >> testOnExceptDoHandlingWithExceptionSets [
 		assert: result isNil
 ]
 
-{ #category : #'tests - on do extensions' }
+{ #category : 'tests - on do extensions' }
 ExceptionHandlingSystemTest >> testOnExceptDoWithExceptionSets [
 
 	| wasHandled result |

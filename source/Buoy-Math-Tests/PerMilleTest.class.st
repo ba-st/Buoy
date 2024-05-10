@@ -2,12 +2,13 @@
 A PerMilleTest is a test class for testing the behavior of PerMille
 "
 Class {
-	#name : #PerMilleTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Math-Tests'
+	#name : 'PerMilleTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Math-Tests',
+	#package : 'Buoy-Math-Tests'
 }
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testAbs [
 
 	self
@@ -17,7 +18,7 @@ PerMilleTest >> testAbs [
 		assert: -15 perMille abs printString equals: '15‰'
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 PerMilleTest >> testAsFloat [
 
 	self
@@ -27,7 +28,7 @@ PerMilleTest >> testAsFloat [
 		assert: 5.0 perMille asFloat equals: 0.005
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 PerMilleTest >> testAsFraction [
 
 	self
@@ -36,7 +37,7 @@ PerMilleTest >> testAsFraction [
 		assert: 500 perMille asFraction equals: 1 / 2
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 PerMilleTest >> testAsNumber [
 
 	self
@@ -45,7 +46,7 @@ PerMilleTest >> testAsNumber [
 		assert: 500 perMille asNumber equals: 1 / 2
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testBetweenAnd [
 
 	self
@@ -55,7 +56,7 @@ PerMilleTest >> testBetweenAnd [
 		deny: (1000 perMille between: 1001 and: 1002)
 ]
 
-{ #category : #'tests - creation' }
+{ #category : 'tests - creation' }
 PerMilleTest >> testCreationShortcut [
 
 	self
@@ -75,7 +76,7 @@ PerMilleTest >> testCreationShortcut [
 		assert: (1 / 2) perMille equals: 1 / 2000
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testDivisionWithFloats [
 
 	self
@@ -90,7 +91,7 @@ PerMilleTest >> testDivisionWithFloats [
 		assert: 5.0 / (PerMille of: 500) equals: 10.0
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testDivisionWithFractions [
 
 	self
@@ -102,7 +103,7 @@ PerMilleTest >> testDivisionWithFractions [
 		assert: (3 / 4) / 500 perMille equals: 3 / 2
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testDivisionWithIntegers [
 
 	self
@@ -114,7 +115,7 @@ PerMilleTest >> testDivisionWithIntegers [
 		assert: 5 / 500 perMille equals: 10
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testDivisionWithScaledDecimals [
 
 	self
@@ -126,7 +127,7 @@ PerMilleTest >> testDivisionWithScaledDecimals [
 		assert: 5.0s2 / 500 perMille equals: 10.0s2
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testEquals [
 
 	self
@@ -134,7 +135,7 @@ PerMilleTest >> testEquals [
 		assert: 1000 perMille equals: (PerMille ratio: 1)
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testEqualsWithFloats [
 
 	self
@@ -144,7 +145,7 @@ PerMilleTest >> testEqualsWithFloats [
 		assert: 1.0 equals: (PerMille ratio: 1.0)
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testEqualsWithFractions [
 
 	self
@@ -152,7 +153,7 @@ PerMilleTest >> testEqualsWithFractions [
 		assert: 3/2 equals: (PerMille ratio: 3/2)
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testEqualsWithIntegers [
 
 	self
@@ -162,7 +163,7 @@ PerMilleTest >> testEqualsWithIntegers [
 		assert: 1 equals: 1000 perMille
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testEqualsWithScaledDecimals [
 
 	self
@@ -173,7 +174,7 @@ PerMilleTest >> testEqualsWithScaledDecimals [
 		assert: 4.32s2 equals: (PerMille ratio: 4.32s2)
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 PerMilleTest >> testEven [
 
 	self
@@ -182,7 +183,7 @@ PerMilleTest >> testEven [
 		deny: (PerMille of: 14) even
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testGreaterThan [
 
 	self
@@ -192,7 +193,7 @@ PerMilleTest >> testGreaterThan [
 		assert: 0 perMille > -1
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testGreaterThanEquals [
 
 	self
@@ -203,7 +204,7 @@ PerMilleTest >> testGreaterThanEquals [
 		assert: 0 perMille >= -1
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testHash [
 
 	self
@@ -215,7 +216,7 @@ PerMilleTest >> testHash [
 		assert: 1.123 hash equals: (PerMille ratio: 1.123) hash
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 PerMilleTest >> testIsAbstract [
 
 	self
@@ -223,7 +224,7 @@ PerMilleTest >> testIsAbstract [
 		assert: PerMille superclass isAbstract
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testLessThan [
 
 	self
@@ -233,7 +234,7 @@ PerMilleTest >> testLessThan [
 		assert: -1 < 0 perMille
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testLessThanEquals [
 
 	self
@@ -243,19 +244,19 @@ PerMilleTest >> testLessThanEquals [
 		assert: -1 <= 0 perMille
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testMax [
 
 	self assert: (1000 perMille max: 0 perMille) equals: 1000 perMille
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testMin [
 
 	self assert: (1000 perMille min: 0 perMille) equals: 0 perMille
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 PerMilleTest >> testNegative [
 
 	self
@@ -264,7 +265,7 @@ PerMilleTest >> testNegative [
 		assert: (PerMille of: -114) negative
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PerMilleTest >> testNotEquals [
 
 	self
@@ -273,7 +274,7 @@ PerMilleTest >> testNotEquals [
 		assert: 0 perMille ~= 1
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testNthRoot [
 
 	self
@@ -285,7 +286,7 @@ PerMilleTest >> testNthRoot [
 		assert: ( 16000 perMille nthRoot: 4 ) equals: 2
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 PerMilleTest >> testOdd [
 
 	self
@@ -294,7 +295,7 @@ PerMilleTest >> testOdd [
 		assert: (PerMille of: 14) odd
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 PerMilleTest >> testPositive [
 
 	self
@@ -303,7 +304,7 @@ PerMilleTest >> testPositive [
 		deny: (PerMille of: -114) positive
 ]
 
-{ #category : #'tests - printing' }
+{ #category : 'tests - printing' }
 PerMilleTest >> testPrintOn [
 
 	self
@@ -313,7 +314,7 @@ PerMilleTest >> testPrintOn [
 		assert: (PerMille ratio: 3 / 2) printString equals: '1500‰'
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testProduct [
 
 	self
@@ -325,7 +326,7 @@ PerMilleTest >> testProduct [
 		assert: 5 * (PerMille of: 500) equals: 5 / 2
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testProductWithFloats [
 
 	self
@@ -337,7 +338,7 @@ PerMilleTest >> testProductWithFloats [
 		assert: 5.0 * (PerMille of: 500.0) equals: 2.5
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testProductWithFractions [
 
 	self
@@ -349,7 +350,7 @@ PerMilleTest >> testProductWithFractions [
 		assert: 3 / 4 * (PerMille of: 500) equals: 3 / 8
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testProductWithScaledDecimals [
 
 	self
@@ -361,7 +362,7 @@ PerMilleTest >> testProductWithScaledDecimals [
 		assert: 5.0s2 * (PerMille of: 500.0s2) equals: 2.5s2
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testReciprocal [
 
 	self
@@ -372,13 +373,13 @@ PerMilleTest >> testReciprocal [
 		assert: (PerMille of: 500) reciprocal printString equals: '2000‰'
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testRound [
 
 	self assert: ( ( PerMille ratio: 6 / 90 ) round: 2 ) equals: 7 / 100
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testSqrt [
 
 	self
@@ -387,7 +388,7 @@ PerMilleTest >> testSqrt [
 		assert: 4000 perMille sqrt equals: 2
 ]
 
-{ #category : #'tests - printing' }
+{ #category : 'tests - printing' }
 PerMilleTest >> testStoreOn [
 
 	self
@@ -396,7 +397,7 @@ PerMilleTest >> testStoreOn [
 		assert: (PerMille of: 12) storeString equals: '12 perMille'
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 PerMilleTest >> testStrictlyPositive [
 
 	self
@@ -405,7 +406,7 @@ PerMilleTest >> testStrictlyPositive [
 		deny: (PerMille of: -114) strictlyPositive
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testSubtraction [
 
 	self
@@ -415,7 +416,7 @@ PerMilleTest >> testSubtraction [
 		assert: (1000 perMille - (PerMille of: 5)) printString equals: '995‰'
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testSubtractionWithFloats [
 
 	self
@@ -427,7 +428,7 @@ PerMilleTest >> testSubtractionWithFloats [
 		assert: 5.0 - (PerMille of: 500) equals: 4.5
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testSubtractionWithFractions [
 
 	self
@@ -439,7 +440,7 @@ PerMilleTest >> testSubtractionWithFractions [
 		assert: (1 / 2) - (PerMille of: 500) equals: 0
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testSubtractionWithScaledDecimals [
 
 	self
@@ -451,7 +452,7 @@ PerMilleTest >> testSubtractionWithScaledDecimals [
 		assert: 5.0s2 - (PerMille of: 500) equals: 4.5s2
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testSum [
 
 	self
@@ -461,7 +462,7 @@ PerMilleTest >> testSum [
 		assert: (1000 perMille + (PerMille of: 50)) printString equals: '1050‰'
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testSumWithFloats [
 
 	self
@@ -473,7 +474,7 @@ PerMilleTest >> testSumWithFloats [
 		assert: 5.0 + (PerMille of: 500) equals: 5.5
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testSumWithFractions [
 
 	self
@@ -485,7 +486,7 @@ PerMilleTest >> testSumWithFractions [
 		assert: 1 / 2 + (PerMille of: 500) equals: 1
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testSumWithIntegers [
 
 	self
@@ -497,7 +498,7 @@ PerMilleTest >> testSumWithIntegers [
 		assert: 5 + (PerMille of: 500) equals: 11 / 2
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PerMilleTest >> testSumWithScaledDecimals [
 
 	self

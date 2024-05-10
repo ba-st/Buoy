@@ -2,47 +2,48 @@
 I'm a builder for  Assertion Checkers.
 "
 Class {
-	#name : #AssertionCheckerBuilder,
-	#superclass : #Object,
+	#name : 'AssertionCheckerBuilder',
+	#superclass : 'Object',
 	#instVars : [
 		'asserter',
 		'failurePolicyFactory',
 		'errorToSignal'
 	],
-	#category : 'Buoy-Assertions'
+	#category : 'Buoy-Assertions',
+	#package : 'Buoy-Assertions'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AssertionCheckerBuilder class >> new [
 
 	^ super new initialize
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 AssertionCheckerBuilder >> build [
 
 	^ AssertionChecker applying: (failurePolicyFactory raising: errorToSignal) to: asserter
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 AssertionCheckerBuilder >> buildAndCheck [
 
 	self build check
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 AssertionCheckerBuilder >> checking: aMonadycBlock [
 
 	aMonadycBlock value: asserter 
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 AssertionCheckerBuilder >> failFast [
 
 	failurePolicyFactory := RaiseOnFirstAssertionFailurePolicy
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 AssertionCheckerBuilder >> initialize [
 
 	super initialize.
@@ -51,7 +52,7 @@ AssertionCheckerBuilder >> initialize [
 	failurePolicyFactory := CollectingAssertionFailuresPolicy
 ]
 
-{ #category : #configuring }
+{ #category : 'configuring' }
 AssertionCheckerBuilder >> raising: anErrorToSignal [
 
 	errorToSignal := anErrorToSignal

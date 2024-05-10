@@ -1,6 +1,6 @@
-Extension { #name : #PercentageTest }
+Extension { #name : 'PercentageTest' }
 
-{ #category : #'*Buoy-Math-Pharo-Extensions-Tests' }
+{ #category : '*Buoy-Math-Pharo-Extensions-Tests' }
 PercentageTest >> testStoreOnBase [
 
 	self

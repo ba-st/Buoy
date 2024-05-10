@@ -1,10 +1,11 @@
 Class {
-	#name : #DynamicVariableTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Metaprogramming-Tests'
+	#name : 'DynamicVariableTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Metaprogramming-Tests',
+	#package : 'Buoy-Metaprogramming-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 DynamicVariableTest >> testDynamicVariableBlockReturnValue [
 
 	| returnValue |
@@ -14,7 +15,7 @@ DynamicVariableTest >> testDynamicVariableBlockReturnValue [
 	self assert: returnValue equals: 11
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DynamicVariableTest >> testDynamicVariableDefault [
 
 	self
@@ -22,7 +23,7 @@ DynamicVariableTest >> testDynamicVariableDefault [
 		assert: DynamicVariableForTesting value equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DynamicVariableTest >> testDynamicVariableRemovedAfterUse [
 
 	DynamicVariableForTesting value: 8 during: [  ].

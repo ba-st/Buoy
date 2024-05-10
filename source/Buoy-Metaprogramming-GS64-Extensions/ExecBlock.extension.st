@@ -1,6 +1,6 @@
-Extension { #name : #ExecBlock }
+Extension { #name : 'ExecBlock' }
 
-{ #category : #'*Buoy-Metaprogramming-GS64-Extensions' }
+{ #category : '*Buoy-Metaprogramming-GS64-Extensions' }
 ExecBlock >> argumentNames [
 
 	^ self argsAndTemps copyFirst: self numArgs

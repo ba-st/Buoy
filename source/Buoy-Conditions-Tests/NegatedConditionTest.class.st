@@ -1,10 +1,11 @@
 Class {
-	#name : #NegatedConditionTest,
-	#superclass : #TestCase,
-	#category : 'Buoy-Conditions-Tests'
+	#name : 'NegatedConditionTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Conditions-Tests',
+	#package : 'Buoy-Conditions-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 NegatedConditionTest >> testIsSatisfied [
 
 	| condition |
@@ -16,7 +17,7 @@ NegatedConditionTest >> testIsSatisfied [
 		deny: (condition isSatisfiedBy: 10)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 NegatedConditionTest >> testShortcut [
 
 	| condition |

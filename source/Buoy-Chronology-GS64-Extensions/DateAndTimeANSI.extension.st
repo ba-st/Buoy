@@ -9,7 +9,7 @@ DateAndTimeANSI >> monthIndex [
 { #category : '*Buoy-Chronology-GS64-Extensions' }
 DateAndTimeANSI >> printHMSOn: aStream [
 
-	self printHMSOn:  aStream separatedBy: $:
+	self printHMSOn: aStream separatedBy: $:
 ]
 
 { #category : '*Buoy-Chronology-GS64-Extensions' }

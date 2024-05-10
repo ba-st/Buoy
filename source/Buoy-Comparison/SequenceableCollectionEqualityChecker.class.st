@@ -2,22 +2,23 @@
 I'm a checker used to compare sequenceable collections.
 "
 Class {
-	#name : #SequenceableCollectionEqualityChecker,
-	#superclass : #EqualityChecker,
+	#name : 'SequenceableCollectionEqualityChecker',
+	#superclass : 'EqualityChecker',
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : #'Buoy-Comparison'
+	#category : 'Buoy-Comparison',
+	#package : 'Buoy-Comparison'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SequenceableCollectionEqualityChecker class >> new [
 
 	uniqueInstance ifNil: [ uniqueInstance := super new ].
 	^ uniqueInstance
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 SequenceableCollectionEqualityChecker >> check: base against: target [
 
 	^ ( self is: base identicalTo: target ) or: [ 
@@ -28,7 +29,7 @@ SequenceableCollectionEqualityChecker >> check: base against: target [
 		  ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SequenceableCollectionEqualityChecker >> has: base theSameElementsThan: target [
 
 	^ base size = target size

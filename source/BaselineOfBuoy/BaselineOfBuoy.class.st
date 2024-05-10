@@ -2,12 +2,13 @@
 Baseline of Buoy
 "
 Class {
-	#name : #BaselineOfBuoy,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfBuoy
+	#name : 'BaselineOfBuoy',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfBuoy',
+	#package : 'BaselineOfBuoy'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baseline: spec [
 
 	<baseline>
@@ -40,7 +41,7 @@ BaselineOfBuoy >> baseline: spec [
 			
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineAssertions: spec [
 
 	spec
@@ -56,7 +57,7 @@ BaselineOfBuoy >> baselineAssertions: spec [
 		group: 'Tests' with: 'Buoy-Assertions-Tests'
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineChronology: spec [
 
 	spec
@@ -67,7 +68,7 @@ BaselineOfBuoy >> baselineChronology: spec [
 		group: 'Tests' with: 'Buoy-Chronology-Tests'
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineCollections: spec [
 
 	spec
@@ -89,7 +90,7 @@ BaselineOfBuoy >> baselineCollections: spec [
 		group: 'Tests' with: 'Buoy-Collections-Tests'
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineComparison: spec [
 
 	spec
@@ -105,7 +106,7 @@ BaselineOfBuoy >> baselineComparison: spec [
 		group: 'Tests' with: 'Buoy-Comparison-Tests'
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineConditions: spec [
 
 	spec
@@ -126,7 +127,7 @@ BaselineOfBuoy >> baselineConditions: spec [
 		group: 'Tests' with: 'Buoy-Conditions-Pharo-Extensions-Tests'
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineDynamicBinding: spec [
 
 	spec
@@ -136,7 +137,7 @@ BaselineOfBuoy >> baselineDynamicBinding: spec [
 		group: 'Tests' with: 'Buoy-Dynamic-Binding-Tests'
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineExceptionHandling: spec [
 
 	spec
@@ -146,7 +147,7 @@ BaselineOfBuoy >> baselineExceptionHandling: spec [
 		group: 'Tests' with: 'Buoy-Exception-Handling-Tests'
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineGS64Development: spec [
 
 	spec
@@ -174,7 +175,7 @@ BaselineOfBuoy >> baselineGS64Development: spec [
 		group: 'GS64-Development' with: 'Buoy-Chronology-GS64-Extensions'
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineMath: spec [
 
 	spec
@@ -196,7 +197,7 @@ BaselineOfBuoy >> baselineMath: spec [
 		group: 'Tests' with: 'Buoy-Math-Pharo-Extensions-Tests'
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineMetaprogramming: spec [
 
 	spec
@@ -215,7 +216,7 @@ BaselineOfBuoy >> baselineMetaprogramming: spec [
 		group: 'Tests' with: 'Buoy-Metaprogramming-Tests'
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineSUnit: spec [
 
 	spec
@@ -227,7 +228,7 @@ BaselineOfBuoy >> baselineSUnit: spec [
 		group: 'Tests' with: 'Buoy-SUnit-Tests'
 ]
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineTools: spec [
 
 	spec
@@ -235,7 +236,7 @@ BaselineOfBuoy >> baselineTools: spec [
 		group: 'Tools' with: #('Buoy-Development-Tools' 'Dependent-SUnit-Extensions')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfBuoy >> projectClass [
 
 	^ MetacelloCypressBaselineProject

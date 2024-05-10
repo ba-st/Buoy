@@ -1,6 +1,6 @@
-Extension { #name : #Class }
+Extension { #name : 'Class' }
 
-{ #category : #'*Buoy-Metaprogramming-GS64-Extensions' }
+{ #category : '*Buoy-Metaprogramming-GS64-Extensions' }
 Class >> allLeafSubclasses [
 
 	| leafs |
@@ -10,14 +10,14 @@ Class >> allLeafSubclasses [
 	^ leafs
 ]
 
-{ #category : #'*Buoy-Metaprogramming-GS64-Extensions' }
+{ #category : '*Buoy-Metaprogramming-GS64-Extensions' }
 Class >> allSubclassesDo: aBlock [
 	"Evaluate the argument, aBlock, for each of the receiver's subclasses."
 
 	self allSubclasses do: aBlock
 ]
 
-{ #category : #'*Buoy-Metaprogramming-GS64-Extensions' }
+{ #category : '*Buoy-Metaprogramming-GS64-Extensions' }
 Class >> subclassesDo: aBlock [
 	"Evaluate the argument, aBlock, for each of the receiver's immediate subclasses."
 

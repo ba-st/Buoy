@@ -1,1 +1,1 @@
-Package { #name : #'Buoy-SUnit-Model' }
+Package { #name : 'Buoy-SUnit-Model' }

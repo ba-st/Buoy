@@ -1,6 +1,6 @@
-Extension { #name : #Integer }
+Extension { #name : 'Integer' }
 
-{ #category : #'*Buoy-Math-Pharo-Extensions' }
+{ #category : '*Buoy-Math-Pharo-Extensions' }
 Integer >> asHexStringPaddedTo: minimum [
 
 	^ String streamContents: [ :s |

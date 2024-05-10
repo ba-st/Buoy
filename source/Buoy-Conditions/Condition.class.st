@@ -6,30 +6,31 @@ I test if a provided value is valid against me.
 
 "
 Class {
-	#name : #Condition,
-	#superclass : #Object,
-	#category : 'Buoy-Conditions'
+	#name : 'Condition',
+	#superclass : 'Object',
+	#category : 'Buoy-Conditions',
+	#package : 'Buoy-Conditions'
 }
 
-{ #category : #composing }
+{ #category : 'composing' }
 Condition >> and: aCondition [
 
 	^ CompositeCondition satisfying: self and: aCondition
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Condition >> isSatisfiedBy: aValue [
 	
 	self subclassResponsibility 
 ]
 
-{ #category : #negating }
+{ #category : 'negating' }
 Condition >> negated [
 	
 	^ NegatedCondition with: self.
 ]
 
-{ #category : #composing }
+{ #category : 'composing' }
 Condition >> or: aCondition [
 
 	^ CompositeCondition satisfying: self or: aCondition

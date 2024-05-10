@@ -1,6 +1,6 @@
-Extension { #name : #BlockClosure }
+Extension { #name : 'BlockClosure' }
 
-{ #category : #'*Buoy-Exception-Handling-Extensions' }
+{ #category : '*Buoy-Exception-Handling-Extensions' }
 BlockClosure >> on: selector except: exclusionSelector do: action [
 
 	^ self

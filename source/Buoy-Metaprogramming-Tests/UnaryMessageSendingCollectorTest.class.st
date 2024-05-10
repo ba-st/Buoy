@@ -2,22 +2,23 @@
 An UnaryMessageSendingCollectorTest is a test class for testing the behavior of UnaryMessageSendingCollector
 "
 Class {
-	#name : #UnaryMessageSendingCollectorTest,
-	#superclass : #TestCase,
+	#name : 'UnaryMessageSendingCollectorTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'messagesSent'
 	],
-	#category : #'Buoy-Metaprogramming-Tests'
+	#category : 'Buoy-Metaprogramming-Tests',
+	#package : 'Buoy-Metaprogramming-Tests'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 UnaryMessageSendingCollectorTest >> setUp [
 
 	super setUp.
 	messagesSent := IdentitySet new
 ]
 
-{ #category : #'tests-evaluating' }
+{ #category : 'tests-evaluating' }
 UnaryMessageSendingCollectorTest >> testValue [
 
 	( UnaryMessageSendingCollector
@@ -30,7 +31,7 @@ UnaryMessageSendingCollectorTest >> testValue [
 		assert: messagesSent includes: #zzzTest
 ]
 
-{ #category : #'tests-evaluating' }
+{ #category : 'tests-evaluating' }
 UnaryMessageSendingCollectorTest >> testValueWithPrefix [
 
 	( UnaryMessageSendingCollector sendingAllMessagesBeginningWith: 'zzzTest' to: self ) value.
@@ -41,7 +42,7 @@ UnaryMessageSendingCollectorTest >> testValueWithPrefix [
 		assert: messagesSent includes: #zzzTest2
 ]
 
-{ #category : #'tests-evaluating' }
+{ #category : 'tests-evaluating' }
 UnaryMessageSendingCollectorTest >> testValueWithSuffix [
 
 	( UnaryMessageSendingCollector sendingAllMessagesEndingWith: 'Test2' to: self ) value.
@@ -52,7 +53,7 @@ UnaryMessageSendingCollectorTest >> testValueWithSuffix [
 		assert: messagesSent includes: #zzTest2
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 UnaryMessageSendingCollectorTest >> zzTest [
 
 	<ignoreForCoverage>
@@ -60,19 +61,19 @@ UnaryMessageSendingCollectorTest >> zzTest [
 	self fail
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 UnaryMessageSendingCollectorTest >> zzTest2 [
 
 	messagesSent add: #zzTest2
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 UnaryMessageSendingCollectorTest >> zzzTest [
 
 	messagesSent add: #zzzTest
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 UnaryMessageSendingCollectorTest >> zzzTest2 [
 
 	messagesSent add: #zzzTest2

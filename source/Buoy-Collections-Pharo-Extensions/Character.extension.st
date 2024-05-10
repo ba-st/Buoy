@@ -1,6 +1,6 @@
-Extension { #name : #Character }
+Extension { #name : 'Character' }
 
-{ #category : #'*Buoy-Collections-Pharo-Extensions' }
+{ #category : '*Buoy-Collections-Pharo-Extensions' }
 Character class >> esc [
 	"Answer the ASCII ESC character"
 

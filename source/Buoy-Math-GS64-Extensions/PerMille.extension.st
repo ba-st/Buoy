@@ -1,6 +1,6 @@
-Extension { #name : #PerMille }
+Extension { #name : 'PerMille' }
 
-{ #category : #'*Buoy-Math-GS64-Extensions' }
+{ #category : '*Buoy-Math-GS64-Extensions' }
 PerMille >> printOn: stream [
 
 	super printOn: stream.

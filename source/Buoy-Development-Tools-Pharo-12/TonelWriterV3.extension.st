@@ -21,6 +21,6 @@ TonelWriterV3 >> typeClassDefinitionOf: aClassDefinition [
 	aClassDefinition classInstVarNames ifNotEmpty: [ :vars | definition at: #classInstVars put: vars asArray ].
 	self setPackageInfoOf: aClassDefinition in: definition.
 	"Write gs_options if available as class properties"
-	(aClassDefinition actualClass propertyAt: #gs_options) ifNotNil: [ :options | definition at: #gs_options put: options ].
+	(aClassDefinition actualClass ifNotNil:[:actualClass | (actualClass  propertyAt: #gs_options) ifNotNil: [ :options | definition at: #gs_options put: options ]]).
 	^ self toSTON: definition
 ]

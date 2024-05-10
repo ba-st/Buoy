@@ -2,18 +2,19 @@
 An #PropertyBasedEqualityCheckerTest is a test class for testing the behavior of #PropertyBasedEqualityChecker
 "
 Class {
-	#name : #PropertyBasedEqualityCheckerTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Comparison-Tests'
+	#name : 'PropertyBasedEqualityCheckerTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Comparison-Tests',
+	#package : 'Buoy-Comparison-Tests'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 PropertyBasedEqualityCheckerTest >> equalityCheckerOn: anObject [
 
 	^ PropertyBasedEqualityChecker on: anObject
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PropertyBasedEqualityCheckerTest >> testCheckingIdenticalObjects [
 
 	| checker |
@@ -24,7 +25,7 @@ PropertyBasedEqualityCheckerTest >> testCheckingIdenticalObjects [
 	self assert: ( checker checkAgainst: self )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PropertyBasedEqualityCheckerTest >> testPropertyBlockComparison [
 
 	| checker |
@@ -48,7 +49,7 @@ PropertyBasedEqualityCheckerTest >> testPropertyBlockComparison [
 		deny: ( checker checkAgainst: #( 1 2 3 4 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PropertyBasedEqualityCheckerTest >> testPropertyComparison [
 
 	| checker |
@@ -61,7 +62,7 @@ PropertyBasedEqualityCheckerTest >> testPropertyComparison [
 		deny: ( checker checkAgainst: #( 2 2 3 4 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PropertyBasedEqualityCheckerTest >> testSeveralPropertiesComparison [
 
 	| checker |
@@ -75,7 +76,7 @@ PropertyBasedEqualityCheckerTest >> testSeveralPropertiesComparison [
 		deny: ( checker checkAgainst: #( 2 2 3 4 ) )
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PropertyBasedEqualityCheckerTest >> testTypeComparison [
 
 	| checker |

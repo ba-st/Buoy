@@ -5,16 +5,17 @@ Implementation Notes:
 	To ease the rollover I keep the current index in a zero-based fashion to use module arithmetics to perform the rollover.
 "
 Class {
-	#name : #CircularIterator,
-	#superclass : #Object,
+	#name : 'CircularIterator',
+	#superclass : 'Object',
 	#instVars : [
 		'options',
 		'currentIndex'
 	],
-	#category : 'Buoy-Collections'
+	#category : 'Buoy-Collections',
+	#package : 'Buoy-Collections'
 }
 
-{ #category : #'Instance Creation' }
+{ #category : 'Instance Creation' }
 CircularIterator class >> cyclingOver: aSequentiableCollection [
 
 	AssertionChecker
@@ -25,33 +26,33 @@ CircularIterator class >> cyclingOver: aSequentiableCollection [
 	^ self new initializeCyclingOver: aSequentiableCollection asArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CircularIterator >> current [
 
 	^options at: currentIndex + 1
 ]
 
-{ #category : #Testing }
+{ #category : 'Testing' }
 CircularIterator >> includes: anObject [
 
 	^options includes: anObject  
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CircularIterator >> initializeCyclingOver: anArray [
 
 	options := anArray.
 	self reset
 ]
 
-{ #category : #iterating }
+{ #category : 'iterating' }
 CircularIterator >> next [
 
 	currentIndex := (currentIndex + 1) \\ options size.
 	^self current 
 ]
 
-{ #category : #iterating }
+{ #category : 'iterating' }
 CircularIterator >> reset [
 
 	currentIndex := 0

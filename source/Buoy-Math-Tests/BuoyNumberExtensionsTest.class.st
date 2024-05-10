@@ -2,12 +2,13 @@
 I'm a Test Case for the extensions defined in this package to Number.
 "
 Class {
-	#name : #BuoyNumberExtensionsTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Math-Tests'
+	#name : 'BuoyNumberExtensionsTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Math-Tests',
+	#package : 'Buoy-Math-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testAsHexStringPaddedTo [
 
 	self
@@ -18,7 +19,7 @@ BuoyNumberExtensionsTest >> testAsHexStringPaddedTo [
 		assert: (17 asHexStringPaddedTo: 1) equals: '11'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testCloseTo [
 
 	self assert: (3 closeTo: 3.00001).
@@ -33,13 +34,13 @@ BuoyNumberExtensionsTest >> testCloseTo [
 	self assert: (1 + 1.0e-8 closeTo: 1.0)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testCompoundingPercentages [
 
 	self assert: ((200 increasedBy: 10 percent) decreasedBy: 10 percent) equals: 198
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testDecreasedBy [
 
 	self
@@ -53,7 +54,7 @@ BuoyNumberExtensionsTest >> testDecreasedBy [
 			withMessageText: 'A number can''t be decreased by a percentage greater than 100% and lesser than 0%'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testIncreasedBy [
 
 	self
@@ -64,7 +65,7 @@ BuoyNumberExtensionsTest >> testIncreasedBy [
 			withMessageText: 'A number can''t be increased by a negative percentage'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testIntegerReadFromIfFail [
 
 	self
@@ -77,7 +78,7 @@ BuoyNumberExtensionsTest >> testIntegerReadFromIfFail [
 		equals: 12
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testIsFinite [
 
 	self assert: 1.1 isFinite.
@@ -87,7 +88,7 @@ BuoyNumberExtensionsTest >> testIsFinite [
 	self deny: Float negativeInfinity isFinite
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testIsInfinite [
 
 	self deny: 1.1 isInfinite.
@@ -97,7 +98,7 @@ BuoyNumberExtensionsTest >> testIsInfinite [
 	self assert: Float negativeInfinity isInfinite
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testIsNaN [
 
 	self deny: 1.1 isNaN.
@@ -107,7 +108,7 @@ BuoyNumberExtensionsTest >> testIsNaN [
 	self deny: Float negativeInfinity isNaN
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testIsPercentage [
 
 	self
@@ -115,7 +116,7 @@ BuoyNumberExtensionsTest >> testIsPercentage [
 		deny: 10 isPercentage
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testPrintStringHex [
 
 	self
@@ -124,7 +125,7 @@ BuoyNumberExtensionsTest >> testPrintStringHex [
 		assert: 17 printStringHex equals: '11'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testPrintStringLenghtPadded [
 
 	self

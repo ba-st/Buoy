@@ -2,27 +2,28 @@
 I'm an assertion policy that raises and exception on the first assertion failure (failing fast)
 "
 Class {
-	#name : #RaiseOnFirstAssertionFailurePolicy,
-	#superclass : #AssertionFailurePolicy,
+	#name : 'RaiseOnFirstAssertionFailurePolicy',
+	#superclass : 'AssertionFailurePolicy',
 	#instVars : [
 		'errorClass'
 	],
-	#category : 'Buoy-Assertions'
+	#category : 'Buoy-Assertions',
+	#package : 'Buoy-Assertions'
 }
 
-{ #category : #'Instance Creation' }
+{ #category : 'Instance Creation' }
 RaiseOnFirstAssertionFailurePolicy class >> raising: anErrorClass [
 
 	^ self new initializeRaising: anErrorClass
 ]
 
-{ #category : #notifying }
+{ #category : 'notifying' }
 RaiseOnFirstAssertionFailurePolicy >> assertionFailedBecause: aFailureExplanation [
 
 	errorClass signal: aFailureExplanation
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 RaiseOnFirstAssertionFailurePolicy >> initializeRaising: anErrorClass [
 
 	errorClass := anErrorClass

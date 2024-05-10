@@ -39,6 +39,16 @@ Class {
 	#package : 'Buoy-Collections-GS64-Extensions'
 }
 
+{ #category : 'STON' }
+OrderedDictionary class >> fromSton: stonReader [
+
+	| dictionary |
+	dictionary := self new.
+	stonReader parseMapDo: [ :key :value |
+		dictionary at: key put: value ].
+	^ dictionary
+]
+
 { #category : 'instance creation' }
 OrderedDictionary class >> new [
 	^ self new: 10
@@ -81,16 +91,6 @@ OrderedDictionary class >> newFromPairs: aSequenceableCollection [
 			at: (aSequenceableCollection at: i)
 			put: (aSequenceableCollection at: i + 1)].
 	^ newDictionary
-]
-
-{ #category : 'STON' }
-OrderedDictionary class >> fromSton: stonReader [
-
-	| dictionary |
-	dictionary := self new.
-	stonReader parseMapDo: [ :key :value |
-		dictionary at: key put: value ].
-	^ dictionary
 ]
 
 { #category : 'comparing' }
@@ -267,11 +267,6 @@ OrderedDictionary >> bindingOf: varName [
 	^ self associationAt: varName ifAbsent: [nil]
 ]
 
-{ #category : 'enumerating' }
-OrderedDictionary >> bindingsDo: aBlock [
-	self associationsDo: aBlock
-]
-
 { #category : 'accessing' }
 OrderedDictionary >> capacity [
 	^ dictionary capacity
@@ -288,18 +283,6 @@ OrderedDictionary >> collect: aBlock [
 OrderedDictionary >> copyEmpty [
 
 	^ self species new
-]
-
-{ #category : 'adding' }
-OrderedDictionary >> declare: aKey from: aDictionary [
-	(self includesKey: aKey)
-		ifTrue: [^ self].
-
-	(aDictionary includesKey: aKey)
-		ifTrue: [
-			self add: (aDictionary associationAt: aKey).
-			aDictionary removeKey: aKey]
-		ifFalse: [self add: aKey -> nil]
 ]
 
 { #category : 'private' }

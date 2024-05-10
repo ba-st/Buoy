@@ -1,16 +1,17 @@
 Class {
-	#name : #DynamicVariableForTesting,
-	#superclass : #DynamicVariable,
-	#category : #'Buoy-Metaprogramming-Tests'
+	#name : 'DynamicVariableForTesting',
+	#superclass : 'DynamicVariable',
+	#category : 'Buoy-Metaprogramming-Tests',
+	#package : 'Buoy-Metaprogramming-Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DynamicVariableForTesting class >> default [
 
 	^ 3
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DynamicVariableForTesting >> default [
 
 	^ self class default

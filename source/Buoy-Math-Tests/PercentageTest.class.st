@@ -2,12 +2,13 @@
 A PercentageTest is a test class for testing the behavior of Percentage
 "
 Class {
-	#name : #PercentageTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Math-Tests'
+	#name : 'PercentageTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Math-Tests',
+	#package : 'Buoy-Math-Tests'
 }
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testAbs [
 
 	self
@@ -17,7 +18,7 @@ PercentageTest >> testAbs [
 		assert: (Percentage of: -15) abs printString equals: '15%'
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 PercentageTest >> testAsFloat [
 
 	self
@@ -27,7 +28,7 @@ PercentageTest >> testAsFloat [
 		assert: 5.0 percent asFloat equals: 0.05
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 PercentageTest >> testAsFraction [
 
 	self
@@ -36,7 +37,7 @@ PercentageTest >> testAsFraction [
 		assert: ( Percentage of: 50 ) asFraction equals: 1 / 2
 ]
 
-{ #category : #'tests - converting' }
+{ #category : 'tests - converting' }
 PercentageTest >> testAsNumber [
 
 	self
@@ -45,7 +46,7 @@ PercentageTest >> testAsNumber [
 		assert: 50 percent asNumber equals: 1 / 2
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testBetweenAnd [
 
 	self
@@ -55,7 +56,7 @@ PercentageTest >> testBetweenAnd [
 		deny: (Percentage oneHundred between: 1.1 and: 1.2)
 ]
 
-{ #category : #'tests - creation' }
+{ #category : 'tests - creation' }
 PercentageTest >> testCreationShortcut [
 
 	self
@@ -75,7 +76,7 @@ PercentageTest >> testCreationShortcut [
 		assert: (1 / 2) percent equals: 1 / 200
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testDivisionWithFloats [
 
 	self
@@ -90,7 +91,7 @@ PercentageTest >> testDivisionWithFloats [
 		assert: 5.0 / (Percentage of: 50) equals: 10.0
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testDivisionWithFractions [
 
 	self
@@ -102,7 +103,7 @@ PercentageTest >> testDivisionWithFractions [
 		assert: (3 / 4) / (Percentage of: 50) equals: 3 / 2
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testDivisionWithIntegers [
 
 	self
@@ -114,7 +115,7 @@ PercentageTest >> testDivisionWithIntegers [
 		assert: 5 / (Percentage of: 50) equals: 10
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testDivisionWithScaledDecimals [
 
 	self
@@ -126,7 +127,7 @@ PercentageTest >> testDivisionWithScaledDecimals [
 		assert: 5.0s2 / (Percentage of: 50) equals: 10.0s2
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testEquals [
 
 	self
@@ -134,7 +135,7 @@ PercentageTest >> testEquals [
 		assert: Percentage oneHundred equals: (Percentage ratio: 1)
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testEqualsWithFloats [
 
 	self
@@ -144,7 +145,7 @@ PercentageTest >> testEqualsWithFloats [
 		assert: 1.0 equals: (Percentage ratio: 1.0)
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testEqualsWithFractions [
 
 	self
@@ -152,7 +153,7 @@ PercentageTest >> testEqualsWithFractions [
 		assert: 3/2 equals: (Percentage ratio: 3/2)
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testEqualsWithIntegers [
 
 	self
@@ -162,7 +163,7 @@ PercentageTest >> testEqualsWithIntegers [
 		assert: 1 equals: Percentage oneHundred
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testEqualsWithScaledDecimals [
 
 	self
@@ -173,7 +174,7 @@ PercentageTest >> testEqualsWithScaledDecimals [
 		assert: 4.32s2 equals: (Percentage ratio: 4.32s2)
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 PercentageTest >> testEven [
 
 	self
@@ -182,7 +183,7 @@ PercentageTest >> testEven [
 		deny: (Percentage of: 14) even
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testGreaterThan [
 
 	self
@@ -192,7 +193,7 @@ PercentageTest >> testGreaterThan [
 		assert: Percentage zero > -1
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testGreaterThanEquals [
 
 	self
@@ -203,7 +204,7 @@ PercentageTest >> testGreaterThanEquals [
 		assert: Percentage zero >= -1
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testHash [
 
 	self
@@ -215,7 +216,7 @@ PercentageTest >> testHash [
 		assert: 1.123 hash equals: (Percentage ratio: 1.123) hash
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 PercentageTest >> testIsAbstract [
 
 	self
@@ -223,7 +224,7 @@ PercentageTest >> testIsAbstract [
 		assert: Percentage superclass isAbstract
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testLessThan [
 
 	self
@@ -233,7 +234,7 @@ PercentageTest >> testLessThan [
 		assert: -1 < Percentage zero
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testLessThanEquals [
 
 	self
@@ -243,19 +244,19 @@ PercentageTest >> testLessThanEquals [
 		assert: -1 <= Percentage zero
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testMax [
 
 	self assert: (Percentage oneHundred max: Percentage zero) equals: Percentage oneHundred
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testMin [
 
 	self assert: (Percentage oneHundred min: Percentage zero) equals: Percentage zero
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 PercentageTest >> testNegative [
 
 	self
@@ -264,7 +265,7 @@ PercentageTest >> testNegative [
 		assert: (Percentage of: -114) negative
 ]
 
-{ #category : #'tests - magnitude-API' }
+{ #category : 'tests - magnitude-API' }
 PercentageTest >> testNotEquals [
 
 	self
@@ -273,7 +274,7 @@ PercentageTest >> testNotEquals [
 		assert: Percentage zero ~= 1
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testNthRoot [
 
 	self
@@ -285,7 +286,7 @@ PercentageTest >> testNthRoot [
 		assert: ( 1600 percent nthRoot: 4 ) equals: 2
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 PercentageTest >> testOdd [
 
 	self
@@ -294,7 +295,7 @@ PercentageTest >> testOdd [
 		assert: (Percentage of: 14) odd
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 PercentageTest >> testPositive [
 
 	self
@@ -303,7 +304,7 @@ PercentageTest >> testPositive [
 		deny: (Percentage of: -114) positive
 ]
 
-{ #category : #'tests - printing' }
+{ #category : 'tests - printing' }
 PercentageTest >> testPrintOn [
 
 	self
@@ -313,7 +314,7 @@ PercentageTest >> testPrintOn [
 		assert: (Percentage ratio: 3/2) printString equals: '150%'
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testProduct [
 
 	self
@@ -325,7 +326,7 @@ PercentageTest >> testProduct [
 		assert: 5 * (Percentage of: 50) equals: 5 / 2
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testProductWithFloats [
 
 	self
@@ -337,7 +338,7 @@ PercentageTest >> testProductWithFloats [
 		assert: 5.0 * (Percentage of: 50.0) equals: 2.5
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testProductWithFractions [
 
 	self
@@ -349,7 +350,7 @@ PercentageTest >> testProductWithFractions [
 		assert: 3 / 4 * (Percentage of: 50) equals: 3 / 8
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testProductWithScaledDecimals [
 
 	self
@@ -361,7 +362,7 @@ PercentageTest >> testProductWithScaledDecimals [
 		assert: 5.0s2 * (Percentage of: 50.0s2) equals: 2.5s2
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testReciprocal [
 
 	self
@@ -372,13 +373,13 @@ PercentageTest >> testReciprocal [
 		assert: (Percentage of: 50) reciprocal printString equals: '200%'
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testRound [
 
 	self assert: ( ( Percentage ratio: 6 / 90 ) round: 2 ) equals: 7 / 100
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testSqrt [
 
 	self
@@ -387,7 +388,7 @@ PercentageTest >> testSqrt [
 		assert: 400 percent sqrt equals: 2
 ]
 
-{ #category : #'tests - printing' }
+{ #category : 'tests - printing' }
 PercentageTest >> testStoreOn [
 
 	self
@@ -396,7 +397,7 @@ PercentageTest >> testStoreOn [
 		assert: (Percentage of: 12) storeString equals: '12 percent'
 ]
 
-{ #category : #'tests - testing' }
+{ #category : 'tests - testing' }
 PercentageTest >> testStrictlyPositive [
 
 	self
@@ -405,7 +406,7 @@ PercentageTest >> testStrictlyPositive [
 		deny: (Percentage of: -114) strictlyPositive
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testSubtraction [
 
 	self
@@ -415,7 +416,7 @@ PercentageTest >> testSubtraction [
 		assert: (Percentage oneHundred - (Percentage of: 5)) printString equals: '95%'
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testSubtractionWithFloats [
 
 	self
@@ -427,7 +428,7 @@ PercentageTest >> testSubtractionWithFloats [
 		assert: 5.0 - (Percentage of: 50) equals: 4.5
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testSubtractionWithFractions [
 
 	self
@@ -439,7 +440,7 @@ PercentageTest >> testSubtractionWithFractions [
 		assert: 1/2 - (Percentage of: 50) equals: 0
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testSubtractionWithScaledDecimals [
 
 	self
@@ -451,7 +452,7 @@ PercentageTest >> testSubtractionWithScaledDecimals [
 		assert: 5.0s2 - (Percentage of: 50) equals: 4.5s2
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testSum [
 
 	self
@@ -461,7 +462,7 @@ PercentageTest >> testSum [
 		assert: (Percentage oneHundred + (Percentage of: 5)) printString equals: '105%'
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testSumWithFloats [
 
 	self
@@ -473,7 +474,7 @@ PercentageTest >> testSumWithFloats [
 		assert: 5.0 + (Percentage of: 50) equals: 5.5
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testSumWithFractions [
 
 	self
@@ -485,7 +486,7 @@ PercentageTest >> testSumWithFractions [
 		assert: 1/2 + (Percentage of: 50) equals: 1
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testSumWithIntegers [
 
 	self
@@ -497,7 +498,7 @@ PercentageTest >> testSumWithIntegers [
 		assert: 5 + (Percentage of: 50) equals: 11 / 2
 ]
 
-{ #category : #'tests - arithmetic-API' }
+{ #category : 'tests - arithmetic-API' }
 PercentageTest >> testSumWithScaledDecimals [
 
 	self

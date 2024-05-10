@@ -2,21 +2,22 @@
 I'm an optional containing some object
 "
 Class {
-	#name : #UsedOptional,
-	#superclass : #Optional,
+	#name : 'UsedOptional',
+	#superclass : 'Optional',
 	#instVars : [
 		'content'
 	],
-	#category : 'Buoy-Dynamic-Binding'
+	#category : 'Buoy-Dynamic-Binding',
+	#package : 'Buoy-Dynamic-Binding'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 UsedOptional class >> containing: anObject [
 
 	^self new initializeContaining: anObject 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 UsedOptional >> equalsTo: anObject [
 
 	^ anObject
@@ -24,25 +25,25 @@ UsedOptional >> equalsTo: anObject [
 		ifUnused: [ false ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 UsedOptional >> initializeContaining: anObject [
 
 	content := anObject 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 UsedOptional >> printOn: aStream [
 
 	aStream nextPutAll: content asString
 ]
 
-{ #category : #combining }
+{ #category : 'combining' }
 UsedOptional >> return: aMonadycBlock [
 
 	^ self class containing: (aMonadycBlock value: content)
 ]
 
-{ #category : #combining }
+{ #category : 'combining' }
 UsedOptional >> whenAllUsedIn: optionals return: aMonadycBlock [
 
 	| combined |
@@ -57,7 +58,7 @@ UsedOptional >> whenAllUsedIn: optionals return: aMonadycBlock [
 	^ combined withContentDo: [ :contents | self class containing: (aMonadycBlock value: contents) ] ifUnused: [ combined ]
 ]
 
-{ #category : #combining }
+{ #category : 'combining' }
 UsedOptional >> with: anOptional whenAnyUsedReturn: aDyadicBlock [
 
 	^ anOptional
@@ -65,7 +66,7 @@ UsedOptional >> with: anOptional whenAnyUsedReturn: aDyadicBlock [
 		ifUnused: [ self ]
 ]
 
-{ #category : #combining }
+{ #category : 'combining' }
 UsedOptional >> with: anOptional whenBothUsedReturn: aDyadicBlock [
 
 	^ anOptional
@@ -74,13 +75,13 @@ UsedOptional >> with: anOptional whenBothUsedReturn: aDyadicBlock [
 		ifUnused: [ anOptional ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 UsedOptional >> withContentDo: aBlockClosure ifUnused: aNothingBlock [ 
 	
 	^aBlockClosure cull: content 
 ]
 
-{ #category : #combining }
+{ #category : 'combining' }
 UsedOptional >> withUsedOnlyIn: optionals return: aMonadycBlock [
 
 	| combined |

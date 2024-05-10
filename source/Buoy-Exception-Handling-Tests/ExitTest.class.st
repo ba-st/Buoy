@@ -1,10 +1,11 @@
 Class {
-	#name : #ExitTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Exception-Handling-Tests'
+	#name : 'ExitTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Exception-Handling-Tests',
+	#package : 'Buoy-Exception-Handling-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExitTest >> testFailure [
 
 	self
@@ -19,7 +20,7 @@ ExitTest >> testFailure [
 				assert: error messageText equals: 'Bye bye' ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExitTest >> testResume [
 
 	| returnValue |
@@ -31,7 +32,7 @@ ExitTest >> testResume [
 	self assert: returnValue equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ExitTest >> testSuccess [
 
 	self

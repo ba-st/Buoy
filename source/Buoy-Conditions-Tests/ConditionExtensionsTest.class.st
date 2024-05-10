@@ -2,12 +2,13 @@
 I'm an unit test for extensions included in the Conditions package
 "
 Class {
-	#name : #ConditionExtensionsTest,
-	#superclass : #TestCase,
-	#category : #'Buoy-Conditions-Tests'
+	#name : 'ConditionExtensionsTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Conditions-Tests',
+	#package : 'Buoy-Conditions-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConditionExtensionsTest >> testBlockUnless [
 
 	| blockWasEvaluated |
@@ -21,7 +22,7 @@ ConditionExtensionsTest >> testBlockUnless [
 	[ self fail ] unless: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConditionExtensionsTest >> testBlockUnlessInWhichCase [
 
 	| collection result |
@@ -39,7 +40,7 @@ ConditionExtensionsTest >> testBlockUnlessInWhichCase [
 	self assert: result equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConditionExtensionsTest >> testBooleanThen [
 
 	| blockWasEvaluated |
@@ -53,7 +54,7 @@ ConditionExtensionsTest >> testBooleanThen [
 	false then: [ self fail ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ConditionExtensionsTest >> testBooleanThenOtherwise [
 
 	| blockWasEvaluated |

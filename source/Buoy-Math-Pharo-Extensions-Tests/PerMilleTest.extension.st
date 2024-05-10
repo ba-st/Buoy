@@ -1,6 +1,6 @@
-Extension { #name : #PerMilleTest }
+Extension { #name : 'PerMilleTest' }
 
-{ #category : #'*Buoy-Math-Pharo-Extensions-Tests' }
+{ #category : '*Buoy-Math-Pharo-Extensions-Tests' }
 PerMilleTest >> testStoreOnBase [
 
 	self

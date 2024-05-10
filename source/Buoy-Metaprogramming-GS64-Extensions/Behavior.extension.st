@@ -1,6 +1,6 @@
-Extension { #name : #Behavior }
+Extension { #name : 'Behavior' }
 
-{ #category : #'*Buoy-Metaprogramming-GS64-Extensions' }
+{ #category : '*Buoy-Metaprogramming-GS64-Extensions' }
 Behavior >> >> selector [
 	"Answer the compiled method associated with the argument, selector (a
 	Symbol), a message selector in the receiver's method dictionary. If the

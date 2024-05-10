@@ -2,28 +2,29 @@
 I'm representing an Assertion Checker. My main objetive is to check a set of preconfigured facts and signal an error if some of them are not satisfied.
 "
 Class {
-	#name : #AssertionChecker,
-	#superclass : #Object,
+	#name : 'AssertionChecker',
+	#superclass : 'Object',
 	#instVars : [
 		'asserter',
 		'failurePolicy'
 	],
-	#category : #'Buoy-Assertions'
+	#category : 'Buoy-Assertions',
+	#package : 'Buoy-Assertions'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 AssertionChecker class >> applying: aFailurePolicy to: anAsserter [
 
 	^ self new initializeApplying: aFailurePolicy to: anAsserter
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 AssertionChecker class >> check: checkingBlock [
 
 	^ self check: checkingBlock configuredBy: [ :checker |  ]
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 AssertionChecker class >> check: checkingBlock configuredBy: configurationBlock [
 
 	| builder |
@@ -34,19 +35,19 @@ AssertionChecker class >> check: checkingBlock configuredBy: configurationBlock 
 	^ builder buildAndCheck
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 AssertionChecker class >> checkApplyingFailFastPolicyTo: asserter raising: errorToSignal [
 
 	^ (self applying: (RaiseOnFirstAssertionFailurePolicy raising: errorToSignal) to: asserter) check
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 AssertionChecker class >> enforce: aFact because: aStringOrBlockExplanation [
 
 	^ self enforce: aFact because: aStringOrBlockExplanation raising: AssertionFailurePolicy defaultErrorToSignal 
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 AssertionChecker class >> enforce: aFact because: aStringOrBlockExplanation raising: errorToSignal [
 
 	| asserter |
@@ -57,13 +58,13 @@ AssertionChecker class >> enforce: aFact because: aStringOrBlockExplanation rais
 	^ self checkApplyingFailFastPolicyTo: asserter raising: errorToSignal
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 AssertionChecker class >> refuse: aFact because: aStringOrBlockExplanation [
 
 	^ self refuse: aFact because: aStringOrBlockExplanation raising: AssertionFailurePolicy defaultErrorToSignal
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 AssertionChecker class >> refuse: aFact because: aStringOrBlockExplanation raising: errorToSignal [
 
 	| asserter |
@@ -74,13 +75,13 @@ AssertionChecker class >> refuse: aFact because: aStringOrBlockExplanation raisi
 	^ self checkApplyingFailFastPolicyTo: asserter raising: errorToSignal
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 AssertionChecker >> check [
 
 	failurePolicy applyTo: asserter
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 AssertionChecker >> initializeApplying: aFailurePolicy to: anAsserter [
 
 	failurePolicy := aFailurePolicy.

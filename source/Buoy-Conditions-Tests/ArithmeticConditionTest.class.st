@@ -2,12 +2,13 @@
 An ArithmeticConditionTest is a test class for testing the behavior of ArithmeticCondition
 "
 Class {
-	#name : #ArithmeticConditionTest,
-	#superclass : #TestCase,
-	#category : 'Buoy-Conditions-Tests'
+	#name : 'ArithmeticConditionTest',
+	#superclass : 'TestCase',
+	#category : 'Buoy-Conditions-Tests',
+	#package : 'Buoy-Conditions-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArithmeticConditionTest >> testSatisfyingDifferent [
 
 	| condition |
@@ -20,7 +21,7 @@ ArithmeticConditionTest >> testSatisfyingDifferent [
 		assert: (condition isSatisfiedBy: 2)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArithmeticConditionTest >> testSatisfyingEquality [
 
 	| condition |
@@ -33,7 +34,7 @@ ArithmeticConditionTest >> testSatisfyingEquality [
 		deny: (condition isSatisfiedBy: 2)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArithmeticConditionTest >> testSatisfyingGreaterOrEqualThan [
 
 	| condition |
@@ -47,7 +48,7 @@ ArithmeticConditionTest >> testSatisfyingGreaterOrEqualThan [
 		assert: (condition isSatisfiedBy: 6)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArithmeticConditionTest >> testSatisfyingGreaterThan [
 
 	| condition |
@@ -61,7 +62,7 @@ ArithmeticConditionTest >> testSatisfyingGreaterThan [
 		assert: (condition isSatisfiedBy: 6)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArithmeticConditionTest >> testSatisfyingLessOrEqualThan [
 
 	| condition |
@@ -75,7 +76,7 @@ ArithmeticConditionTest >> testSatisfyingLessOrEqualThan [
 		deny: (condition isSatisfiedBy: 6)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ArithmeticConditionTest >> testSatisfyingLessThan [
 
 	| condition |

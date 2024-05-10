@@ -2,30 +2,31 @@
 I represent an assertion failure policy that applies to some asserter. My purpose is to define how to handle an assertion failure.
 "
 Class {
-	#name : #AssertionFailurePolicy,
-	#superclass : #Object,
-	#category : 'Buoy-Assertions'
+	#name : 'AssertionFailurePolicy',
+	#superclass : 'Object',
+	#category : 'Buoy-Assertions',
+	#package : 'Buoy-Assertions'
 }
 
-{ #category : #Accessing }
+{ #category : 'Accessing' }
 AssertionFailurePolicy class >> defaultErrorToSignal [
 
 	^ AssertionFailed
 ]
 
-{ #category : #'Instance Creation' }
+{ #category : 'Instance Creation' }
 AssertionFailurePolicy class >> raising: anErrorClass [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #applying }
+{ #category : 'applying' }
 AssertionFailurePolicy >> applyTo: anAsserter [
 
 	anAsserter checkApplying: self
 ]
 
-{ #category : #notifying }
+{ #category : 'notifying' }
 AssertionFailurePolicy >> assertionFailedBecause: aFailureExplanation [ 
 
 	self subclassResponsibility

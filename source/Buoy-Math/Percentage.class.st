@@ -2,53 +2,54 @@
 A percentage is a number or ratio expressed as a fraction of 100. It is often denoted using the percent sign, ""%"".  A percentage is a dimensionless number 
 "
 Class {
-	#name : #Percentage,
-	#superclass : #PartsPerFraction,
+	#name : 'Percentage',
+	#superclass : 'PartsPerFraction',
 	#classInstVars : [
 		'zeroPercent',
 		'oneHundredPercent'
 	],
-	#category : #'Buoy-Math'
+	#category : 'Buoy-Math',
+	#package : 'Buoy-Math'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 Percentage class >> fraction [
 
 	^ 100
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Percentage class >> initialize [
 	<ignoreForCoverage>
 	oneHundredPercent := self ratio: 1.
 	zeroPercent := self ratio: 0
 ]
 
-{ #category : #'Instance Creation' }
+{ #category : 'Instance Creation' }
 Percentage class >> oneHundred [
 
 	^ oneHundredPercent
 ]
 
-{ #category : #'Instance Creation' }
+{ #category : 'Instance Creation' }
 Percentage class >> zero [
 	
 	^zeroPercent 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Percentage >> isPercentage [
 
 	^true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Percentage >> isWellKnown [
 
 	^ #( 0 1 ) includes: ratio
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 Percentage >> storeOn: aStream [
 
 	ratio isZero ifTrue: [

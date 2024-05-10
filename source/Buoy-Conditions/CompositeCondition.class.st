@@ -11,40 +11,41 @@ CompositeCondition
 
 "
 Class {
-	#name : #CompositeCondition,
-	#superclass : #Condition,
+	#name : 'CompositeCondition',
+	#superclass : 'Condition',
 	#instVars : [
 		'conditions',
 		'compositionPolicy'
 	],
-	#category : 'Buoy-Conditions'
+	#category : 'Buoy-Conditions',
+	#package : 'Buoy-Conditions'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CompositeCondition class >> satisfying: aCondition and: anotherCondition [
 
 	^ self satisfyingAll: (Array with: aCondition with: anotherCondition)
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CompositeCondition class >> satisfying: aCondition or: anotherCondition [
 
 	^ self satisfyingAnyOf: (Array with: aCondition with: anotherCondition)
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CompositeCondition class >> satisfyingAll: aConditionCollection [
 
 	^ self toSatisfyAll: aConditionCollection using: #allSatisfy:
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CompositeCondition class >> satisfyingAnyOf: aConditionCollection [
 
 	^ self toSatisfyAll: aConditionCollection using: #anySatisfy:
 ]
 
-{ #category : #'private-instance creation' }
+{ #category : 'private-instance creation' }
 CompositeCondition class >> toSatisfyAll: aConditionCollection using: aCompositionPolicy [
 
 	^ self new
@@ -52,14 +53,14 @@ CompositeCondition class >> toSatisfyAll: aConditionCollection using: aCompositi
 		using: aCompositionPolicy
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 CompositeCondition >> initializeToSastifyAll: aConditionCollection using: aCompositionPolicy [
 
 	compositionPolicy := aCompositionPolicy.
 	conditions := aConditionCollection
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CompositeCondition >> isSatisfiedBy: aValue [
 
 	^ conditions perform: compositionPolicy with: [ :condition | condition isSatisfiedBy: aValue ]

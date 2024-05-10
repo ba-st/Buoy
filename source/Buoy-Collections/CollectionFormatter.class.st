@@ -5,17 +5,18 @@ Implementation Notes:
 	I use a index to detect the last element and use the specific separator if present.
 "
 Class {
-	#name : #CollectionFormatter,
-	#superclass : #Object,
+	#name : 'CollectionFormatter',
+	#superclass : 'Object',
 	#instVars : [
 		'separator',
 		'elementFormatter',
 		'lastSeparatorOptional'
 	],
-	#category : #'Buoy-Collections'
+	#category : 'Buoy-Collections',
+	#package : 'Buoy-Collections'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CollectionFormatter class >> separatingWith: aSeparator [
 
 	^ self
@@ -24,7 +25,7 @@ CollectionFormatter class >> separatingWith: aSeparator [
 		applyingToEach: [ :element | element asString ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CollectionFormatter class >> separatingWith: aSeparator andLastWith: aLastSeparator [
 
 	^ self
@@ -33,7 +34,7 @@ CollectionFormatter class >> separatingWith: aSeparator andLastWith: aLastSepara
 		applyingToEach: [ :element | element asString ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CollectionFormatter class >> separatingWith: aSeparator andLastWith: aLastSeparator applyingToEach: anElementFormatter [
 
 	^ self
@@ -42,7 +43,7 @@ CollectionFormatter class >> separatingWith: aSeparator andLastWith: aLastSepara
 		applyingToEach: anElementFormatter
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CollectionFormatter class >> separatingWith: aSeparator andOptionallyLastWith: anOptionalSeparator applyingToEach: anElementFormatter [
 
 	^ super new
@@ -51,7 +52,7 @@ CollectionFormatter class >> separatingWith: aSeparator andOptionallyLastWith: a
 		applyingToEach: anElementFormatter
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CollectionFormatter class >> separatingWith: aSeparator applyingToEach: anElementFormatter [
 
 	^ self
@@ -60,13 +61,13 @@ CollectionFormatter class >> separatingWith: aSeparator applyingToEach: anElemen
 		applyingToEach: anElementFormatter
 ]
 
-{ #category : #formatting }
+{ #category : 'formatting' }
 CollectionFormatter >> format: aCollection [
 
 	^ String streamContents: [ :stream | self format: aCollection on: stream ]
 ]
 
-{ #category : #formatting }
+{ #category : 'formatting' }
 CollectionFormatter >> format: aCollection on: aStream [
 
 	| index size |
@@ -88,7 +89,7 @@ CollectionFormatter >> format: aCollection on: aStream [
 			]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CollectionFormatter >> initializeSeparatingEachWith: aSeparator andOptionallyLastWith: anOptional applyingToEach: aBlock [
 
 	separator := aSeparator.
