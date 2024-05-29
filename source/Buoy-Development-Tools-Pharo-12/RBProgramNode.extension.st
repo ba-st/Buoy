@@ -1,6 +1,6 @@
 Extension { #name : 'RBProgramNode' }
 
-{ #category : '*Buoy-Development-Tools' }
+{ #category : '*Buoy-Development-Tools-Pharo-12' }
 RBProgramNode class >> formatters [
 
 	^ (RBAbstractFormatter allSubclasses reject: [ :each | each isAbstract ])

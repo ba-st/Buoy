@@ -88,10 +88,12 @@ BAStFormatter class >> initializeNewLineSettings [
     numberOfArgumentsForMultiLine: 4;
     numberOfNewLinesAfterMethodComment: 2;
     numberOfNewLinesAfterMethodSignature: 2;
-    numberOfNewLinesAfterMethodSignatureWithMethodComment: 1;
     numberOfNewLinesAfterTemporaries: 1;
     retainBlankLinesBetweenStatements: true;
-    retainBlankLinesBeforeComments: true
+    retainBlankLinesBeforeComments: true.
+  "Older Pharo versions don't support this setting"
+  ( self respondsTo: #numberOfNewLinesAfterMethodSignatureWithMethodComment: ) ifTrue: [
+      self numberOfNewLinesAfterMethodSignatureWithMethodComment: 1 ]
 ]
 
 { #category : 'priority' }
