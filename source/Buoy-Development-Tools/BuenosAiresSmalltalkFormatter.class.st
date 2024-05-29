@@ -2,14 +2,14 @@
 I'm a code formatter implementing the ba-st conventions
 "
 Class {
-	#name : 'BAStFormatter',
+	#name : 'BuenosAiresSmalltalkFormatter',
 	#superclass : 'EFFormatter',
 	#category : 'Buoy-Development-Tools',
 	#package : 'Buoy-Development-Tools'
 }
 
 { #category : 'class initialization' }
-BAStFormatter class >> initialize [
+BuenosAiresSmalltalkFormatter class >> initialize [
 
   self initializeGeneralSettings.
   self initializeBlockSettings.
@@ -22,7 +22,7 @@ BAStFormatter class >> initialize [
 ]
 
 { #category : 'class initialization' }
-BAStFormatter class >> initializeBlockSettings [
+BuenosAiresSmalltalkFormatter class >> initializeBlockSettings [
 
   self
     lineUpBlockBrackets: true;
@@ -30,7 +30,7 @@ BAStFormatter class >> initializeBlockSettings [
 ]
 
 { #category : 'class initialization' }
-BAStFormatter class >> initializeCascadeSettings [
+BuenosAiresSmalltalkFormatter class >> initializeCascadeSettings [
 
   self
     newLineAfterCascade: true;
@@ -38,7 +38,7 @@ BAStFormatter class >> initializeCascadeSettings [
 ]
 
 { #category : 'class initialization' }
-BAStFormatter class >> initializeCommentSettings [
+BuenosAiresSmalltalkFormatter class >> initializeCommentSettings [
 
   self
     useBasicCommentFormat: true;
@@ -46,7 +46,7 @@ BAStFormatter class >> initializeCommentSettings [
 ]
 
 { #category : 'class initialization' }
-BAStFormatter class >> initializeGeneralSettings [
+BuenosAiresSmalltalkFormatter class >> initializeGeneralSettings [
 
   self
     maxLineLength: 100;
@@ -63,7 +63,7 @@ BAStFormatter class >> initializeGeneralSettings [
 ]
 
 { #category : 'class initialization' }
-BAStFormatter class >> initializeKeywordMessageSettings [
+BuenosAiresSmalltalkFormatter class >> initializeKeywordMessageSettings [
 
   self
     oneLineMessages: '#(#to: #to:do: #to:by: #to:by:do:)';
@@ -73,7 +73,7 @@ BAStFormatter class >> initializeKeywordMessageSettings [
 ]
 
 { #category : 'class initialization' }
-BAStFormatter class >> initializeMethodSignatureSettings [
+BuenosAiresSmalltalkFormatter class >> initializeMethodSignatureSettings [
 
   self
     methodSignatureOnMultipleLines: true;
@@ -81,7 +81,7 @@ BAStFormatter class >> initializeMethodSignatureSettings [
 ]
 
 { #category : 'class initialization' }
-BAStFormatter class >> initializeNewLineSettings [
+BuenosAiresSmalltalkFormatter class >> initializeNewLineSettings [
 
   self
     minimumNewLinesBetweenStatements: 1;
@@ -97,13 +97,13 @@ BAStFormatter class >> initializeNewLineSettings [
 ]
 
 { #category : 'priority' }
-BAStFormatter class >> priority [
+BuenosAiresSmalltalkFormatter class >> priority [
 
   ^ 20
 ]
 
 { #category : 'private - formatting' }
-BAStFormatter >> formatArray: anArrayNode [
+BuenosAiresSmalltalkFormatter >> formatArray: anArrayNode [
 
   codeStream nextPutAll: self spacesInsideArray.
   self indentAround: [ self formatArrayBody: anArrayNode ].
@@ -111,7 +111,7 @@ BAStFormatter >> formatArray: anArrayNode [
 ]
 
 { #category : 'private - formatting' }
-BAStFormatter >> formatArrayBody: aSequenceNode [
+BuenosAiresSmalltalkFormatter >> formatArrayBody: aSequenceNode [
 
   | statements currentStatement |
   statements := aSequenceNode statements.
@@ -133,7 +133,7 @@ BAStFormatter >> formatArrayBody: aSequenceNode [
 ]
 
 { #category : 'private - formatting' }
-BAStFormatter >> formatBlock: aBlockNode [
+BuenosAiresSmalltalkFormatter >> formatBlock: aBlockNode [
 
   | isMultiline isBodyTooLong |
   isMultiline := self willBeMultiline: aBlockNode body.
