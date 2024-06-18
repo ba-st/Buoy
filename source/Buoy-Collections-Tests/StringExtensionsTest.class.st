@@ -111,7 +111,7 @@ StringExtensionsTest >> testFormatWhenInvalid [
   self
     should: [ 'Invalid {1}' format: #(  ) ] raise: SubscriptOutOfBounds;
     should: [ 'Invalid {date}' format: #( 1 2 ) ] raise: Error;
-    should: [ '{ 1 }' format: #( 1 ) ] raise: Error;
+    should: [ '{ _1_ }' format: #( 1 ) ] raise: Error;
     should: [ '{ date }' format: { 'date' -> 1 } asDictionary ] raise: NotFound
 ]
 
