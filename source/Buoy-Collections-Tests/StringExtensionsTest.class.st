@@ -88,6 +88,34 @@ StringExtensionsTest >> testFindTokens [
 ]
 
 { #category : 'tests' }
+StringExtensionsTest >> testFormat [
+
+  self
+    assert: ( 'This is {1} !' format: #( 'a test' ) ) equals: 'This is a test !';
+    assert: ( 'This is a {type}' format: { ( 'type' -> 'test' ) } asDictionary )
+    equals: 'This is a test';
+    assert: ( 'In {1} you can escape \{ by prefixing it with \\' format: { 'strings' } )
+    equals: 'In strings you can escape { by prefixing it with \';
+    assert: ( 'In \{1\} you can escape \{ by prefixing it with \\' format: { 'strings' } )
+    equals: 'In {1} you can escape { by prefixing it with \';
+    assert: ( '\{ \} \\ foo {1} bar {2}' format: { 12 . 'string' } )
+    equals: '{ } \ foo 12 bar string';
+    assert: ( '\{1}' format: {  } ) equals: '{1}';
+    assert: ( '\{1}{1}' format: { $a } ) equals: '{1}a';
+    assert: ( '{1}{1}' format: { $a } ) equals: 'aa'
+]
+
+{ #category : 'tests' }
+StringExtensionsTest >> testFormatWhenInvalid [
+
+  self
+    should: [ 'Invalid {1}' format: #(  ) ] raise: SubscriptOutOfBounds;
+    should: [ 'Invalid {date}' format: #( 1 2 ) ] raise: Error;
+    should: [ '{ 1 }' format: #( 1 ) ] raise: Error;
+    should: [ '{ date }' format: { 'date' -> 1 } asDictionary ] raise: NotFound
+]
+
+{ #category : 'tests' }
 StringExtensionsTest >> testIncludesSubstring [
 
 	self
