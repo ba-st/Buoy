@@ -36,6 +36,12 @@ PharoPlatform >> includesGlobalNamed: aSymbol [
 	^ Smalltalk globals includesKey: aSymbol
 ]
 
+{ #category : 'message digest' }
+PharoPlatform >> messageDigest: string [
+
+  ^ SHA256 hashMessage: string
+]
+
 { #category : 'accessing' }
 PharoPlatform >> os [
 
