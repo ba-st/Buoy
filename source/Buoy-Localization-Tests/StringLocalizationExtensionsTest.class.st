@@ -196,7 +196,7 @@ StringLocalizationExtensionsTest >> testUnescapedControlCharacters [
     assert: '\r' unescaped equals: String cr;
     assert: '\l' unescaped equals: String lf;
     assert: '\t' unescaped equals: String tab;
-    assert: '\n' unescaped equals: OSPlatform current lineEnding;
+    assert: '\n' unescaped equals: LanguagePlatform current os lineEnding;
     assert: '\a' unescaped equals: ( Character codePoint: 7 ) asString;
     assert: '\b' unescaped equals: Character backspace asString;
     assert: '\v' unescaped equals: ( Character codePoint: 11 ) asString;
