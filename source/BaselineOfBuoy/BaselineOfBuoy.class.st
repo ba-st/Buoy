@@ -22,6 +22,7 @@ BaselineOfBuoy >> baseline: spec [
 				baselineComparison: spec;
 				baselineDynamicBinding: spec;
 				baselineExceptionHandling: spec;
+				baselineLocalization: spec;
 				baselineMath: spec;
 				baselineMetaprogramming: spec;
 				baselineSUnit: spec;
@@ -173,6 +174,22 @@ BaselineOfBuoy >> baselineGS64Development: spec [
 		package: 'Buoy-Chronology-GS64-Extensions'
 		with: [ spec requires: 'Buoy-GS64-Compatibility' ];
 		group: 'GS64-Development' with: 'Buoy-Chronology-GS64-Extensions'
+]
+
+{ #category : 'baselines' }
+BaselineOfBuoy >> baselineLocalization: spec [
+
+  spec
+    package: 'Buoy-Localization'
+    with: [
+        spec requires:
+            #( 'Buoy-Assertions' 'Buoy-Dynamic-Binding' 'Buoy-Metaprogramming-Extensions' ) ];
+    group: 'Deployment' with: 'Buoy-Localization';
+    package: 'Buoy-Localization-Extensions' with: [ spec requires: 'Buoy-Localization' ];
+    group: 'Deployment' with: 'Buoy-Localization-Extensions';
+    package: 'Buoy-Localization-Tests'
+    with: [ spec requires: #( 'Buoy-Localization-Extensions' 'Dependent-SUnit-Extensions' ) ];
+    group: 'Tests' with: 'Buoy-Localization-Tests'
 ]
 
 { #category : 'baselines' }
