@@ -23,6 +23,18 @@ String >> escaped [
 ]
 
 { #category : '*Buoy-Localization-Extensions' }
+String >> localized [
+
+  ^ self localizedWithAll: #(  )
+]
+
+{ #category : '*Buoy-Localization-Extensions' }
+String >> localizedWithAll: collection [
+
+  ^ NaturalLanguageTranslator current localize: self withAll: collection to: CurrentLocale value
+]
+
+{ #category : '*Buoy-Localization-Extensions' }
 String >> unescaped [
 
   ^ self species new: self size streamContents: [ :result |

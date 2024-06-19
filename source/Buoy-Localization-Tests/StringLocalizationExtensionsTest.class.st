@@ -98,6 +98,74 @@ StringLocalizationExtensionsTest >> testEscapedWithoutEscapingSequence [
     assert: '¡vamos! ¿adonde?' escaped equals: '¡vamos! ¿adonde?'
 ]
 
+{ #category : 'tests - localization' }
+StringLocalizationExtensionsTest >> testLocalized [
+
+  self assert: 'Welcome' localized equals: 'Welcome'.
+
+  self
+    use: [ :translator |
+        translator
+          translationFor: 'Welcome' in: 'es' is: 'Bienvenido';
+          translationFor: 'Welcome'
+          in: 'ar'
+          is: '\u{623}\u{647}\u{644}\u{627}\u{64B} \u{648} \u{633}\u{647}\u{644}\u{627}\u{64B}';
+          translationFor: 'Welcome' in: 'de' is: 'Willkommen';
+          translationFor: 'Welcome' in: 'fr' is: 'Bienvenue';
+          translationFor: 'Welcome' in: 'pt' is: 'Bem-vindo';
+          translationFor: 'Welcome' in: 'ja' is: '\u{3088}\u{3046}\u{3053}\u{305D}'
+      ]
+    asNaturalLanguageTranslatorDuring: [
+        self
+          use: 'es-AR' asLocaleDuring: [ self assert: 'Welcome' localized equals: 'Bienvenido' ];
+          use: 'es-MX' asLocaleDuring: [ self assert: 'Welcome' localized equals: 'Bienvenido' ];
+          use: 'ar' asLocaleDuring: [ self assert: 'Welcome' localized equals: 'أهلاً و سهلاً' ];
+          use: 'de' asLocaleDuring: [ self assert: 'Welcome' localized equals: 'Willkommen' ];
+          use: 'fr' asLocaleDuring: [ self assert: 'Welcome' localized equals: 'Bienvenue' ];
+          use: 'pt' asLocaleDuring: [ self assert: 'Welcome' localized equals: 'Bem-vindo' ];
+          use: 'pt-BR' asLocaleDuring: [ self assert: 'Welcome' localized equals: 'Bem-vindo' ];
+          use: 'ja' asLocaleDuring: [ self assert: 'Welcome' localized equals: 'ようこそ' ]
+      ]
+]
+
+{ #category : 'tests - localization' }
+StringLocalizationExtensionsTest >> testLocalizedWithAll [
+
+  | stringToTranslate parameters |
+  stringToTranslate := '{1} seems to be out of sync. Please fetch from "{2}" and try again.'.
+  parameters := #( 'Buoy' 'origin' ).
+
+  self
+    assert: ( stringToTranslate localizedWithAll: parameters )
+    equals: 'Buoy seems to be out of sync. Please fetch from "origin" and try again.'.
+
+  self
+    use: [ :translator |
+        translator
+          translationFor: stringToTranslate
+          in: 'es'
+          is: '{1} parece no estar sincronizado. Por favor, actualiza desde "{2}" y reintenta.';
+          translationFor: stringToTranslate
+          in: 'es-AR'
+          is: '{1} parece no estar sincronizado. Por favor, actualizá desde "{2}" y reintentá.'
+      ]
+    asNaturalLanguageTranslatorDuring: [
+        self
+          use: 'es-AR' asLocaleDuring: [
+              self
+                assert: ( stringToTranslate localizedWithAll: parameters )
+                equals:
+                  'Buoy parece no estar sincronizado. Por favor, actualizá desde "origin" y reintentá.'
+            ];
+          use: 'es-MX' asLocaleDuring: [
+              self
+                assert: ( stringToTranslate localizedWithAll: parameters )
+                equals:
+                  'Buoy parece no estar sincronizado. Por favor, actualiza desde "origin" y reintenta.'
+            ]
+      ]
+]
+
 { #category : 'tests - escaping' }
 StringLocalizationExtensionsTest >> testUnescaped [
 

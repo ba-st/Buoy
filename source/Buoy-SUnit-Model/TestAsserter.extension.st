@@ -34,6 +34,21 @@ TestAsserter >> should: aBlock raise: anException withMessageText: aString [
 ]
 
 { #category : '*Buoy-SUnit-Model' }
+TestAsserter >> use: languageTag asLocaleDuring: aBlock [
+
+  CurrentLocale use: languageTag during: aBlock
+]
+
+{ #category : '*Buoy-SUnit-Model' }
+TestAsserter >> use: translatorConfigurationBlock asNaturalLanguageTranslatorDuring: aBlock [
+
+  | translator |
+  translator := PolyglotNaturalLanguageTranslator new.
+  translatorConfigurationBlock value: translator.
+  NaturalLanguageTranslator use: translator during: aBlock
+]
+
+{ #category : '*Buoy-SUnit-Model' }
 TestAsserter >> withTheOnlyOneIn: aCollection do: aBlock [ 
 
 	self
