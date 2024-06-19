@@ -19,7 +19,7 @@ PolyglotNaturalLanguageTranslator class >> initialize [
 PolyglotNaturalLanguageTranslator >> initialize [
 
   super initialize.
-  translators := SortedCollection sortBlock: #specificity descending
+  translators := SortedCollection sortBlock: [ :a :b | a specificity > b specificity ]
 ]
 
 { #category : 'localization' }
