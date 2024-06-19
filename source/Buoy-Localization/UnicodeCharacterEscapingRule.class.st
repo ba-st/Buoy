@@ -23,7 +23,7 @@ UnicodeCharacterEscapingRule class >> initialize [
 UnicodeCharacterEscapingRule >> escape: character on: stream [
 
   stream nextPutAll: '\u{'.
-  character codePoint printOn: stream base: 16.
+  stream nextPutAll: (character codePoint asHexStringPaddedTo: 1).
   stream nextPut: $}
 ]
 

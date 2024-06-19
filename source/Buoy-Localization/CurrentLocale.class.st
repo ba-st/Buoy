@@ -5,6 +5,12 @@ Class {
 	#package : 'Buoy-Localization'
 }
 
+{ #category : 'accessing' }
+CurrentLocale class >> default [
+
+  ^ 'en' asLanguageTag
+]
+
 { #category : 'configuring' }
 CurrentLocale class >> use: languageTagOrString during: aBlock [
 
@@ -14,5 +20,5 @@ CurrentLocale class >> use: languageTagOrString during: aBlock [
 { #category : 'accessing' }
 CurrentLocale >> default [
 
-  ^ 'en' asLanguageTag
+  ^ self class default
 ]
