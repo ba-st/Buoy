@@ -66,6 +66,17 @@ BuoyNumberExtensionsTest >> testIncreasedBy [
 ]
 
 { #category : 'tests' }
+BuoyNumberExtensionsTest >> testIntegerReadFromHexIfFail [
+
+  self
+    assert: ( Integer readFromHex: '12' ifFail: [ self fail ] ) equals: 18;
+    assert: ( Integer readFromHex: '-12' ifFail: [ self fail ] ) equals: -18;
+    assert: ( Integer readFromHex: 'GG' ifFail: [ 95 ] ) equals: 95;
+    assert: ( Integer readFromHex: '23AA' ifFail: [ self fail ] ) equals: 9130;
+    assert: ( Integer readFromHex: 'ZAA33GZ' ifFail: [ 95 ] ) equals: 95
+]
+
+{ #category : 'tests' }
 BuoyNumberExtensionsTest >> testIntegerReadFromIfFail [
 
 	self

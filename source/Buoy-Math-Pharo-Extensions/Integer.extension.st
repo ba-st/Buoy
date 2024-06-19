@@ -10,3 +10,9 @@ Integer >> asHexStringPaddedTo: minimum [
 			  length: minimum
 			  padded: true ]
 ]
+
+{ #category : '*Buoy-Math-Pharo-Extensions' }
+Integer class >> readFromHex: string ifFail: failBlock [
+
+  ^ ( NumberParser on: string ) nextIntegerBase: 16 ifFail: failBlock
+]
