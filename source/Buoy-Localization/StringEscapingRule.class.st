@@ -28,7 +28,7 @@ StringEscapingRule class >> initialize [
 StringEscapingRule class >> initializeAvailableRules [
 
   <ignoreForCoverage>
-  Available ifNil: [ Available := SortedCollection sortUsing: [ :a :b | a priority > b priority ] ]
+  Available ifNil: [ Available := SortedCollection sortBlock: [ :a :b | a priority > b priority ] ]
 ]
 
 { #category : 'testing' }
