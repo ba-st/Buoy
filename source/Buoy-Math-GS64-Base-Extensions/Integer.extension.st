@@ -62,3 +62,11 @@ Integer class >> readFrom: aStringOrStream ifFail: aBlock [
 		  on: ImproperOperation
 		  do: [ :error | error return: aBlock value ]
 ]
+
+{ #category : '*Buoy-Math-GS64-Base-Extensions' }
+Integer class >> readFromHex: string ifFail: failBlock [
+	^ [
+			Integer fromHexString: string	]
+			on: ImproperOperation
+			do: [ :error | error return: failBlock value ]
+]
