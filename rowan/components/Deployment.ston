@@ -48,7 +48,7 @@ RwSimpleProjectLoadComponentV2 {
           'Buoy-Exception-Handling-GS64-Extensions' : { 'symbolDictName' : 'Globals' },
           'Buoy-Localization' : { 'symbolDictName' : 'Buoy' },
           'Buoy-Localization-Extensions' : { 'symbolDictName' : 'Globals' },
-          'Buoy-Localization-GS64-Extensions' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Localization-GS64-Extensions' : { 'symbolDictName' : 'Globals' },
           'Buoy-Math' : { 'symbolDictName' : 'Buoy' },
           'Buoy-Math-Extensions' : { 'symbolDictName' : 'Globals' },
           'Buoy-Math-GS64-Base-Extensions' : { 'symbolDictName' : 'Globals' },
