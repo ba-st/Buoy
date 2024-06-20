@@ -39,6 +39,17 @@ LanguageTagTest >> testCantCreateWhenScriptIsInvalid [
 ]
 
 { #category : 'tests' }
+LanguageTagTest >> testComparison [
+
+  | tag |
+  tag := LanguageTag from: #( 'en' 'US' ).
+  self
+    assert: tag equals: ( LanguageTag fromString: 'en-us' );
+    assert: tag hash equals: ( LanguageTag fromString: 'en-us' ) hash;
+    deny: tag equals: ( LanguageTag from: #( 'en' ) )
+]
+
+{ #category : 'tests' }
 LanguageTagTest >> testCreation [
 
 	| tag |
@@ -122,4 +133,14 @@ LanguageTagTest >> testCreationWithScriptButNoRegion [
 		withRegionDo: [ :region | self fail ].
 
 	self assert: tag subtags equals: #('es' 'Latn')
+]
+
+{ #category : 'tests' }
+LanguageTagTest >> testPrintString [
+
+  | tag |
+  tag := LanguageTag from: #( 'en' 'US' ).
+  self
+    assert: tag asString equals: 'en-US';
+    assert: tag printString equals: 'en-US'
 ]

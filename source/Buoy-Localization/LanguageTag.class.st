@@ -52,12 +52,6 @@ LanguageTag >> = anObject [
 ]
 
 { #category : 'converting' }
-LanguageTag >> asByteArray [
-
-	^ self printString asByteArray
-]
-
-{ #category : 'converting' }
 LanguageTag >> asLanguageTag [
 
 	^ self
