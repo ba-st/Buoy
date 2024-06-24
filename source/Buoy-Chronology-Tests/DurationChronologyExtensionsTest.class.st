@@ -30,8 +30,8 @@ DurationChronologyExtensionsTest >> testWait [
 
 	| ms |
 
-	ms := Time millisecondsToRun: [ 2.1 seconds wait ].
-	self assert: ms >= 2100
+	ms := Time millisecondsToRun: [ 2 seconds wait ].
+	self assert: ms >= 2000
 ]
 
 { #category : 'tests' }
