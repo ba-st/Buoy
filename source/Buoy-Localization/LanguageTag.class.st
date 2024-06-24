@@ -27,20 +27,20 @@ Class {
 }
 
 { #category : 'instance creation' }
-LanguageTag class >> from: aSubtagCollection [
+LanguageTag class >> composedOf: aSubtagCollection [
 
 	AssertionChecker
 		enforce: [ aSubtagCollection notEmpty ]
-		because: 'At least a sub tag is required.'
+		because: 'At least one sub tag is required.'
 		raising: InstanceCreationFailed.
 
-	^ self new initializeFrom: aSubtagCollection
+	^ self new initializeComposedOf: aSubtagCollection
 ]
 
 { #category : 'instance creation' }
 LanguageTag class >> fromString: aString [
 
-	^ self from: ( aString substrings: '-' )
+  ^ self composedOf: ( aString substrings: '-' )
 ]
 
 { #category : 'comparing' }
@@ -98,7 +98,7 @@ LanguageTag >> hash [
 ]
 
 { #category : 'initialization' }
-LanguageTag >> initializeFrom: aSubtagCollection [
+LanguageTag >> initializeComposedOf: aSubtagCollection [
 
 	subtags := Array withAll: aSubtagCollection.
 	self
@@ -140,16 +140,16 @@ LanguageTag >> initializeRegionTaggedAt: index [
 { #category : 'private' }
 LanguageTag >> initializeScript [
 
-	scriptOptional := Optional unused.
+  scriptOptional := Optional unused.
 
-	[ 
-	| scriptCandidate |
-	scriptCandidate := subtags second asLowercase capitalized.
-	scriptCandidate size = 4 then: [ 
-		subtags at: 2 put: scriptCandidate.
-		scriptOptional := Optional containing: scriptCandidate
-		]
-	] unless: subtags size = 1
+  subtags size > 1 then: [
+      | scriptCandidate |
+      scriptCandidate := subtags second asLowercase capitalized.
+      scriptCandidate size = 4 then: [
+          subtags at: 2 put: scriptCandidate.
+          scriptOptional := Optional containing: scriptCandidate
+        ]
+    ]
 ]
 
 { #category : 'accessing' }

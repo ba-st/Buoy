@@ -28,13 +28,13 @@ Class {
 { #category : 'instance creation' }
 LanguageRange class >> any [
 
-	^ self with: Optional unused
+	^ self matchUsing: Optional unused
 ]
 
 { #category : 'instance creation' }
-LanguageRange class >> from: aSubtagCollection [
+LanguageRange class >> composedOf: aSubtagCollection [
 
-	^ self with: ( Optional containing: ( LanguageTag from: aSubtagCollection ) )
+  ^ self matchUsing: ( Optional containing: ( LanguageTag composedOf: aSubtagCollection ) )
 ]
 
 { #category : 'instance creation' }
@@ -42,13 +42,13 @@ LanguageRange class >> fromString: aString [
 
 	^ aString = '*'
 		then: [ self any ]
-		otherwise: [ self with: ( Optional containing: ( LanguageTag fromString: aString ) ) ]
+		otherwise: [ self matchUsing: ( Optional containing: ( LanguageTag fromString: aString ) ) ]
 ]
 
 { #category : 'private - instance creation' }
-LanguageRange class >> with: aLanguageTagOptional [
+LanguageRange class >> matchUsing: aLanguageTagOptional [
 
-	^ self new initializeWith: aLanguageTagOptional
+	^ self new initializeToMatchUsing: aLanguageTagOptional
 ]
 
 { #category : 'comparing' }
@@ -78,7 +78,7 @@ LanguageRange >> hash [
 ]
 
 { #category : 'initialization' }
-LanguageRange >> initializeWith: aLanguageTagOptional [
+LanguageRange >> initializeToMatchUsing: aLanguageTagOptional [
 
 	languageTagOptional := aLanguageTagOptional
 ]

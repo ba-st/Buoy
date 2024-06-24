@@ -12,7 +12,7 @@ StringLocalizationExtensionsTest >> assertUnescaping: string raisesAsError: erro
 ]
 
 { #category : 'tests - escaping' }
-StringLocalizationExtensionsTest >> testErrorsInUnescaped [
+StringLocalizationExtensionsTest >> testErrorsWhenUnescaping [
 
   self assertUnescaping: '\💩' raisesAsError: 'There''s no escaping rule for "💩" (\u{1F4A9})'.
 
@@ -89,7 +89,7 @@ StringLocalizationExtensionsTest >> testEscapedUnicode [
 ]
 
 { #category : 'tests - escaping' }
-StringLocalizationExtensionsTest >> testEscapedWithoutEscapingSequence [
+StringLocalizationExtensionsTest >> testEscapedWhenThereIsNoEscapingSequence [
 
   self
     assert: 'aabb' escaped equals: 'aabb';
@@ -236,7 +236,7 @@ StringLocalizationExtensionsTest >> testUnescapedUnicode [
 ]
 
 { #category : 'tests - escaping' }
-StringLocalizationExtensionsTest >> testUnescapedWithoutEscapingSequence [
+StringLocalizationExtensionsTest >> testUnescapedWhenThereIsNoEscapingSequence [
 
   self
     assert: 'aabb' unescaped equals: 'aabb';

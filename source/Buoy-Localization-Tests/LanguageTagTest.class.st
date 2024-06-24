@@ -39,14 +39,32 @@ LanguageTagTest >> testCantCreateWhenScriptIsInvalid [
 ]
 
 { #category : 'tests' }
+LanguageTagTest >> testCantCreateWithEmptyString [
+
+  self
+    should: [ LanguageTag fromString: '' ]
+    raise: InstanceCreationFailed
+    withMessageText: 'At least one sub tag is required.'
+]
+
+{ #category : 'tests' }
+LanguageTagTest >> testCantCreateWithoutSubtags [
+
+  self
+    should: [ LanguageTag composedOf: #(  ) ]
+    raise: InstanceCreationFailed
+    withMessageText: 'At least one sub tag is required.'
+]
+
+{ #category : 'tests' }
 LanguageTagTest >> testComparison [
 
   | tag |
-  tag := LanguageTag from: #( 'en' 'US' ).
+  tag := LanguageTag composedOf: #( 'en' 'US' ).
   self
     assert: tag equals: ( LanguageTag fromString: 'en-us' );
     assert: tag hash equals: ( LanguageTag fromString: 'en-us' ) hash;
-    deny: tag equals: ( LanguageTag from: #( 'en' ) )
+    deny: tag equals: ( LanguageTag composedOf: #( 'en' ) )
 ]
 
 { #category : 'tests' }
@@ -139,7 +157,7 @@ LanguageTagTest >> testCreationWithScriptButNoRegion [
 LanguageTagTest >> testPrintString [
 
   | tag |
-  tag := LanguageTag from: #( 'en' 'US' ).
+  tag := LanguageTag composedOf: #( 'en' 'US' ).
   self
     assert: tag asString equals: 'en-US';
     assert: tag printString equals: 'en-US'

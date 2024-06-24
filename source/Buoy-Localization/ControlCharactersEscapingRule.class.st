@@ -62,7 +62,7 @@ ControlCharactersEscapingRule >> priority [
 ControlCharactersEscapingRule >> raiseError [
 
   <ignoreForCoverage>
-  self error: 'The control character escaping rule is mishandling  some case'
+  self error: 'The control character escaping rule is mishandling some case'
 ]
 
 { #category : 'escaping' }

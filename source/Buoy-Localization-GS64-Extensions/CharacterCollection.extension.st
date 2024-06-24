@@ -15,11 +15,7 @@ CharacterCollection >> asLanguageTag [
 { #category : '*Buoy-Localization-GS64-Extensions' }
 CharacterCollection >> escaped [
 
-  ^ self species new: self size streamContents: [ :result |
-        | stream |
-        stream := self readStream.
-        [ stream atEnd ] whileFalse: [ StringEscapingRule escape: stream next on: result ]
-      ]
+  ^ EscapingAlgorithm new escape: self
 ]
 
 { #category : '*Buoy-Localization-GS64-Extensions' }
@@ -37,19 +33,5 @@ CharacterCollection >> localizedWithAll: collection [
 { #category : '*Buoy-Localization-GS64-Extensions' }
 CharacterCollection >> unescaped [
 
-  ^ self species new: self size streamContents: [ :result |
-        | stream |
-        stream := self readStream.
-        [ stream atEnd ] whileFalse: [
-            | currentChar |
-            currentChar := stream next.
-            currentChar == $\
-              ifTrue: [
-                  stream atEnd
-                    ifTrue: [ AssertionFailed signal: 'Missing escape sequence' ]
-                    ifFalse: [ StringEscapingRule unescape: stream next from: stream on: result ]
-                ]
-              ifFalse: [ result nextPut: currentChar ]
-          ]
-      ]
+  ^ EscapingAlgorithm new unescape: self
 ]

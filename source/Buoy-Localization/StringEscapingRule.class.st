@@ -8,27 +8,21 @@ Class {
 	#package : 'Buoy-Localization'
 }
 
+{ #category : 'private' }
+StringEscapingRule class >> availableRules [
+
+  <ignoreForCoverage>
+  Available ifNil: [ Available := SortedCollection sortBlock: [ :a :b | a priority > b priority ] ].
+  ^ Available
+]
+
 { #category : 'escaping' }
 StringEscapingRule class >> escape: character on: targetStream [
 
-  ^ Available
+  ^ self availableRules
       detect: [ :rule | rule handlesEscapeOf: character ]
       ifFound: [ :rule | rule escape: character on: targetStream ]
       ifNone: [ targetStream nextPut: character ]
-]
-
-{ #category : 'class initialization' }
-StringEscapingRule class >> initialize [
-
-  <ignoreForCoverage>
-  self initializeAvailableRules
-]
-
-{ #category : 'class initialization' }
-StringEscapingRule class >> initializeAvailableRules [
-
-  <ignoreForCoverage>
-  Available ifNil: [ Available := SortedCollection sortBlock: [ :a :b | a priority > b priority ] ]
 ]
 
 { #category : 'testing' }
@@ -41,14 +35,13 @@ StringEscapingRule class >> isAbstract [
 StringEscapingRule class >> registerRule: anEscapingRule [
 
   <ignoreForCoverage>
-  self initializeAvailableRules.
-  Available add: anEscapingRule
+   self availableRules add: anEscapingRule
 ]
 
 { #category : 'escaping' }
 StringEscapingRule class >> unescape: aCharacter from: sourceStream on: targetStream [
 
-  ^ Available
+  ^ self availableRules
       detect: [ :rule | rule handlesUnescapeOf: aCharacter ]
       ifFound: [ :rule | rule unescape: aCharacter from: sourceStream on: targetStream ]
       ifNone: [
