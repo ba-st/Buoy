@@ -8,6 +8,9 @@
 - `deny:includes:` denies that a collection includes an element
 - `should:raise:withMessageText:` asserts that a block raises a specific
   exception including a specific message text
+- `use:asLocaleDuring:` allows changing the current locale during a block execution
+- `use:asNaturalLanguageTranslatorDuring:` allows using and configuring a language
+  translator during a block execution
 - `withTheOnlyOneIn:do:` provides a facility to assert that a collection has
   only one element and evaluates a block with it
 
