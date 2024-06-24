@@ -23,7 +23,7 @@ Language tags can be created by providing a subtags list or by parsing its
 string representation:
 
 ```smalltalk
-LanguageTag from: #('en' 'Latn' 'US').
+LanguageTag composedOf: #('en' 'Latn' 'US').
 LanguageTag fromString: 'en-us'.
 'en-us' asLanguageTag.
 ```
@@ -57,7 +57,7 @@ of subtags, or parsing its string representation:
 
 ```smalltalk
 LanguageRange any.
-LanguageRange from: #('en').
+LanguageRange composedOf: #('en').
 LanguageRange fromString: '*'.
 LanguageRange fromString: 'es-AR'.
 ```
