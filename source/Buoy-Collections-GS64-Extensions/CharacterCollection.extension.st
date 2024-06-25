@@ -121,6 +121,31 @@ CharacterCollection >> findTokens: delimiters [
 ]
 
 { #category : '*Buoy-Collections-GS64-Extensions' }
+CharacterCollection >> format: collection [
+  "Format the receiver by interpolating elements from collection"
+
+  ^ self species new: self size streamContents: [ :result |
+        | stream |
+        stream := self readStream.
+        [ stream atEnd ] whileFalse: [
+            | currentChar |
+            ( currentChar := stream next ) == ${
+              ifTrue: [
+                  | expression index |
+                  expression := stream upTo: $}.
+                  index := Integer readFrom: expression ifFail: [ expression ].
+                  result nextPutAll: ( collection at: index ) asString
+                ]
+              ifFalse: [
+                  currentChar == $\
+                    ifTrue: [ stream atEnd ifFalse: [ result nextPut: stream next ] ]
+                    ifFalse: [ result nextPut: currentChar ]
+                ]
+          ]
+      ]
+]
+
+{ #category : '*Buoy-Collections-GS64-Extensions' }
 CharacterCollection >> includesSubstring: substring [
 
 	^ substring isEmpty or: [

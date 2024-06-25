@@ -50,6 +50,12 @@ GemStone64Platform >> includesGlobalNamed: aSymbol [
 		  notNil
 ]
 
+{ #category : 'message digest' }
+GemStone64Platform >> messageDigest: string [
+
+  ^ string sha256SumBytes
+]
+
 { #category : 'accessing' }
 GemStone64Platform >> os [
 

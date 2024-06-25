@@ -20,6 +20,8 @@ understanding over specific topics:
 - **Exception Handling**: Extensions to the [exception handling mechanics](reference/ExceptionHandling.md).
 - **Meta-programming**: Some abstractions like [namespaces](reference/Namespaces.md),
 [interfaces](reference/Interfaces.md) and extensions to the [Object model](reference/MOP.md).
+- **Internationalization**: Abstractions and extensions for [localizing](reference/Internationalization.md)
+  an application.
 - **SUnit**: [Extensions to the SUnit framework](reference/SUnit.md).
 
 ---

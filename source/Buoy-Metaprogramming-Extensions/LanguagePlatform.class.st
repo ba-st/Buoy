@@ -55,6 +55,14 @@ LanguagePlatform >> includesGlobalNamed: aSymbol [
 	^ self subclassResponsibility
 ]
 
+{ #category : 'message digest' }
+LanguagePlatform >> messageDigest: string [
+  "Returns a message digest for the given string, the hashing algorithm can be platform specific.
+	The resulting digest mut be a byte array"
+
+  ^ self subclassResponsibility
+]
+
 { #category : 'accessing' }
 LanguagePlatform >> os [
 	"Returns the underlying operating system abstraction"

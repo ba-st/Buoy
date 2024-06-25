@@ -22,6 +22,7 @@ BaselineOfBuoy >> baseline: spec [
 				baselineComparison: spec;
 				baselineDynamicBinding: spec;
 				baselineExceptionHandling: spec;
+				baselineLocalization: spec;
 				baselineMath: spec;
 				baselineMetaprogramming: spec;
 				baselineSUnit: spec;
@@ -176,6 +177,22 @@ BaselineOfBuoy >> baselineGS64Development: spec [
 ]
 
 { #category : 'baselines' }
+BaselineOfBuoy >> baselineLocalization: spec [
+
+  spec
+    package: 'Buoy-Localization'
+    with: [
+        spec requires:
+            #( 'Buoy-Assertions' 'Buoy-Dynamic-Binding' 'Buoy-Metaprogramming-Extensions' ) ];
+    group: 'Deployment' with: 'Buoy-Localization';
+    package: 'Buoy-Localization-Pharo-Extensions' with: [ spec requires: 'Buoy-Localization' ];
+    group: 'Deployment' with: 'Buoy-Localization-Pharo-Extensions';
+    package: 'Buoy-Localization-Tests'
+    with: [ spec requires: #( 'Buoy-Localization-Pharo-Extensions' 'Dependent-SUnit-Extensions' ) ];
+    group: 'Tests' with: 'Buoy-Localization-Tests'
+]
+
+{ #category : 'baselines' }
 BaselineOfBuoy >> baselineMath: spec [
 
 	spec
@@ -219,13 +236,13 @@ BaselineOfBuoy >> baselineMetaprogramming: spec [
 { #category : 'baselines' }
 BaselineOfBuoy >> baselineSUnit: spec [
 
-	spec
-		package: 'Buoy-SUnit-Model';
-		group: 'Dependent-SUnit-Extensions' with: 'Buoy-SUnit-Model';
-		package: 'Buoy-SUnit-Pharo-Extensions';
-		group: 'Dependent-SUnit-Extensions' with: 'Buoy-SUnit-Pharo-Extensions';
-		package: 'Buoy-SUnit-Tests' with: [ spec requires: 'Dependent-SUnit-Extensions' ];
-		group: 'Tests' with: 'Buoy-SUnit-Tests'
+  spec
+    package: 'Buoy-SUnit-Model' with: [ spec requires: 'Buoy-Localization' ];
+    group: 'Dependent-SUnit-Extensions' with: 'Buoy-SUnit-Model';
+    package: 'Buoy-SUnit-Pharo-Extensions';
+    group: 'Dependent-SUnit-Extensions' with: 'Buoy-SUnit-Pharo-Extensions';
+    package: 'Buoy-SUnit-Tests' with: [ spec requires: 'Dependent-SUnit-Extensions' ];
+    group: 'Tests' with: 'Buoy-SUnit-Tests'
 ]
 
 { #category : 'baselines' }

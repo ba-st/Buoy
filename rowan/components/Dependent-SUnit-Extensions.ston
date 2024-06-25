@@ -2,7 +2,9 @@ RwSimpleProjectLoadComponentV2 {
   #name : 'Dependent-SUnit-Extensions',
   #condition : 'sunit',
   #projectNames : [ ],
-  #componentNames : [ ],
+  #componentNames : [
+    'Deployment'
+   ],
   #packageNames : [
     'Buoy-SUnit-Model',
     'Buoy-SUnit-GS64-Extensions'

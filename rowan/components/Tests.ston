@@ -14,6 +14,7 @@ RwSimpleProjectLoadComponentV2 {
     'Buoy-Conditions-Tests',
     'Buoy-Dynamic-Binding-Tests',
     'Buoy-Exception-Handling-Tests',
+    'Buoy-Localization-Tests',
     'Buoy-Math-Tests',
     'Buoy-Metaprogramming-Tests',
     'Buoy-SUnit-Tests'
@@ -29,6 +30,7 @@ RwSimpleProjectLoadComponentV2 {
           'Buoy-Conditions-Tests' : { 'symbolDictName' : 'Buoy' },
           'Buoy-Dynamic-Binding-Tests' : { 'symbolDictName' : 'Buoy' },
           'Buoy-Exception-Handling-Tests' : { 'symbolDictName' : 'Buoy' },
+          'Buoy-Localization-Tests' : { 'symbolDictName' : 'Buoy' },
           'Buoy-Math-Tests' : { 'symbolDictName' : 'Buoy' },
           'Buoy-Metaprogramming-Tests' : { 'symbolDictName' : 'Buoy' },
           'Buoy-SUnit-Tests' : { 'symbolDictName' : 'Buoy' }
