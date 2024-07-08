@@ -16,12 +16,6 @@ PolyglotNaturalLanguageTranslator class >> initialize [
 ]
 
 { #category : 'initialization' }
-PolyglotNaturalLanguageTranslator >> cleanUp [
-
-	self initialize
-]
-
-{ #category : 'initialization' }
 PolyglotNaturalLanguageTranslator >> initialize [
 
   super initialize.
