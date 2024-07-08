@@ -8,6 +8,12 @@ Class {
 	#package : 'Buoy-Localization'
 }
 
+{ #category : 'cleanup' }
+PolyglotNaturalLanguageTranslator class >> cleanUp [
+
+	self initialize
+]
+
 { #category : 'class initialization' }
 PolyglotNaturalLanguageTranslator class >> initialize [
 
