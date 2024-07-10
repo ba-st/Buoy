@@ -2,9 +2,10 @@ Extension { #name : 'PolyglotNaturalLanguageTranslator' }
 
 { #category : '*Buoy-Localization-Pharo-Extensions' }
 PolyglotNaturalLanguageTranslator >> cleanUp [
-  "Just for Pharo compatibility"
+	"Just for Pharo compatibility.
+	We don't re-initialize, so that any translations installed are kept when preparing the image for deployment."
 
-	self initialize
+	
 ]
 
 { #category : '*Buoy-Localization-Pharo-Extensions' }
