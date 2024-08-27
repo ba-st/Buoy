@@ -11,11 +11,42 @@ Class {
 	#package : 'Buoy-Localization-Tests'
 }
 
+{ #category : 'private' }
+PolyglotNaturalLanguageTranslatorTest >> exportSpanishTranslationsIn: location [
+
+  | spanishLocation translationsToExport |
+  spanishLocation := location / 'locales' / 'es'.
+  spanishLocation ensureCreateDirectory.
+
+  translationsToExport := self
+                            translationDictionaryFor: #( 'Argentina' 'Brazil' 'USA' )
+                            and: #( 'Argentina' 'Brasil' 'EEUU' ).
+  spanishLocation / 'tests.json' writeStreamDo: [ :stream |
+      ( NeoJSONWriter on: stream ) nextPut: translationsToExport ]
+]
+
 { #category : 'running' }
 PolyglotNaturalLanguageTranslatorTest >> setUp [
 
   super setUp.
   translator := PolyglotNaturalLanguageTranslator new
+]
+
+{ #category : 'tests' }
+PolyglotNaturalLanguageTranslatorTest >> testLoadJSONTranslationFilesIn [
+
+  | tempLocation |
+  tempLocation := FileLocator temp / 'Buoy' / self selector asString.
+  tempLocation ensureCreateDirectory.
+  [
+    self exportSpanishTranslationsIn: tempLocation.
+
+    self assert: ( translator localize: 'Brazil' to: 'es' ) equals: 'Brazil'.
+
+    translator loadJSONTranslationFilesIn: tempLocation / 'locales'.
+    self assert: ( translator localize: 'Brazil' to: 'es' ) equals: 'Brasil'.
+    self assert: ( translator localize: 'USA' to: 'es' ) equals: 'EEUU'
+  ] ensure: tempLocation ensureDeleteAll
 ]
 
 { #category : 'tests' }
@@ -58,4 +89,23 @@ PolyglotNaturalLanguageTranslatorTest >> testLocalizedToLanguageWithoutTranslati
     equals: 'Happy new year! 🎉';
     assert: ( translator localize: 'Happy {1} year' withAll: { 2024 } to: 'es-AR' )
     equals: 'Happy 2024 year'
+]
+
+{ #category : 'private' }
+PolyglotNaturalLanguageTranslatorTest >> translationDictionaryFor: original and: translated [
+
+  | englishTranslator base64Codec translations |
+  englishTranslator := MonoglotNaturalLanguageTranslator for: 'en' asLanguageRange.
+  base64Codec := ZnBase64Encoder new
+                   beForURLEncoding;
+                   noPadding.
+  translations := OrderedDictionary new.
+  original with: translated do: [ :string :translatedString |
+      translations
+        at: ( base64Codec encode: ( englishTranslator hashCodeFor: string ) )
+        put: translatedString
+    ].
+  ^ OrderedDictionary new
+      at: 'Tests' put: translations;
+      yourself
 ]
