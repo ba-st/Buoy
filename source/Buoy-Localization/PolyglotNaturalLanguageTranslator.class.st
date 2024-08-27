@@ -38,9 +38,7 @@ PolyglotNaturalLanguageTranslator >> loadJSONTranslationsFor: languageRange in: 
 	and a second level where the key is the translation key and the value is the
 	translated string."
 
-  | codec monoglotTranslator |
-  codec := ZnBase64Encoder new.
-  codec beForURLEncoding.
+  | monoglotTranslator |
   monoglotTranslator := self translatorFor: languageRange.
 
   ^ localeDirectory files select: [ :file | file extension = 'json' ] thenDo: [ :file |
@@ -48,7 +46,9 @@ PolyglotNaturalLanguageTranslator >> loadJSONTranslationsFor: languageRange in: 
         groupedTranslations := STON fromString: file contents.
         groupedTranslations keysAndValuesDo: [ :group :translations |
             translations keysAndValuesDo: [ :translationKey :translation |
-                monoglotTranslator translationAt: ( codec decode: translationKey ) put: translation ]
+                monoglotTranslator
+                  translationAt: ( ByteArray readHexFrom: translationKey )
+                  put: translation ]
           ]
       ]
 ]

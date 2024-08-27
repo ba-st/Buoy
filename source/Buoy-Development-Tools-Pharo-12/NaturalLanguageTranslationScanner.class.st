@@ -12,7 +12,6 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'targetRepository',
-		'base64Codec',
 		'environment'
 	],
 	#category : 'Buoy-Development-Tools-Pharo-12',
@@ -41,7 +40,7 @@ NaturalLanguageTranslationScanner >> exportOn: writeStream [
   translator := MonoglotNaturalLanguageTranslator for: 'en' asLanguageRange.
   translations := OrderedDictionary new.
   stringsToTranslate do: [ :string |
-      translations at: ( base64Codec encode: ( translator hashCodeFor: string ) ) put: string ].
+      translations at: ( translator hashCodeFor: string ) hex put: string ].
 
   ( NeoJSONWriter on: writeStream )
     prettyPrint: true;
@@ -69,9 +68,6 @@ NaturalLanguageTranslationScanner >> initializeForProjectNamed: aProjectName [
                               ( 'Missing repository for project named <1s>' expandMacrosWith:
                                   aProjectName )
                           ].
-  base64Codec := ZnBase64Encoder new
-                   beForURLEncoding;
-                   noPadding.
   environment := RBBrowserEnvironment new forPackageNames:
                    ( targetRepository project packageNames select: [ :name |
                          PackageOrganizer default hasPackage: name ] )

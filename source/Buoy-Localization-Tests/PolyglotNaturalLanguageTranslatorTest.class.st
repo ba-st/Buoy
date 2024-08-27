@@ -20,7 +20,7 @@ PolyglotNaturalLanguageTranslatorTest >> exportSpanishTranslationsIn: location [
 
   spanishLocation / 'tests.json' writeStreamDo: [ :stream |
       stream nextPutAll:
-        '{"Tests":{"6guTfqMXEB7iwmsDpIQ6Gc7O2KK5Zzw89AmnJsorD9g":"Argentina","B_YrAhdx089n4uH68YdpzF5cEZrX1NGEehHhHW1afss":"Brasil","qlqzWpF0wgYrf3aXsz-v5c5ATPX-z2v7vw3Ja6DZAEY":"EEUU"}}'
+        '{"Tests":{"ea0b937ea317101ee2c26b03a4843a19ceced8a2b9673c3cf409a726ca2b0fd8":"Argentina","07f62b021771d3cf67e2e1faf18769cc5e5c119ad7d4d1847a11e11d6d5a7ecb":"Brasil","aa5ab35a9174c2062b7f7697b33fafe5ce404cf5fecf6bfbbf0dc96ba0d90046":"EEUU"}}'
     ]
 ]
 
