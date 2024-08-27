@@ -11,11 +11,41 @@ Class {
 	#package : 'Buoy-Localization-Tests'
 }
 
+{ #category : 'private' }
+PolyglotNaturalLanguageTranslatorTest >> exportSpanishTranslationsIn: location [
+
+  | spanishLocation |
+  spanishLocation := location / 'locales' / 'es'.
+  spanishLocation ensureCreateDirectory.
+
+  spanishLocation / 'tests.json' writeStreamDo: [ :stream |
+      stream nextPutAll:
+        '{"Tests":{"ea0b937ea317101ee2c26b03a4843a19ceced8a2b9673c3cf409a726ca2b0fd8":"Argentina","07f62b021771d3cf67e2e1faf18769cc5e5c119ad7d4d1847a11e11d6d5a7ecb":"Brasil","aa5ab35a9174c2062b7f7697b33fafe5ce404cf5fecf6bfbbf0dc96ba0d90046":"EEUU"}}'
+    ]
+]
+
 { #category : 'running' }
 PolyglotNaturalLanguageTranslatorTest >> setUp [
 
   super setUp.
   translator := PolyglotNaturalLanguageTranslator new
+]
+
+{ #category : 'tests' }
+PolyglotNaturalLanguageTranslatorTest >> testLoadJSONTranslationFilesIn [
+
+  | tempLocation |
+  tempLocation := FileLocator temp / 'Buoy' / self selector asString.
+  tempLocation ensureCreateDirectory.
+  [
+    self exportSpanishTranslationsIn: tempLocation.
+
+    self assert: ( translator localize: 'Brazil' to: 'es' ) equals: 'Brazil'.
+
+    translator loadJSONTranslationFilesIn: tempLocation / 'locales'.
+    self assert: ( translator localize: 'Brazil' to: 'es' ) equals: 'Brasil'.
+    self assert: ( translator localize: 'USA' to: 'es' ) equals: 'EEUU'
+  ] ensure: [tempLocation ensureDeleteAll]
 ]
 
 { #category : 'tests' }

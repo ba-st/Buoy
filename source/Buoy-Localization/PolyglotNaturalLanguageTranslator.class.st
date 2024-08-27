@@ -22,6 +22,37 @@ PolyglotNaturalLanguageTranslator >> initialize [
   translators := SortedCollection sortBlock: [ :a :b | a specificity > b specificity ]
 ]
 
+{ #category : 'configuring' }
+PolyglotNaturalLanguageTranslator >> loadJSONTranslationFilesIn: aLocaleFileReference [
+  "Loads in the language translator the translation files in the location.
+	It expectes a directory for each language tag containing any number of JSON
+	files. "
+
+  aLocaleFileReference directories do: [ :localeDirectory |
+      self loadJSONTranslationsFor: localeDirectory basename asLanguageRange in: localeDirectory ]
+]
+
+{ #category : 'private' }
+PolyglotNaturalLanguageTranslator >> loadJSONTranslationsFor: languageRange in: localeDirectory [
+  "Each file has the following structure: a first key level with a group,
+	and a second level where the key is the translation key and the value is the
+	translated string."
+
+  | monoglotTranslator |
+  monoglotTranslator := self translatorFor: languageRange.
+
+  ^ localeDirectory files select: [ :file | file extension = 'json' ] thenDo: [ :file |
+        | groupedTranslations |
+        groupedTranslations := STON fromString: file contents.
+        groupedTranslations keysAndValuesDo: [ :group :translations |
+            translations keysAndValuesDo: [ :translationKey :translation |
+                monoglotTranslator
+                  translationAt: ( ByteArray readHexFrom: translationKey )
+                  put: translation ]
+          ]
+      ]
+]
+
 { #category : 'localization' }
 PolyglotNaturalLanguageTranslator >> localize: string to: stringOrLanguageTag [
 
