@@ -82,12 +82,6 @@ NaturalLanguageTranslationScanner >> projectName [
 { #category : 'private' }
 NaturalLanguageTranslationScanner >> scanProjectMethodsCollectingTranslationsIn: stringsToTranslate [
 
-  | searchRule |
-  searchRule := RBParseTreeLintRule new.
-  searchRule matcher
-    matches: '`#string localized'
-    do: [ :node :answer | stringsToTranslate add: node receiver value ];
-    matches: '`#string localizedWithAll: `@values'
-    do: [ :node :answer | stringsToTranslate add: node receiver value ].
-  searchRule runOnEnvironment: environment
+  ( SearchMethodsForLocalizationMessagesRule collectingTranslationsIn: stringsToTranslate )
+    runOnEnvironment: environment
 ]
