@@ -45,7 +45,7 @@ PolyglotNaturalLanguageTranslator >> loadJSONTranslationsFor: languageRange in: 
 
   ^ localeDirectory files select: [ :file | file extension = 'json' ] thenDo: [ :file |
         | groupedTranslations |
-        groupedTranslations := NeoJSONObject fromString: file contents.
+        groupedTranslations := STON fromString: file contents.
         groupedTranslations keysAndValuesDo: [ :group :translations |
             translations keysAndValuesDo: [ :translationKey :translation |
                 monoglotTranslator translationAt: ( codec decode: translationKey ) put: translation ]
