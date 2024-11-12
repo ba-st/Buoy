@@ -26,14 +26,20 @@ GemStone64Platform >> atInstanceVariableNamed: name on: object put: value [
 GemStone64Platform >> fork: block named: processName at: priority [
 
 	| process |
-	process := block newProcess.
-	process
-		beForked;
-		name: processName;
-		priority: priority.
+	process := self newProcessNamed: processName evaluating: block at: priority.
 	process resume.
 	Processor yield.
 	^process
+]
+
+{ #category : 'process scheduling' }
+GemStone64Platform >> newProcessNamed: processName evaluating: block at: priority [
+
+  ^ block newProcess
+      beForked;
+      priority: priority;
+      name: processName;
+      yourself
 ]
 
 { #category : 'reflection' }
