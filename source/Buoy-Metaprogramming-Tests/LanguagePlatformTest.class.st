@@ -102,6 +102,31 @@ LanguagePlatformTest >> testMessageDigest [
 ]
 
 { #category : 'tests' }
+LanguagePlatformTest >> testNewProcessNamedEvaluatingAt [
+
+  | wasEvaluated semaphore process |
+  wasEvaluated := false.
+  semaphore := Semaphore new.
+
+  process := LanguagePlatform current
+               newProcessNamed: 'Testing LanguagePlatform fork'
+               evaluating: [
+                   wasEvaluated := true.
+                   semaphore signal
+                 ]
+               at: Processor userBackgroundPriority.
+
+  self
+    assert: process name equals: 'Testing LanguagePlatform fork';
+    assert: process priority equals: Processor userBackgroundPriority.
+
+  process resume.
+  semaphore wait.
+
+  self assert: wasEvaluated
+]
+
+{ #category : 'tests' }
 LanguagePlatformTest >> testOSEnvironment [
 
 	| os variableName isAbsent |

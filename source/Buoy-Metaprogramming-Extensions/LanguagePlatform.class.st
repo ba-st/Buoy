@@ -63,6 +63,12 @@ LanguagePlatform >> messageDigest: string [
   ^ self subclassResponsibility
 ]
 
+{ #category : 'process scheduling' }
+LanguagePlatform >> newProcessNamed: processName evaluating: block at: priority [
+
+  self subclassResponsibility
+]
+
 { #category : 'accessing' }
 LanguagePlatform >> os [
 	"Returns the underlying operating system abstraction"

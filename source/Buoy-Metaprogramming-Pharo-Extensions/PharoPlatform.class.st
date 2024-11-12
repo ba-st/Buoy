@@ -42,6 +42,15 @@ PharoPlatform >> messageDigest: string [
   ^ SHA256 hashMessage: string
 ]
 
+{ #category : 'process scheduling' }
+PharoPlatform >> newProcessNamed: processName evaluating: block at: priority [
+
+  ^ block newProcess
+      priority: priority;
+      name: processName;
+      yourself
+]
+
 { #category : 'accessing' }
 PharoPlatform >> os [
 
