@@ -6,7 +6,7 @@ Implementation Notes:
 "
 Class {
 	#name : 'CollectionFormatter',
-	#superclass : 'Object',
+	#superclass : 'Formatter',
 	#instVars : [
 		'separator',
 		'elementFormatter',
@@ -59,12 +59,6 @@ CollectionFormatter class >> separatingWith: aSeparator applyingToEach: anElemen
 		separatingWith: aSeparator
 		andOptionallyLastWith: Optional unused
 		applyingToEach: anElementFormatter
-]
-
-{ #category : 'formatting' }
-CollectionFormatter >> format: aCollection [
-
-	^ String streamContents: [ :stream | self format: aCollection on: stream ]
 ]
 
 { #category : 'formatting' }

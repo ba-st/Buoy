@@ -72,3 +72,9 @@ CollectionFormatterTest >> testFormatWithLastSeparator [
 	formatter := CollectionFormatter separatingWith: ', ' andLastWith: ' and '.
 	self assert: (formatter format: #(1 2 3)) equals: '1, 2 and 3'
 ]
+
+{ #category : 'tests' }
+CollectionFormatterTest >> testIsAbstract [
+
+  self deny: CollectionFormatter isAbstract
+]
