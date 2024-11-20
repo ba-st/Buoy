@@ -14,6 +14,12 @@ SearchMethodsForLocalizationMessagesRule class >> collectingTranslationsIn: aCol
   ^ self new initializeCollectingTranslationsIn: aCollection
 ]
 
+{ #category : 'testing' }
+SearchMethodsForLocalizationMessagesRule class >> isVisible [
+
+  ^ false
+]
+
 { #category : 'initialization' }
 SearchMethodsForLocalizationMessagesRule >> initialize [
 
