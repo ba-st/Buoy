@@ -18,6 +18,7 @@ SearchMethodsForLocalizationMessagesRule class >> collectingTranslationsIn: aCol
 SearchMethodsForLocalizationMessagesRule >> initialize [
 
   super initialize.
+  stringsToTranslate := OrderedCollection new.
   matcher
     matches: '`#string localized'
     do: [ :node :answer | stringsToTranslate add: node receiver value ];
