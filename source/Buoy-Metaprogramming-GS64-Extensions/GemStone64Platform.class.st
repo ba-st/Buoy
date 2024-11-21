@@ -52,12 +52,12 @@ GemStone64Platform >> globalNamed: aSymbol ifAbsent: absentBlock [
 { #category : 'reflection' }
 GemStone64Platform >> globalNamed: symbol ifAbsentPut: block [
 
-  ^ (GsCurrentSession currentSession objectNamed: aSymbol)
+  ^ (GsCurrentSession currentSession objectNamed: symbol)
       ifNil: [
         | object |
         object := block value.
         (GsCurrentSession currentSession objectNamed: #Globals)
-          at: aSymbol put: object.
+          at: symbol put: object.
         object
       ]
 ]
