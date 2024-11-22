@@ -31,6 +31,12 @@ PharoPlatform >> globalNamed: aSymbol ifAbsent: absentBlock [
 ]
 
 { #category : 'reflection' }
+PharoPlatform >> globalNamed: symbol ifAbsentPut: block [
+
+  ^ Smalltalk globals at: symbol ifAbsentPut: block
+]
+
+{ #category : 'reflection' }
 PharoPlatform >> includesGlobalNamed: aSymbol [
 
 	^ Smalltalk globals includesKey: aSymbol
@@ -55,4 +61,10 @@ PharoPlatform >> newProcessNamed: processName evaluating: block at: priority [
 PharoPlatform >> os [
 
 	^ OSPlatform current
+]
+
+{ #category : 'reflection' }
+PharoPlatform >> removeGlobalNamed: aSymbol ifAbsent: absentBlock [
+
+  ^ Smalltalk globals removeKey: aSymbol ifAbsent: absentBlock
 ]

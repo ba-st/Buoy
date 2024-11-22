@@ -55,6 +55,27 @@ LanguagePlatformTest >> testGlobalNamedIfAbsent [
 ]
 
 { #category : 'tests' }
+LanguagePlatformTest >> testGlobalNamedIfAbsentPut [
+
+  | globalName globalValue sentinel |
+  globalName := #TestGlobalNamedIfAbsentPut.
+  globalValue := Object new.
+
+  LanguagePlatform current globalNamed: globalName ifAbsentPut: globalValue.
+
+  self
+    assert: ( LanguagePlatform current globalNamed: globalName ifAbsent: [ self fail ] )
+    identicalTo: globalValue.
+
+  LanguagePlatform current removeGlobalNamed: globalName ifAbsent: [ self fail ].
+
+  sentinel := Object new.
+  self
+    assert: ( LanguagePlatform current globalNamed: globalName ifAbsent: [ sentinel ] )
+    identicalTo: sentinel
+]
+
+{ #category : 'tests' }
 LanguagePlatformTest >> testGlobalNamedIfPresentIfAbsent [
 
 	| sentinel |
@@ -160,4 +181,15 @@ LanguagePlatformTest >> testOSLineEnding [
 	self
 		assert: LanguagePlatform current os lineEnding
 		equals: '<n>' expandMacros
+]
+
+{ #category : 'tests' }
+LanguagePlatformTest >> testRemoveGlobalNamedIfAbsent [
+
+  | wasFound |
+  wasFound := true.
+  LanguagePlatform current
+    removeGlobalNamed: #AnImplausibleGlobalName
+    ifAbsent: [ wasFound := false ].
+  self deny: wasFound
 ]

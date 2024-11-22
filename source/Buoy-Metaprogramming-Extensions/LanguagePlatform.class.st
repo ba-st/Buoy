@@ -42,6 +42,12 @@ LanguagePlatform >> globalNamed: aSymbol ifAbsent: absentBlock [
 ]
 
 { #category : 'reflection' }
+LanguagePlatform >> globalNamed: symbol ifAbsentPut: block [
+
+  ^ self subclassResponsibility
+]
+
+{ #category : 'reflection' }
 LanguagePlatform >> globalNamed: aSymbol ifPresent: presentBlock ifAbsent: absentBlock [
 
 	| global |
@@ -72,6 +78,12 @@ LanguagePlatform >> newProcessNamed: processName evaluating: block at: priority 
 { #category : 'accessing' }
 LanguagePlatform >> os [
 	"Returns the underlying operating system abstraction"
+
+	^ self subclassResponsibility
+]
+
+{ #category : 'reflection' }
+LanguagePlatform >> removeGlobalNamed: aSymbol ifAbsent: absentBlock [
 
 	^ self subclassResponsibility
 ]

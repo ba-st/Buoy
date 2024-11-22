@@ -14,10 +14,17 @@ SearchMethodsForLocalizationMessagesRule class >> collectingTranslationsIn: aCol
   ^ self new initializeCollectingTranslationsIn: aCollection
 ]
 
+{ #category : 'testing' }
+SearchMethodsForLocalizationMessagesRule class >> isVisible [
+
+  ^ false
+]
+
 { #category : 'initialization' }
 SearchMethodsForLocalizationMessagesRule >> initialize [
 
   super initialize.
+  stringsToTranslate := OrderedCollection new.
   matcher
     matches: '`#string localized'
     do: [ :node :answer | stringsToTranslate add: node receiver value ];
