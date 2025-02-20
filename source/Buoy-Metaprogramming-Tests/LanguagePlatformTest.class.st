@@ -108,6 +108,17 @@ LanguagePlatformTest >> testIncludesGlobalNamed [
 ]
 
 { #category : 'tests' }
+LanguagePlatformTest >> testInstanceVariableNamedOn [
+
+  | value |
+  LanguagePlatform current atInstanceVariableNamed: 'variableForTesting' on: self put: 8.
+
+  value := LanguagePlatform current instanceVariableNamed: 'variableForTesting' on: self.
+
+  self assert: value equals: 8
+]
+
+{ #category : 'tests' }
 LanguagePlatformTest >> testMessageDigest [
 
   self

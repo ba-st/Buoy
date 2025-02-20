@@ -69,6 +69,17 @@ GemStone64Platform >> includesGlobalNamed: aSymbol [
       notNil
 ]
 
+{ #category : 'reflection' }
+GemStone64Platform >> instanceVariableNamed: name on: object [
+
+  | index |
+  index := (object class allInstVarNames collect: #asSymbol)
+    indexOf: name asSymbol
+    ifAbsent: [ self error: ('<1s> not found in <2p>' expandMacrosWith: name asString with: object) ].
+  ^ object instVarAt: index
+
+]
+
 { #category : 'message digest' }
 GemStone64Platform >> messageDigest: string [
 

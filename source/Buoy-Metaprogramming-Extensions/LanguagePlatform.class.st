@@ -61,6 +61,12 @@ LanguagePlatform >> includesGlobalNamed: aSymbol [
 	^ self subclassResponsibility
 ]
 
+{ #category : 'reflection' }
+LanguagePlatform >> instanceVariableNamed: name on: object [
+
+  ^ self subclassResponsibility
+]
+
 { #category : 'message digest' }
 LanguagePlatform >> messageDigest: string [
   "Returns a message digest for the given string, the hashing algorithm can be platform specific.
