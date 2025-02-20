@@ -42,6 +42,12 @@ PharoPlatform >> includesGlobalNamed: aSymbol [
 	^ Smalltalk globals includesKey: aSymbol
 ]
 
+{ #category : 'reflection' }
+PharoPlatform >> instanceVariableNamed: name on: object [
+
+  ^ object instVarNamed: name
+]
+
 { #category : 'message digest' }
 PharoPlatform >> messageDigest: string [
 
