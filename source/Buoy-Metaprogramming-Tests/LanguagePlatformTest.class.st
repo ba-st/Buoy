@@ -37,6 +37,14 @@ LanguagePlatformTest >> testForkNamedAt [
 ]
 
 { #category : 'tests' }
+LanguagePlatformTest >> testGetInvalidInstanceVariable [
+
+	self
+		should: [ LanguagePlatform current instanceVariableNamed: 'variableForFailing' on: self ]
+		raise: Error
+]
+
+{ #category : 'tests' }
 LanguagePlatformTest >> testGlobalNamedIfAbsent [
 
 	| sentinel |
@@ -203,4 +211,12 @@ LanguagePlatformTest >> testRemoveGlobalNamedIfAbsent [
     removeGlobalNamed: #AnImplausibleGlobalName
     ifAbsent: [ wasFound := false ].
   self deny: wasFound
+]
+
+{ #category : 'tests' }
+LanguagePlatformTest >> testSetInvalidInstanceVariable [
+
+	self
+		should: [ LanguagePlatform current atInstanceVariableNamed: 'variableForFailing' on: self put: 8 ]
+		raise: Error
 ]
