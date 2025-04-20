@@ -26,6 +26,22 @@ PropertyBasedEqualityCheckerTest >> testCheckingIdenticalObjects [
 ]
 
 { #category : 'tests' }
+PropertyBasedEqualityCheckerTest >> testConfiguringTypeComparison [
+
+  | checker |
+  checker := PropertyBasedEqualityChecker
+               on: 8
+               withTypeChecking: [ :base :target | target isNumber ].
+
+  checker compare: #odd.
+
+  self
+    assert: ( checker checkAgainst: 10 );
+    deny: ( checker checkAgainst: 9 );
+    deny: ( checker checkAgainst: #(  ) )
+]
+
+{ #category : 'tests' }
 PropertyBasedEqualityCheckerTest >> testPropertyBlockComparison [
 
 	| checker |
