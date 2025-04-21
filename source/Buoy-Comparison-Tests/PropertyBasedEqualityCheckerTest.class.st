@@ -31,12 +31,13 @@ PropertyBasedEqualityCheckerTest >> testConfiguringTypeComparison [
   | checker |
   checker := PropertyBasedEqualityChecker
                on: 8
-               withTypeChecking: [ :base :target | target isNumber ].
+               checkingTypeUsing: [ :base :target | target isNumber ].
 
   checker compare: #odd.
 
   self
     assert: ( checker checkAgainst: 10 );
+    assert: ( checker checkAgainst: 10.0s2 );
     deny: ( checker checkAgainst: 9 );
     deny: ( checker checkAgainst: #(  ) )
 ]

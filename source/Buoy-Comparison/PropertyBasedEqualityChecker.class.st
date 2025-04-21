@@ -16,13 +16,13 @@ Class {
 { #category : 'instance creation' }
 PropertyBasedEqualityChecker class >> on: aBaseObject [
 
-  ^ self on: aBaseObject withTypeChecking: [ :base :target | target isA: base class ]
+  ^ self on: aBaseObject checkingTypeUsing: [ :base :target | target isA: base class ]
 ]
 
 { #category : 'instance creation' }
-PropertyBasedEqualityChecker class >> on: aBaseObject withTypeChecking: aTypeCheckingRule [
+PropertyBasedEqualityChecker class >> on: aBaseObject checkingTypeUsing: aTypeCheckingRule [
 
-  ^ self new initializeOn: aBaseObject withTypeChecking: aTypeCheckingRule
+  ^ self new initializeOn: aBaseObject checkingTypeUsing: aTypeCheckingRule
 ]
 
 { #category : 'testing' }
@@ -66,7 +66,7 @@ PropertyBasedEqualityChecker >> initialize [
 ]
 
 { #category : 'initialization' }
-PropertyBasedEqualityChecker >> initializeOn: aBaseObject withTypeChecking: aTypeCheckingRule [
+PropertyBasedEqualityChecker >> initializeOn: aBaseObject checkingTypeUsing: aTypeCheckingRule [
 
   base := aBaseObject.
   self compareWith: aTypeCheckingRule
