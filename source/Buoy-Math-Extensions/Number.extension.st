@@ -39,3 +39,9 @@ Number >> percent [
 
 	^ Percentage of: self
 ]
+
+{ #category : '*Buoy-Math-Extensions' }
+Number >> productWithPartsPerFractionRatio: ratio [
+
+  ^ ratio * self asNumber
+]
