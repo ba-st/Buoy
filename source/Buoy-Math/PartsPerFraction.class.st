@@ -36,9 +36,9 @@ PartsPerFraction class >> ratio: aRatio [
 ]
 
 { #category : 'arithmetic' }
-PartsPerFraction >> * aNumber [
+PartsPerFraction >> * anArithmeticObject [
 
-	^ ratio * aNumber asNumber
+  ^ anArithmeticObject productWithPartsPerFractionRatio: ratio
 ]
 
 { #category : 'arithmetic' }
@@ -60,7 +60,7 @@ PartsPerFraction >> - aNumber [
 { #category : 'arithmetic' }
 PartsPerFraction >> / aNumber [
 
-	^ ratio / aNumber asNumber
+  ^ self * aNumber reciprocal
 ]
 
 { #category : 'comparing' }
