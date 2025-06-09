@@ -33,17 +33,15 @@ BaselineOfBuoy >> baseline: spec [
         group: 'default' with: 'Development'
     ].
   spec for: #'pharo12.x' do: [
-      self setUpDependencies: spec.
       spec
         package: 'Buoy-Development-Tools-Pharo-12'
-        with: [ spec requires: #( 'Buoy-Development-Tools' 'NeoJSON-Deployment' ) ];
+        with: [ spec requires: 'Buoy-Development-Tools' ];
         group: 'Tools' with: 'Buoy-Development-Tools-Pharo-12'
     ].
   spec for: #'pharo13.x' do: [
-      self setUpDependencies: spec.
       spec
         package: 'Buoy-Development-Tools-Pharo-13'
-        with: [ spec requires: #( 'Buoy-Development-Tools' 'NeoJSON-Deployment' ) ];
+        with: [ spec requires: 'Buoy-Development-Tools' ];
         group: 'Tools' with: 'Buoy-Development-Tools-Pharo-13'
     ]
 ]
@@ -263,12 +261,4 @@ BaselineOfBuoy >> baselineTools: spec [
 BaselineOfBuoy >> projectClass [
 
 	^ MetacelloCypressBaselineProject
-]
-
-{ #category : 'initialization' }
-BaselineOfBuoy >> setUpDependencies: spec [
-
-  spec
-    baseline: 'NeoJSON' with: [ spec repository: 'github://ba-st-dependencies/NeoJSON:v20' ];
-    project: 'NeoJSON-Deployment' copyFrom: 'NeoJSON' with: [ spec loads: 'Deployment' ]
 ]
