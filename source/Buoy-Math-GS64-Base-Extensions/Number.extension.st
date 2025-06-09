@@ -14,6 +14,12 @@ Number >> closeTo: num [
 ]
 
 { #category : '*Buoy-Math-GS64-Base-Extensions' }
+Number >> closeTo: number precision: precision [
+
+	^ number closeTo: self asFloat precision: precision
+]
+
+{ #category : '*Buoy-Math-GS64-Base-Extensions' }
 Number >> isInteger [
 
 	^ false
