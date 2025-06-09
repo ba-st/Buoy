@@ -158,3 +158,16 @@ BuenosAiresSmalltalkFormatter >> formatBlock: aBlockNode [
     ifTrue: [ self newLine ]
     ifFalse: [ codeStream nextPutAll: self spacesInsideBlocksString ]
 ]
+
+{ #category : 'private' }
+BuenosAiresSmalltalkFormatter >> needsParenthesisFor: aNode [
+
+  | parent |
+  aNode ifNil: [ ^ false ].
+  aNode isValue ifFalse: [ ^ false ].
+  aNode isParseError ifTrue: [ ^ aNode hasParentheses ].
+  parent := aNode parent ifNil: [ ^ false ].
+  ^ parent isDynamicArray
+      ifTrue: [ false ]
+      ifFalse: [ super needsParenthesisFor: aNode ]
+]
