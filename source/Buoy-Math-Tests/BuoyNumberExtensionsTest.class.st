@@ -22,16 +22,16 @@ BuoyNumberExtensionsTest >> testAsHexStringPaddedTo [
 { #category : 'tests' }
 BuoyNumberExtensionsTest >> testCloseTo [
 
-	self assert: (3 closeTo: 3.00001).
-	self assert: (0 closeTo: 0.00001).
-	self deny: (3.3345 closeTo: 3.335).
+  self assert: ( 3 closeTo: 3.00001 precision: 0.0001 ).
+  self assert: ( 0 closeTo: 0.00001 precision: 0.0001 ).
+  self deny: ( 3.3345 closeTo: 3.335 precision: 0.0001 ).
 
-	self deny: (-1.0 closeTo: 1.0).
+  self deny: ( -1.0 closeTo: 1.0 ).
 
-	self assert: (1.0 / 3.0 closeTo: 1 / 3).
-	self assert: (1.0e-8 closeTo: 0).
-	self assert: (0 closeTo: 1.0e-8).
-	self assert: (1 + 1.0e-8 closeTo: 1.0)
+  self assert: ( 1.0 / 3.0 closeTo: 1 / 3 ).
+  self assert: ( 1.0e-8 closeTo: 0 ).
+  self assert: ( 0 closeTo: 1.0e-8 ).
+  self assert: ( 1 + 1.0e-8 closeTo: 1.0 )
 ]
 
 { #category : 'tests' }
