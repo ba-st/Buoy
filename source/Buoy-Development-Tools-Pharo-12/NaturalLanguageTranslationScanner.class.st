@@ -42,11 +42,11 @@ NaturalLanguageTranslationScanner >> exportOn: writeStream [
   stringsToTranslate do: [ :string |
       translations at: ( translator hashCodeFor: string ) hex put: string ].
 
-  ( NeoJSONWriter on: writeStream )
-    prettyPrint: true;
-    nextPut: ( OrderedDictionary new
+  STONJSON
+    put: ( OrderedDictionary new
           at: self projectName put: translations;
-          yourself ).
+          yourself )
+    onStreamPretty: writeStream.
   writeStream lf
 ]
 
