@@ -14,6 +14,7 @@ jobs:
           - Pharo64-10
           - Pharo64-11
           - Pharo64-12
+          - Pharo64-13
     name: ${{ matrix.smalltalk }}
     steps:
       - uses: actions/checkout@v4
@@ -26,7 +27,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         timeout-minutes: 15
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           name: Unit-Tests-${{matrix.smalltalk}}
           token: ${{ secrets.CODECOV_TOKEN }}
