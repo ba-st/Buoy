@@ -4,7 +4,7 @@ Extension { #name : 'BinaryFloat' }
 BinaryFloat >> closeTo: num [
 	"Tell whether the receiver and arguments are close from each."
 
-	^ self closeTo: num precision: 0.0001
+	^ self closeTo: num precision: self class defaultComparisonPrecision
 ]
 
 { #category : '*Buoy-Math-GS64-Base-Extensions' }
@@ -14,6 +14,15 @@ BinaryFloat >> closeTo: num precision: aPrecision [
 	num isNumber ifFalse: [ ^ false ].
 
 	^ self = num asFloat or: [ (self - num) abs <= aPrecision ]
+]
+
+{ #category : '*Buoy-Math-GS64-Base-Extensions' }
+BinaryFloat class >> defaultComparisonPrecision [
+
+	"Default precision used for comparing two float numbers.
+	Using value described in Numerical Recipes, 3rd edition, Section 5.7, which is pages 229-230
+	corresponding to the square root of the machine epsilon: self epsilon sqrt"
+	^ 1.4901161193847656e-8
 ]
 
 { #category : '*Buoy-Math-GS64-Base-Extensions' }

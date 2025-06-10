@@ -14,9 +14,17 @@ Class {
 		'targetRepository',
 		'environment'
 	],
-	#category : 'Buoy-Development-Tools-Pharo-12',
-	#package : 'Buoy-Development-Tools-Pharo-12'
+	#category : 'Buoy-Development-Tools-Pharo-13',
+	#package : 'Buoy-Development-Tools-Pharo-13'
 }
+
+{ #category : 'examples' }
+NaturalLanguageTranslationScanner class >> example [
+
+  <ignoreForCoverage>
+  <example>
+  ^ ( self forProjectNamed: 'Buoy' ) export
+]
 
 { #category : 'instance creation' }
 NaturalLanguageTranslationScanner class >> forProjectNamed: aProjectName [

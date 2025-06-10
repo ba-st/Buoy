@@ -11,35 +11,39 @@ Class {
 { #category : 'baselines' }
 BaselineOfBuoy >> baseline: spec [
 
-	<baseline>
-	spec
-		for: #pharo
-		do: [ self
-				baselineAssertions: spec;
-				baselineChronology: spec;
-				baselineCollections: spec;
-				baselineConditions: spec;
-				baselineComparison: spec;
-				baselineDynamicBinding: spec;
-				baselineExceptionHandling: spec;
-				baselineLocalization: spec;
-				baselineMath: spec;
-				baselineMetaprogramming: spec;
-				baselineSUnit: spec;
-				baselineTools: spec;
-				baselineGS64Development: spec.
-			spec
-				group: 'CI' with: 'Tests';
-				group: 'Development' with: #('Tools' 'Tests');
-				group: 'default' with: 'Development'
-			].
-	spec for: #'pharo12.x' do: [
-		spec
-			package: 'Buoy-Development-Tools-Pharo-12'
-				with: [ spec requires: 'Buoy-Development-Tools' ];
-			group: 'Tools' with: 'Buoy-Development-Tools-Pharo-12'
-	]
-			
+  <baseline>
+  spec for: #pharo do: [
+      self
+        baselineAssertions: spec;
+        baselineChronology: spec;
+        baselineCollections: spec;
+        baselineConditions: spec;
+        baselineComparison: spec;
+        baselineDynamicBinding: spec;
+        baselineExceptionHandling: spec;
+        baselineLocalization: spec;
+        baselineMath: spec;
+        baselineMetaprogramming: spec;
+        baselineSUnit: spec;
+        baselineTools: spec;
+        baselineGS64Development: spec.
+      spec
+        group: 'CI' with: 'Tests';
+        group: 'Development' with: #( 'Tools' 'Tests' );
+        group: 'default' with: 'Development'
+    ].
+  spec for: #'pharo12.x' do: [
+      spec
+        package: 'Buoy-Development-Tools-Pharo-12'
+        with: [ spec requires: 'Buoy-Development-Tools' ];
+        group: 'Tools' with: 'Buoy-Development-Tools-Pharo-12'
+    ].
+  spec for: #'pharo13.x' do: [
+      spec
+        package: 'Buoy-Development-Tools-Pharo-13'
+        with: [ spec requires: 'Buoy-Development-Tools' ];
+        group: 'Tools' with: 'Buoy-Development-Tools-Pharo-13'
+    ]
 ]
 
 { #category : 'baselines' }
