@@ -1,4 +1,4 @@
-| symbolDictionary |
+| symbolDictionary assignmentCommand |
 symbolDictionary := Rowan image 
 	symbolDictNamed: 'Buoy'
 	ifAbsent: [
