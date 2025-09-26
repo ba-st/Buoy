@@ -6,12 +6,12 @@ symbolDictionary := Rowan image
 			Rowan image symbolDictNamed: 'Buoy'
 	].
 
-symbolDictionary at: #ArithmeticError put: NumericError.
-symbolDictionary at: #KeyNotFound put: LookupError.
-symbolDictionary at: #NotFound put: LookupError.
-symbolDictionary at: #SubscriptOutOfBounds put: OffsetError.
-symbolDictionary at: #SmallDictionary put: Dictionary.
-symbolDictionary at: #Exit put: ExitClientError.
-symbolDictionary at: #CollectionIsEmpty put: ImproperOperation.
+symbolDictionary at: #ArithmeticError ifAbsentPut: [NumericError].
+symbolDictionary at: #KeyNotFound ifAbsentPut: [LookupError].
+symbolDictionary at: #NotFound ifAbsentPut: [LookupError].
+symbolDictionary at: #SubscriptOutOfBounds ifAbsentPut: [OffsetError].
+symbolDictionary at: #SmallDictionary ifAbsentPut: [Dictionary].
+symbolDictionary at: #Exit ifAbsentPut: [ExitClientError].
+symbolDictionary at: #CollectionIsEmpty ifAbsentPut: [ImproperOperation].
 "Temporary, it will be fixed in a post load script"
-symbolDictionary at: #AssertionFailure put: nil.
+symbolDictionary at: #AssertionFailure ifAbsentPut: [nil].
