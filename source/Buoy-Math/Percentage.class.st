@@ -18,23 +18,25 @@ Percentage class >> fraction [
 	^ 100
 ]
 
-{ #category : 'initialization' }
+{ #category : 'class initialization' }
 Percentage class >> initialize [
 	<ignoreForCoverage>
 	oneHundredPercent := self ratio: 1.
 	zeroPercent := self ratio: 0
 ]
 
-{ #category : 'Instance Creation' }
+{ #category : 'instance creation' }
 Percentage class >> oneHundred [
 
-	^ oneHundredPercent
+  oneHundredPercent ifNil: [ self initialize ].
+  ^ oneHundredPercent
 ]
 
-{ #category : 'Instance Creation' }
+{ #category : 'instance creation' }
 Percentage class >> zero [
-	
-	^zeroPercent 
+
+  zeroPercent ifNil: [ self initialize ].
+  ^ zeroPercent
 ]
 
 { #category : 'testing' }

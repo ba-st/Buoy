@@ -18,6 +18,7 @@ EscapingAlgorithm class >> initialize [
 { #category : 'instance creation' }
 EscapingAlgorithm class >> new [
 
+  UniqueInstace ifNil: [ self initialize ].
   ^ UniqueInstace
 ]
 

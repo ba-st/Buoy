@@ -14,9 +14,10 @@ Class {
 
 { #category : 'accessing' }
 NaturalLanguageTranslator class >> current [
-	"Return the currently registered translator"
+  "Return the currently registered translator"
 
-	^Current
+  Current ifNil: [ self current: PolyglotNaturalLanguageTranslator new ].
+  ^ Current
 ]
 
 { #category : 'accessing' }
