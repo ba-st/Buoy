@@ -9,20 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        smalltalk:
-          - Pharo64-9.0
-          - Pharo64-10
-          - Pharo64-11
-          - Pharo64-12
-          - Pharo64-13
-    name: ${{ matrix.smalltalk }}
+        pharo-version:
+          - 10
+          - 11
+          - 12
+          - 13
+    name: Pharo64-${{ matrix.pharo-version }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: hpi-swa/setup-smalltalkCI@v1
-        with:
-          smalltalk-image: ${{ matrix.smalltalk }}
+      - uses: actions/checkout@v6
       - name: Load Image and Run Tests
-        run: smalltalkci -s ${{ matrix.smalltalk }} .smalltalkci/.unit-tests.ston
+        uses: ba-st-actions/pharo-ci@${{ matrix.pharo-version }}
+        with:
+          spec: .smalltalkci/.unit-tests.ston
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         timeout-minutes: 15
