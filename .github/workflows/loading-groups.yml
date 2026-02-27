@@ -4,8 +4,7 @@ on:
   - pull_request
   - workflow_dispatch
 jobs:
-   group-loading:
-    runs-on: ubuntu-latest
+  group-loading:
     strategy:
       fail-fast: false
       matrix:
@@ -15,8 +14,6 @@ jobs:
           - deployment
           - tests
           - tools
-    steps:
-      - uses: actions/checkout@v6
-      - uses: ./.github/workflows/loading-pharo-group.yml
-        with:
-          load-spec: ${{ matrix.load-spec }}
+    uses: ./.github/workflows/loading-pharo-group.yml
+    with:
+      load-spec: ${{ matrix.load-spec }}
