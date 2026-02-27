@@ -3,30 +3,19 @@ on:
   - push
   - pull_request
   - workflow_dispatch
-
 jobs:
    group-loading:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        pharo-version:
-          - 10
-          - 11
-          - 12
-          - 13
         load-spec:
           - development
           - dependent-sunit-extensions
           - deployment
           - tests
           - tools
-    name: Pharo64-${{ matrix.pharo-version }} + ${{ matrix.load-spec }}
     steps:
-      - uses: actions/checkout@v6
-      - uses: ba-st-actions/pharo-ci@${{ matrix.pharo-version }}
+      - uses: ./.github/workflows/loading-pharo-group.yml
         with:
-          spec: .smalltalkci/.loading.${{ matrix.load-spec }}.ston
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        timeout-minutes: 15
+          load-spec: ${{ matrix.load-spec }}
