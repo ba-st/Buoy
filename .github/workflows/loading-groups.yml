@@ -1,11 +1,11 @@
-name: Baseline groups
+name: Pharo Groups Loading
 on:
   - push
   - pull_request
   - workflow_dispatch
 jobs:
   group-loading:
-    name: Group ${{ matrix.load-spec }}
+    name: ${{ matrix.load-spec }}
     strategy:
       fail-fast: false
       matrix:
