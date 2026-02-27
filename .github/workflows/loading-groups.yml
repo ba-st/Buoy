@@ -5,6 +5,7 @@ on:
   - workflow_dispatch
 jobs:
   group-loading:
+    name: Group ${{ matrix.load-spec }}
     strategy:
       fail-fast: false
       matrix:
