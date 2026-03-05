@@ -35,27 +35,39 @@ NaturalLanguageTranslationScanner class >> forProjectNamed: aProjectName [
 { #category : 'exporting' }
 NaturalLanguageTranslationScanner >> export [
 
-  ^ self exportTo: targetRepository repositoryDirectory / 'locales' / 'en'
+  ^ self exportTo:
+      self repositoryLocalesDirectory
       / ( '<1s>.json' expandMacrosWith: self projectName asLowercase )
+]
+
+{ #category : 'exporting' }
+NaturalLanguageTranslationScanner >> export: stringsToTranslateByCategory on: writeStream [
+
+  | translator output |
+  translator := MonoglotNaturalLanguageTranslator for: 'en' asLanguageRange.
+  output := OrderedDictionary new.
+  stringsToTranslateByCategory keysAndValuesDo: [ :category :stringsToTranslate |
+      | translations |
+      translations := OrderedDictionary new.
+      stringsToTranslate do: [ :string |
+          translations at: ( translator hashCodeFor: string ) hex put: string ].
+      output at: category put: translations
+    ].
+  STONJSON put: output onStreamPretty: writeStream.
+  writeStream lf
 ]
 
 { #category : 'exporting' }
 NaturalLanguageTranslationScanner >> exportOn: writeStream [
 
-  | stringsToTranslate translator translations |
+  | stringsToTranslate |
   stringsToTranslate := SortedCollection new.
   self scanProjectMethodsCollectingTranslationsIn: stringsToTranslate.
-  translator := MonoglotNaturalLanguageTranslator for: 'en' asLanguageRange.
-  translations := OrderedDictionary new.
-  stringsToTranslate do: [ :string |
-      translations at: ( translator hashCodeFor: string ) hex put: string ].
-
-  STONJSON
-    put: ( OrderedDictionary new
-          at: self projectName put: translations;
+  self
+    export: ( OrderedDictionary new
+          at: self projectName put: stringsToTranslate;
           yourself )
-    onStreamPretty: writeStream.
-  writeStream lf
+    on: writeStream
 ]
 
 { #category : 'exporting' }
@@ -85,6 +97,12 @@ NaturalLanguageTranslationScanner >> initializeForProjectNamed: aProjectName [
 NaturalLanguageTranslationScanner >> projectName [
 
   ^ targetRepository name
+]
+
+{ #category : 'accessing' }
+NaturalLanguageTranslationScanner >> repositoryLocalesDirectory [
+
+  ^ targetRepository repositoryDirectory / 'locales' / 'en'
 ]
 
 { #category : 'private' }
