@@ -221,20 +221,25 @@ BaselineOfBuoy >> baselineMath: spec [
 { #category : 'baselines' }
 BaselineOfBuoy >> baselineMetaprogramming: spec [
 
-	spec
-		package: 'Buoy-Metaprogramming'
-		with: [ spec requires: 'Buoy-Assertions' ];
-		group: 'Deployment' with: 'Buoy-Metaprogramming';
-		package: 'Buoy-Metaprogramming-Extensions'
-		with: [ spec requires: 'Buoy-Assertions' ];
-		group: 'Deployment' with: 'Buoy-Metaprogramming-Extensions';
-		package: 'Buoy-Metaprogramming-Pharo-Extensions';
-		group: 'Deployment' with: 'Buoy-Metaprogramming-Pharo-Extensions';
-		package: 'Buoy-Metaprogramming-Tests' with: [
-			spec requires:
-					#( 'Buoy-Metaprogramming' 'Buoy-Metaprogramming-Extensions'
-					   'Buoy-Metaprogramming-Pharo-Extensions' ) ];
-		group: 'Tests' with: 'Buoy-Metaprogramming-Tests'
+  spec
+    package: 'Buoy-Metaprogramming' with: [ spec requires: 'Buoy-Assertions' ];
+    group: 'Deployment' with: 'Buoy-Metaprogramming';
+    package: 'Buoy-Metaprogramming-Extensions' with: [ spec requires: 'Buoy-Assertions' ];
+    group: 'Deployment' with: 'Buoy-Metaprogramming-Extensions';
+    package: 'Buoy-Metaprogramming-Pharo-Extensions';
+    group: 'Deployment' with: 'Buoy-Metaprogramming-Pharo-Extensions';
+    package: 'Buoy-Metaprogramming-Tests' with: [
+        spec requires:
+            #( 'Buoy-Metaprogramming' 'Buoy-Metaprogramming-Extensions'
+               'Buoy-Metaprogramming-Pharo-Extensions' )
+      ];
+    group: 'Tests' with: 'Buoy-Metaprogramming-Tests'.
+
+  spec for: #( #'pharo10.x' #'pharo11.x' #'pharo12.x' ) do: [
+      spec
+        package: 'Buoy-Metaprogramming-Pharo-10-Extensions';
+        group: 'Deployment' with: 'Buoy-Metaprogramming-Pharo-10-Extensions'
+    ]
 ]
 
 { #category : 'baselines' }
