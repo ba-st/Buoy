@@ -16,6 +16,16 @@ TestCase >> assert: actual equals: expected [
 ]
 
 { #category : '*Buoy-SUnit-Pharo-Extensions' }
+TestCase >> deny: actual equals: expected [
+  "Inequality must comply with the symmetric property: If one value is distinct to a second value,
+	then the second value is distinct to the first.
+	So we automatically assert both facts."
+
+  super deny: actual equals: expected.
+  super deny: expected equals: actual
+]
+
+{ #category : '*Buoy-SUnit-Pharo-Extensions' }
 TestCase >> runOnlyInGemStone64: aBlock [
 
 ]
