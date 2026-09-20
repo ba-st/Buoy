@@ -1,0 +1,25 @@
+services:
+  buoy-tools:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/Buoy
+      - claude-code-bashhistory:/commandhistory
+      - claude-code-config:/home/node/.claude
+      # Read-only access to other projects for reference.
+      # Set REFERENCE_PROJECTS_DIR in .devcontainer/.env to the folder
+      # containing your projects; it is mounted at /reference.
+      # Defaults to this repository when unset so a rebuild never fails.
+      - ${REFERENCE_PROJECTS_DIR:-..}:/reference:ro
+    environment:
+      # Set TZ in .devcontainer/.env to your local timezone
+      TZ: ${TZ:-UTC}
+      # Link the shell history to the persistent volume
+      HISTFILE: /commandhistory/.bash_history
+    # Keep the container running so the devcontainer can attach to it
+    command: sleep infinity
+
+volumes:
+  claude-code-bashhistory:
+  claude-code-config:
