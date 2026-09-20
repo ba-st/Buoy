@@ -74,6 +74,7 @@ NaturalLanguageTranslationScanner >> exportOn: writeStream [
 NaturalLanguageTranslationScanner >> exportTo: targetFileReference [
 
   targetFileReference
+    ensureDelete;
     ensureCreateFile;
     writeStreamDo: [ :stream | self exportOn: stream ]
 ]
