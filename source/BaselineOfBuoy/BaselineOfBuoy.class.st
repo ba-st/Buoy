@@ -235,7 +235,7 @@ BaselineOfBuoy >> baselineMetaprogramming: spec [
       ];
     group: 'Tests' with: 'Buoy-Metaprogramming-Tests'.
 
-  spec for: #( #'pharo10.x' #'pharo11.x' #'pharo12.x' ) do: [
+  spec for: #( #'pharo11.x' #'pharo12.x' ) do: [
       spec
         package: 'Buoy-Metaprogramming-Pharo-10-Extensions';
         group: 'Deployment' with: 'Buoy-Metaprogramming-Pharo-10-Extensions'

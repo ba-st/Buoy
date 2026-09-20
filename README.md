@@ -15,7 +15,6 @@ adding useful extensions.
 
 [![GitHub release](https://img.shields.io/github/release/ba-st/Buoy.svg)](https://github.com/ba-st/Buoy/releases/latest)
 
-[![Pharo 10](https://img.shields.io/badge/Pharo-10-informational)](https://pharo.org)
 [![Pharo 11](https://img.shields.io/badge/Pharo-11-informational)](https://pharo.org)
 [![Pharo 12](https://img.shields.io/badge/Pharo-12-informational)](https://pharo.org)
 [![Pharo 13](https://img.shields.io/badge/Pharo-13-informational)](https://pharo.org)

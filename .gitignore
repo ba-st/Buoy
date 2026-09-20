@@ -1,47 +1,10 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+# Environment variables
+.devcontainer/.env
 
-# Folder config file
-Desktop.ini
+# Claude Code local settings (per-machine overrides, not shared)
+.claude/settings.local.json
+.devcontainer/devcontainer-lock.json
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+# Working documents: the feature plan, and upstream issues waiting to be filed
+/PLAN.md
+/ISSUES.md

@@ -1,0 +1,21 @@
+{
+  "name": "Buoy",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "buoy-tools",
+  "workspaceFolder": "/Buoy",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "DavidAnson.vscode-markdownlint",
+        "mhutchie.git-graph",
+        "timonwong.shellcheck",
+        "fnando.linter"
+      ],
+      "settings": {
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  "remoteUser": "node"
+}
