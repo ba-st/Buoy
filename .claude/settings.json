@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(markdownlint *)",
+      "Bash(shellcheck *)",
+      "Bash(yamllint *)",
+      "Bash(git add *)",
+      "Bash(git blame *)",
+      "Bash(git branch)",
+      "Bash(git checkout *)",
+      "Bash(git config --get *)",
+      "Bash(git describe *)",
+      "Bash(git diff *)",
+      "Bash(git fetch *)",
+      "Bash(git grep *)",
+      "Bash(git log *)",
+      "Bash(git ls-files *)",
+      "Bash(git remote *)",
+      "Bash(git show *)",
+      "Bash(git stash list)",
+      "Bash(git status *)",
+      "Bash(git tag *)",
+      "WebFetch"
+    ]
+  }
+}
