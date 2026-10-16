@@ -53,6 +53,43 @@ create one is to send the message `perMille` to a number.
 12 perMille "12‰"
 ```
 
+## Rounding Modes
+
+A rounding mode decides to which integer a number rounds. A number that is not
+an integer lies between two integers, and each mode picks one of them. Get a
+mode by sending one of these messages to `RoundingMode`:
+
+| Mode | Rounds |
+| --- | --- |
+| `ceil` | toward positive infinity |
+| `floor` | toward negative infinity |
+| `expand` | away from zero |
+| `truncate` | toward zero |
+| `halfCeil` | to the nearest integer, ties toward positive infinity |
+| `halfFloor` | to the nearest integer, ties toward negative infinity |
+| `halfExpand` | to the nearest integer, ties away from zero |
+| `halfTruncate` | to the nearest integer, ties toward zero |
+| `halfEven` | to the nearest integer, ties toward the even one |
+
+`roundToInteger:` rounds a number to an integer, and `round:toFractionDigits:`
+to a number of decimals:
+
+```smalltalk
+RoundingMode halfExpand roundToInteger: 5/2. "3"
+RoundingMode halfEven roundToInteger: 5/2. "2"
+RoundingMode floor roundToInteger: -5/2. "-3"
+RoundingMode halfExpand round: 1.125s3 toFractionDigits: 2. "(113/100)"
+RoundingMode halfEven round: 1.125s3 toFractionDigits: 2. "(28/25)"
+RoundingMode truncate round: 1/3 toFractionDigits: 4. "(3333/10000)"
+```
+
+With exact numbers, like integers, fractions and scaled decimals, the result is
+exact too. Floats are rounded as they are, inexactness included:
+`RoundingMode halfExpand round: 1.005 toFractionDigits: 2` answers `1`, not
+`(101/100)`, because `1.005 * 100` is `100.49999999999999`. Write the number
+as a scaled decimal (`1.005s3`) or a fraction instead. Converting the float with
+`asScaledDecimal:` does not help, as the result keeps the float's binary value.
+
 ## `Number` Extensions for GS64
 
 - `isZero` returns true if the receiver equals 0
