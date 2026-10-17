@@ -30,3 +30,4 @@ To use the project as a dependency of your project, take a look at:
 
 - [Pharo: How to use Buoy as a dependency](how-to/how-to-use-as-dependency-in-pharo.md)
 - [Baseline groups & components reference](reference/Baseline-groups.md)
+- [How to add number localization data](how-to/how-to-add-number-localization-data.md)

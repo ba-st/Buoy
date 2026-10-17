@@ -13,3 +13,7 @@ assignmentCommand := [ :key :contentBlock |
                        ].
 					   
 assignmentCommand value: #AssertionFailure value: [AssertionFailed].
+
+"Load the locale data shipped in the repository"
+LocaleConventions current loadJSONNumberConventionsFrom:
+	(Rowan projectNamed: 'Buoy') repositoryRoot / 'locales' / 'numbers.json'.

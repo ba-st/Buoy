@@ -13,6 +13,7 @@ BaselineOfBuoy >> baseline: spec [
 
   <baseline>
   spec for: #pharo do: [
+      spec postLoadDoIt: #loadLocaleData.
       self
         baselineAssertions: spec;
         baselineChronology: spec;
@@ -184,15 +185,17 @@ BaselineOfBuoy >> baselineGS64Development: spec [
 BaselineOfBuoy >> baselineLocalization: spec [
 
   spec
-    package: 'Buoy-Localization'
-    with: [
+    package: 'Buoy-Localization' with: [
         spec requires:
-            #( 'Buoy-Assertions' 'Buoy-Dynamic-Binding' 'Buoy-Metaprogramming-Extensions' ) ];
+            #( 'Buoy-Assertions' 'Buoy-Dynamic-Binding' 'Buoy-Metaprogramming-Extensions'
+               'Buoy-Metaprogramming-Pharo-Extensions' )
+      ];
     group: 'Deployment' with: 'Buoy-Localization';
     package: 'Buoy-Localization-Pharo-Extensions' with: [ spec requires: 'Buoy-Localization' ];
     group: 'Deployment' with: 'Buoy-Localization-Pharo-Extensions';
     package: 'Buoy-Localization-Tests'
-    with: [ spec requires: #( 'Buoy-Localization-Pharo-Extensions' 'Dependent-SUnit-Extensions' ) ];
+    with: [ spec requires: #( 'Buoy-Localization-Pharo-Extensions'
+           'Dependent-SUnit-Extensions' ) ];
     group: 'Tests' with: 'Buoy-Localization-Tests'
 ]
 
@@ -260,6 +263,18 @@ BaselineOfBuoy >> baselineTools: spec [
 	spec
 		package: 'Buoy-Development-Tools' with: [ spec requires: 'Deployment' ];
 		group: 'Tools' with: #('Buoy-Development-Tools' 'Dependent-SUnit-Extensions')
+]
+
+{ #category : 'actions' }
+BaselineOfBuoy >> loadLocaleData [
+  "Loads the locale data shipped in the repository, when the localization support is loaded"
+
+  self class environment at: #LocaleConventions ifPresent: [ :conventions |
+      self withSourceDirectoryReferenceDo: [ :sourceDirectory |
+          conventions current loadJSONNumberConventionsFrom:
+            sourceDirectory parent / 'locales' / 'numbers.json'
+        ]
+    ]
 ]
 
 { #category : 'accessing' }
