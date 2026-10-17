@@ -60,10 +60,8 @@ LocaleConventionsTest >> testEscapedCharacters [
   self load: '{"*": {"groupSeparator": "\u00A0", "perMilleSign": "\u2030"}}'.
 
   self
-    assert: ( self numberPropertyNamed: #groupSeparator for: 'en' )
-    equals: ( String with: ( Character codePoint: 16rA0 ) );
-    assert: ( self numberPropertyNamed: #perMilleSign for: 'en' )
-    equals: ( String with: ( Character codePoint: 16r2030 ) )
+    assert: ( self numberPropertyNamed: #groupSeparator for: 'en' ) equals: Character nbsp asString;
+    assert: ( self numberPropertyNamed: #perMilleSign for: 'en' ) equals: '‰'
 ]
 
 { #category : 'tests' }
@@ -73,8 +71,7 @@ LocaleConventionsTest >> testLaterLoadsOverridePropertyByProperty [
   self load: '{"es": {"decimalSeparator": "\u066B"}, "fr-CA": {"groupSeparator": " "}}'.
 
   self
-    assert: ( self numberPropertyNamed: #decimalSeparator for: 'es' )
-    equals: ( String with: ( Character codePoint: 16r066B ) );
+    assert: ( self numberPropertyNamed: #decimalSeparator for: 'es' ) equals: '٫';
     assert: ( self numberPropertyNamed: #groupSeparator for: 'es' ) equals: '.';
     assert: ( self numberPropertyNamed: #minimumGroupingDigits for: 'es' ) equals: 2;
     assert: ( self numberPropertyNamed: #groupSeparator for: 'fr-CA' ) equals: ' ';
@@ -119,8 +116,7 @@ LocaleConventionsTest >> testPropertyResolvedFromTheMostSpecificRange [
     assert: ( self numberPropertyNamed: #minimumGroupingDigits for: 'es-ES' ) equals: 2;
     assert: ( self numberPropertyNamed: #minimumGroupingDigits for: 'es' ) equals: 2;
     assert: ( self numberPropertyNamed: #decimalSeparator for: 'fr-CA' ) equals: '.';
-    assert: ( self numberPropertyNamed: #minimumGroupingDigits for: 'fr-CA' asLanguageTag )
-    equals: 1
+    assert: ( self numberPropertyNamed: #minimumGroupingDigits for: 'fr-CA' ) equals: 1
 ]
 
 { #category : 'tests' }

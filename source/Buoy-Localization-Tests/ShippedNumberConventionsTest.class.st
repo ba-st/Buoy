@@ -22,7 +22,7 @@ ShippedNumberConventionsTest >> assertConventionsFor: aLanguageTag areDecimal: d
 { #category : 'private' }
 ShippedNumberConventionsTest >> noBreakSpace [
 
-  ^ String with: ( Character codePoint: 16rA0 )
+  ^ Character nbsp asString
 ]
 
 { #category : 'private' }
@@ -42,8 +42,7 @@ ShippedNumberConventionsTest >> testDefaults [
     assert: ( self numberPropertyNamed: #plusSign for: 'ja' ) equals: '+';
     assert: ( self numberPropertyNamed: #minusSign for: 'ja' ) equals: '-';
     assert: ( self numberPropertyNamed: #percentSign for: 'ja' ) equals: '%';
-    assert: ( self numberPropertyNamed: #perMilleSign for: 'ja' )
-    equals: ( String with: ( Character codePoint: 16r2030 ) );
+    assert: ( self numberPropertyNamed: #perMilleSign for: 'ja' ) equals: '‰';
     assert: ( self numberPropertyNamed: #numberFormat for: 'ja' ) equals: '#,##0.###';
     assert: ( self numberPropertyNamed: #percentFormat for: 'ja' ) equals: '#,##0%'
 ]

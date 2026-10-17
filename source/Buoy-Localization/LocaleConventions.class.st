@@ -97,6 +97,6 @@ LocaleConventions >> numberPropertyNamed: aName for: aLanguageTagOrString [
 LocaleConventions >> rangesMatching: aLanguageTag [
   "Answers the ranges matching the tag, from the most specific to the least one"
 
-  ^ ( numberConventionsByRange keys select: [ :range | range matches: aLanguageTag ] )
-      asSortedCollection: [ :a :b | a specificity >= b specificity ]
+  ^ ( numberConventionsByRange keys select: [ :range | range matches: aLanguageTag ] ) sorted:
+      #specificity descending
 ]

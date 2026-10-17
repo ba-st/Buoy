@@ -36,8 +36,7 @@ NumberPattern >> assertIsSupportedInAffix: aCharacter [
 
   self
     enforce: [ aCharacter ~= ( Character codePoint: 16rA4 ) ]
-    because: 'Currencies are not supported in number patterns'.
-  self
+    because: 'Currencies are not supported in number patterns';
     enforce: [ ( 'E*' includes: aCharacter ) not ]
     because: 'Scientific notation and padding are not supported in number patterns'
 ]
@@ -72,23 +71,25 @@ NumberPattern >> group: integerDigits minimumGroupingDigits: minimumGroupingDigi
 { #category : 'initialization' }
 NumberPattern >> initializeFromString: aString [
 
-  | stream |
-  stream := ReadStream on: aString.
-  positivePrefix := self parseAffixFrom: stream.
-  self parseNumberFrom: stream.
-  positiveSuffix := self parseAffixFrom: stream.
-  stream atEnd
-    ifTrue: [
-        negativePrefix := ( Array with: #minusSign ) , positivePrefix.
-        negativeSuffix := positiveSuffix
-      ]
-    ifFalse: [
-        stream next.
-        negativePrefix := self parseAffixFrom: stream.
-        self readNumberFrom: stream.
-        negativeSuffix := self parseAffixFrom: stream.
-        self enforce: [ stream atEnd ] because: 'A number pattern can have at most two subpatterns'
-      ]
+  aString readStreamDo: [ :stream |
+      positivePrefix := self parseAffixFrom: stream.
+      self parseNumberFrom: stream.
+      positiveSuffix := self parseAffixFrom: stream.
+      stream atEnd
+        ifTrue: [
+            negativePrefix := #( #minusSign ) , positivePrefix.
+            negativeSuffix := positiveSuffix
+          ]
+        ifFalse: [
+            stream next.
+            negativePrefix := self parseAffixFrom: stream.
+            self readNumberFrom: stream.
+            negativeSuffix := self parseAffixFrom: stream.
+            self
+              enforce: [ stream atEnd ]
+              because: 'A number pattern can have at most two subpatterns'
+          ]
+    ]
 ]
 
 { #category : 'testing' }
@@ -162,8 +163,8 @@ NumberPattern >> parseFractionPart: fractionPart [
 NumberPattern >> parseIntegerPart: integerPart [
 
   | groups |
-  self enforce: [ integerPart notEmpty ] because: 'A number pattern needs an integer part'.
   self
+    enforce: [ integerPart notEmpty ] because: 'A number pattern needs an integer part';
     enforce: [ integerPart last ~= $, ]
     because: 'The integer part of a number pattern cannot end with a grouping separator'.
   groups := integerPart substrings: ','.
@@ -254,7 +255,7 @@ NumberPattern >> signedPositivePrefix [
 
   ^ self usesMinusSignForNegatives
       ifTrue: [ self withPlusSignInsteadOfMinusSign: negativePrefix ]
-      ifFalse: [ ( Array with: #plusSign ) , positivePrefix ]
+      ifFalse: [ #( #plusSign ) , positivePrefix ]
 ]
 
 { #category : 'accessing' }
