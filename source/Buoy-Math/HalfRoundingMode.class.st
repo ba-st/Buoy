@@ -1,31 +1,17 @@
 "
-I'm a rounding mode choosing the nearest integer. When the number is exactly halfway between two integers, I break the tie with a directed rounding mode:
-
-- half-ceil breaks ties toward positive infinity
-- half-floor breaks ties toward negative infinity
-- half-expand breaks ties away from zero
-- half-truncate breaks ties toward zero
+I'm an abstract class for rounding modes choosing the nearest integer. When the number is exactly halfway between two integers, my subclasses decide how to break the tie.
 "
 Class {
 	#name : 'HalfRoundingMode',
 	#superclass : 'RoundingMode',
-	#instVars : [
-		'tieBreakingMode'
-	],
 	#category : 'Buoy-Math',
 	#package : 'Buoy-Math'
 }
 
-{ #category : 'instance creation' }
-HalfRoundingMode class >> breakingTiesWith: aRoundingMode [
+{ #category : 'testing' }
+HalfRoundingMode class >> isAbstract [
 
-  ^ self new initializeBreakingTiesWith: aRoundingMode
-]
-
-{ #category : 'initialization' }
-HalfRoundingMode >> initializeBreakingTiesWith: aRoundingMode [
-
-  tieBreakingMode := aRoundingMode
+  ^ self = HalfRoundingMode
 ]
 
 { #category : 'private' }
@@ -38,6 +24,7 @@ HalfRoundingMode >> shouldRound: aNumber awayFromZeroFrom: truncated leaving: re
 
 { #category : 'private' }
 HalfRoundingMode >> shouldRoundTie: aNumber awayFromZeroFrom: truncated leaving: remainder [
+  "Answers whether aNumber, which is exactly halfway between truncated and the integer next to it going away from zero, rounds away from zero."
 
-  ^ tieBreakingMode shouldRound: aNumber awayFromZeroFrom: truncated leaving: remainder
+  ^ self subclassResponsibility
 ]

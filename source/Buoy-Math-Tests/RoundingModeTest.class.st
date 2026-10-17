@@ -38,6 +38,17 @@ RoundingModeTest >> tableValues [
 ]
 
 { #category : 'tests' }
+RoundingModeTest >> testAbstractClasses [
+
+  self
+    assert: RoundingMode isAbstract;
+    assert: HalfRoundingMode isAbstract;
+    deny: DirectedRoundingMode isAbstract;
+    deny: HalfDirectedRoundingMode isAbstract;
+    deny: HalfEvenRoundingMode isAbstract
+]
+
+{ #category : 'tests' }
 RoundingModeTest >> testCeil [
 
   self

@@ -33,7 +33,7 @@ RoundingMode class >> floor [
 { #category : 'instance creation' }
 RoundingMode class >> halfCeil [
 
-  ^ HalfRoundingMode breakingTiesWith: self ceil
+  ^ HalfDirectedRoundingMode breakingTiesWith: self ceil
 ]
 
 { #category : 'instance creation' }
@@ -45,19 +45,19 @@ RoundingMode class >> halfEven [
 { #category : 'instance creation' }
 RoundingMode class >> halfExpand [
 
-  ^ HalfRoundingMode breakingTiesWith: self expand
+  ^ HalfDirectedRoundingMode breakingTiesWith: self expand
 ]
 
 { #category : 'instance creation' }
 RoundingMode class >> halfFloor [
 
-  ^ HalfRoundingMode breakingTiesWith: self floor
+  ^ HalfDirectedRoundingMode breakingTiesWith: self floor
 ]
 
 { #category : 'instance creation' }
 RoundingMode class >> halfTruncate [
 
-  ^ HalfRoundingMode breakingTiesWith: self truncate
+  ^ HalfDirectedRoundingMode breakingTiesWith: self truncate
 ]
 
 { #category : 'testing' }
