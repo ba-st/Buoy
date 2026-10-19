@@ -3,7 +3,7 @@ I'm a number pattern, as defined by the Unicode CLDR, like `#,##0.###` or `#,##0
 
 I know the prefixes and suffixes used for positive and negative numbers, the size of the digit groups and the minimum number of fraction digits.
 
-My prefixes and suffixes are collections of literal strings and symbols naming the locale's symbols to use in their place: `#minusSign`, `#plusSign`, `#percentSign` and `#perMilleSign`.
+I'm created with the locale's symbols, a dictionary with the strings to use for `#minusSign`, `#plusSign`, `#percentSign` and `#perMilleSign`, so my prefixes and suffixes are the final strings to put around a number.
 
 Scientific notation (`E`), currencies (`¤`), significant digits (`@`), rounding increments and padding (`*`) are not supported.
 
@@ -17,6 +17,8 @@ Class {
 		'positiveSuffix',
 		'negativePrefix',
 		'negativeSuffix',
+		'signedPositivePrefix',
+		'signedPositiveSuffix',
 		'primaryGroupingSize',
 		'secondaryGroupingSize',
 		'minimumFractionDigits'
@@ -26,9 +28,10 @@ Class {
 }
 
 { #category : 'instance creation' }
-NumberPattern class >> fromString: aString [
+NumberPattern class >> fromString: aString using: symbols [
+  "symbols maps #minusSign, #plusSign, #percentSign and #perMilleSign to the strings the locale uses for them"
 
-  ^ self new initializeFromString: aString
+  ^ self new initializeFromString: aString using: symbols
 ]
 
 { #category : 'private' }
@@ -69,7 +72,7 @@ NumberPattern >> group: integerDigits minimumGroupingDigits: minimumGroupingDigi
 ]
 
 { #category : 'initialization' }
-NumberPattern >> initializeFromString: aString [
+NumberPattern >> initializeFromString: aString using: symbols [
 
   aString readStreamDo: [ :stream |
       positivePrefix := self parseAffixFrom: stream.
@@ -89,7 +92,8 @@ NumberPattern >> initializeFromString: aString [
               enforce: [ stream atEnd ]
               because: 'A number pattern can have at most two subpatterns'
           ]
-    ]
+    ].
+  self resolveAffixesUsing: symbols
 ]
 
 { #category : 'testing' }
@@ -124,6 +128,7 @@ NumberPattern >> negativeSuffix [
 
 { #category : 'private' }
 NumberPattern >> parseAffixFrom: stream [
+  "Answers the affix as a collection of literal strings and the names of the locale's symbols in it"
 
   | affix literal symbolNames |
   affix := OrderedCollection new.
@@ -243,6 +248,42 @@ NumberPattern >> readNumberFrom: stream [
       ]
 ]
 
+{ #category : 'private' }
+NumberPattern >> resolve: anAffix using: symbols [
+
+  ^ String streamContents: [ :stream |
+        anAffix do: [ :element |
+            stream nextPutAll: ( element isSymbol
+                  ifTrue: [ symbols at: element ]
+                  ifFalse: [ element ] )
+          ]
+      ]
+]
+
+{ #category : 'private' }
+NumberPattern >> resolveAffixesUsing: symbols [
+  "The affixes were parsed as collections of literal strings and symbol names. Resolve them into strings,
+	deriving first the ones for signed positives: the negative ones with the minus sign replaced by a plus sign,
+	or the positive ones preceded by a plus sign when the negative ones have no minus sign."
+
+  | signedPrefix signedSuffix |
+  self usesMinusSignForNegatives
+    ifTrue: [
+        signedPrefix := self withPlusSignInsteadOfMinusSign: negativePrefix.
+        signedSuffix := self withPlusSignInsteadOfMinusSign: negativeSuffix
+      ]
+    ifFalse: [
+        signedPrefix := #( #plusSign ) , positivePrefix.
+        signedSuffix := positiveSuffix
+      ].
+  signedPositivePrefix := self resolve: signedPrefix using: symbols.
+  signedPositiveSuffix := self resolve: signedSuffix using: symbols.
+  positivePrefix := self resolve: positivePrefix using: symbols.
+  positiveSuffix := self resolve: positiveSuffix using: symbols.
+  negativePrefix := self resolve: negativePrefix using: symbols.
+  negativeSuffix := self resolve: negativeSuffix using: symbols
+]
+
 { #category : 'accessing' }
 NumberPattern >> secondaryGroupingSize [
 
@@ -253,18 +294,14 @@ NumberPattern >> secondaryGroupingSize [
 NumberPattern >> signedPositivePrefix [
   "The prefix for positive numbers when the sign must be shown"
 
-  ^ self usesMinusSignForNegatives
-      ifTrue: [ self withPlusSignInsteadOfMinusSign: negativePrefix ]
-      ifFalse: [ #( #plusSign ) , positivePrefix ]
+  ^ signedPositivePrefix
 ]
 
 { #category : 'accessing' }
 NumberPattern >> signedPositiveSuffix [
   "The suffix for positive numbers when the sign must be shown"
 
-  ^ self usesMinusSignForNegatives
-      ifTrue: [ self withPlusSignInsteadOfMinusSign: negativeSuffix ]
-      ifFalse: [ positiveSuffix ]
+  ^ signedPositiveSuffix
 ]
 
 { #category : 'private' }

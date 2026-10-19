@@ -12,23 +12,41 @@ Class {
 NumberPatternTest >> assertInvalid: aString because: anExplanation [
 
   self
-    should: [ NumberPattern fromString: aString ]
+    should: [ self patternFrom: aString ]
     raise: InstanceCreationFailed
     withMessageText: anExplanation
+]
+
+{ #category : 'private' }
+NumberPatternTest >> patternFrom: aString [
+
+  ^ NumberPattern fromString: aString using: self symbols
+]
+
+{ #category : 'private' }
+NumberPatternTest >> symbols [
+  "Markers in place of the locale's symbols, to tell them apart from literal text"
+
+  ^ Dictionary new
+      at: #minusSign put: '[minus]';
+      at: #plusSign put: '[plus]';
+      at: #percentSign put: '[percent]';
+      at: #perMilleSign put: '[per mille]';
+      yourself
 ]
 
 { #category : 'tests' }
 NumberPatternTest >> testDecimalPattern [
 
   | pattern |
-  pattern := NumberPattern fromString: '#,##0.###'.
+  pattern := self patternFrom: '#,##0.###'.
 
   self
     assert: pattern positivePrefix isEmpty;
     assert: pattern positiveSuffix isEmpty;
-    assert: pattern negativePrefix equals: #( #minusSign );
+    assert: pattern negativePrefix equals: '[minus]';
     assert: pattern negativeSuffix isEmpty;
-    assert: pattern signedPositivePrefix equals: #( #plusSign );
+    assert: pattern signedPositivePrefix equals: '[plus]';
     assert: pattern signedPositiveSuffix isEmpty;
     assert: pattern isGrouped;
     assert: pattern primaryGroupingSize equals: 3;
@@ -40,7 +58,7 @@ NumberPatternTest >> testDecimalPattern [
 NumberPatternTest >> testGrouping [
 
   | pattern |
-  pattern := NumberPattern fromString: '#,##0.###'.
+  pattern := self patternFrom: '#,##0.###'.
 
   self
     assert: ( pattern group: '0' minimumGroupingDigits: 1 ) equals: #( '0' );
@@ -54,7 +72,7 @@ NumberPatternTest >> testGrouping [
 NumberPatternTest >> testGroupingWithMinimumGroupingDigits [
 
   | pattern |
-  pattern := NumberPattern fromString: '#,##0.###'.
+  pattern := self patternFrom: '#,##0.###'.
 
   self
     assert: ( pattern group: '1234' minimumGroupingDigits: 2 ) equals: #( '1234' );
@@ -66,7 +84,7 @@ NumberPatternTest >> testGroupingWithMinimumGroupingDigits [
 NumberPatternTest >> testIndianGrouping [
 
   | pattern |
-  pattern := NumberPattern fromString: '#,##,##0.###'.
+  pattern := self patternFrom: '#,##,##0.###'.
 
   self
     assert: pattern primaryGroupingSize equals: 3;
@@ -104,24 +122,24 @@ NumberPatternTest >> testInvalidPatterns [
 NumberPatternTest >> testMinimumFractionDigits [
 
   self
-    assert: ( NumberPattern fromString: '#,##0' ) minimumFractionDigits equals: 0;
-    assert: ( NumberPattern fromString: '#,##0.###' ) minimumFractionDigits equals: 0;
-    assert: ( NumberPattern fromString: '#,##0.00' ) minimumFractionDigits equals: 2;
-    assert: ( NumberPattern fromString: '#,##0.00##' ) minimumFractionDigits equals: 2
+    assert: ( self patternFrom: '#,##0' ) minimumFractionDigits equals: 0;
+    assert: ( self patternFrom: '#,##0.###' ) minimumFractionDigits equals: 0;
+    assert: ( self patternFrom: '#,##0.00' ) minimumFractionDigits equals: 2;
+    assert: ( self patternFrom: '#,##0.00##' ) minimumFractionDigits equals: 2
 ]
 
 { #category : 'tests' }
 NumberPatternTest >> testNegativeSubpattern [
 
   | pattern |
-  pattern := NumberPattern fromString: '#,##0.###;(#,##0.###)'.
+  pattern := self patternFrom: '#,##0.###;(#,##0.###)'.
 
   self
     assert: pattern positivePrefix isEmpty;
     assert: pattern positiveSuffix isEmpty;
-    assert: pattern negativePrefix equals: #( '(' );
-    assert: pattern negativeSuffix equals: #( ')' );
-    assert: pattern signedPositivePrefix equals: #( #plusSign );
+    assert: pattern negativePrefix equals: '(';
+    assert: pattern negativeSuffix equals: ')';
+    assert: pattern signedPositivePrefix equals: '[plus]';
     assert: pattern signedPositiveSuffix isEmpty
 ]
 
@@ -129,20 +147,20 @@ NumberPatternTest >> testNegativeSubpattern [
 NumberPatternTest >> testNegativeSubpatternWithMinusSign [
 
   | pattern |
-  pattern := NumberPattern fromString: '#,##0.###;#,##0.###-'.
+  pattern := self patternFrom: '#,##0.###;#,##0.###-'.
 
   self
     assert: pattern negativePrefix isEmpty;
-    assert: pattern negativeSuffix equals: #( #minusSign );
+    assert: pattern negativeSuffix equals: '[minus]';
     assert: pattern signedPositivePrefix isEmpty;
-    assert: pattern signedPositiveSuffix equals: #( #plusSign )
+    assert: pattern signedPositiveSuffix equals: '[plus]'
 ]
 
 { #category : 'tests' }
 NumberPatternTest >> testPatternWithoutGrouping [
 
   | pattern |
-  pattern := NumberPattern fromString: '0.###'.
+  pattern := self patternFrom: '0.###'.
 
   self
     deny: pattern isGrouped;
@@ -154,55 +172,53 @@ NumberPatternTest >> testPercentPatternWithSpace [
 
   | pattern noBreakSpace |
   noBreakSpace := Character nbsp asString.
-  pattern := NumberPattern fromString: '#,##0' , noBreakSpace , '%'.
+  pattern := self patternFrom: '#,##0' , noBreakSpace , '%'.
 
   self
     assert: pattern positivePrefix isEmpty;
-    assert: pattern positiveSuffix equals: { noBreakSpace . #percentSign };
-    assert: pattern negativePrefix equals: #( #minusSign );
-    assert: pattern negativeSuffix equals: { noBreakSpace . #percentSign }
+    assert: pattern positiveSuffix equals: noBreakSpace , '[percent]';
+    assert: pattern negativePrefix equals: '[minus]';
+    assert: pattern negativeSuffix equals: noBreakSpace , '[percent]'
 ]
 
 { #category : 'tests' }
 NumberPatternTest >> testPercentPatterns [
 
   | pattern |
-  pattern := NumberPattern fromString: '#,##0%'.
+  pattern := self patternFrom: '#,##0%'.
   self
     assert: pattern positivePrefix isEmpty;
-    assert: pattern positiveSuffix equals: #( #percentSign );
+    assert: pattern positiveSuffix equals: '[percent]';
     assert: pattern minimumFractionDigits equals: 0.
 
-  pattern := NumberPattern fromString: '%#,##0'.
+  pattern := self patternFrom: '%#,##0'.
   self
-    assert: pattern positivePrefix equals: #( #percentSign );
+    assert: pattern positivePrefix equals: '[percent]';
     assert: pattern positiveSuffix isEmpty;
-    assert: pattern negativePrefix equals: #( #minusSign #percentSign );
-    assert: pattern signedPositivePrefix equals: #( #plusSign #percentSign ).
+    assert: pattern negativePrefix equals: '[minus][percent]';
+    assert: pattern signedPositivePrefix equals: '[plus][percent]'.
 
-  pattern := NumberPattern fromString: '#,##0' , ( String with: ( Character codePoint: 16r2030 ) ).
-  self assert: pattern positiveSuffix equals: #( #perMilleSign )
+  pattern := self patternFrom: '#,##0' , ( String with: ( Character codePoint: 16r2030 ) ).
+  self assert: pattern positiveSuffix equals: '[per mille]'
 ]
 
 { #category : 'tests' }
 NumberPatternTest >> testQuotedLiterals [
 
   self
-    assert: ( NumberPattern fromString: '''#''#,##0' ) positivePrefix equals: #( '#' );
-    assert: ( NumberPattern fromString: '#,##0'' units''' ) positiveSuffix equals: #( ' units' );
-    assert: ( NumberPattern fromString: '''''#,##0' ) positivePrefix equals: #( '''' );
-    assert: ( NumberPattern fromString: '#,##0'' o''''clock''' ) positiveSuffix
-    equals: #( ' o''clock' );
-    assert: ( NumberPattern fromString: '#,##0''%''' ) positiveSuffix equals: #( '%' );
-    assert: ( NumberPattern fromString: '#,##0 ''-''%' ) positiveSuffix
-    equals: { ' -' . #percentSign }
+    assert: ( self patternFrom: '''#''#,##0' ) positivePrefix equals: '#';
+    assert: ( self patternFrom: '#,##0'' units''' ) positiveSuffix equals: ' units';
+    assert: ( self patternFrom: '''''#,##0' ) positivePrefix equals: '''';
+    assert: ( self patternFrom: '#,##0'' o''''clock''' ) positiveSuffix equals: ' o''clock';
+    assert: ( self patternFrom: '#,##0''%''' ) positiveSuffix equals: '%';
+    assert: ( self patternFrom: '#,##0 ''-''%' ) positiveSuffix equals: ' -[percent]'
 ]
 
 { #category : 'tests' }
 NumberPatternTest >> testSmallPrimaryGroupingSize [
 
   | pattern |
-  pattern := NumberPattern fromString: '#,#0.###'.
+  pattern := self patternFrom: '#,#0.###'.
 
   self
     assert: pattern primaryGroupingSize equals: 2;
