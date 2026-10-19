@@ -171,7 +171,7 @@ NumberPatternTest >> testPatternWithoutGrouping [
 NumberPatternTest >> testPercentPatternWithSpace [
 
   | pattern noBreakSpace |
-  noBreakSpace := Character nbsp asString.
+  noBreakSpace := String with: ( Character codePoint: 16rA0 ).
   pattern := self patternFrom: '#,##0' , noBreakSpace , '%'.
 
   self

@@ -69,7 +69,7 @@ LocaleConventions >> mergeNumberConventions: propertiesByRange [
   propertiesByRange keysAndValuesDo: [ :rangeString :properties |
       | conventions |
       conventions := numberConventionsByRange
-                       at: rangeString asLanguageRange
+                       at: ( LanguageRange fromString: rangeString )
                        ifAbsentPut: [ Dictionary new ].
       properties keysAndValuesDo: [ :name :value |
           | propertyName |
@@ -97,6 +97,6 @@ LocaleConventions >> numberPropertyNamed: aName for: aLanguageTagOrString [
 LocaleConventions >> rangesMatching: aLanguageTag [
   "Answers the ranges matching the tag, from the most specific to the least one"
 
-  ^ ( numberConventionsByRange keys select: [ :range | range matches: aLanguageTag ] ) sorted:
-      #specificity descending
+  ^ ( numberConventionsByRange keys select: [ :range | range matches: aLanguageTag ] ) sorted: [ :a :b |
+        a specificity >= b specificity ]
 ]

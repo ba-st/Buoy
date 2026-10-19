@@ -187,7 +187,8 @@ BaselineOfBuoy >> baselineLocalization: spec [
   spec
     package: 'Buoy-Localization' with: [
         spec requires:
-            #( 'Buoy-Assertions' 'Buoy-Dynamic-Binding' 'Buoy-Metaprogramming-Extensions'
+            #( 'Buoy-Assertions' 'Buoy-Collections-Extensions' 'Buoy-Comparison-Extensions'
+               'Buoy-Conditions-Extensions' 'Buoy-Dynamic-Binding' 'Buoy-Metaprogramming-Extensions'
                'Buoy-Metaprogramming-Pharo-Extensions' )
       ];
     group: 'Deployment' with: 'Buoy-Localization';

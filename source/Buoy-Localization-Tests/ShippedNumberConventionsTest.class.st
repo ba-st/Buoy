@@ -22,7 +22,7 @@ ShippedNumberConventionsTest >> assertConventionsFor: aLanguageTag areDecimal: d
 { #category : 'private' }
 ShippedNumberConventionsTest >> noBreakSpace [
 
-  ^ Character nbsp asString
+  ^ String with: ( Character codePoint: 16rA0 )
 ]
 
 { #category : 'private' }

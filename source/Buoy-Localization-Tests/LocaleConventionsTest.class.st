@@ -60,7 +60,8 @@ LocaleConventionsTest >> testEscapedCharacters [
   self load: '{"*": {"groupSeparator": "\u00A0", "perMilleSign": "\u2030"}}'.
 
   self
-    assert: ( self numberPropertyNamed: #groupSeparator for: 'en' ) equals: Character nbsp asString;
+    assert: ( self numberPropertyNamed: #groupSeparator for: 'en' )
+    equals: ( String with: ( Character codePoint: 16rA0 ) );
     assert: ( self numberPropertyNamed: #perMilleSign for: 'en' ) equals: '‰'
 ]
 

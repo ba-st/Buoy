@@ -74,25 +74,23 @@ NumberPattern >> group: integerDigits minimumGroupingDigits: minimumGroupingDigi
 { #category : 'initialization' }
 NumberPattern >> initializeFromString: aString using: symbols [
 
-  aString readStreamDo: [ :stream |
-      positivePrefix := self parseAffixFrom: stream.
-      self parseNumberFrom: stream.
-      positiveSuffix := self parseAffixFrom: stream.
-      stream atEnd
-        ifTrue: [
-            negativePrefix := #( #minusSign ) , positivePrefix.
-            negativeSuffix := positiveSuffix
-          ]
-        ifFalse: [
-            stream next.
-            negativePrefix := self parseAffixFrom: stream.
-            self readNumberFrom: stream.
-            negativeSuffix := self parseAffixFrom: stream.
-            self
-              enforce: [ stream atEnd ]
-              because: 'A number pattern can have at most two subpatterns'
-          ]
-    ].
+  | stream |
+  stream := aString readStream.
+  positivePrefix := self parseAffixFrom: stream.
+  self parseNumberFrom: stream.
+  positiveSuffix := self parseAffixFrom: stream.
+  stream atEnd
+    ifTrue: [
+        negativePrefix := #( #minusSign ) , positivePrefix.
+        negativeSuffix := positiveSuffix
+      ]
+    ifFalse: [
+        stream next.
+        negativePrefix := self parseAffixFrom: stream.
+        self readNumberFrom: stream.
+        negativeSuffix := self parseAffixFrom: stream.
+        self enforce: [ stream atEnd ] because: 'A number pattern can have at most two subpatterns'
+      ].
   self resolveAffixesUsing: symbols
 ]
 
