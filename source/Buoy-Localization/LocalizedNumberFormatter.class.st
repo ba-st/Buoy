@@ -129,7 +129,7 @@ LocalizedNumberFormatter >> dontDisplayTrailingZerosForIntegers [
 { #category : 'formatting' }
 LocalizedNumberFormatter >> format: aNumber on: aStream [
 
-  | maximum rounded integerPart fractionDigits |
+  | maximum rounded integerPart |
   AssertionChecker
     enforce: [ aNumber isFloat not ]
     because: 'Floats are not supported: convert them to a ScaledDecimal or a Fraction first'.
@@ -141,8 +141,7 @@ LocalizedNumberFormatter >> format: aNumber on: aStream [
   ( pattern group: integerPart printString minimumGroupingDigits: minimumGroupingDigits )
     do: [ :group | aStream nextPutAll: group ]
     separatedBy: [ aStream nextPutAll: groupSeparator ].
-  fractionDigits := self fractionDigitsOf: rounded abs - integerPart upTo: maximum.
-  fractionDigits isEmpty ifFalse: [
+  ( self fractionDigitsOf: rounded abs - integerPart upTo: maximum ) ifNotEmpty: [ :fractionDigits |
       aStream
         nextPutAll: decimalSeparator;
         nextPutAll: fractionDigits
