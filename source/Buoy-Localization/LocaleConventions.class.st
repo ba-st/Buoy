@@ -60,7 +60,15 @@ LocaleConventions >> loadJSONNumberConventionsFrom: aFileReference [
   "Merges into the receiver the number conventions in the file, property by property,
 	so the ones in the file override the ones already loaded."
 
-  self mergeNumberConventions: ( STON fromString: aFileReference contents )
+  self loadJSONNumberConventionsFromString: aFileReference contents
+]
+
+{ #category : 'configuring' }
+LocaleConventions >> loadJSONNumberConventionsFromString: aString [
+  "Merges into the receiver the number conventions in the JSON string, property by property,
+	so the ones in the string override the ones already loaded."
+
+  self mergeNumberConventions: ( STON fromString: aString )
 ]
 
 { #category : 'private' }

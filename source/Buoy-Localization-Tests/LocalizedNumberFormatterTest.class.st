@@ -42,20 +42,11 @@ LocalizedNumberFormatterTest >> assert: aNumber formattedWith: aBlock equals: aS
 LocalizedNumberFormatterTest >> conventionsWithNumberFormat: aPattern [
   "A locale for these tests only, named zz, using aPattern for numbers"
 
-  | conventions location file |
-  conventions := LocaleConventions new.
-  location := FileLocator temp / 'Buoy' / self selector asString.
-  location ensureCreateDirectory.
-  [
-    file := location / 'numbers.json'.
-    file writeStreamDo: [ :stream |
-        stream nextPutAll:
-          '{"*": {"decimalSeparator": ".", "groupSeparator": ",", "minimumGroupingDigits": 1, "plusSign": "+", "minusSign": "-", "percentSign": "%", "perMilleSign": "\u2030", "numberFormat": "'
-          , aPattern , '", "percentFormat": "#,##0%"}}'
-      ].
-    conventions loadJSONNumberConventionsFrom: file
-  ] ensure: [ location ensureDeleteAll ].
-  ^ conventions
+  ^ LocaleConventions new
+      loadJSONNumberConventionsFromString:
+        '{"*": {"decimalSeparator": ".", "groupSeparator": ",", "minimumGroupingDigits": 1, "plusSign": "+", "minusSign": "-", "percentSign": "%", "perMilleSign": "\u2030", "numberFormat": "'
+        , aPattern , '", "percentFormat": "#,##0%"}}';
+      yourself
 ]
 
 { #category : 'tests' }
