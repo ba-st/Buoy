@@ -39,7 +39,7 @@ LocalizedNumberFormatter class >> defaultMaximumFractionDigits [
 LocalizedNumberFormatter class >> defaultMaximumFractionDigits: anInteger [
 
   AssertionChecker
-    enforce: [ anInteger isInteger and: [ anInteger >= 0 ] ]
+    enforce: [ anInteger isInteger and: [ anInteger positive ] ]
     because: 'The number of fraction digits must be a non-negative integer'.
   defaultMaximumFractionDigits := anInteger
 ]
@@ -72,10 +72,18 @@ LocalizedNumberFormatter >> alwaysDisplaySign [
 ]
 
 { #category : 'private' }
+LocalizedNumberFormatter >> assertIsNotAFloat: aNumber [
+
+  AssertionChecker
+    enforce: [ aNumber isFloat not ]
+    because: 'Floats are not supported: convert them to a ScaledDecimal or a Fraction first'
+]
+
+{ #category : 'private' }
 LocalizedNumberFormatter >> assertIsValidNumberOfFractionDigits: anInteger [
 
   AssertionChecker
-    enforce: [ anInteger isInteger and: [ anInteger >= 0 ] ]
+    enforce: [ anInteger isInteger and: [ anInteger positive ] ]
     because: 'The number of fraction digits must be a non-negative integer'
 ]
 
@@ -130,9 +138,7 @@ LocalizedNumberFormatter >> dontDisplayTrailingZerosForIntegers [
 LocalizedNumberFormatter >> format: aNumber on: aStream [
 
   | maximum rounded integerPart |
-  AssertionChecker
-    enforce: [ aNumber isFloat not ]
-    because: 'Floats are not supported: convert them to a ScaledDecimal or a Fraction first'.
+  self assertIsNotAFloat: aNumber.
   maximum := self maximumFractionDigits.
   rounded := roundingMode round: aNumber toFractionDigits: maximum.
   integerPart := rounded abs truncated.
