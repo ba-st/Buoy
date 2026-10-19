@@ -1,6 +1,8 @@
 "
 I format numbers following the conventions of a locale: its decimal and group separators, its signs and its number pattern.
 
+Created with `percentagesFor:configuredBy:` I use the locale's percent pattern instead, to format the value of percentages, and created with `perMillesFor:configuredBy:` the same pattern displaying the per mille sign in place of the percent sign.
+
 By default I display every fraction digit of a number up to a maximum, 100 unless changed with `defaultMaximumFractionDigits:`, rounding half away from zero, and a sign only for negative numbers. My configuration messages change how numbers are laid out:
 
 - sign display: `displaySignOnNegatives`, `displaySignExceptForZero`, `alwaysDisplaySign`
@@ -59,10 +61,61 @@ LocalizedNumberFormatter class >> for: aLanguageTag configuredBy: aBlock [
 { #category : 'instance creation' }
 LocalizedNumberFormatter class >> for: aLanguageTag in: aLocaleConventions configuredBy: aBlock [
 
+  ^ self
+      for: aLanguageTag
+      in: aLocaleConventions
+      formatting: #numberFormat
+      percentSign: #percentSign
+      configuredBy: aBlock
+]
+
+{ #category : 'private - instance creation' }
+LocalizedNumberFormatter class >> for: aLanguageTag in: aLocaleConventions formatting: aPatternName percentSign: aSignName configuredBy: aBlock [
+  "aPatternName is the convention holding the pattern to use, and aSignName the one holding the sign to display in place of the pattern's percent sign"
+
   | formatter |
-  formatter := self new initializeFor: aLanguageTag in: aLocaleConventions.
+  formatter := self new
+                 initializeFor: aLanguageTag
+                 in: aLocaleConventions
+                 formatting: aPatternName
+                 percentSign: aSignName.
   aBlock value: formatter.
   ^ formatter
+]
+
+{ #category : 'instance creation' }
+LocalizedNumberFormatter class >> perMillesFor: aLanguageTag configuredBy: aBlock [
+
+  ^ self perMillesFor: aLanguageTag in: LocaleConventions current configuredBy: aBlock
+]
+
+{ #category : 'instance creation' }
+LocalizedNumberFormatter class >> perMillesFor: aLanguageTag in: aLocaleConventions configuredBy: aBlock [
+  "Per mille values are formatted with the percent pattern, displaying the per mille sign in place of the percent sign"
+
+  ^ self
+      for: aLanguageTag
+      in: aLocaleConventions
+      formatting: #percentFormat
+      percentSign: #perMilleSign
+      configuredBy: aBlock
+]
+
+{ #category : 'instance creation' }
+LocalizedNumberFormatter class >> percentagesFor: aLanguageTag configuredBy: aBlock [
+
+  ^ self percentagesFor: aLanguageTag in: LocaleConventions current configuredBy: aBlock
+]
+
+{ #category : 'instance creation' }
+LocalizedNumberFormatter class >> percentagesFor: aLanguageTag in: aLocaleConventions configuredBy: aBlock [
+
+  ^ self
+      for: aLanguageTag
+      in: aLocaleConventions
+      formatting: #percentFormat
+      percentSign: #percentSign
+      configuredBy: aBlock
 ]
 
 { #category : 'configuring' }
@@ -174,14 +227,15 @@ LocalizedNumberFormatter >> fractionDigitsOf: aFractionPart upTo: maximum [
 ]
 
 { #category : 'initialization' }
-LocalizedNumberFormatter >> initializeFor: aLanguageTag in: aLocaleConventions [
+LocalizedNumberFormatter >> initializeFor: aLanguageTag in: aLocaleConventions formatting: aPatternName percentSign: aSignName [
 
   | property symbols |
   property := [ :name | aLocaleConventions numberPropertyNamed: name for: aLanguageTag ].
   symbols := Dictionary new.
-  #( #minusSign #plusSign #percentSign #perMilleSign ) do: [ :name |
+  #( #minusSign #plusSign #perMilleSign ) do: [ :name |
       symbols at: name put: ( property value: name ) ].
-  pattern := NumberPattern fromString: ( property value: #numberFormat ) using: symbols.
+  symbols at: #percentSign put: ( property value: aSignName ).
+  pattern := NumberPattern fromString: ( property value: aPatternName ) using: symbols.
   decimalSeparator := property value: #decimalSeparator.
   groupSeparator := property value: #groupSeparator.
   minimumGroupingDigits := property value: #minimumGroupingDigits.

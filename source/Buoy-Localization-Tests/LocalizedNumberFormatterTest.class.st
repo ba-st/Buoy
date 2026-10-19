@@ -40,13 +40,31 @@ LocalizedNumberFormatterTest >> assert: aNumber formattedWith: aBlock equals: aS
 
 { #category : 'private' }
 LocalizedNumberFormatterTest >> conventionsWithNumberFormat: aPattern [
-  "A locale for these tests only, named zz, using aPattern for numbers"
+
+  ^ self conventionsWithNumberFormat: aPattern percentFormat: '#,##0%'
+]
+
+{ #category : 'private' }
+LocalizedNumberFormatterTest >> conventionsWithNumberFormat: aPattern percentFormat: aPercentPattern [
+  "A locale for these tests only, named zz, using aPattern for numbers and aPercentPattern for percentages"
 
   ^ LocaleConventions new
       loadJSONNumberConventionsFromString:
         '{"*": {"decimalSeparator": ".", "groupSeparator": ",", "minimumGroupingDigits": 1, "plusSign": "+", "minusSign": "-", "percentSign": "%", "perMilleSign": "\u2030", "numberFormat": "'
-        , aPattern , '", "percentFormat": "#,##0%"}}';
+        , aPattern , '", "percentFormat": "' , aPercentPattern , '"}}';
       yourself
+]
+
+{ #category : 'private' }
+LocalizedNumberFormatterTest >> noBreakSpace [
+
+  ^ String with: ( Character codePoint: 16rA0 )
+]
+
+{ #category : 'private' }
+LocalizedNumberFormatterTest >> perMilleSign [
+
+  ^ String with: ( Character codePoint: 16r2030 )
 ]
 
 { #category : 'private' }
@@ -351,6 +369,67 @@ LocalizedNumberFormatterTest >> testNegativeSubpattern [
     assert: ( format value: -1234.5s1 value: [ :options |  ] ) equals: '(1,234.5)';
     assert: ( format value: 1234.5s1 value: [ :options |  ] ) equals: '1,234.5';
     assert: ( format value: 5 value: [ :options | options alwaysDisplaySign ] ) equals: '+5'
+]
+
+{ #category : 'tests' }
+LocalizedNumberFormatterTest >> testPerMilles [
+
+  self
+    assert:
+      ( ( LocalizedNumberFormatter perMillesFor: 'en' asLanguageTag configuredBy: [ :options |  ] )
+          format: 6 )
+    equals: '6' , self perMilleSign;
+    assert:
+      ( ( LocalizedNumberFormatter perMillesFor: 'es' asLanguageTag configuredBy: [ :options |  ] )
+          format: 125 / 10 )
+    equals: '12,5' , self noBreakSpace , self perMilleSign
+]
+
+{ #category : 'tests' }
+LocalizedNumberFormatterTest >> testPercentPrefixPattern [
+
+  | conventions format |
+  conventions := self conventionsWithNumberFormat: '#,##0.###' percentFormat: '%#,##0'.
+  format := [ :aNumber :aBlock |
+              ( LocalizedNumberFormatter
+                  percentagesFor: 'zz' asLanguageTag
+                  in: conventions
+                  configuredBy: aBlock ) format: aNumber
+            ].
+
+  self
+    assert: ( format value: 12.5s1 value: [ :options |  ] ) equals: '%12.5';
+    assert: ( format value: -12.5s1 value: [ :options |  ] ) equals: '-%12.5';
+    assert: ( format value: 12.5s1 value: [ :options | options alwaysDisplaySign ] )
+    equals: '+%12.5';
+    assert: ( ( LocalizedNumberFormatter
+            perMillesFor: 'zz' asLanguageTag
+            in: conventions
+            configuredBy: [ :options |  ] ) format: 6 )
+    equals: self perMilleSign , '6'
+]
+
+{ #category : 'tests' }
+LocalizedNumberFormatterTest >> testPercentages [
+
+  | format |
+  format := [ :aLanguageTag :aNumber :aBlock |
+              ( LocalizedNumberFormatter
+                  percentagesFor: aLanguageTag asLanguageTag
+                  configuredBy: aBlock ) format: aNumber
+            ].
+
+  self
+    assert: ( format value: 'en' value: 12.5s1 value: [ :options |  ] ) equals: '12.5%';
+    assert: ( format value: 'en' value: -12.5s1 value: [ :options |  ] ) equals: '-12.5%';
+    assert: ( format value: 'en' value: 12.5s1 value: [ :options | options alwaysDisplaySign ] )
+    equals: '+12.5%';
+    assert: ( format value: 'en' value: 12.5s1 value: [ :options | options decimalPlaces: 0 ] )
+    equals: '13%';
+    assert: ( format value: 'en' value: 1234 value: [ :options |  ] ) equals: '1,234%';
+    assert: ( format value: 'es' value: 12.5s1 value: [ :options |  ] )
+    equals: '12,5' , self noBreakSpace , '%';
+    assert: ( format value: 'es-AR' value: 12.5s1 value: [ :options |  ] ) equals: '12,5%'
 ]
 
 { #category : 'tests' }

@@ -8,6 +8,12 @@ Class {
 	#package : 'Buoy-Localization-Tests'
 }
 
+{ #category : 'private' }
+NumberLocalizationExtensionsTest >> perMilleSign [
+
+  ^ String with: ( Character codePoint: 16r2030 )
+]
+
 { #category : 'tests' }
 NumberLocalizationExtensionsTest >> testFloatsAreRejected [
 
@@ -47,4 +53,38 @@ NumberLocalizationExtensionsTest >> testLocalizedWith [
       self
         assert: ( 1234.5s1 localizedWith: [ :options | options decimalPlaces: 2 ] )
         equals: '1.234,50' ]
+]
+
+{ #category : 'tests' }
+NumberLocalizationExtensionsTest >> testPerMilleLocalized [
+
+  CurrentLocale use: 'en' during: [
+      self
+        assert: 6 perMille localized equals: '6' , self perMilleSign;
+        assert: ( 6 perMille localizedWith: [ :options | options decimalPlaces: 1 ] )
+        equals: '6.0' , self perMilleSign
+    ]
+]
+
+{ #category : 'tests' }
+NumberLocalizationExtensionsTest >> testPercentageLocalized [
+
+  CurrentLocale use: 'en' during: [
+      self
+        assert: 12.5s1 percent localized equals: '12.5%';
+        assert: Percentage oneHundred localized equals: '100%';
+        assert:
+          ( ( Percentage of: 1 / 3 ) localizedWith: [ :options | options maximumFractionDigits: 2 ] )
+        equals: '0.33%';
+        assert:
+          ( ( Percentage ratio: 1 / 3 ) localizedWith: [ :options |
+                  options maximumFractionDigits: 2 ] )
+        equals: '33.33%';
+        should: [ 5.0 percent localized ]
+        raise: AssertionFailed
+        withMessageText:
+          'Floats are not supported: convert them to a ScaledDecimal or a Fraction first'
+    ].
+
+  CurrentLocale use: 'es-AR' during: [ self assert: 12.5s1 percent localized equals: '12,5%' ]
 ]
