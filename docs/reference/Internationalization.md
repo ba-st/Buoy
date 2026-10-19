@@ -161,6 +161,10 @@ written as; convert them to a scaled decimal or a fraction first. The scale of a
 scaled decimal is not used as a number of decimals: `1.50s2 localized` is
 `'1.5'`.
 
+In GemStone/S 64, `FixedPoint` numbers are exact and formatted like scaled
+decimals, while `DecimalFloat` numbers, such as `5.432F2`, are floats and
+rejected too.
+
 By default, numbers are formatted:
 
 - with every fraction digit, up to 100: `1234.5678s4 localized` is
