@@ -57,7 +57,7 @@ NumberPattern >> group: integerDigits minimumGroupingDigits: minimumGroupingDigi
 
   | groups end |
   ( self isGrouped and: [ integerDigits size >= ( primaryGroupingSize + minimumGroupingDigits ) ] )
-    ifFalse: [ ^ Array with: integerDigits ].
+    ifFalse: [ ^ { integerDigits } ].
 
   groups := OrderedCollection new.
   end := integerDigits size.
@@ -130,28 +130,28 @@ NumberPattern >> negativeSuffix [
 NumberPattern >> parseAffixFrom: stream [
   "Answers the affix as a collection of literal strings and the names of the locale's symbols in it"
 
-  | affix literal symbolNames |
+  | affix literalStream symbolNames |
   affix := OrderedCollection new.
-  literal := WriteStream on: String new.
+  literalStream := WriteStream on: String new.
   symbolNames := self symbolNamesByCharacter.
   [ stream atEnd or: [ stream peek = $; or: [ self isNumberCharacter: stream peek ] ] ] whileFalse: [
       | character |
       character := stream next.
       character = $'
-        ifTrue: [ self parseQuotedLiteralFrom: stream on: literal ]
+        ifTrue: [ self parseQuotedLiteralFrom: stream on: literalStream ]
         ifFalse: [
             self assertIsSupportedInAffix: character.
             symbolNames
               at: character
               ifPresent: [ :symbolName |
-                  literal contents isEmpty ifFalse: [ affix add: literal contents ].
-                  literal := WriteStream on: String new.
+                  literalStream contents ifNotEmpty: [ :literal | affix add: literal ].
+                  literalStream := WriteStream on: String new.
                   affix add: symbolName
                 ]
-              ifAbsent: [ literal nextPut: character ]
+              ifAbsent: [ literalStream nextPut: character ]
           ]
     ].
-  literal contents isEmpty ifFalse: [ affix add: literal contents ].
+  literalStream contents ifNotEmpty: [ :literal | affix add: literal ].
   ^ affix asArray
 ]
 
@@ -188,37 +188,33 @@ NumberPattern >> parseNumberFrom: stream [
   number := self readNumberFrom: stream.
   self
     enforce: [ number allSatisfy: [ :character | '#0,.' includes: character ] ]
-    because: 'Significant digits and rounding increments are not supported in number patterns'.
-  self
+    because: 'Significant digits and rounding increments are not supported in number patterns';
     enforce: [ ( number occurrencesOf: $. ) <= 1 ]
     because: 'A number pattern can have only one decimal separator'.
-  decimalSeparatorIndex := number indexOf: $..
-  decimalSeparatorIndex = 0
-    ifTrue: [
-        self
-          parseIntegerPart: number;
-          parseFractionPart: ''
-      ]
-    ifFalse: [
-        self
-          parseIntegerPart: ( number copyFrom: 1 to: decimalSeparatorIndex - 1 );
-          parseFractionPart: ( number copyFrom: decimalSeparatorIndex + 1 to: number size )
-      ]
+  decimalSeparatorIndex := number indexOf: $. ifAbsent: [
+                               self
+                                 parseIntegerPart: number;
+                                 parseFractionPart: ''.
+                               ^ self
+                             ].
+  self
+    parseIntegerPart: ( number copyFrom: 1 to: decimalSeparatorIndex - 1 );
+    parseFractionPart: ( number copyFrom: decimalSeparatorIndex + 1 to: number size )
 ]
 
 { #category : 'private' }
-NumberPattern >> parseQuotedLiteralFrom: stream on: literal [
+NumberPattern >> parseQuotedLiteralFrom: stream on: literalStream [
   "Called after an opening quote. Two consecutive quotes stand for a quote;
 	otherwise everything up to the closing quote is literal, with doubled quotes inside standing for one."
 
-  stream peek = $' ifTrue: [ ^ literal nextPut: stream next ].
+  stream peek = $' ifTrue: [ ^ literalStream nextPut: stream next ].
   [
     self enforce: [ stream atEnd not ] because: 'Missing closing quote in number pattern'.
     stream peek = $' and: [
         stream next.
         stream peek ~= $'
       ]
-  ] whileFalse: [ literal nextPut: stream next ]
+  ] whileFalse: [ literalStream nextPut: stream next ]
 ]
 
 { #category : 'accessing' }
@@ -242,7 +238,7 @@ NumberPattern >> primaryGroupingSize [
 { #category : 'private' }
 NumberPattern >> readNumberFrom: stream [
 
-  ^ String new: 10 streamContents: [ :number |
+  ^ String streamContents: [ :number |
         [ stream atEnd not and: [ self isNumberCharacter: stream peek ] ] whileTrue: [
             number nextPut: stream next ]
       ]
