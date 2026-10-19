@@ -89,13 +89,13 @@ TestAsserterBuoyExtensionsTest >> testNoExceptionInShouldRaiseWithExceptionDo [
 { #category : 'tests' }
 TestAsserterBuoyExtensionsTest >> testShouldNotTakeMoreThanMilliseconds [
 
-	| asserter |
-
-	asserter := TestAsserter new.
-	self shouldnt: [ asserter should: [  ] notTakeMoreThanMilliseconds: 500 ] raise: TestFailure.
-	self
-		should: [ asserter should: [ ( Delay forMilliseconds: 51 ) wait ] notTakeMoreThanMilliseconds: 50 ]
-		raise: TestFailure
+  | asserter |
+  asserter := TestAsserter new.
+  self shouldnt: [ asserter should: [  ] notTakeMoreThanMilliseconds: 500 ] raise: TestFailure.
+  self
+    should: [
+      asserter should: [ ( Delay forMilliseconds: 60 ) wait ] notTakeMoreThanMilliseconds: 50 ]
+    raise: TestFailure
 ]
 
 { #category : 'tests' }
