@@ -76,6 +76,27 @@ PercentageTest >> testCreationShortcut [
 		assert: (1 / 2) percent equals: 1 / 200
 ]
 
+{ #category : 'tests - creation' }
+PercentageTest >> testCreationWithScaledDecimals [
+
+  self
+    assert: 12.5s1 percent equals: 1 / 8;
+    assert: -12.5s1 percent equals: -1 / 8;
+    assert: 0.05s2 percent equals: 1 / 2000;
+    assert: 5.0s2 percent asNumber scale equals: 2;
+    runOnlyInPharo: [
+        self
+          assert: 12.5s1 percent asNumber scale equals: 1;
+          assert: 12.5s1 percent printString equals: '12.5s1%'
+      ];
+    runOnlyInGemStone64: [
+        self
+          assert: 12.5s1 percent asNumber scale equals: 3;
+          assert: 0.05s2 percent asNumber scale equals: 4;
+          assert: 12.5s1 percent printString equals: '12.500%'
+      ]
+]
+
 { #category : 'tests - arithmetic-API' }
 PercentageTest >> testDivisionWithFloats [
 

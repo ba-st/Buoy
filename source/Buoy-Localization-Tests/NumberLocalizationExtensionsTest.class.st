@@ -55,6 +55,7 @@ NumberLocalizationExtensionsTest >> testPerMilleLocalized [
   CurrentLocale use: 'en' during: [
       self
         assert: 6 perMille localized equals: '6‰';
+        assert: 5.5s1 perMille localized equals: '5.5‰';
         assert: ( 6 perMille localizedWith: [ :options | options decimalPlaces: 1 ] )
         equals: '6.0‰'
     ]
@@ -62,11 +63,11 @@ NumberLocalizationExtensionsTest >> testPerMilleLocalized [
 
 { #category : 'tests' }
 NumberLocalizationExtensionsTest >> testPercentageLocalized [
-  "Built from fractions: in GemStone/S 64, 12.5s1 percent divides 12.5s1 by 100 keeping its scale of 1, so it is 10%"
 
   CurrentLocale use: 'en' during: [
       self
         assert: ( 25 / 2 ) percent localized equals: '12.5%';
+        assert: 12.5s1 percent localized equals: '12.5%';
         assert: Percentage oneHundred localized equals: '100%';
         assert:
           ( ( Percentage of: 1 / 3 ) localizedWith: [ :options | options maximumFractionDigits: 2 ] )
@@ -81,5 +82,5 @@ NumberLocalizationExtensionsTest >> testPercentageLocalized [
           'Floats are not supported: convert them to a ScaledDecimal or a Fraction first'
     ].
 
-  CurrentLocale use: 'es-AR' during: [ self assert: ( 25 / 2 ) percent localized equals: '12,5%' ]
+  CurrentLocale use: 'es-AR' during: [ self assert: 12.5s1 percent localized equals: '12,5%' ]
 ]
