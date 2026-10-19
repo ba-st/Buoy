@@ -21,7 +21,8 @@ understanding over specific topics:
 - **Meta-programming**: Some abstractions like [namespaces](reference/Namespaces.md),
 [interfaces](reference/Interfaces.md) and extensions to the [Object model](reference/MOP.md).
 - **Internationalization**: Abstractions and extensions for [localizing](reference/Internationalization.md)
-  an application.
+  an application: translating strings, and formatting numbers and percentages
+  following the current locale.
 - **SUnit**: [Extensions to the SUnit framework](reference/SUnit.md).
 
 ---

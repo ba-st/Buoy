@@ -127,3 +127,162 @@ the placeholders.
 
 The localization methods will first unescape the receiver, then search for a
 translation and finally apply the format method.
+
+## Localizing Numbers
+
+Numbers, percentages and per mille values can be formatted following the
+conventions of the current locale: its decimal and group separators, its signs
+and its number patterns, taken from the
+[Unicode CLDR](https://cldr.unicode.org/translation/number-currency-formats).
+
+```smalltalk
+CurrentLocale use: 'en' during: [ 1234.5s1 localized ]. "'1,234.5'"
+CurrentLocale use: 'es' during: [ 1234.5s1 localized ]. "'1234,5'"
+CurrentLocale use: 'es-AR' during: [ 1234.5s1 localized ]. "'1.234,5'"
+CurrentLocale use: 'en-IN' during: [ 12345678 localized ]. "'1,23,45,678'"
+```
+
+Spain does not group four-digit numbers, but most of the Spanish speaking
+countries in America do.
+
+### Formatting Numbers
+
+`Number>>#localized` formats the receiver for the current locale, and
+`Number>>#localizedWith:` does the same, configured by a block:
+
+```smalltalk
+1.5s1 localizedWith: [ :options | options decimalPlaces: 2 ]. "'1.50'"
+5 localizedWith: [ :options | options alwaysDisplaySign ]. "'+5'"
+```
+
+Only exact numbers can be formatted: integers, fractions and scaled decimals.
+Floats are rejected, as their binary value is often not the decimal they were
+written as; convert them to a scaled decimal or a fraction first. The scale of a
+scaled decimal is not used as a number of decimals: `1.50s2 localized` is
+`'1.5'`.
+
+By default, numbers are formatted:
+
+- with every fraction digit, up to 100: `1234.5678s4 localized` is
+  `'1,234.5678'`, and `(1/3) localized` stops after 100 decimals. The default
+  maximum can be changed with
+  `LocalizedNumberFormatter defaultMaximumFractionDigits:`.
+- rounding half away from zero when there are more digits than the maximum.
+- with a sign only when the number is negative. The sign is decided on the
+  rounded value, so `-1/1000` with two decimals is `'0.00'`.
+
+The configuration block can send these messages:
+
+| Message | Effect |
+| --- | --- |
+| `displaySignOnNegatives` | Shows a sign only for negatives (the default) |
+| `displaySignExceptForZero` | Shows a sign for positive and negative numbers |
+| `alwaysDisplaySign` | Shows a sign for every number, zero included |
+| `minimumFractionDigits:` | Pads with zeros up to that many decimals |
+| `maximumFractionDigits:` | Rounds to at most that many decimals |
+| `maximumFractionDigits:roundingWith:` | The same, with a rounding mode |
+| `decimalPlaces:` | Shows exactly that many decimals |
+| `decimalPlaces:roundingWith:` | The same, with a rounding mode |
+| `dontDisplayTrailingZerosForIntegers` | Shows no decimals for integers |
+
+The rounding modes are the ones in [Math](Math.md#rounding-modes). For example:
+
+```smalltalk
+1.125s3 localizedWith: [ :options | options maximumFractionDigits: 2 ]. "'1.13'"
+1.125s3 localizedWith: [ :options |
+  options
+    maximumFractionDigits: 2
+    roundingWith: RoundingMode halfEven ]. "'1.12'"
+1.999s3 localizedWith: [ :options |
+  options decimalPlaces: 2; dontDisplayTrailingZerosForIntegers ]. "'2'"
+```
+
+`dontDisplayTrailingZerosForIntegers` looks at the rounded number, so `1.999s3`
+with two decimals counts as an integer.
+
+The formatting is done by a `LocalizedNumberFormatter`, which the block
+configures. One can be created to format many numbers with the same
+configuration:
+
+```smalltalk
+formatter := LocalizedNumberFormatter
+  for: 'es-AR' asLanguageTag
+  configuredBy: [ :options | options decimalPlaces: 2 ].
+formatter format: 1234.5s1. "'1.234,50'"
+formatter format: 1/3. "'0,33'"
+```
+
+### Percentages and Per Mille
+
+`Percentage>>#localized` and `PerMille>>#localized`, and their `localizedWith:`
+variants, format the value with the locale's percent pattern and the same
+configuration messages:
+
+```smalltalk
+CurrentLocale use: 'en' during: [ (25/2) percent localized ]. "'12.5%'"
+CurrentLocale use: 'es' during: [ (25/2) percent localized ]. "'12,5 %'"
+CurrentLocale use: 'es-AR' during: [ (25/2) percent localized ]. "'12,5%'"
+(25/2) percent localizedWith: [ :options | options decimalPlaces: 0 ]. "'13%'"
+6 perMille localized. "'6‰'"
+```
+
+In Spanish, the percent sign follows a no-break space. CLDR defines no per mille
+pattern, so per mille values use the percent pattern with the per mille sign.
+`LocalizedNumberFormatter class>>#percentagesFor:configuredBy:` and
+`LocalizedNumberFormatter class>>#perMillesFor:configuredBy:` create the
+formatters.
+
+In GemStone/S 64, a percentage of a scaled decimal can lose precision before
+being formatted: `12.5s1 percent` is `10%` there, as the ratio `12.5s1 / 100`
+keeps the scale of `12.5s1`. Fractions avoid it.
+
+### Locale Data
+
+The conventions used for each locale are held by `LocaleConventions current`.
+Buoy loads the ones in `locales/numbers.json` when it is loaded: the defaults,
+and English, Spanish and all their regional variants, from CLDR 48.2.3. The file
+maps language ranges to the properties they set:
+
+```json
+{
+  "*": {
+    "decimalSeparator": ".",
+    "groupSeparator": ",",
+    "minimumGroupingDigits": 1,
+    "plusSign": "+",
+    "minusSign": "-",
+    "percentSign": "%",
+    "perMilleSign": "\u2030",
+    "numberFormat": "#,##0.###",
+    "percentFormat": "#,##0%"
+  },
+  "es": {
+    "decimalSeparator": ",",
+    "groupSeparator": ".",
+    "minimumGroupingDigits": 2,
+    "percentFormat": "#,##0\u00A0%"
+  },
+  "es-AR": {
+    "minimumGroupingDigits": 1,
+    "percentFormat": "#,##0%"
+  }
+}
+```
+
+Each property is resolved for a language tag from the most specific matching
+range down to `*`: in `es-AR`, the minimum grouping digits come from `es-AR`,
+the decimal separator from `es` and the plus sign from `*`. A language without
+an entry uses `*`.
+
+`LocaleConventions>>#numberPropertyNamed:for:` answers a resolved property.
+`LocaleConventions>>#loadJSONNumberConventionsFrom:` and
+`LocaleConventions>>#loadJSONNumberConventionsFromString:` merge more
+conventions, property by property, over the loaded ones. The
+[how-to](../how-to/how-to-add-number-localization-data.md) explains how to
+generate them from CLDR for other languages, adjust them, and load them.
+
+The number patterns follow CLDR's syntax, with these parts supported:
+positive and negative subpatterns, grouping sizes (`#,##,##0` groups
+`1,00,00,000`), minimum fraction digits (`0.00`), the percent, per mille, plus
+and minus signs, and quoted literals. Scientific notation, currencies,
+significant digits, rounding increments and padding are not.
