@@ -20,16 +20,22 @@ SearchMethodsForLocalizationMessagesRule class >> isVisible [
   ^ false
 ]
 
+{ #category : 'private' }
+SearchMethodsForLocalizationMessagesRule >> collectStringIn: aLiteralNode [
+  "The pattern matches any literal, numbers included, but only strings are translated"
+
+  aLiteralNode value isString ifTrue: [ stringsToTranslate add: aLiteralNode value ]
+]
+
 { #category : 'initialization' }
 SearchMethodsForLocalizationMessagesRule >> initialize [
 
   super initialize.
   stringsToTranslate := OrderedCollection new.
   matcher
-    matches: '`#string localized'
-    do: [ :node :answer | stringsToTranslate add: node receiver value ];
+    matches: '`#string localized' do: [ :node :answer | self collectStringIn: node receiver ];
     matches: '`#string localizedWithAll: `@values'
-    do: [ :node :answer | stringsToTranslate add: node receiver value ]
+    do: [ :node :answer | self collectStringIn: node receiver ]
 ]
 
 { #category : 'initialization' }

@@ -5,8 +5,7 @@ Class {
 	#name : 'LocaleConventionsTest',
 	#superclass : 'TestCase',
 	#instVars : [
-		'conventions',
-		'location'
+		'conventions'
 	],
 	#category : 'Buoy-Localization-Tests',
 	#package : 'Buoy-Localization-Tests'
@@ -15,11 +14,7 @@ Class {
 { #category : 'private' }
 LocaleConventionsTest >> load: json [
 
-  | file |
-  file := location / 'numbers.json'.
-  file ensureDelete.
-  file writeStreamDo: [ :stream | stream nextPutAll: json ].
-  conventions loadJSONNumberConventionsFrom: file
+  conventions loadJSONNumberConventionsFromString: json
 ]
 
 { #category : 'private' }
@@ -42,16 +37,7 @@ LocaleConventionsTest >> numberPropertyNamed: aName for: aLanguageTag [
 LocaleConventionsTest >> setUp [
 
   super setUp.
-  conventions := LocaleConventions new.
-  location := FileLocator temp / 'Buoy' / self selector asString.
-  location ensureCreateDirectory
-]
-
-{ #category : 'running' }
-LocaleConventionsTest >> tearDown [
-
-  location ensureDeleteAll.
-  super tearDown
+  conventions := LocaleConventions new
 ]
 
 { #category : 'tests' }
@@ -77,6 +63,21 @@ LocaleConventionsTest >> testLaterLoadsOverridePropertyByProperty [
     assert: ( self numberPropertyNamed: #minimumGroupingDigits for: 'es' ) equals: 2;
     assert: ( self numberPropertyNamed: #groupSeparator for: 'fr-CA' ) equals: ' ';
     assert: ( self numberPropertyNamed: #decimalSeparator for: 'fr-CA' ) equals: '.'
+]
+
+{ #category : 'tests' }
+LocaleConventionsTest >> testLoadingFromAFile [
+
+  | location file |
+  location := FileLocator temp / 'Buoy' / self selector asString.
+  location ensureCreateDirectory.
+  [
+    file := location / 'numbers.json'.
+    file writeStreamDo: [ :stream | stream nextPutAll: '{"es": {"decimalSeparator": ","}}' ].
+    conventions loadJSONNumberConventionsFrom: file
+  ] ensure: [ location ensureDeleteAll ].
+
+  self assert: ( self numberPropertyNamed: #decimalSeparator for: 'es-AR' ) equals: ','
 ]
 
 { #category : 'tests' }

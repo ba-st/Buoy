@@ -217,6 +217,9 @@ LocaleConventions current loadJSONNumberConventionsFrom:
   'locales/numbers.json' asFileReference
 ```
 
+`loadJSONNumberConventionsFromString:` does the same with JSON held in a
+string.
+
 Each load merges the file's properties over the ones already loaded, so a
 later load overrides an earlier one property by property. Buoy loads its own
 file when Buoy is loaded, so an application loading its file afterwards
