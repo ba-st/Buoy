@@ -20,6 +20,12 @@ Number >> closeTo: number precision: precision [
 ]
 
 { #category : '*Buoy-Math-GS64-Base-Extensions' }
+Number >> exactQuotientByPowerOfTen: aPowerOfTen [
+
+  ^ self / aPowerOfTen
+]
+
+{ #category : '*Buoy-Math-GS64-Base-Extensions' }
 Number >> isFloat [
 
 	^ false

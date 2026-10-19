@@ -76,6 +76,25 @@ PerMilleTest >> testCreationShortcut [
 		assert: (1 / 2) perMille equals: 1 / 2000
 ]
 
+{ #category : 'tests - creation' }
+PerMilleTest >> testCreationWithScaledDecimals [
+
+  self
+    assert: 5.5s1 perMille equals: 11 / 2000;
+    assert: -5.5s1 perMille equals: -11 / 2000;
+    assert: 50.0s2 perMille asNumber scale equals: 2;
+    runOnlyInPharo: [
+        self
+          assert: 5.5s1 perMille asNumber scale equals: 1;
+          assert: 5.5s1 perMille printString equals: '5.5s1‰'
+      ];
+    runOnlyInGemStone64: [
+        self
+          assert: 5.5s1 perMille asNumber scale equals: 4;
+          assert: 5.5s1 perMille printString equals: '5.5000‰'
+      ]
+]
+
 { #category : 'tests - arithmetic-API' }
 PerMilleTest >> testDivisionWithFloats [
 

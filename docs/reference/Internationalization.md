@@ -223,10 +223,10 @@ variants, format the value with the locale's percent pattern and the same
 configuration messages:
 
 ```smalltalk
-CurrentLocale use: 'en' during: [ (25/2) percent localized ]. "'12.5%'"
-CurrentLocale use: 'es' during: [ (25/2) percent localized ]. "'12,5 %'"
-CurrentLocale use: 'es-AR' during: [ (25/2) percent localized ]. "'12,5%'"
-(25/2) percent localizedWith: [ :options | options decimalPlaces: 0 ]. "'13%'"
+CurrentLocale use: 'en' during: [ 12.5s1 percent localized ]. "'12.5%'"
+CurrentLocale use: 'es' during: [ 12.5s1 percent localized ]. "'12,5 %'"
+CurrentLocale use: 'es-AR' during: [ 12.5s1 percent localized ]. "'12,5%'"
+12.5s1 percent localizedWith: [ :options | options decimalPlaces: 0 ]. "'13%'"
 6 perMille localized. "'6‰'"
 ```
 
@@ -235,10 +235,6 @@ pattern, so per mille values use the percent pattern with the per mille sign.
 `LocalizedNumberFormatter class>>#percentagesFor:configuredBy:` and
 `LocalizedNumberFormatter class>>#perMillesFor:configuredBy:` create the
 formatters.
-
-In GemStone/S 64, a percentage of a scaled decimal can lose precision before
-being formatted: `12.5s1 percent` is `10%` there, as the ratio `12.5s1 / 100`
-keeps the scale of `12.5s1`. Fractions avoid it.
 
 ### Locale Data
 

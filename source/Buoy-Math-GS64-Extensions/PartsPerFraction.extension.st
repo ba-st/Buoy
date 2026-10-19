@@ -13,6 +13,13 @@ PartsPerFraction >> _generality [
 ]
 
 { #category : '*Buoy-Math-GS64-Extensions' }
+PartsPerFraction class >> ratioOf: aNumber [
+  "Dividing a ScaledDecimal rounds the quotient to its scale, so the ratio is asked for without losing digits"
+
+  ^ aNumber exactQuotientByPowerOfTen: self fraction
+]
+
+{ #category : '*Buoy-Math-GS64-Extensions' }
 PartsPerFraction >> printOn: stream [
 
 	self value printOn: stream

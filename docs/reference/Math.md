@@ -22,6 +22,12 @@ Percentage ratio: 1. "100%"
 Percentage ratio: 1/2 "50%"
 ```
 
+A percentage of a scaled decimal is exact on every platform. In GemStone/S 64,
+dividing a scaled decimal rounds the result to its scale, so its ratio gets
+only as many more decimals as it needs to be exact: `12.5s1 percent` has a
+ratio of `0.125` with a scale of 3, and prints as `12.500%` (`12.5s1%` in
+Pharo). Per mille values work the same way.
+
 These percentages can be operated arithmetically with any number or other
 percentages. Try printing the following expressions:
 

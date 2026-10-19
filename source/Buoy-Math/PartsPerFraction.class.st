@@ -26,7 +26,7 @@ PartsPerFraction class >> isAbstract [
 { #category : 'Instance Creation' }
 PartsPerFraction class >> of: aNumber [
 
-	^ self ratio: aNumber / self fraction
+  ^ self ratio: ( self ratioOf: aNumber )
 ]
 
 { #category : 'Instance Creation' }
