@@ -92,6 +92,7 @@ as a scaled decimal (`1.005s3`) or a fraction instead. Converting the float with
 
 ## `Number` Extensions for GS64
 
+- `isFloat` returns false; binary and decimal floats return true
 - `isZero` returns true if the receiver equals 0
 - `nthRoot:` returns the nth root of the receiver
 - `round:` round the decimal part of the receiver to be limited to the desired
@@ -100,6 +101,12 @@ as a scaled decimal (`1.005s3`) or a fraction instead. Converting the float with
 ## `Float` Extensions for GS64
 
 - `isInfinite` returns true if the receiver is infinite
+
+## `DecimalFloat` Extensions for GS64
+
+- `isFloat` returns true, as `DecimalFloat` is a floating point class too
+- `isNaN`, `isFinite` and `isInfinite` test the receiver's kind, as they do for
+  binary floats
 
 ## `Integer` Extensions for GS64
 
