@@ -8,12 +8,6 @@ Class {
 	#package : 'Buoy-Localization-Tests'
 }
 
-{ #category : 'private' }
-NumberLocalizationExtensionsTest >> perMilleSign [
-
-  ^ String with: ( Character codePoint: 16r2030 )
-]
-
 { #category : 'tests' }
 NumberLocalizationExtensionsTest >> testFloatsAreRejected [
 
@@ -60,9 +54,9 @@ NumberLocalizationExtensionsTest >> testPerMilleLocalized [
 
   CurrentLocale use: 'en' during: [
       self
-        assert: 6 perMille localized equals: '6' , self perMilleSign;
+        assert: 6 perMille localized equals: '6‰';
         assert: ( 6 perMille localizedWith: [ :options | options decimalPlaces: 1 ] )
-        equals: '6.0' , self perMilleSign
+        equals: '6.0‰'
     ]
 ]
 

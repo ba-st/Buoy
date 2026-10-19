@@ -62,12 +62,6 @@ LocalizedNumberFormatterTest >> noBreakSpace [
 ]
 
 { #category : 'private' }
-LocalizedNumberFormatterTest >> perMilleSign [
-
-  ^ String with: ( Character codePoint: 16r2030 )
-]
-
-{ #category : 'private' }
 LocalizedNumberFormatterTest >> string: aCharacter repeated: times [
 
   ^ String streamContents: [ :stream | times timesRepeat: [ stream nextPut: aCharacter ] ]
@@ -378,11 +372,11 @@ LocalizedNumberFormatterTest >> testPerMilles [
     assert:
       ( ( LocalizedNumberFormatter perMillesFor: 'en' asLanguageTag configuredBy: [ :options |  ] )
           format: 6 )
-    equals: '6' , self perMilleSign;
+    equals: '6‰';
     assert:
       ( ( LocalizedNumberFormatter perMillesFor: 'es' asLanguageTag configuredBy: [ :options |  ] )
           format: 125 / 10 )
-    equals: '12,5' , self noBreakSpace , self perMilleSign
+    equals: '12,5' , self noBreakSpace , '‰'
 ]
 
 { #category : 'tests' }
@@ -406,7 +400,7 @@ LocalizedNumberFormatterTest >> testPercentPrefixPattern [
             perMillesFor: 'zz' asLanguageTag
             in: conventions
             configuredBy: [ :options |  ] ) format: 6 )
-    equals: self perMilleSign , '6'
+    equals: '‰6'
 ]
 
 { #category : 'tests' }
