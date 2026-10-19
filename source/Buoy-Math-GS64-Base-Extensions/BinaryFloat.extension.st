@@ -38,6 +38,12 @@ BinaryFloat >> isFinite [
 ]
 
 { #category : '*Buoy-Math-GS64-Base-Extensions' }
+BinaryFloat >> isFloat [
+
+	^ true
+]
+
+{ #category : '*Buoy-Math-GS64-Base-Extensions' }
 BinaryFloat >> isInfinite [
 
 	^ self kind = #infinity

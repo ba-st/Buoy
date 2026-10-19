@@ -49,6 +49,12 @@ LocalizedNumberFormatterTest >> conventionsWithNumberFormat: aPattern [
       yourself
 ]
 
+{ #category : 'private' }
+LocalizedNumberFormatterTest >> string: aCharacter repeated: times [
+
+  ^ String streamContents: [ :stream | times timesRepeat: [ stream nextPut: aCharacter ] ]
+]
+
 { #category : 'tests' }
 LocalizedNumberFormatterTest >> testAlwaysDisplaySign [
 
@@ -194,12 +200,12 @@ LocalizedNumberFormatterTest >> testFractions [
   self
     assert: 1 / 4 formattedIn: 'en' equals: '0.25';
     assert: -5 / 4 formattedIn: 'en' equals: '-1.25';
-    assert: 1 / 3 formattedIn: 'en' equals: '0.' , ( String new: 100 withAll: $3 );
-    assert: -2 / 3 formattedIn: 'en' equals: '-0.' , ( String new: 99 withAll: $6 ) , '7';
+    assert: 1 / 3 formattedIn: 'en' equals: '0.' , ( self string: $3 repeated: 100 );
+    assert: -2 / 3 formattedIn: 'en' equals: '-0.' , ( self string: $6 repeated: 99 ) , '7';
     assert: 1 / ( 10 raisedTo: 200 ) formattedIn: 'en' equals: '0';
     assert: 1 / ( 10 raisedTo: 100 )
     formattedIn: 'en'
-    equals: '0.' , ( String new: 99 withAll: $0 ) , '1'
+    equals: '0.' , ( self string: $0 repeated: 99 ) , '1'
 ]
 
 { #category : 'tests' }

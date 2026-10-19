@@ -129,7 +129,7 @@ LocalizedNumberFormatter >> dontDisplayTrailingZerosForIntegers [
 { #category : 'formatting' }
 LocalizedNumberFormatter >> format: aNumber on: aStream [
 
-  | maximum rounded integerPart |
+  | maximum rounded integerPart fractionDigits |
   AssertionChecker
     enforce: [ aNumber isFloat not ]
     because: 'Floats are not supported: convert them to a ScaledDecimal or a Fraction first'.
@@ -141,7 +141,8 @@ LocalizedNumberFormatter >> format: aNumber on: aStream [
   ( pattern group: integerPart printString minimumGroupingDigits: minimumGroupingDigits )
     do: [ :group | aStream nextPutAll: group ]
     separatedBy: [ aStream nextPutAll: groupSeparator ].
-  ( self fractionDigitsOf: rounded abs - integerPart upTo: maximum ) ifNotEmpty: [ :fractionDigits |
+  fractionDigits := self fractionDigitsOf: rounded abs - integerPart upTo: maximum.
+  fractionDigits isEmpty ifFalse: [
       aStream
         nextPutAll: decimalSeparator;
         nextPutAll: fractionDigits
@@ -153,11 +154,14 @@ LocalizedNumberFormatter >> format: aNumber on: aStream [
 LocalizedNumberFormatter >> fractionDigitsOf: aFractionPart upTo: maximum [
   "aFractionPart is between 0 and 1, with at most maximum decimal digits"
 
-  | digits end minimum |
+  | significantDigits digits end minimum |
   ( aFractionPart isZero and: [ displaysTrailingZerosForIntegers not ] ) ifTrue: [ ^ '' ].
   maximum = 0 ifTrue: [ ^ '' ].
-  digits := ( aFractionPart * ( 10 raisedTo: maximum ) ) truncated printString.
-  digits := ( String new: maximum - digits size withAll: $0 ) , digits.
+  significantDigits := ( aFractionPart * ( 10 raisedTo: maximum ) ) truncated printString.
+  digits := String streamContents: [ :stream |
+                maximum - significantDigits size timesRepeat: [ stream nextPut: $0 ].
+                stream nextPutAll: significantDigits
+              ].
   minimum := self minimumFractionDigits.
   end := maximum.
   [ end > minimum and: [ ( digits at: end ) = $0 ] ] whileTrue: [ end := end - 1 ].
