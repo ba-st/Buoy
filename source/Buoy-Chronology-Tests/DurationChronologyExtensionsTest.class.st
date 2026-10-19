@@ -6,6 +6,17 @@ Class {
 }
 
 { #category : 'tests' }
+DurationChronologyExtensionsTest >> testAsMilliSeconds [
+
+  self
+    assert: 0 seconds asMilliSeconds equals: 0;
+    assert: 2 seconds asMilliSeconds equals: 2000;
+    assert: 1500 milliSeconds asMilliSeconds equals: 1500;
+    assert: 90 seconds asMilliSeconds equals: 90000;
+    assert: 2 minutes asMilliSeconds equals: 120000
+]
+
+{ #category : 'tests' }
 DurationChronologyExtensionsTest >> testIsZero [
 
 	self
@@ -27,11 +38,11 @@ DurationChronologyExtensionsTest >> testTotalSeconds [
 
 { #category : 'tests' }
 DurationChronologyExtensionsTest >> testWait [
+  "The wait is measured with a different clock than the one the delay uses, so it can read a millisecond short"
 
-	| ms |
-
-	ms := Time millisecondsToRun: [ 2 seconds wait ].
-	self assert: ms >= 2000
+  | ms |
+  ms := Time millisecondsToRun: [ 2 seconds wait ].
+  self assert: ms >= 1990 description: 'Waited ' , ms printString , ' ms'
 ]
 
 { #category : 'tests' }

@@ -57,7 +57,7 @@ Duration >> totalSeconds [
 { #category : '*Buoy-Chronology-GS64-Extensions' }
 Duration >> wait [
 
-	^ Delay waitForMilliseconds: (self seconds * 1000) rounded
+  ^ Delay waitForMilliseconds: self asMilliSeconds rounded
 ]
 
 { #category : '*Buoy-Chronology-GS64-Extensions' }
