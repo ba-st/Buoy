@@ -281,6 +281,24 @@ conventions, property by property, over the loaded ones. The
 [how-to](../how-to/how-to-add-number-localization-data.md) explains how to
 generate them from CLDR for other languages, adjust them, and load them.
 
+The conventions are grouped in categories, each with its own property names.
+Buoy's are in the `#numbers` category, and the number messages above are
+shortcuts for it. Other projects can register categories of their own, and load
+their conventions from their own files:
+
+```smalltalk
+LocaleConventions current
+  registerCategory: #chronology withPropertiesNamed: #( #shortDate #longDate );
+  loadJSONConventionsOf: #chronology from: 'locales/dates.json' asFileReference.
+LocaleConventions current propertyNamed: #shortDate of: #chronology for: 'es-AR'
+```
+
+The files have the same format, and their properties are resolved the same way.
+Loading or asking for a property the category doesn't have, or a category not
+registered, fails. Registering a category again replaces its property names and
+keeps its loaded conventions, so a project can register it every time it is
+loaded.
+
 The number patterns follow CLDR's syntax, with these parts supported:
 positive and negative subpatterns, grouping sizes (`#,##,##0` groups
 `1,00,00,000`), minimum fraction digits (`0.00`), the percent, per mille, plus
