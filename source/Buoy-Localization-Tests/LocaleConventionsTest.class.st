@@ -33,11 +33,50 @@ LocaleConventionsTest >> numberPropertyNamed: aName for: aLanguageTag [
   ^ conventions numberPropertyNamed: aName for: aLanguageTag
 ]
 
+{ #category : 'private' }
+LocaleConventionsTest >> registerChronology [
+
+  conventions registerCategory: #chronology withPropertiesNamed: #( #shortDate #longDate )
+]
+
 { #category : 'running' }
 LocaleConventionsTest >> setUp [
 
   super setUp.
   conventions := LocaleConventions new
+]
+
+{ #category : 'tests' }
+LocaleConventionsTest >> testCategoriesHoldTheirOwnConventions [
+
+  self
+    registerChronology;
+    loadSpanishConventions.
+  conventions
+    loadJSONConventionsOf: #chronology
+    fromString:
+    '{"*": {"shortDate": "M/d/yy"}, "es": {"shortDate": "d/M/yy", "longDate": "d ''de'' MMMM ''de'' y"}}'.
+
+  self
+    assert: ( conventions propertyNamed: #shortDate of: #chronology for: 'es-AR' ) equals: 'd/M/yy';
+    assert: ( conventions propertyNamed: #shortDate of: #chronology for: 'en' ) equals: 'M/d/yy';
+    assert: ( conventions propertyNamed: #longDate of: #chronology for: 'es' )
+    equals: 'd ''de'' MMMM ''de'' y';
+    assert: ( conventions propertyNamed: #decimalSeparator of: #numbers for: 'es-AR' ) equals: ',';
+    should: [ conventions propertyNamed: #longDate of: #chronology for: 'en' ]
+    raise: ObjectNotFound
+    withMessageText: 'There''s no longDate convention for en'
+]
+
+{ #category : 'tests' }
+LocaleConventionsTest >> testCategoryAndNameCanBeStringsOrSymbols [
+
+  conventions registerCategory: 'chronology' withPropertiesNamed: #( 'shortDate' ).
+  conventions loadJSONConventionsOf: 'chronology' fromString: '{"es": {"shortDate": "d/M/yy"}}'.
+
+  self
+    assert: ( conventions propertyNamed: 'shortDate' of: 'chronology' for: 'es' ) equals: 'd/M/yy';
+    assert: ( conventions propertyNamed: #shortDate of: #chronology for: 'es' ) equals: 'd/M/yy'
 ]
 
 { #category : 'tests' }
@@ -91,6 +130,16 @@ LocaleConventionsTest >> testNameCanBeAStringOrASymbol [
 ]
 
 { #category : 'tests' }
+LocaleConventionsTest >> testNumbersCategory [
+
+  conventions loadJSONConventionsOf: #numbers fromString: '{"es": {"decimalSeparator": ","}}'.
+
+  self
+    assert: ( conventions propertyNamed: #decimalSeparator of: #numbers for: 'es-AR' ) equals: ',';
+    assert: ( self numberPropertyNamed: #decimalSeparator for: 'es-AR' ) equals: ','
+]
+
+{ #category : 'tests' }
 LocaleConventionsTest >> testPropertyNotDefined [
 
   self
@@ -122,12 +171,56 @@ LocaleConventionsTest >> testPropertyResolvedFromTheMostSpecificRange [
 ]
 
 { #category : 'tests' }
+LocaleConventionsTest >> testRegisteringACategoryAgainKeepsItsConventions [
+
+  self registerChronology.
+  conventions loadJSONConventionsOf: #chronology fromString: '{"es": {"shortDate": "d/M/yy"}}'.
+  conventions registerCategory: #chronology withPropertiesNamed: #( #shortDate #longDate #fullDate ).
+  conventions loadJSONConventionsOf: #chronology fromString: '{"es": {"fullDate": "EEEE, d/M/y"}}'.
+
+  self
+    assert: ( conventions propertyNamed: #shortDate of: #chronology for: 'es' ) equals: 'd/M/yy';
+    assert: ( conventions propertyNamed: #fullDate of: #chronology for: 'es' )
+    equals: 'EEEE, d/M/y'
+]
+
+{ #category : 'tests' }
+LocaleConventionsTest >> testUnknownCategory [
+
+  self
+    should: [
+        conventions loadJSONConventionsOf: #chronology fromString: '{"es": {"shortDate": "d/M/yy"}}' ]
+    raise: AssertionFailed
+    withMessageText: 'chronology is not a registered category of conventions';
+    should: [ conventions propertyNamed: #shortDate of: #chronology for: 'es' ]
+    raise: AssertionFailed
+    withMessageText: 'chronology is not a registered category of conventions'
+]
+
+{ #category : 'tests' }
+LocaleConventionsTest >> testUnknownPropertyInCategory [
+
+  self registerChronology.
+
+  self
+    should: [
+        conventions
+          loadJSONConventionsOf: #chronology
+          fromString: '{"es": {"decimalSeparator": ","}}' ]
+    raise: AssertionFailed
+    withMessageText: 'decimalSeparator is not a convention of the chronology category';
+    should: [ conventions propertyNamed: #shortDate of: #numbers for: 'es' ]
+    raise: AssertionFailed
+    withMessageText: 'shortDate is not a convention of the numbers category'
+]
+
+{ #category : 'tests' }
 LocaleConventionsTest >> testUnknownPropertyInFile [
 
   self
     should: [ self load: '{"es": {"decimalSeparatr": ","}}' ]
     raise: AssertionFailed
-    withMessageText: 'decimalSeparatr is not a number formatting convention'
+    withMessageText: 'decimalSeparatr is not a convention of the numbers category'
 ]
 
 { #category : 'tests' }
@@ -138,5 +231,5 @@ LocaleConventionsTest >> testUnknownPropertyInLookup [
   self
     should: [ self numberPropertyNamed: #currencySign for: 'es' ]
     raise: AssertionFailed
-    withMessageText: 'currencySign is not a number formatting convention'
+    withMessageText: 'currencySign is not a convention of the numbers category'
 ]

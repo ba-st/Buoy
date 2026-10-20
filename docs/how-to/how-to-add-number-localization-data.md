@@ -218,7 +218,9 @@ LocaleConventions current loadJSONNumberConventionsFrom:
 ```
 
 `loadJSONNumberConventionsFromString:` does the same with JSON held in a
-string.
+string. Both are shortcuts for the `#numbers` category of the conventions; a
+project with conventions of its own registers a category for them, as the
+[reference](../reference/Internationalization.md#locale-data) explains.
 
 Each load merges the file's properties over the ones already loaded, so a
 later load overrides an earlier one property by property. Buoy loads its own
